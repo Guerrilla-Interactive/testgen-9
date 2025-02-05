@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { LetterText } from "lucide-react";
-import { SECTION_WIDTH, STACK_ALIGN } from "@/sanity/schemas/blocks/shared/layout-variants";
+import { SECTION_WIDTH, STACK_ALIGN } from "@/features/page-builder-blocks/shared/shared-schemas/layout-variants";
 
 
 export default defineType({

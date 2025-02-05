@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { Mails } from "lucide-react";
-import { STACK_ALIGN } from "@/sanity/schemas/blocks/shared/layout-variants";
+import { STACK_ALIGN } from "@/features/page-builder-blocks/shared/shared-schemas/layout-variants";
 
 export default defineType({
   name: "form-newsletter",

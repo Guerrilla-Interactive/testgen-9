@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { LayoutGrid } from "lucide-react";
-import { COLS_VARIANTS } from "../shared/layout-variants";
+import { COLS_VARIANTS } from "../../../../features/page-builder-blocks/shared/shared-schemas/layout-variants";
 
 export default defineType({
   name: "grid-row",

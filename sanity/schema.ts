@@ -8,11 +8,11 @@ import faq from "./schemas/documents/faq";
 import testimonial from "./schemas/documents/testimonial";
 
 // Schema UI shared objects
-import blockContent from "./schemas/blocks/shared/block-content";
-import link from "./schemas/blocks/shared/link";
-import { colorVariant } from "./schemas/blocks/shared/color-variant";
-import { buttonVariant } from "./schemas/blocks/shared/button-variant";
-import sectionPadding from "./schemas/blocks/shared/section-padding";
+import blockContent from "../features/page-builder-blocks/shared/shared-schemas/block-content";
+import link from "../features/page-builder-blocks/shared/shared-schemas/link";
+import { colorVariant } from "../features/page-builder-blocks/shared/shared-schemas/color-variant";
+import { buttonVariant } from "../features/page-builder-blocks/shared/shared-schemas/button-variant";
+import sectionPadding from "../features/page-builder-blocks/shared/shared-schemas/section-padding";
 
 // Schema UI objects (imported from feature-based component folders)
 // Hero components
