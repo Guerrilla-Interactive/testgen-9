@@ -1,7 +1,7 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "timelines-1",
+  name: "timeline-1",
   type: "object",
   title: "Timelines 1",
   fields: [

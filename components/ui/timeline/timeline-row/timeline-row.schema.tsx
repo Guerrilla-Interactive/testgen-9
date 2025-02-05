@@ -20,7 +20,7 @@ export default defineType({
     defineField({
       name: "timelines",
       type: "array",
-      of: [{ type: "timelines-1" }],
+      of: [{ type: "timeline-1" }],
     }),
   ],
   preview: {
