@@ -53,7 +53,7 @@ export default function LogoCloud1({
           transition={{
             duration: 20,
             ease: "linear",
-            repeat: Infinity,
+            repeat: Number.POSITIVE_INFINITY,
           }}
           animate={{
             x: ["0%", "-50%"],

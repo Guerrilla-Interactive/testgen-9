@@ -110,7 +110,7 @@ const config = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    plugin(function ({ addBase, addComponents }) {
+    plugin(({ addBase, addComponents }) => {
       addComponents({
         ".container": {
           width: "100%",

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import SectionContainer, {
-  ISectionContainer,
-  ISectionPadding,
+  type ISectionContainer,
+  type ISectionPadding,
 } from "@/components/ui/section-container";
 import { stegaClean } from "next-sanity";
 

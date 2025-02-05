@@ -32,6 +32,7 @@ interface Carousel2Props {
     name: string;
     title: string;
     image: Sanity.Image;
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     body: any;
     rating: number;
   }[];
