@@ -1,7 +1,9 @@
-import Blocks from "@/components/blocks";
+
+import Blocks from "@/features/page-builder-blocks/blocks";
 import { fetchSanityPageBySlug } from "./actions";
 import { generatePageMetadata } from "@/lib/metadata";
-import MissingSanityPage from "@/components/ui/missing-sanity-page";
+import MissingSanityPage from "@/features/ui/missing-sanity-page";
+
 
 export async function generateMetadata() {
   const page = await fetchSanityPageBySlug({ slug: "index" });

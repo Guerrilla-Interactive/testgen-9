@@ -1,7 +1,7 @@
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import Custom404 from "@/components/404";
 
+import Custom404 from "@/features/theme/404";
+import Footer from "@/features/theme/footer";
+import Header from "@/features/theme/header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
