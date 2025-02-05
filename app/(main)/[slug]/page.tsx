@@ -1,10 +1,11 @@
-import Blocks from "@/components/blocks";
+
 import {
   fetchSanityPageBySlug,
   fetchSanityPagesStaticParams,
 } from "../actions";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/metadata";
+import Blocks from "@/features/page-builder-blocks/blocks";
 
 export async function generateStaticParams() {
   const pages = await fetchSanityPagesStaticParams();

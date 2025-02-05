@@ -3,8 +3,9 @@ import SplitContent from "../split-content/split-content.component";
 import SplitCardsList from "../split-cards-list/split-cards-list.component";
 import SplitImage from "../split-image/split-image.component";
 import SplitInfoList from "../split-info-list/split-info-list.component";
-import SectionContainer, { ISectionContainer, ISectionPadding } from "@/features/ui/section-container";
+
 import { stegaClean } from "next-sanity";
+import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/ui/section-container";
 
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {

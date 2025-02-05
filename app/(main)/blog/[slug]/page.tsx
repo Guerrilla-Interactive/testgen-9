@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
-import PostHero from "@/components/ui/post/hero";
-import { BreadcrumbLink } from "@/types";
-import PortableTextRenderer from "@/components/portable-text-renderer";
+
+
 import {
   fetchSanityPostBySlug,
   fetchSanityPostsStaticParams,
 } from "../actions";
 import { generatePageMetadata } from "@/lib/metadata";
+import type { BreadcrumbLink } from "@/types";
+import Breadcrumbs from "@/features/ui/breadcrumbs";
+import PostHero from "@/features/page-builder-blocks/blocks/post/hero";
+import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
 
 export async function generateStaticParams() {
   const posts = await fetchSanityPostsStaticParams();

@@ -14,6 +14,7 @@ import TimelineRow from "./blocks/timeline/timeline-row/timeline-row.component";
 
 
 
+
 const componentMap: { [key: string]: React.ComponentType<any> } = {
   "hero-1": Hero1,
   "hero-2": Hero2,
