@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const newsletterQuery = groq`
+export const formNewsletterQuery = groq`
   _type == "form-newsletter" => {
     _type,
     padding,

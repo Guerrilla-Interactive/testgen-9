@@ -1,17 +1,20 @@
 import { groq } from "next-sanity";
-import { hero1Query } from "./hero/hero-1";
-import { hero2Query } from "./hero/hero-2";
-import { sectionHeaderQuery } from "./section-header";
-import { splitRowQuery } from "./split/split-row";
-import { gridRowQuery } from "./grid/grid-row";
-import { timelineQuery } from "./timeline";
-import { cta1Query } from "./cta/cta-1";
-import { logoCloud1Query } from "./logo-cloud/logo-cloud-1";
-import { faqsQuery } from "./faqs";
-import { formNewsletterQuery } from "./forms/newsletter";
-import { allPostsQuery } from "./all-posts";
+
 import { carousel1Query } from "@/components/ui/carousel/carousel-1/carousel-1.query";
 import { carousel2Query } from "@/components/ui/carousel/carousel-2/carousel-2.query";
+import { hero1Query } from "@/components/ui/hero/hero-1/hero-1.query";
+import { hero2Query } from "@/components/ui/hero/hero-2/hero-2.query";
+import { sectionHeaderQuery } from "@/components/ui/section-header/section-header.query";
+import { splitRowQuery } from "@/components/ui/split/split-row/split-row.query";
+import { gridRowQuery } from "@/components/ui/grid/grid-row/grid-row.query";
+import { timelineQuery } from "@/components/ui/timeline/timeline";
+import { cta1Query } from "@/components/ui/cta/cta-1/cta-1.query";
+import { logoCloud1Query } from "@/components/ui/logo-cloud/logo-cloud-1.query";
+import { faqsQuery } from "@/components/ui/faqs/faqs.query";
+import { formNewsletterQuery } from "@/components/ui/forms/newsletter/newsletter.query";
+import { allPostsQuery } from "@/components/ui/all-posts/all-posts.query";
+
+
 
 export const PAGE_QUERY = groq`
   *[_type == "page" && slug.current == $slug][0]{
