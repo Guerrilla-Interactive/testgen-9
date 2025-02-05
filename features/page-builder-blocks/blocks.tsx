@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import AllPosts from "./blocks/all-posts/all-posts.component";
 import Carousel1 from "./blocks/carousel/carousel-1/carousel-1.component";
 import Carousel2 from "./blocks/carousel/carousel-2/carousel-2.component";
@@ -33,7 +34,7 @@ const componentMap: { [key: string]: React.ComponentType<any> } = {
 
 export default function Blocks({ blocks }: { blocks?: Sanity.Block[] }) {
   return (
-    <>
+    <Fragment>
       {blocks?.map((block: Sanity.Block) => {
         const Component = componentMap[block._type];
         if (!Component) {
@@ -42,6 +43,6 @@ export default function Blocks({ blocks }: { blocks?: Sanity.Block[] }) {
         }
         return <Component {...block} key={block._key} />;
       })}
-    </>
+    </Fragment>
   );
 }
