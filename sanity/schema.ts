@@ -1,4 +1,4 @@
-import { type SchemaTypeDefinition } from "sanity";
+import type { SchemaTypeDefinition } from "sanity";
 // documents
 import page from "./schemas/documents/page";
 import post from "./schemas/documents/post";
