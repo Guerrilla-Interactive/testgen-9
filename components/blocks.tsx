@@ -1,16 +1,19 @@
-import Hero1 from "@/components/ui/hero/hero-1";
-import Hero2 from "@/components/ui/hero/hero-2";
-import SectionHeader from "@/components/ui/section-header";
-import SplitRow from "@/components/ui/split/split-row";
-import GridRow from "@/components/ui/grid/grid-row";
-import Carousel1 from "@/components/ui/carousel/carousel-1";
-import Carousel2 from "@/components/ui/carousel/carousel-2";
-import TimelineRow from "@/components/ui/timeline/timeline-row";
-import Cta1 from "@/components/ui/cta/cta-1";
-import LogoCloud1 from "@/components/ui/logo-cloud/logo-cloud-1";
-import FAQs from "@/components/ui/faqs";
-import FormNewsletter from "@/components/ui/forms/newsletter";
-import AllPosts from "@/components/ui/all-posts";
+import AllPosts from "./ui/all-posts/all-posts.component";
+import Carousel1 from "./ui/carousel/carousel-1/carousel-1.component";
+import Carousel2 from "./ui/carousel/carousel-2/carousel-2.component";
+import Cta1 from "./ui/cta/cta-1/cta-1.component";
+import FAQs from "./ui/faqs/faqs.component";
+import FormNewsletter from "./ui/forms/newsletter/newsletter.component";
+import GridRow from "./ui/grid/grid-row/grid-row.component";
+import Hero1 from "./ui/hero/hero-1/hero-1.component";
+import Hero2 from "./ui/hero/hero-2/hero-2.component";
+import LogoCloud1 from "./ui/logo-cloud/logo-cloud-1.component";
+import SectionHeader from "./ui/section-header/section-header.component";
+import SplitRow from "./ui/split/split-row/split-row.component";
+import TimelineRow from "./ui/timeline/timeline-row/timeline-row.component";
+
+
+
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {
   "hero-1": Hero1,
