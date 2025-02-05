@@ -1,6 +1,8 @@
 export default function Logo() {
   return (
     <svg
+      role="img"
+      aria-label="Logo"
       width="100"
       viewBox="0 0 526 150"
       fill="none"

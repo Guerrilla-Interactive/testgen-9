@@ -1,4 +1,4 @@
-import { PortableText, PortableTextProps } from "@portabletext/react";
+import { PortableText, type PortableTextProps } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
 import { YouTubeEmbed } from "@next/third-parties/google";
