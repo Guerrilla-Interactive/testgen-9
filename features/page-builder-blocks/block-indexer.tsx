@@ -1,3 +1,4 @@
+import { groq } from "next-sanity";
 import { AllPostsBlockComponent, allPostsBlockQuery, allPostsBlockSchema } from "./blocks/all-posts-block";
 import { Carousel1BlockComponent, carousel1BlockQuery, carousel1BlockSchema } from "./blocks/carousel-block/carousel-1-block";
 import { Carousel2BlockComponent, carousel2BlockQuery, carousel2BlockSchema } from "./blocks/carousel-block/carousel-2-block";
@@ -63,6 +64,14 @@ export const allBlockQueries: string = Object.values(BlockDataMap)
   .filter((block) => block.query !== undefined)
   .map((block) => block.query as string)
   .join("\n");
+
+  
+export const pagebuilderQuery = groq`
+blocks[]{
+  ${allBlockQueries}
+},
+`;
+
 
 export default function Blocks({ blocks }: { blocks?: Sanity.Block[] }) {
   if (!blocks) return null;
