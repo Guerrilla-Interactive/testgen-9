@@ -1,6 +1,6 @@
 import { stegaClean } from "next-sanity";
 
-import SplitCardsItem from "../split-cards-item-block/split-cards-item.component";
+import SplitCardsItem from "../split-cards-item-block/split-cards-item.block-component";
 import { ISectionContainer } from "@/features/ui/section-container";
 
 

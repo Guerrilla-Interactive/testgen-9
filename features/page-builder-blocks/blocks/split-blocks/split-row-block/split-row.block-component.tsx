@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import SplitContent from "../split-content-block/split-content.component";
-import SplitCardsList from "../split-cards-list-block/split-cards-list.component";
-import SplitImage from "../split-image-block/split-image.component";
-import SplitInfoList from "../split-info-list-block/split-info-list.component";
+import SplitContent from "../split-content-block/split-content.block-component";
+import SplitCardsList from "../split-cards-list-block/split-cards-list.block-component";
+import SplitImage from "../split-image-block/split-image.block-component";
+import SplitInfoList from "../split-info-list-block/split-info-list.block-component";
 
 import { stegaClean } from "next-sanity";
 import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/ui/section-container";

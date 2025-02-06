@@ -1,5 +1,5 @@
 
-import Blocks from "@/features/page-builder-blocks/blocks-indexer";
+import Blocks from "@/features/page-builder-blocks/block-indexer";
 import { fetchSanityPageBySlug } from "./actions";
 import { generatePageMetadata } from "@/lib/metadata";
 import MissingSanityPage from "@/features/ui/missing-sanity-page";

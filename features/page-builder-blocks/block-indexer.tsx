@@ -1,10 +1,6 @@
 import { AllPostsBlockComponent, allPostsBlockQuery, allPostsBlockSchema } from "./blocks/all-posts-block";
-import { Carousel1BlockComponent } from "./blocks/carousel-block/carousel-1-block";
-import carousel1Query from "./blocks/carousel-block/carousel-1-block/carousel-1.query";
-import carousel1Schema from "./blocks/carousel-block/carousel-1-block/carousel-1.schema";
-import { Carousel2BlockComponent } from "./blocks/carousel-block/carousel-2-block";
-import carousel2Query from "./blocks/carousel-block/carousel-2-block/carousel-2.query";
-import carousel2Schema from "./blocks/carousel-block/carousel-2-block/carousel-2.schema";
+import { Carousel1BlockComponent, carousel1BlockQuery, carousel1BlockSchema } from "./blocks/carousel-block/carousel-1-block";
+import { Carousel2BlockComponent, carousel2BlockQuery, carousel2BlockSchema } from "./blocks/carousel-block/carousel-2-block";
 import { Cta1BlockComponent, cta1BlockQuery, cta1BlockSchema } from "./blocks/cta-blocks/cta-1-block";
 import { FAQsBlockComponent, faqsBlockQuery, faqsBlockSchema } from "./blocks/faqs-block";
 import { FormNewsletterBlockComponent, formNewsletterBlockQuery, formNewsletterBlockSchema } from "./blocks/form-blocks/newsletter-block";
@@ -26,10 +22,6 @@ import { SplitRowBlockComponent, splitRowBlockQuery, splitRowBlockSchema } from 
 import { Timeline1BlockComponent, timeline1BlockSchema } from "./blocks/timeline-blocks/timeline-1-block";
 import { TimelineRowBlockComponent, timelineRowBlockQuery, timelineRowBlockSchema } from "./blocks/timeline-blocks/timeline-row-block";
 
-/**
- * A unified mapping that groups each block type with its component,
- * schema (for Sanity), and query (for data fetching).
- */
 export const BlockDataMap: {
   [key: string]: {
     component?: React.ComponentType<any>;
@@ -37,13 +29,12 @@ export const BlockDataMap: {
     query?: string;
   };
 } = {
-  // Page-level blocks:
   "hero-1-block": { component: Hero1BlockComponent, schema: hero1BlockSchema, query: hero1BlockQuery },
   "hero-2-block": { component: Hero2BlockComponent, schema: hero2BlockSchema, query: hero2BlockQuery },
   "section-header-block": { component: SectionHeaderBlockComponent, schema: sectionHeaderBlockSchema, query: sectionHeaderBlockQuery },
   "split-row-block": { component: SplitRowBlockComponent, schema: splitRowBlockSchema, query: splitRowBlockQuery },
-  "carousel-1-block":{ component: Carousel1BlockComponent, schema: carousel1Schema, query: carousel1Query },
-  "carousel-2-block": { component: Carousel2BlockComponent, schema: carousel2Schema, query: carousel2Query },
+  "carousel-1-block":{ component: Carousel1BlockComponent, schema: carousel1BlockSchema, query: carousel1BlockQuery },
+  "carousel-2-block": { component: Carousel2BlockComponent, schema: carousel2BlockSchema, query: carousel2BlockQuery },
   "timeline-row-block": { component: TimelineRowBlockComponent, schema: timelineRowBlockSchema, query: timelineRowBlockQuery },
   "cta-1-block": { component: Cta1BlockComponent, schema: cta1BlockSchema, query: cta1BlockQuery },
   "logo-cloud-1-block": { component: LogoCloud1BlockComponent, schema: logoCloud1BlockSchema, query: logoCloud1BlockQuery },
@@ -63,27 +54,16 @@ export const BlockDataMap: {
   "split-info-item-block": { component: SplitInfoItemBlockComponent, schema: splitInfoItemBlockSchema },
 };
 
-/**
- * A helper function to generate the complete set of block schemas.
- * This output is equivalent to manually writing an object with keys
- * corresponding to each block type and its respective schema.
- */
+
 export const allBlockSchemas = Object.values(BlockDataMap)
   .filter((block) => block.schema !== undefined)
   .map((block) => block.schema);
 
-/**
- * Exporting a constant that contains the concatenated queries from all blocks.
- * Useful for composing GROQ queries in other parts of your code.
- */
 export const allBlockQueries: string = Object.values(BlockDataMap)
   .filter((block) => block.query !== undefined)
   .map((block) => block.query as string)
   .join("\n");
 
-/**
- * The Blocks component dynamically renders blocks based on their _type.
- */
 export default function Blocks({ blocks }: { blocks?: Sanity.Block[] }) {
   if (!blocks) return null;
   return (

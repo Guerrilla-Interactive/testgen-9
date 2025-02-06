@@ -1,6 +1,6 @@
-import timelineRowBlockSchema from "./timeline-row.schema";
-import TimelineRowBlockComponent from "./timeline-row.component";
-import timelineRowBlockQuery from "./timeline-row.query";
+import timelineRowBlockSchema from "./timeline-row.block-schema";
+import TimelineRowBlockComponent from "./timeline-row.block-component";
+import timelineRowBlockQuery from "./timeline-row.block-query";
 
 
 export { timelineRowBlockSchema, timelineRowBlockQuery, TimelineRowBlockComponent };

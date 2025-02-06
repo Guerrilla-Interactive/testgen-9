@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 // Import the aggregated block queries (an object mapping block type keys to query strings)
-import { allBlockQueries } from "@/features/page-builder-blocks/blocks-indexer";
+import { allBlockQueries } from "@/features/page-builder-blocks/block-indexer";
 
 // Import any additional query fragments not part of the mapping (e.g. timeline query)
 

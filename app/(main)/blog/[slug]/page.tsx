@@ -8,7 +8,7 @@ import {
 import { generatePageMetadata } from "@/lib/metadata";
 import type { BreadcrumbLink } from "@/types";
 import Breadcrumbs from "@/features/ui/breadcrumbs";
-import PostHero from "@/features/page-builder-blocks/blocks/post/hero";
+import PostHero from "@/features/unorganized-components/post/hero";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
 
 export async function generateStaticParams() {

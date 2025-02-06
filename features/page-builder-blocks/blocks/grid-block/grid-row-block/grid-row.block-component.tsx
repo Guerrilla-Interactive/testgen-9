@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 import { stegaClean } from "next-sanity";
 // Import feature components from their new locations
 
-import PricingCard from "../pricing-card-block/pricing-card.component";
-import GridPost from "../grid-post-block/grid-post.component";
-import GridCard from "../grid-card-block/grid-card.component";
+import PricingCard from "../pricing-card-block/pricing-card.block-component";
+import GridPost from "../grid-post-block/grid-post.block-component";
+import GridCard from "../grid-card-block/grid-card.block-component";
 import SectionContainer from "@/features/ui/section-container";
 
 
