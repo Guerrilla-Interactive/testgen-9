@@ -33,16 +33,22 @@ const componentMap: { [key: string]: React.ComponentType<any> } = {
 };
 
 export default function Blocks({ blocks }: { blocks?: Sanity.Block[] }) {
+  // If blocks is not provided, simply render nothing.
+  if (!blocks) return null;
+
   return (
-    <Fragment>
-      {blocks?.map((block: Sanity.Block) => {
+    <>
+      {blocks.map((block, index) => {
+        // Use block._key if available; otherwise fall back to the index.
+        const key = block._key || index;
         const Component = componentMap[block._type];
+
         if (!Component) {
-          // Fallback for unknown block types to debug
-          return <div data-type={block._type} key={block._key} />;
+          // Fallback for unknown block types to help with debugging.
+          return <div data-type={block._type} key={key} />;
         }
-        return <Component {...block} key={block._key} />;
+        return <Component {...block} key={key} />;
       })}
-    </Fragment>
+    </>
   );
 }
