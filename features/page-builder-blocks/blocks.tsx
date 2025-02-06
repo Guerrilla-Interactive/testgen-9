@@ -13,7 +13,6 @@ import TimelineRow from "./blocks/timeline/timeline-row/timeline-row.component";
 import SplitContentBlockComponent from "./blocks/split/split-content/split-content.component";
 import SplitCardsListBlockComponent from "./blocks/split/split-cards-list/split-cards-list.component";
 import SplitImageBlockComponent from "./blocks/split/split-image/split-image.component";
-
 import PricingCardBlockComponent from "./blocks/grid/pricing-card/pricing-card.component";
 import Timeline1BlockComponent from "./blocks/timeline/timeline-1/timeline-1.component";
 import SplitCardsItemBlockComponent from "./blocks/split/split-cards-item/split-cards-item.component";
@@ -36,13 +35,11 @@ import splitRowBlockSchema from "./blocks/split/split-row/split-row.schema";
 import timelineRowSchema from "./blocks/timeline/timeline-row/timeline-row.schema";
 import splitContentBlockSchema from "./blocks/split/split-content/split-content.schema";
 import splitCardsListBlockSchema from "./blocks/split/split-cards-list/split-cards-list.schema";
-
 import splitImageBlockSchema from "./blocks/split/split-image/split-image.schema";
 import splitInfoListBlockSchema from "./blocks/split/split-info-list/split-info-list.schema";
 import gridCardBlockSchema from "./blocks/grid/grid-card/grid-card.schema";
 import gridPostBlockSchema from "./blocks/grid/grid-post/grid-post.schema";
 import pricingCardBlockSchema from "./blocks/grid/pricing-card/pricing-card.schema";
-
 import timeline1BlockSchema from "./blocks/timeline/timeline-1/timeline-1.schema";
 import splitCardBlockSchema from "./blocks/split/split-cards-item/split-card-item.schema";
 import splitInfoItemBlockSchema from "./blocks/split/split-info-item/split-info-item.schema";
@@ -64,8 +61,6 @@ import splitRowBlockQuery from "./blocks/split/split-row/split-row.query";
 import splitContentBlockQuery from "./blocks/split/split-content/split-content.query";
 import splitCardsListQuery from "./blocks/split/split-cards-list/split-cards-list.query";
 import splitImageBlockQuery from "./blocks/split/split-image/split-image.query";
-import gridCardQuery from "./blocks/grid/grid-card/grid-card.query";
-import gridPostQuery from "./blocks/grid/grid-post/grid-post.query";
 import pricingCardBlockQuery from "./blocks/grid/pricing-card/pricing-card.query";
 import timelineRowQuery from "./blocks/timeline/timeline-row/timeline-row";
 import GridCardBlockComponent from "./blocks/grid/grid-card/grid-card.component";

@@ -10,7 +10,7 @@ export const COLOR_VARIANTS = [
   { title: "Muted", value: "muted" },
 ];
 
-export const colorVariant = defineType({
+export default defineType({
   name: "color-variant",
   title: "Color Variant",
   type: "string",
