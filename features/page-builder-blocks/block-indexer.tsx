@@ -66,7 +66,7 @@ export const allBlockQueries: string = Object.values(BlockDataMap)
   .join("\n");
 
   
-export const pagebuilderQuery = groq`
+export const pageBuilderQuery = groq`
 blocks[]{
   ${allBlockQueries}
 },
