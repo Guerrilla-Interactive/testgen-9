@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { WalletCards } from "lucide-react";
 
 export default defineType({
-  name: "pricing-card",
+  name: "pricing-card-block",
   type: "object",
   icon: WalletCards,
   fields: [

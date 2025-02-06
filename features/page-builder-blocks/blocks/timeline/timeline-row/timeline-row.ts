@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const timelineRowQuery = groq`
-  _type == "timeline-row" => {
+const timelineRowBlockQuery = groq`
+  _type == "timeline-row-block" => {
     _type,
     padding,
     colorVariant,
@@ -30,4 +30,4 @@ const timelineRowQuery = groq`
   },
 `;
 
-export default timelineRowQuery;
+export default timelineRowBlockQuery;

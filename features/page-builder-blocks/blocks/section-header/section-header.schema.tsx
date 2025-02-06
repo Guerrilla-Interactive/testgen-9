@@ -4,7 +4,7 @@ import { SECTION_WIDTH, STACK_ALIGN } from "@/features/page-builder-blocks/share
 
 
 export default defineType({
-  name: "section-header",
+  name: "section-header-block",
   type: "object",
   title: "Section Header",
   description: "A section header with a tag line, title, and description",

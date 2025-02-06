@@ -1,11 +1,11 @@
 import { groq } from "next-sanity";
 
-const allPostsQuery = groq`
-  _type == "all-posts" => {
+const allPostsBlockQuery = groq`
+  _type == "all-posts-block" => {
     _type,
     padding,
     colorVariant,
   },
 `; 
 
-export default allPostsQuery;
+export default allPostsBlockQuery;

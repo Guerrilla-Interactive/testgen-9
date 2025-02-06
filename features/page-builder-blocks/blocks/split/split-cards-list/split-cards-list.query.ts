@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const splitCardsListQuery = groq`
-  _type == "split-cards-list" => {
+const splitCardsListBlockQuery = groq`
+  _type == "split-cards-list-block" => {
     _type,
     list[]{
       tagLine,
@@ -28,4 +28,4 @@ const splitCardsListQuery = groq`
   },
 `;
 
-export default splitCardsListQuery; 
+export default splitCardsListBlockQuery; 

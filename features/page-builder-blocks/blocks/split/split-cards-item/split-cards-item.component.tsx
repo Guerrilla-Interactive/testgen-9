@@ -14,7 +14,7 @@ interface SplitCardProps {
   body: any;
 }
 
-export default function SplitCard({
+export default function SplitCardsItemBlockComponent({
   color,
   tagLine,
   title,

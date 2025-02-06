@@ -5,8 +5,8 @@ import pricingCardQuery from "../pricing-card/pricing-card.query";
 import gridPostQuery from "../grid-post/grid-post.query";
 import gridCardQuery from "../grid-card/grid-card.query";
 
-const gridRowQuery = groq`
-  _type == "grid-row" => {
+const gridRowBlockQuery = groq`
+  _type == "grid-row-block" => {
     _type,
     padding,
     colorVariant,
@@ -19,4 +19,4 @@ const gridRowQuery = groq`
   },
 `;
 
-export default gridRowQuery; 
+export default gridRowBlockQuery; 

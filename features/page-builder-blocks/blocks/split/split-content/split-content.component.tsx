@@ -34,7 +34,7 @@ interface SplitContentProps {
   };
 }
 
-export default function SplitContent({
+export default function SplitContentBlockComponent({
   sticky,
   padding,
   noGap,

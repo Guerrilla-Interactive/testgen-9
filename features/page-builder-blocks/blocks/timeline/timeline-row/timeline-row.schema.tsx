@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 import { ArrowDownNarrowWide } from "lucide-react";
 
 export default defineType({
-  name: "timeline-row",
+  name: "timeline-row-block",
   type: "object",
   title: "Timeline Row",
   description: "Row of Timeline Sections",
@@ -20,9 +20,10 @@ export default defineType({
     defineField({
       name: "timelines",
       type: "array",
-      of: [{ type: "timeline-1" }],
+      of: [{ type: "timeline-1-block" }],
     }),
   ],
+
   preview: {
     select: {
       subtitle: "timelines.0.title",

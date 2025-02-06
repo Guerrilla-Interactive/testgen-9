@@ -7,7 +7,7 @@ import PortableTextRenderer from "@/features/unorganized-components/portable-tex
 import { Button } from "@/features/ui/button";
 
 
-export default function Hero2({
+export default function Hero2BlockComponent({
   tagLine,
   title,
   body,

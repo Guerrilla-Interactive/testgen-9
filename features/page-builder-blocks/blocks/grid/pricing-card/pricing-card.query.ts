@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const pricingCardQuery = groq`
-  _type == "pricing-card" => {
+const pricingCardBlockQuery = groq`
+  _type == "pricing-card-block" => {
     _type,
     title,
     tagLine,
@@ -12,4 +12,4 @@ const pricingCardQuery = groq`
   },
 `;
 
-export default pricingCardQuery; 
+export default pricingCardBlockQuery; 

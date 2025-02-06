@@ -3,10 +3,10 @@ import { Info } from "lucide-react";
 import { extractPlainText } from "@/lib/utils";
 
 export default defineType({
-  name: "split-info",
+  name: "split-info-item-block",
   type: "object",
   icon: Info,
-  title: "Split Info",
+  title: "Split Info Item",
   description:
     "Column with a title, content body, image and tags. Part of a split cards.",
   fields: [

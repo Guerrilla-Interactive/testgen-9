@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const cta1Query = groq`
-  _type == "cta-1" => {
+const cta1BlockQuery = groq`
+  _type == "cta-1-block" => {
     _type,
     padding,
     colorVariant,
@@ -31,4 +31,4 @@ const cta1Query = groq`
   },
 `;
 
-export default cta1Query; 
+export default cta1BlockQuery; 

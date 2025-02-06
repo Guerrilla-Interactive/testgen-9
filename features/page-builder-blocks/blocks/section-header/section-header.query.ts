@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const sectionHeaderQuery = groq`
-  _type == "section-header" => {
+const sectionHeaderBlockQuery = groq`
+  _type == "section-header-block" => {
     _type,
     padding,
     colorVariant,
@@ -14,4 +14,4 @@ const sectionHeaderQuery = groq`
   },
 `;
 
-export default sectionHeaderQuery; 
+export default sectionHeaderBlockQuery; 

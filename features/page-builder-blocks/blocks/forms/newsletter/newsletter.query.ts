@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const formNewsletterQuery = groq`
-  _type == "form-newsletter" => {
+const formNewsletterBlockQuery = groq`
+  _type == "form-newsletter-block" => {
     _type,
     padding,
     colorVariant,
@@ -12,4 +12,4 @@ const formNewsletterQuery = groq`
   },
 `;
 
-export default formNewsletterQuery; 
+export default formNewsletterBlockQuery; 

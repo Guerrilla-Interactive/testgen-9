@@ -1,4 +1,3 @@
-
 import { stegaClean } from "next-sanity";
 
 import SplitCardsItem from "../split-cards-item/split-cards-item.component";
@@ -16,7 +15,7 @@ interface SplitCardsListProps {
   }[];
 }
 
-export default function SplitCardsList({
+export default function SplitCardsListBlockComponent({
   color,
   list,
 }: Partial<SplitCardsListProps>) {

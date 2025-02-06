@@ -30,7 +30,7 @@ interface FormNewsletterProps {
   successMessage: string;
 }
 
-export default function FormNewsletter({
+export default function FormNewsletterBlockComponent({
   padding,
   colorVariant,
   consentText,

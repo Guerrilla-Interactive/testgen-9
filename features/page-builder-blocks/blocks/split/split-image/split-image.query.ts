@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const splitImageQuery = groq`
-  _type == "split-image" => {
+const splitImageBlockQuery = groq`
+  _type == "split-image-block" => {
     _type,
     image{
       asset->{
@@ -21,4 +21,4 @@ const splitImageQuery = groq`
   },
 `;
 
-export default splitImageQuery; 
+export default splitImageBlockQuery; 

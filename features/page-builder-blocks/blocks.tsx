@@ -1,78 +1,79 @@
-import { Fragment } from "react";
-
 // COMPONENT IMPORTS
-import AllPosts from "./blocks/all-posts/all-posts.component";
-import Carousel1 from "./blocks/carousel/carousel-1/carousel-1.component";
-import Carousel2 from "./blocks/carousel/carousel-2/carousel-2.component";
-import Cta1 from "./blocks/cta/cta-1/cta-1.component";
-import FAQs from "./blocks/faqs/faqs.component";
-import FormNewsletter from "./blocks/forms/newsletter/newsletter.component";
-import GridRow from "./blocks/grid/grid-row/grid-row.component";
-import Hero1 from "./blocks/hero/hero-1/hero-1.component";
-import Hero2 from "./blocks/hero/hero-2/hero-2.component";
-import LogoCloud1 from "./blocks/logo-cloud/logo-cloud-1.component";
-import SectionHeader from "./blocks/section-header/section-header.component";
-import SplitRow from "./blocks/split/split-row/split-row.component";
+import AllPostsBlockComponent from "./blocks/all-posts/all-posts.component";
+import Cta1BlockComponent from "./blocks/cta/cta-1/cta-1.component";
+import FAQsBlockComponent from "./blocks/faqs/faqs.component";
+import FormNewsletterBlockComponent from "./blocks/forms/newsletter/newsletter.component";
+import GridRowBlockComponent from "./blocks/grid/grid-row/grid-row.component";
+import Hero1BlockComponent from "./blocks/hero/hero-1/hero-1.component";
+import Hero2BlockComponent from "./blocks/hero/hero-2/hero-2.component";
+import LogoCloud1BlockComponent from "./blocks/logo-cloud/logo-cloud-1.component";
+import SectionHeaderBlockComponent from "./blocks/section-header/section-header.component";
+import SplitRowBlockComponent from "./blocks/split/split-row/split-row.component";
 import TimelineRow from "./blocks/timeline/timeline-row/timeline-row.component";
-import SplitContent from "./blocks/split/split-content/split-content.component";
-import SplitCardsList from "./blocks/split/split-cards-list/split-cards-list.component";
-import SplitImage from "./blocks/split/split-image/split-image.component";
-import SplitInfoList from "./blocks/split/split-info-list/split-info-list.component";
-import GridCard from "./blocks/grid/grid-card/grid-card.component";
-import GridPost from "./blocks/grid/grid-post/grid-post.component";
-import PricingCard from "./blocks/grid/pricing-card/pricing-card.component";
-import Timeline1 from "./blocks/timeline/timeline-1/timeline-1.component";
-import SplitCard from "./blocks/split/split-cards-item/split-cards-item.component";
-import SplitInfo from "./blocks/split/split-info-item/split-info-item.component";
+import SplitContentBlockComponent from "./blocks/split/split-content/split-content.component";
+import SplitCardsListBlockComponent from "./blocks/split/split-cards-list/split-cards-list.component";
+import SplitImageBlockComponent from "./blocks/split/split-image/split-image.component";
+
+import PricingCardBlockComponent from "./blocks/grid/pricing-card/pricing-card.component";
+import Timeline1BlockComponent from "./blocks/timeline/timeline-1/timeline-1.component";
+import SplitCardsItemBlockComponent from "./blocks/split/split-cards-item/split-cards-item.component";
+import SplitInfoItemBlockComponent from "./blocks/split/split-info-item/split-info-item.component";
 
 // ------------------------------
 // SCHEMA IMPORTS (using a configured alias, e.g. "./blocks")
-import allPostsSchema from "./blocks/all-posts/all-posts.schema";
+import allPostsBlockSchema from "./blocks/all-posts/all-posts.schema";
 import carousel1Schema from "./blocks/carousel/carousel-1/carousel-1.schema";
 import carousel2Schema from "./blocks/carousel/carousel-2/carousel-2.schema";
-import cta1Schema from "./blocks/cta/cta-1/cta-1.schema";
-import faqsSchema from "./blocks/faqs/faqs.schema";
-import formNewsletterSchema from "./blocks/forms/newsletter/newsletter.schema";
-import gridRowSchema from "./blocks/grid/grid-row/grid-row.schema";
-import hero1Schema from "./blocks/hero/hero-1/hero-1.schema";
-import hero2Schema from "./blocks/hero/hero-2/hero-2.schema";
-import logoCloud1Schema from "./blocks/logo-cloud/logo-cloud-1.schema";
-import sectionHeaderSchema from "./blocks/section-header/section-header.schema";
-import splitRowSchema from "./blocks/split/split-row/split-row.schema";
+import cta1BlockSchema from "./blocks/cta/cta-1/cta-1.schema";
+import faqsBlockSchema from "./blocks/faqs/faqs.schema";
+import formNewsletterBlockSchema from "./blocks/forms/newsletter/newsletter.schema";
+import gridRowBlockSchema from "./blocks/grid/grid-row/grid-row.schema";
+import hero1BlockSchema from "./blocks/hero/hero-1/hero-1.schema";
+import hero2BlockSchema from "./blocks/hero/hero-2/hero-2.schema";
+import logoCloud1BlockSchema from "./blocks/logo-cloud/logo-cloud-1.schema";
+import sectionHeaderBlockSchema from "./blocks/section-header/section-header.schema";
+import splitRowBlockSchema from "./blocks/split/split-row/split-row.schema";
 import timelineRowSchema from "./blocks/timeline/timeline-row/timeline-row.schema";
-import splitContent from "./blocks/split/split-content/split-content.schema";
-import splitCardsList from "./blocks/split/split-cards-list/split-cards-list.schema";
-import splitImage from "./blocks/split/split-image/split-image.schema";
-import splitInfoList from "./blocks/split/split-info-list/split-info-list.schema";
-import gridCard from "./blocks/grid/grid-card/grid-card.schema";
-import gridPost from "./blocks/grid/grid-post/grid-post.schema";
-import pricingCard from "./blocks/grid/pricing-card/pricing-card.schema";
-import timeline1 from "./blocks/timeline/timeline-1/timeline-1.schema";
-import splitCard from "./blocks/split/split-cards-item/split-card-item.schema";
-import splitInfo from "./blocks/split/split-info-item/split-info-item.schema";
+import splitContentBlockSchema from "./blocks/split/split-content/split-content.schema";
+import splitCardsListBlockSchema from "./blocks/split/split-cards-list/split-cards-list.schema";
+
+import splitImageBlockSchema from "./blocks/split/split-image/split-image.schema";
+import splitInfoListBlockSchema from "./blocks/split/split-info-list/split-info-list.schema";
+import gridCardBlockSchema from "./blocks/grid/grid-card/grid-card.schema";
+import gridPostBlockSchema from "./blocks/grid/grid-post/grid-post.schema";
+import pricingCardBlockSchema from "./blocks/grid/pricing-card/pricing-card.schema";
+
+import timeline1BlockSchema from "./blocks/timeline/timeline-1/timeline-1.schema";
+import splitCardBlockSchema from "./blocks/split/split-cards-item/split-card-item.schema";
+import splitInfoItemBlockSchema from "./blocks/split/split-info-item/split-info-item.schema";
 
 // ------------------------------
 // QUERY IMPORTS (using a configured alias, e.g. "./blocks")
-import allPostsQuery from "./blocks/all-posts/all-posts.query";
+import allPostsBlockQuery from "./blocks/all-posts/all-posts.query";
 import carousel1Query from "./blocks/carousel/carousel-1/carousel-1.query";
 import carousel2Query from "./blocks/carousel/carousel-2/carousel-2.query";
-import cta1Query from "./blocks/cta/cta-1/cta-1.query";
-import faqsQuery from "./blocks/faqs/faqs.query";
-import formNewsletterQuery from "./blocks/forms/newsletter/newsletter.query";
-import gridRowQuery from "./blocks/grid/grid-row/grid-row.query";
-import hero1Query from "./blocks/hero/hero-1/hero-1.query";
-import hero2Query from "./blocks/hero/hero-2/hero-2.query";
-import logoCloud1Query from "./blocks/logo-cloud/logo-cloud-1.query";
-import sectionHeaderQuery from "./blocks/section-header/section-header.query";
-import splitRowQuery from "./blocks/split/split-row/split-row.query";
-import splitContentQuery from "./blocks/split/split-content/split-content.query";
+import cta1BlockQuery from "./blocks/cta/cta-1/cta-1.query";
+import faqsBlockQuery from "./blocks/faqs/faqs.query";
+import formNewsletterBlockQuery from "./blocks/forms/newsletter/newsletter.query";
+import gridRowBlockQuery from "./blocks/grid/grid-row/grid-row.query";
+import hero1BlockQuery from "./blocks/hero/hero-1/hero-1.query";
+import hero2BlockQuery from "./blocks/hero/hero-2/hero-2.query";
+import logoCloud1BlockQuery from "./blocks/logo-cloud/logo-cloud-1.query";
+import sectionHeaderBlockQuery from "./blocks/section-header/section-header.query";
+import splitRowBlockQuery from "./blocks/split/split-row/split-row.query";
+import splitContentBlockQuery from "./blocks/split/split-content/split-content.query";
 import splitCardsListQuery from "./blocks/split/split-cards-list/split-cards-list.query";
-import splitImageQuery from "./blocks/split/split-image/split-image.query";
-import splitInfoListQuery from "./blocks/split/split-info-list/split-info-list.query";
+import splitImageBlockQuery from "./blocks/split/split-image/split-image.query";
 import gridCardQuery from "./blocks/grid/grid-card/grid-card.query";
 import gridPostQuery from "./blocks/grid/grid-post/grid-post.query";
-import pricingCardQuery from "./blocks/grid/pricing-card/pricing-card.query";
+import pricingCardBlockQuery from "./blocks/grid/pricing-card/pricing-card.query";
 import timelineRowQuery from "./blocks/timeline/timeline-row/timeline-row";
+import GridCardBlockComponent from "./blocks/grid/grid-card/grid-card.component";
+import GridPostBlockComponent from "./blocks/grid/grid-post/grid-post.component";
+import Carousel1BlockComponent from "./blocks/carousel/carousel-1/carousel-1.component";
+import Carousel2BlockComponent from "./blocks/carousel/carousel-2/carousel-2.component";
+import SplitInfoListBlockComponent from "./blocks/split/split-info-list/split-info-list.component";
+import splitInfoListBlockQuery from "./blocks/split/split-info-list/split-info-list.query";
 
 /**
  * A unified mapping that groups each block type with its component,
@@ -86,29 +87,52 @@ export const BlockDataMap: {
   };
 } = {
   // Page-level blocks:
-  "hero-1": { component: Hero1, schema: hero1Schema, query: hero1Query },
-  "hero-2": { component: Hero2, schema: hero2Schema, query: hero2Query },
-  "section-header": { component: SectionHeader, schema: sectionHeaderSchema, query: sectionHeaderQuery },
-  "split-row": { component: SplitRow, schema: splitRowSchema, query: splitRowQuery },
-  "grid-row": { component: GridRow, schema: gridRowSchema, query: gridRowQuery },
-  "carousel-1": { component: Carousel1, schema: carousel1Schema, query: carousel1Query },
-  "carousel-2": { component: Carousel2, schema: carousel2Schema, query: carousel2Query },
-  "timeline-row": { component: TimelineRow, schema: timelineRowSchema, query: timelineRowQuery },
-  "cta-1": { component: Cta1, schema: cta1Schema, query: cta1Query },
-  "logo-cloud-1": { component: LogoCloud1, schema: logoCloud1Schema, query: logoCloud1Query },
-  "faqs": { component: FAQs, schema: faqsSchema, query: faqsQuery },
-  "form-newsletter": { component: FormNewsletter, schema: formNewsletterSchema, query: formNewsletterQuery },
-  "all-posts": { component: AllPosts, schema: allPostsSchema, query: allPostsQuery },
-  "split-content": { component: SplitContent, schema: splitContent, query: splitContentQuery },
-  "split-cards-list": { component: SplitCardsList, schema: splitCardsList, query: splitCardsListQuery },
-  "split-image": { component: SplitImage, schema: splitImage, query: splitImageQuery },
-  "split-info-list": { component: SplitInfoList, schema: splitInfoList, query: splitInfoListQuery },
-  "grid-card": { component: GridCard, schema: gridCard, query: gridCardQuery },
-  "grid-post": { component: GridPost, schema: gridPost, query: gridPostQuery },
-  "pricing-card": { component: PricingCard, schema: pricingCard, query: pricingCardQuery },
-  "timeline-1": { component: Timeline1, schema: timeline1 },
-  "split-card": { component: SplitCard, schema: splitCard },
-  "split-info": { component: SplitInfo, schema: splitInfo },
+  "hero-1-block": 
+  { component: Hero1BlockComponent, schema: hero1BlockSchema, query: hero1BlockQuery },
+  "hero-2-block":
+  { component: Hero2BlockComponent, schema: hero2BlockSchema, query: hero2BlockQuery },
+  "section-header-block":
+  { component: SectionHeaderBlockComponent, schema: sectionHeaderBlockSchema, query: sectionHeaderBlockQuery },
+  "split-row-block":
+  { component: SplitRowBlockComponent, schema: splitRowBlockSchema, query: splitRowBlockQuery },
+  "grid-row-block":
+  { component: GridRowBlockComponent, schema: gridRowBlockSchema, query: gridRowBlockQuery },
+  "carousel-1-block":
+  { component: Carousel1BlockComponent, schema: carousel1Schema, query: carousel1Query },
+  "carousel-2-block": 
+  { component: Carousel2BlockComponent, schema: carousel2Schema, query: carousel2Query },
+  "timeline-row-block": 
+  { component: TimelineRow, schema: timelineRowSchema, query: timelineRowQuery },
+  "cta-1-block": 
+  { component: Cta1BlockComponent, schema: cta1BlockSchema, query: cta1BlockQuery },
+  "logo-cloud-1-block": 
+  { component: LogoCloud1BlockComponent, schema: logoCloud1BlockSchema, query: logoCloud1BlockQuery },
+  "faqs-block": 
+  { component: FAQsBlockComponent, schema: faqsBlockSchema, query: faqsBlockQuery },
+  "form-newsletter-block": 
+  { component: FormNewsletterBlockComponent, schema: formNewsletterBlockSchema, query: formNewsletterBlockQuery },
+  "all-posts-block": 
+  { component: AllPostsBlockComponent, schema: allPostsBlockSchema, query: allPostsBlockQuery },
+  "split-content-block": 
+  { component: SplitContentBlockComponent, schema: splitContentBlockSchema, query: splitContentBlockQuery },
+  "split-cards-list-block": 
+  { component: SplitCardsListBlockComponent, schema: splitCardsListBlockSchema, query: splitCardsListQuery },
+  "split-image-block": 
+  { component: SplitImageBlockComponent, schema: splitImageBlockSchema, query: splitImageBlockQuery },
+  "split-info-list-block": 
+  { component: SplitInfoListBlockComponent, schema: splitInfoListBlockSchema, query: splitInfoListBlockQuery },
+  "grid-card-block": 
+  { component: GridCardBlockComponent, schema: gridCardBlockSchema, query: gridCardQuery },
+  "grid-post-block": 
+  { component: GridPostBlockComponent, schema: gridPostBlockSchema, query: gridPostQuery },
+  "pricing-card-block": 
+  { component: PricingCardBlockComponent, schema: pricingCardBlockSchema, query: pricingCardBlockQuery },
+  "timeline-1-block": 
+  { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
+  "split-card-block": 
+  { component: SplitCardsItemBlockComponent, schema: splitCardBlockSchema },
+  "split-info-item-block": 
+  { component: SplitInfoItemBlockComponent, schema: splitInfoItemBlockSchema },
 };
 
 /**

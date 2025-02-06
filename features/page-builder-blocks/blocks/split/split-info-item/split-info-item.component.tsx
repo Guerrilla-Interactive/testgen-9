@@ -15,7 +15,7 @@ interface SplitInfoItemProps {
   tags: string[];
 }
 
-export default function SplitInfoItem({
+export default function SplitInfoItemBlockComponent({
   image,
   title,
   body,

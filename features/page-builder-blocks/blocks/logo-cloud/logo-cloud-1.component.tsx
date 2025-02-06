@@ -24,7 +24,7 @@ interface LogoCloud1Props {
   images: Sanity.Image[];
 }
 
-export default function LogoCloud1({
+export default function LogoCloud1BlockComponent({
   padding,
   colorVariant,
   title,

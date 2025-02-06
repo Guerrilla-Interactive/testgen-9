@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { LayoutTemplate } from "lucide-react";
 
 export default defineType({
-  name: "hero-2",
+  name: "hero-2-block",
   title: "Hero 2",
   type: "object",
   icon: LayoutTemplate,

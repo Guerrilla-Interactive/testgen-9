@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { LayoutGrid } from "lucide-react";
 
 export default defineType({
-  name: "grid-post",
+  name: "grid-post-block",
   type: "object",
   icon: LayoutGrid,
   fields: [

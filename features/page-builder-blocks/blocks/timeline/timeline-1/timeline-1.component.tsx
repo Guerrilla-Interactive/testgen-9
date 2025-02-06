@@ -20,7 +20,7 @@ export interface Timeline1Props {
   image: Sanity.Image;
 }
 
-export default function Timeline1({
+export default function Timeline1BlockComponent({
   color,
   title,
   tagLine,

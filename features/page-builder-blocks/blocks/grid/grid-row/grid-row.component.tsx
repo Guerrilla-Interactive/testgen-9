@@ -33,7 +33,7 @@ const componentMap: { [key: string]: React.ComponentType<any> } = {
   "grid-post": GridPost,
 };
 
-export default function GridRow({
+export default function GridRowBlockComponent({
   padding,
   colorVariant,
   gridColumns,

@@ -11,7 +11,7 @@ interface SplitInfoListProps {
   }[];
 }
 
-export default function SplitInfoList({ list }: Partial<SplitInfoListProps>) {
+export default function SplitInfoListBlockComponent({ list }: Partial<SplitInfoListProps>) {
   return (
     <div className="flex items-center justify-center">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">

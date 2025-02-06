@@ -3,7 +3,7 @@ import { Info } from "lucide-react";
 import { extractPlainText } from "@/lib/utils";
 
 export default defineType({
-  name: "split-info-list",
+  name: "split-info-list-block",
   type: "object",
   icon: Info,
   title: "Split Info List",
@@ -13,7 +13,7 @@ export default defineType({
     defineField({
       name: "list",
       type: "array",
-      of: [{ type: "split-info" }],
+      of: [{ type: "split-info-item-block" }],
     }),
   ],
   preview: {

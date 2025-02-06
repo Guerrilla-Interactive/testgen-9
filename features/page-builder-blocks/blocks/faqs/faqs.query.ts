@@ -1,8 +1,7 @@
 import { groq } from "next-sanity";
 
-const faqsQuery = groq`
-  _type == "faqs" => {
-    _type,
+const faqsBlockQuery = groq`
+  _type == "faqs-block" => {
     padding,
     colorVariant,
     faqs[]->{
@@ -30,4 +29,4 @@ const faqsQuery = groq`
   },
 `;
 
-export default faqsQuery; 
+export default faqsBlockQuery; 

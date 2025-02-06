@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const hero2Query = groq`
-  _type == "hero-2" => {
+const hero2BlockQuery = groq`
+  _type == "hero-2-block" => {
     _type,
     tagLine,
     title,
@@ -27,4 +27,4 @@ const hero2Query = groq`
   },
 `;
 
-export default hero2Query; 
+export default hero2BlockQuery; 

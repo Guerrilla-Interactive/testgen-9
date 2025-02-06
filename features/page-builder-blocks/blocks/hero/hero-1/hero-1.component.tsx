@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
@@ -7,7 +6,7 @@ import PortableTextRenderer from "@/features/unorganized-components/portable-tex
 import { Button } from "@/features/ui/button";
 
 
-export default function Hero1({
+export default function Hero1BlockComponent({
   tagLine,
   title,
   body,

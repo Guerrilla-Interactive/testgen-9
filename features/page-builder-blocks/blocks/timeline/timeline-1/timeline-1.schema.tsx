@@ -1,7 +1,7 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "timeline-1", // updated name to match the feature
+  name: "timeline-1-block",
   type: "object",
   title: "Timeline 1",
   fields: [

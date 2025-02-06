@@ -4,8 +4,8 @@ import splitContentQuery from "../split-content/split-content.query";
 import splitImageQuery from "../split-image/split-image.query";
 import splitInfoListQuery from "../split-info-list/split-info-list.query";
 
-const splitRowQuery = groq`
-  _type == "split-row" => {
+const splitRowBlockQuery = groq`
+  _type == "split-row-block" => {
     _type,
     padding,
     colorVariant,
@@ -19,4 +19,4 @@ const splitRowQuery = groq`
   },
 `;
 
-export default splitRowQuery; 
+export default splitRowBlockQuery; 

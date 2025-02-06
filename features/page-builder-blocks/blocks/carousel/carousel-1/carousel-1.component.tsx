@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { cn } from "@/lib/utils";
@@ -38,7 +37,7 @@ interface Carousel1Props {
   images?: Sanity.Image[];
 }
 
-export default function Carousel1({
+export default function Carousel1BlockComponent({
   padding,
   colorVariant,
   size = "one",

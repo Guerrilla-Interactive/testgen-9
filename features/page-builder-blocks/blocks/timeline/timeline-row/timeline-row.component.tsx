@@ -1,13 +1,13 @@
-
 import { stegaClean } from "next-sanity";
 
 import type { Timeline1Props } from "../timeline-1/timeline-1.component";
 import Timeline1 from "../timeline-1/timeline-1.component";
-import SectionContainer, { ISectionContainer, ISectionPadding } from "@/features/ui/section-container";
+import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/ui/section-container";
 
 
 
-export default function TimelineRow({
+
+export default function TimelineRowBlockComponent({
   padding,
   colorVariant,
   timelines,

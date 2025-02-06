@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
-const carousel1Query = groq`
-  _type == "carousel-1" => {
+const carousel1BlockQuery = groq`
+  _type == "carousel-1-block" => {
     _type,
     padding,
     colorVariant,
@@ -26,4 +26,4 @@ const carousel1Query = groq`
   },
 `;
 
-export default carousel1Query; 
+export default carousel1BlockQuery; 

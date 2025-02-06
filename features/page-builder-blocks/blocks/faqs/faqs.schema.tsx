@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { ListCollapse } from "lucide-react";
 
 export default defineType({
-  name: "faqs",
+  name: "faqs-block",
   type: "object",
   icon: ListCollapse,
   fields: [

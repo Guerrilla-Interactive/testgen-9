@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { TextQuote } from "lucide-react";
 
 export default defineType({
-  name: "split-cards-list",
+  name: "split-cards-list-block",
   type: "object",
   icon: TextQuote,
   title: "Split Cards List",
@@ -12,7 +12,7 @@ export default defineType({
     defineField({
       name: "list",
       type: "array",
-      of: [{ type: "split-card" }],
+      of: [{ type: "split-cards-item-block" }],
     }),
   ],
   preview: {

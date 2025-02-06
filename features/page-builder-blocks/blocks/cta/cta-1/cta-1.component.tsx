@@ -9,7 +9,7 @@ import { stegaClean } from "next-sanity";
 import Link from "next/link";
 
 
-export default function Cta1({
+export default function Cta1BlockComponent({
   padding,
   colorVariant,
   sectionWidth = "default",

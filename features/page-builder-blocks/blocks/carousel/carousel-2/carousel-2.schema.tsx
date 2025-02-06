@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { Quote } from "lucide-react";
 
 export default defineType({
-  name: "carousel-2",
+  name: "carousel-2-block",
   type: "object",
   title: "Carousel 2",
   icon: Quote,

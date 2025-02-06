@@ -1,4 +1,3 @@
-
 import { stegaClean } from "next-sanity";
 
 import { urlFor } from "@/sanity/lib/image";
@@ -34,7 +33,7 @@ interface Carousel2Props {
   }[];
 }
 
-export default function Carousel2({
+export default function Carousel2BlockComponent({
   padding,
   colorVariant,
   testimonial,

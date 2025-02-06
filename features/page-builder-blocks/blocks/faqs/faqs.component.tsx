@@ -26,7 +26,7 @@ interface FAQProps {
   }[];
 }
 
-export default function FAQs({
+export default function FAQsBlockComponent({
   padding,
   colorVariant,
   faqs,

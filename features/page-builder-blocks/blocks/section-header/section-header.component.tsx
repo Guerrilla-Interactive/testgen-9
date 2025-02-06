@@ -1,9 +1,9 @@
-import SectionContainer, { ISectionContainer, ISectionPadding } from "@/features/ui/section-container";
+import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/ui/section-container";
 import { cn } from "@/lib/utils";
 
 import { stegaClean } from "next-sanity";
 
-export default function SectionHeader({
+export default function SectionHeaderBlockComponent({
   padding,
   colorVariant,
   sectionWidth = "default",

@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { Image } from "lucide-react";
 
 export default defineType({
-  name: "split-image",
+  name: "split-image-block",
   type: "object",
   icon: Image,
   description: "Column with full image.",

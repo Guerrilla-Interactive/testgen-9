@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { Newspaper } from "lucide-react";
 
 export default defineType({
-  name: "all-posts",
+  name: "all-posts-block",
   type: "object",
   title: "All Posts",
   description: "A list of all posts",

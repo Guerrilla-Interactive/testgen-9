@@ -3,7 +3,7 @@ import { Mails } from "lucide-react";
 import { STACK_ALIGN } from "@/features/page-builder-blocks/shared/shared-schemas/layout-variants";
 
 export default defineType({
-  name: "form-newsletter",
+  name: "form-newsletter-block",
   type: "object",
   title: "Form: Newsletter",
   description:

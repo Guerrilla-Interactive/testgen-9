@@ -3,7 +3,7 @@ import { Captions } from "lucide-react";
 import { STACK_ALIGN, SECTION_WIDTH } from "@/features/page-builder-blocks/shared/shared-schemas/layout-variants";
 
 export default defineType({
-  name: "cta-1",
+  name: "cta-1-block",
   title: "CTA 1",
   type: "object",
   icon: Captions,

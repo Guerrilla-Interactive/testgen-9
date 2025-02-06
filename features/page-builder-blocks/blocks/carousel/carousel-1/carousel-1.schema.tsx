@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { GalleryHorizontal } from "lucide-react";
 
 export default defineType({
-  name: "carousel-1",
+  name: "carousel-1-block",
   type: "object",
   title: "Carousel 1",
   icon: GalleryHorizontal,

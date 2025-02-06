@@ -34,7 +34,7 @@ interface GridCardProps {
   };
 }
 
-export default function GridCard({
+export default function GridCardBlockComponent({
   color,
   title,
   excerpt,

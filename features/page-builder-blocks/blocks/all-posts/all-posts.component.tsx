@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { stegaClean } from "next-sanity";
 import { fetchSanityPosts } from "@/app/(main)/blog/actions";
@@ -20,7 +19,7 @@ interface AllPostsProps {
   | "transparent";
 }
 
-export default async function AllPosts({
+export default async function AllPostsBlockComponent({
   padding,
   colorVariant,
 }: Partial<AllPostsProps>) {

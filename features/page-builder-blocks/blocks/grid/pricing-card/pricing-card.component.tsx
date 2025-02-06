@@ -41,7 +41,7 @@ interface PricingCardProps {
   };
 }
 
-export default function PricingCard({
+export default function PricingCardBlockComponent({
   color,
   title,
   tagLine,

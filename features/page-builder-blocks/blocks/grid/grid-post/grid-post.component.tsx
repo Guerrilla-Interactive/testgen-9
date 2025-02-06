@@ -23,7 +23,7 @@ interface GridPostProps {
   image: Sanity.Image;
 }
 
-export default function GridPost({
+export default function GridPostBlockComponent({
   color,
   title,
   slug,

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
-export default function SplitImage({
+export default function SplitImageBlockComponent({
   image,
 }: Partial<{
   image: Sanity.Image;

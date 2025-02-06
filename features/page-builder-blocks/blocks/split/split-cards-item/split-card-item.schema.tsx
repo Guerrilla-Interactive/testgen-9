@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 import { TextQuote } from "lucide-react";
 
 export default defineType({
-  name: "split-card",
+  name: "split-cards-item-block",
   type: "object",
   icon: TextQuote,
   title: "Split Card",

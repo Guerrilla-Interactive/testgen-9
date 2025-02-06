@@ -15,7 +15,7 @@ const componentMap: { [key: string]: React.ComponentType<any> } = {
   "split-info-list": SplitInfoList,
 };
 
-export default function SplitRow({
+export default function SplitRowBlockComponent({
   padding,
   colorVariant,
   noGap,
