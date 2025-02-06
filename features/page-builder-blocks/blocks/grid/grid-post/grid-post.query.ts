@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const gridPostQuery = groq`
+const gridPostQuery = groq`
   _type == "grid-post" => {
     _type,
     ...post->{
@@ -27,4 +27,6 @@ export const gridPostQuery = groq`
       },
     },
   },
-`; 
+`;
+
+export default gridPostQuery; 

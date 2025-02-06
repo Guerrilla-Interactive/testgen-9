@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const faqsQuery = groq`
+const faqsQuery = groq`
   _type == "faqs" => {
     _type,
     padding,
@@ -28,4 +28,6 @@ export const faqsQuery = groq`
       },
     },
   },
-`; 
+`;
+
+export default faqsQuery; 

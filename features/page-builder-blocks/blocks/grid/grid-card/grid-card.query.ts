@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const gridCardQuery = groq`
+const gridCardQuery = groq`
   _type == "grid-card" => {
     _type,
     title,
@@ -22,4 +22,6 @@ export const gridCardQuery = groq`
     },
     link,
   },
-`; 
+`;
+
+export default gridCardQuery; 

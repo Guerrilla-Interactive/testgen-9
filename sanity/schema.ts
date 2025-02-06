@@ -39,6 +39,11 @@ import faqs from "@/features/page-builder-blocks/blocks/faqs/faqs.schema";
 import newsletter from "@/features/page-builder-blocks/blocks/forms/newsletter/newsletter.schema";
 import allPosts from "@/features/page-builder-blocks/blocks/all-posts/all-posts.schema";
 
+import { allBlockSchemas } from "@/features/page-builder-blocks/blocks";
+
+
+
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // documents
@@ -55,28 +60,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     buttonVariant,
     sectionPadding,
     // blocks
-    hero1,
-    hero2,
-    sectionHeader,
-    splitRow,
-    splitContent,
-    splitCardsList,
-    splitCard,
-    splitImage,
-    splitInfoList,
-    splitInfo,
-    gridCard,
-    pricingCard,
-    gridPost,
-    gridRow,
-    carousel1,
-    carousel2,
-    timelineRow,
-    timeline1,
-    cta1,
-    logoCloud1,
-    faqs,
-    newsletter,
-    allPosts,
+    ...allBlockSchemas,
+
   ],
 };

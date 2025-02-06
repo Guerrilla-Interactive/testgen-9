@@ -1,9 +1,11 @@
 import { groq } from "next-sanity";
 
-export const allPostsQuery = groq`
+const allPostsQuery = groq`
   _type == "all-posts" => {
     _type,
     padding,
     colorVariant,
   },
 `; 
+
+export default allPostsQuery;

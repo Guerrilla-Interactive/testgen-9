@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const logoCloud1Query = groq`
+const logoCloud1Query = groq`
   _type == "logo-cloud-1" => {
     _type,
     padding,
@@ -20,4 +20,6 @@ export const logoCloud1Query = groq`
       alt
     },
   },
-`; 
+`;
+
+export default logoCloud1Query; 

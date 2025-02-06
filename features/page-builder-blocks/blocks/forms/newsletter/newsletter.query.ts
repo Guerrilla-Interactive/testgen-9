@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const formNewsletterQuery = groq`
+const formNewsletterQuery = groq`
   _type == "form-newsletter" => {
     _type,
     padding,
@@ -10,4 +10,6 @@ export const formNewsletterQuery = groq`
     buttonText,
     successMessage,
   },
-`; 
+`;
+
+export default formNewsletterQuery; 

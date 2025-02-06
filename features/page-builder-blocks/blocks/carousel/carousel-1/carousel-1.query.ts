@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const carousel1Query = groq`
+const carousel1Query = groq`
   _type == "carousel-1" => {
     _type,
     padding,
@@ -24,4 +24,6 @@ export const carousel1Query = groq`
       alt
     },
   },
-`; 
+`;
+
+export default carousel1Query; 

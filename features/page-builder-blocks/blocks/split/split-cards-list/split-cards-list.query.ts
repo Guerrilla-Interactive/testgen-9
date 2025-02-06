@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const splitCardsListQuery = groq`
+const splitCardsListQuery = groq`
   _type == "split-cards-list" => {
     _type,
     list[]{
@@ -26,4 +26,6 @@ export const splitCardsListQuery = groq`
       },
     },
   },
-`; 
+`;
+
+export default splitCardsListQuery; 

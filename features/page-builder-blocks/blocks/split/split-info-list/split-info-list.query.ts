@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const splitInfoListQuery = groq`
+const splitInfoListQuery = groq`
   _type == "split-info-list" => {
     _type,
     list[]{
@@ -41,4 +41,6 @@ export const splitInfoListQuery = groq`
       tags[],
     },
   },
-`; 
+`;
+
+export default splitInfoListQuery; 

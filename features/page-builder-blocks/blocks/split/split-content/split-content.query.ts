@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const splitContentQuery = groq`
+const splitContentQuery = groq`
   _type == "split-content" => {
     _type,
     sticky,
@@ -28,4 +28,6 @@ export const splitContentQuery = groq`
     },
     link,
   },
-`; 
+`;
+
+export default splitContentQuery; 
