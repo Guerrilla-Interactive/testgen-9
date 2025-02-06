@@ -5,7 +5,7 @@ import {
 } from "../actions";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/metadata";
-import Blocks from "@/features/page-builder-blocks/blocks";
+import Blocks from "@/features/page-builder-blocks/blocks-indexer";
 
 export async function generateStaticParams() {
   const pages = await fetchSanityPagesStaticParams();

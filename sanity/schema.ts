@@ -15,7 +15,7 @@ import buttonVariant from "@/features/page-builder-blocks/shared/button/button-v
 import sectionPadding from "../features/page-builder-blocks/shared/shared-schemas/section-padding";
 
 // Schema UI objects (imported from feature-based component folders)
-import { allBlockSchemas } from "@/features/page-builder-blocks/blocks";
+import { allBlockSchemas } from "@/features/page-builder-blocks/blocks-indexer";
 
 
 
