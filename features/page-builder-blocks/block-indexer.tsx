@@ -13,7 +13,7 @@ import { Hero1BlockComponent, hero1BlockQuery, hero1BlockSchema } from "./blocks
 import { Hero2BlockComponent, hero2BlockQuery, hero2BlockSchema } from "./blocks/hero-block/hero-2-block";
 import { LogoCloud1BlockComponent, logoCloud1BlockQuery, logoCloud1BlockSchema } from "./blocks/logo-cloud-blocks/logo-cloud-1-block";
 import { SectionHeaderBlockComponent, sectionHeaderBlockQuery, sectionHeaderBlockSchema } from "./blocks/section-header-block";
-import { SplitCardsItemBlockComponent } from "./blocks/split-blocks/split-cards-item-block";
+import { SplitCardsItemBlockComponent, splitCardsItemBlockSchema } from "./blocks/split-blocks/split-cards-item-block";
 import { SplitCardsListBlockComponent, splitCardsListBlockQuery, splitCardsListBlockSchema } from "./blocks/split-blocks/split-cards-list-block";
 import { SplitContentBlockComponent, splitContentBlockQuery, splitContentBlockSchema } from "./blocks/split-blocks/split-content-block";
 import { SplitImageBlockComponent, splitImageBlockQuery, splitImageBlockSchema } from "./blocks/split-blocks/split-image-block";
@@ -51,7 +51,7 @@ export const BlockDataMap: {
   "grid-row-block":{ component: GridRowBlockComponent, schema: gridRowBlockSchema, query: gridRowBlockQuery },
   "pricing-card-block": { component: PricingCardBlockComponent, schema: pricingCardBlockSchema, query: pricingCardBlockQuery },
   "timeline-1-block": { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
-  "split-card-block": { component: SplitCardsItemBlockComponent, schema: splitCardsListBlockSchema },
+  "split-card-block": { component: SplitCardsItemBlockComponent, schema: splitCardsItemBlockSchema  },
   "split-info-item-block": { component: SplitInfoItemBlockComponent, schema: splitInfoItemBlockSchema },
 };
 

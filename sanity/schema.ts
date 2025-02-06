@@ -13,6 +13,7 @@ import testimonial from "./schemas/documents/testimonial.document-schema";
 // Schema UI objects (imported from feature-based component folders)
 import { allBlockSchemas } from "@/features/page-builder-blocks/block-indexer";
 import allSharedBlockRelatedSchemas from "@/features/page-builder-blocks/shared/shared-schemas";
+import buttonVariantSchema from "@/features/page-builder-blocks/shared/button/button-variant.schema";
 
 
 
@@ -27,6 +28,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     category,
     faq,
     testimonial,
+    buttonVariantSchema,
     // shared block related schemas
     ...allSharedBlockRelatedSchemas,
     // block schemas
