@@ -74,6 +74,8 @@ import Carousel1BlockComponent from "./blocks/carousel/carousel-1/carousel-1.com
 import Carousel2BlockComponent from "./blocks/carousel/carousel-2/carousel-2.component";
 import SplitInfoListBlockComponent from "./blocks/split/split-info-list/split-info-list.component";
 import splitInfoListBlockQuery from "./blocks/split/split-info-list/split-info-list.query";
+import gridPostBlockQuery from "./blocks/grid/grid-post/grid-post.query";
+import gridCardBlockQuery from "./blocks/grid/grid-card/grid-card.query";
 
 /**
  * A unified mapping that groups each block type with its component,
@@ -87,52 +89,29 @@ export const BlockDataMap: {
   };
 } = {
   // Page-level blocks:
-  "hero-1-block": 
-  { component: Hero1BlockComponent, schema: hero1BlockSchema, query: hero1BlockQuery },
-  "hero-2-block":
-  { component: Hero2BlockComponent, schema: hero2BlockSchema, query: hero2BlockQuery },
-  "section-header-block":
-  { component: SectionHeaderBlockComponent, schema: sectionHeaderBlockSchema, query: sectionHeaderBlockQuery },
-  "split-row-block":
-  { component: SplitRowBlockComponent, schema: splitRowBlockSchema, query: splitRowBlockQuery },
-  "grid-row-block":
-  { component: GridRowBlockComponent, schema: gridRowBlockSchema, query: gridRowBlockQuery },
-  "carousel-1-block":
-  { component: Carousel1BlockComponent, schema: carousel1Schema, query: carousel1Query },
-  "carousel-2-block": 
-  { component: Carousel2BlockComponent, schema: carousel2Schema, query: carousel2Query },
-  "timeline-row-block": 
-  { component: TimelineRow, schema: timelineRowSchema, query: timelineRowQuery },
-  "cta-1-block": 
-  { component: Cta1BlockComponent, schema: cta1BlockSchema, query: cta1BlockQuery },
-  "logo-cloud-1-block": 
-  { component: LogoCloud1BlockComponent, schema: logoCloud1BlockSchema, query: logoCloud1BlockQuery },
-  "faqs-block": 
-  { component: FAQsBlockComponent, schema: faqsBlockSchema, query: faqsBlockQuery },
-  "form-newsletter-block": 
-  { component: FormNewsletterBlockComponent, schema: formNewsletterBlockSchema, query: formNewsletterBlockQuery },
-  "all-posts-block": 
-  { component: AllPostsBlockComponent, schema: allPostsBlockSchema, query: allPostsBlockQuery },
-  "split-content-block": 
-  { component: SplitContentBlockComponent, schema: splitContentBlockSchema, query: splitContentBlockQuery },
-  "split-cards-list-block": 
-  { component: SplitCardsListBlockComponent, schema: splitCardsListBlockSchema, query: splitCardsListQuery },
-  "split-image-block": 
-  { component: SplitImageBlockComponent, schema: splitImageBlockSchema, query: splitImageBlockQuery },
-  "split-info-list-block": 
-  { component: SplitInfoListBlockComponent, schema: splitInfoListBlockSchema, query: splitInfoListBlockQuery },
-  "grid-card-block": 
-  { component: GridCardBlockComponent, schema: gridCardBlockSchema, query: gridCardQuery },
-  "grid-post-block": 
-  { component: GridPostBlockComponent, schema: gridPostBlockSchema, query: gridPostQuery },
-  "pricing-card-block": 
-  { component: PricingCardBlockComponent, schema: pricingCardBlockSchema, query: pricingCardBlockQuery },
-  "timeline-1-block": 
-  { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
-  "split-card-block": 
-  { component: SplitCardsItemBlockComponent, schema: splitCardBlockSchema },
-  "split-info-item-block": 
-  { component: SplitInfoItemBlockComponent, schema: splitInfoItemBlockSchema },
+  "hero-1-block": { component: Hero1BlockComponent, schema: hero1BlockSchema, query: hero1BlockQuery },
+  "hero-2-block": { component: Hero2BlockComponent, schema: hero2BlockSchema, query: hero2BlockQuery },
+  "section-header-block": { component: SectionHeaderBlockComponent, schema: sectionHeaderBlockSchema, query: sectionHeaderBlockQuery },
+  "split-row-block": { component: SplitRowBlockComponent, schema: splitRowBlockSchema, query: splitRowBlockQuery },
+  "carousel-1-block":{ component: Carousel1BlockComponent, schema: carousel1Schema, query: carousel1Query },
+  "carousel-2-block": { component: Carousel2BlockComponent, schema: carousel2Schema, query: carousel2Query },
+  "timeline-row-block": { component: TimelineRow, schema: timelineRowSchema, query: timelineRowQuery },
+  "cta-1-block": { component: Cta1BlockComponent, schema: cta1BlockSchema, query: cta1BlockQuery },
+  "logo-cloud-1-block": { component: LogoCloud1BlockComponent, schema: logoCloud1BlockSchema, query: logoCloud1BlockQuery },
+  "faqs-block": { component: FAQsBlockComponent, schema: faqsBlockSchema, query: faqsBlockQuery },
+  "form-newsletter-block": { component: FormNewsletterBlockComponent, schema: formNewsletterBlockSchema, query: formNewsletterBlockQuery },
+  "all-posts-block": { component: AllPostsBlockComponent, schema: allPostsBlockSchema, query: allPostsBlockQuery },
+  "split-content-block": { component: SplitContentBlockComponent, schema: splitContentBlockSchema, query: splitContentBlockQuery },
+  "split-cards-list-block": { component: SplitCardsListBlockComponent, schema: splitCardsListBlockSchema, query: splitCardsListQuery },
+  "split-image-block": { component: SplitImageBlockComponent, schema: splitImageBlockSchema, query: splitImageBlockQuery },
+  "split-info-list-block": { component: SplitInfoListBlockComponent, schema: splitInfoListBlockSchema, query: splitInfoListBlockQuery },
+  "grid-card-block": { component: GridCardBlockComponent, schema: gridCardBlockSchema, query: gridCardBlockQuery },
+  "grid-post-block": { component: GridPostBlockComponent, schema: gridPostBlockSchema, query: gridPostBlockQuery },
+  "grid-row-block":{ component: GridRowBlockComponent, schema: gridRowBlockSchema, query: gridRowBlockQuery },
+  "pricing-card-block": { component: PricingCardBlockComponent, schema: pricingCardBlockSchema, query: pricingCardBlockQuery },
+  "timeline-1-block": { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
+  "split-card-block": { component: SplitCardsItemBlockComponent, schema: splitCardBlockSchema },
+  "split-info-item-block": { component: SplitInfoItemBlockComponent, schema: splitInfoItemBlockSchema },
 };
 
 /**

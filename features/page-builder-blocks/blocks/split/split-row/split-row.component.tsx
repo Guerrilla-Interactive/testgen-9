@@ -9,10 +9,10 @@ import SectionContainer, { type ISectionContainer, type ISectionPadding } from "
 
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {
-  "split-content": SplitContent,
-  "split-cards-list": SplitCardsList,
-  "split-image": SplitImage,
-  "split-info-list": SplitInfoList,
+  "split-content-block": SplitContent,
+  "split-cards-list-block": SplitCardsList,
+  "split-image-block": SplitImage,
+  "split-info-list-block": SplitInfoList,
 };
 
 export default function SplitRowBlockComponent({

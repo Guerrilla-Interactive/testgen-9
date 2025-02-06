@@ -28,9 +28,9 @@ interface GridRowProps {
 
 // Map all components you need by type
 const componentMap: { [key: string]: React.ComponentType<any> } = {
-  "grid-card": GridCard,
-  "pricing-card": PricingCard,
-  "grid-post": GridPost,
+  "grid-card-block": GridCard,
+  "pricing-card-block": PricingCard,
+  "grid-post-block": GridPost,
 };
 
 export default function GridRowBlockComponent({
@@ -50,6 +50,7 @@ export default function GridRowBlockComponent({
             `lg:${stegaClean(gridColumns)}`
           )}
         >
+          
           {columns.map((block: Sanity.Block) => {
             const Component = componentMap[block._type];
             if (!Component) {
