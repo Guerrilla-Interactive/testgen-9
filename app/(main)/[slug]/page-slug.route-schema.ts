@@ -1,11 +1,15 @@
 import { defineField, defineType } from "sanity";
 import { Files } from "lucide-react";
 import { orderRankField } from "@sanity/orderable-document-list";
+import { getSanityPageBuilderBlocks } from "@/features/page-builder-blocks/block-indexer";
+
+
+
 
 export default defineType({
-  name: "page",
+  name: "page-slug",
   type: "document",
-  title: "Page",
+  title: "Page Slug",
   icon: Files,
   groups: [
     {
@@ -38,21 +42,7 @@ export default defineType({
       name: "blocks",
       type: "array",
       group: "content",
-      of: [
-        { type: "hero-1-block" },
-        { type: "hero-2-block" },
-        { type: "section-header-block" },
-        { type: "split-row-block" },
-        { type: "grid-row-block" },
-        { type: "carousel-1-block" },
-        { type: "carousel-2-block" },
-        { type: "timeline-row-block" },
-        { type: "cta-1-block" },
-        { type: "logo-cloud-1-block" },
-        { type: "faqs-block" },
-        { type: "form-newsletter-block" },
-        { type: "all-posts-block" },
-      ],
+      of: getSanityPageBuilderBlocks(),
     }),
     defineField({
       name: "meta_title",
@@ -79,6 +69,6 @@ export default defineType({
       type: "image",
       group: "seo",
     }),
-    orderRankField({ type: "page" }),
+    orderRankField({ type: "page-slug" }),
   ],
 });

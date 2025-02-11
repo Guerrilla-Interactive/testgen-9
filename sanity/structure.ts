@@ -1,12 +1,15 @@
+import { settingsStructure } from "@/features/desk-structure/settings/settings.structure";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { Files, BookA, User, ListCollapse, Quote } from "lucide-react";
 
 export const structure = (S: any, context: any) =>
   S.list()
     .title("Content")
+    
     .items([
+      settingsStructure(S),
       orderableDocumentListDeskItem({
-        type: "page",
+        type: "page-slug",
         title: "Pages",
         icon: Files,
         S,
@@ -14,9 +17,9 @@ export const structure = (S: any, context: any) =>
       }),
       S.listItem()
         .title("Posts")
-        .schemaType("post")
+        .schemaType("blog-slug")
         .child(
-          S.documentTypeList("post")
+          S.documentTypeList("blog-slug")
             .title("Post")
             .defaultOrdering([{ field: "_createdAt", direction: "desc" }]) // Default ordering
         ),

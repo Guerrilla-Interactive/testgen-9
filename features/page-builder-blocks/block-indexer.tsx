@@ -9,8 +9,8 @@ import { GridCardBlockComponent, gridCardBlockQuery, gridCardBlockSchema } from 
 import { GridPostBlockComponent, gridPostBlockQuery, gridPostBlockSchema } from "./blocks/grid-block/grid-post-block";
 import { GridRowBlockComponent, gridRowBlockQuery, gridRowBlockSchema } from "./blocks/grid-block/grid-row-block";
 import { PricingCardBlockComponent, pricingCardBlockQuery, pricingCardBlockSchema } from "./blocks/grid-block/pricing-card-block";
-import { Hero1BlockComponent, hero1BlockQuery, hero1BlockSchema } from "./blocks/hero-block/hero-1-block";
-import { Hero2BlockComponent, hero2BlockQuery, hero2BlockSchema } from "./blocks/hero-block/hero-2-block";
+import { Hero1BlockComponent, hero1BlockQuery, hero1BlockSchema } from "./blocks/hero-1-block";
+import { Hero2BlockComponent, hero2BlockQuery, hero2BlockSchema } from "./blocks/hero-2-block";
 import { LogoCloud1BlockComponent, logoCloud1BlockQuery, logoCloud1BlockSchema } from "./blocks/logo-cloud-blocks/logo-cloud-1-block";
 import { SectionHeaderBlockComponent, sectionHeaderBlockQuery, sectionHeaderBlockSchema } from "./blocks/section-header-block";
 import { SplitCardsItemBlockComponent, splitCardsItemBlockSchema } from "./blocks/split-blocks/split-cards-item-block";
@@ -22,6 +22,9 @@ import { SplitInfoListBlockComponent, splitInfoListBlockQuery, splitInfoListBloc
 import { SplitRowBlockComponent, splitRowBlockQuery, splitRowBlockSchema } from "./blocks/split-blocks/split-row-block";
 import { Timeline1BlockComponent, timeline1BlockSchema } from "./blocks/timeline-blocks/timeline-1-block";
 import { TimelineRowBlockComponent, timelineRowBlockQuery, timelineRowBlockSchema } from "./blocks/timeline-blocks/timeline-row-block";
+import { Hero3BlockComponent, hero3BlockQuery, hero3BlockSchema } from "./blocks/hero-3-block";
+
+// ADD VALUE 1 ABOVE
 
 export const BlockDataMap: {
   [key: string]: {
@@ -32,6 +35,7 @@ export const BlockDataMap: {
 } = {
   "hero-1-block": { component: Hero1BlockComponent, schema: hero1BlockSchema, query: hero1BlockQuery },
   "hero-2-block": { component: Hero2BlockComponent, schema: hero2BlockSchema, query: hero2BlockQuery },
+  "hero-3-block": { component: Hero3BlockComponent, schema: hero3BlockSchema, query: hero3BlockQuery },
   "section-header-block": { component: SectionHeaderBlockComponent, schema: sectionHeaderBlockSchema, query: sectionHeaderBlockQuery },
   "split-row-block": { component: SplitRowBlockComponent, schema: splitRowBlockSchema, query: splitRowBlockQuery },
   "carousel-1-block":{ component: Carousel1BlockComponent, schema: carousel1BlockSchema, query: carousel1BlockQuery },
@@ -46,15 +50,22 @@ export const BlockDataMap: {
   "split-cards-list-block": { component: SplitCardsListBlockComponent, schema: splitCardsListBlockSchema, query: splitCardsListBlockQuery },
   "split-image-block": { component: SplitImageBlockComponent, schema: splitImageBlockSchema, query: splitImageBlockQuery },
   "split-info-list-block": { component: SplitInfoListBlockComponent, schema: splitInfoListBlockSchema, query: splitInfoListBlockQuery },
+  "split-cards-item-block": { component: SplitCardsItemBlockComponent, schema: splitCardsItemBlockSchema  },
+  "split-info-item-block": { component: SplitInfoItemBlockComponent, schema: splitInfoItemBlockSchema },
   "grid-card-block": { component: GridCardBlockComponent, schema: gridCardBlockSchema, query: gridCardBlockQuery },
   "grid-post-block": { component: GridPostBlockComponent, schema: gridPostBlockSchema, query: gridPostBlockQuery },
   "grid-row-block":{ component: GridRowBlockComponent, schema: gridRowBlockSchema, query: gridRowBlockQuery },
   "pricing-card-block": { component: PricingCardBlockComponent, schema: pricingCardBlockSchema, query: pricingCardBlockQuery },
   "timeline-1-block": { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
-  "split-card-block": { component: SplitCardsItemBlockComponent, schema: splitCardsItemBlockSchema  },
-  "split-info-item-block": { component: SplitInfoItemBlockComponent, schema: splitInfoItemBlockSchema },
+
+  // ADD VALUE 2 ABOVE
 };
 
+// Function to return allowed blocks for Sanity
+export const getSanityPageBuilderBlocks = () =>
+  Object.entries(BlockDataMap)
+    .filter(([_, block]) => typeof block.query !== "undefined")
+    .map(([blockType]) => ({ type: blockType }));
 
 export const allBlockSchemas = Object.values(BlockDataMap)
   .filter((block) => block.schema !== undefined)

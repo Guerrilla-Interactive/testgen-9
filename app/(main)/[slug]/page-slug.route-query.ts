@@ -1,0 +1,26 @@
+import { groq } from "next-sanity";
+import { pageBuilderQuery } from "@/features/page-builder-blocks/block-indexer";
+
+export const GET_PAGES_BY_SLUG_QUERY = groq`
+  *[_type == "page-slug" && slug.current == $slug][0]{
+    ${pageBuilderQuery}
+    meta_title,
+    meta_description,
+    noindex,
+    ogImage {
+      asset->{
+        _id,
+        url,
+        metadata {
+          dimensions {
+            width,
+            height
+          }
+        }
+      },
+    }
+  }
+`;
+
+export const GET_ALL_PAGES_QUERY = groq`*[_type == "page-slug" && defined(slug)]{slug}`;
+

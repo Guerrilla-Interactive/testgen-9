@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { LayoutTemplate } from "lucide-react";
 
 export default defineType({
-  name: "all-posts",
+  name: "hero-3-block",
   type: "object",
-  title: "All Posts",
-  description: "A list of all posts",
-  icon: Newspaper,
+  title: "Hero3",
+  description: "A list of hero-3",
+  icon: LayoutTemplate,
   fields: [
     defineField({
       name: "padding",
@@ -18,11 +18,18 @@ export default defineType({
       title: "Color Variant",
       description: "Select a background color variant",
     }),
+    defineField({
+      name: "title",
+      type: "string",
+      title: "Title",
+      description: "Enter a title for the hero-3 block",
+    }),
+    
   ],
   preview: {
     prepare() {
       return {
-        title: "All Posts",
+        title: "Hero3",
       };
     },
   },

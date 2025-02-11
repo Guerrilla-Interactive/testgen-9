@@ -11,7 +11,7 @@ export default defineType({
       type: "reference",
       title: "Blog Post",
       description: "Select a blog post to link to.",
-      to: [{ type: "post" }],
+      to: [{ type: "blog-slug" }],
     }),
   ],
   preview: {

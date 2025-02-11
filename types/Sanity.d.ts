@@ -17,13 +17,13 @@ declare global {
     }>;
 
     type Page = PageBase & {
-      readonly _type: "page";
+      readonly _type: "page-slug";
       blocks?: Block[];
     };
 
     type Post = PageBase &
       SanityDocument<{
-        readonly _type: "post";
+        readonly _type: "blog-slug";
         excerpt?: string;
         author?: Author;
         categories?: Category[];

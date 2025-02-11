@@ -4,7 +4,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 
 async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
   const query = groq`
-    *[_type == 'page'] | order(slug.current) {
+    *[_type == 'page-slug'] | order(slug.current) {
       'url': $baseUrl + select(slug.current == 'index' => '', '/' + slug.current),
       'lastModified': _updatedAt,
       'changeFrequency': 'daily',
@@ -27,7 +27,7 @@ async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
 
 async function getPostsSitemap(): Promise<MetadataRoute.Sitemap[]> {
   const query = groq`
-    *[_type == 'post'] | order(_updatedAt desc) {
+    *[_type == 'blog-slug'] | order(_updatedAt desc) {
       'url': $baseUrl + '/blog/' + slug.current,
       'lastModified': _updatedAt,
       'changeFrequency': 'weekly',

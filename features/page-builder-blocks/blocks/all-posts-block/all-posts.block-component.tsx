@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { stegaClean } from "next-sanity";
-import { fetchSanityPosts } from "@/app/(main)/blog/actions";
 import PostCard from "@/features/ui/post-card";
 import SectionContainer from "@/features/ui/section-container";
+import { fetchSanityBlogSlugs } from "@/app/(main)/blog/[slug]/(blog-slug-core-utilities)/blog-slug.server-actions";
+
+
 
 interface AllPostsProps {
   padding: {
@@ -24,12 +26,12 @@ export default async function AllPostsBlockComponent({
   colorVariant,
 }: Partial<AllPostsProps>) {
   const color = stegaClean(colorVariant);
-  const posts = await fetchSanityPosts();
+  const posts = await fetchSanityBlogSlugs();
 
   return (
     <SectionContainer color={color} padding={padding}>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {posts.map((post) => (
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {posts.map((post: Sanity.Post) => (
           <Link
             key={post.slug.current}
             className="flex w-full rounded-3xl ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

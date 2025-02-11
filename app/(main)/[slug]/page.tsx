@@ -1,16 +1,15 @@
-
-import {
-  fetchSanityPageBySlug,
-  fetchSanityPagesStaticParams,
-} from "../actions";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/metadata";
 import Blocks from "@/features/page-builder-blocks/block-indexer";
+import { fetchSanityPageBySlug, fetchSanityPagesStaticParams } from "./page-slug.server-actions";
+
+
+
 
 export async function generateStaticParams() {
   const pages = await fetchSanityPagesStaticParams();
 
-  return pages.map((page) => ({
+  return pages.map((page: Sanity.Page) => ({
     slug: page.slug.current,
   }));
 }
