@@ -16,6 +16,7 @@ export const siteSettingsSchema = defineType({
       title: "Forside",
       type: "reference",
       to: [{ type: "page-slug" }],
+      weak: false,
       validation: (Rule) => Rule.required(),
     }),
 
@@ -25,6 +26,7 @@ export const siteSettingsSchema = defineType({
       type: "reference",
       title: "Side for personvernerklæring",
       to: [{ type: "page-slug" }],
+      weak: false,
       validation: (Rule) => Rule.required(),
     }),
   ],

@@ -44,6 +44,38 @@ async function migratePageDocs() {
   }
 }
 
+async function updatePageSlugDocs() {
+  // Query all documents with type "page-slug"
+  const query = '*[_type == "page-slug"]';
+  let docs;
+  try {
+    docs = await client.fetch(query);
+  } catch (err) {
+    console.error("Failed to fetch page-slug documents:", err.message);
+    process.exit(1);
+  }
+
+  console.log(`Found ${docs.length} documents of type "page-slug".`);
+
+  for (const doc of docs) {
+    // Remove _id and _type from the spread and then add them first
+    const { _id, _type, ...rest } = doc;
+    const newDoc = {
+      _id,       // add _id as the first key
+      _type,     // add _type right after
+      ...rest,   // spread all other fields afterward
+    };
+
+    try {
+      // Use createOrReplace to update the entire document with the new ordering.
+      await client.createOrReplace(newDoc);
+      console.log(`Updated document ${_id} with top-level _id and _type.`);
+    } catch (err) {
+      console.error(`Error updating document ${_id}: ${err.message}`);
+    }
+  }
+}
+
 migratePageDocs()
   .then(() => {
     console.log("Page migration completed successfully!");
@@ -51,5 +83,15 @@ migratePageDocs()
   })
   .catch((error) => {
     console.error("Migration failed:", error);
+    process.exit(1);
+  });
+
+updatePageSlugDocs()
+  .then(() => {
+    console.log("Page-slug update completed successfully!");
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error("Update failed:", error);
     process.exit(1);
   }); 
