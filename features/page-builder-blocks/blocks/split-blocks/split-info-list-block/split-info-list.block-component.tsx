@@ -13,8 +13,8 @@ interface SplitInfoListProps {
 
 export default function SplitInfoListBlockComponent({ list }: Partial<SplitInfoListProps>) {
   return (
-    <div className="flex items-center justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
+    <div className="flex justify-center items-center">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-1">
         {list &&
           list.length > 0 &&
           list.map((item, index) => (

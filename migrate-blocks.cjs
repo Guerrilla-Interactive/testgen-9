@@ -40,7 +40,7 @@ const typeMapping = {
   "split-cards-list": "split-cards-list-block",
   "split-image": "split-image-block",
   "split-info-list": "split-info-list-block",
-  "split-card": "split-card-block",
+  "split-card-block": "split-cards-item-block",
   "split-info-item": "split-info-item-block",
   "timeline-1": "timeline-1-block",
   "timeline-row": "timeline-row-block",
