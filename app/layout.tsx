@@ -4,6 +4,8 @@ import "./globals.css";
 import { cn } from "@/features/unorganized-utils/utils";
 import { ThemeProvider } from "@/features/theme/theme-provider";
 import { Toaster } from "@/features/unorganized-components/ui/sonner";
+import { GlobalContextProvider } from "@/features/context/global-context";
+import { NextgenContextStatusPanel } from "@/features/context/nextgen-context-panel";
 
 
 const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === "production";
@@ -55,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <link rel="icon" href="/favicon.ico" />
+      <GlobalContextProvider>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased overscroll-none",
@@ -72,7 +75,10 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Toaster position="top-center" richColors />
+        <NextgenContextStatusPanel />
       </body>
+      </GlobalContextProvider>
+      
     </html>
   );
 }

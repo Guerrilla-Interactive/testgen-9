@@ -23,7 +23,8 @@
       "@/sanity/*": ["./sanity/*"],
       "@/styles/*": ["./styles/*"],
       "@/features/*": ["./features/*"],
-      "@/utils/*": ["./utils/*"]
+      "@/utils/*": ["./utils/*"],
+      "@/nextgen-core-ui/*": ["./features/unorganized-components/nextgen-core-ui/*"]
     },
     "target": "ES2017"
   },

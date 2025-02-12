@@ -10,23 +10,29 @@ interface Hero3Props {
 export default async function Hero3BlockComponent(props: Partial<Hero3Props>) {
   const { backgroundImage, titleOrange, titleWhite, subtitle } = props;
 
+  
+  
+
+
+
   return (
     <div className="relative w-full h-[50vh] md:h-[80vh] overflow-hidden">
       {backgroundImage && (
         <Img
           {...backgroundImage}
           cover
-
           className="absolute inset-0 w-full h-full object-cover "
           sizes={{ md: "full" }}
         />
       )}
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+      
       {/* Content Section: Title Bottom-Left, Subtitle Bottom-Right */}
       <div className="absolute container  bottom-0 inset-x-0 flex flex-col md:flex-row justify-between md:items-end pb-4 md:pb-8">
         {/* Left: Title */}
         <div className="text-left">
+        
           {(titleOrange || titleWhite) && (
             <h1 className="text-white text-3xl uppercase font-title font-extrabold sm:text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-lg">
               {titleOrange && <span className="block text-orange-500">{titleOrange}</span>}

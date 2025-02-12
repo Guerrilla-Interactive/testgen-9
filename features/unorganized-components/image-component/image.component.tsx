@@ -3,9 +3,6 @@
 import { env } from "@/env.mjs";
 import { cn } from "@/features/unorganized-utils/utils";
 
-
-
-
 import { stegaClean } from "@sanity/client/stega";
 import type { SanityImageCrop, SanityImageHotspot } from "@sanity/image-url/lib/types/types";
 import { type CropData,  SanityImage } from "sanity-image";
@@ -17,6 +14,7 @@ type ImageSize = "half" | "full" | "third";
 export type ImageQuery = {
   crop?: SanityImageCrop | null;
   hotspot?: SanityImageHotspot | null;
+  darkScore?: number | null;
   asset?: {
     _id: string;
     title: string | null;
@@ -28,6 +26,13 @@ export type ImageQuery = {
         aspectRatio: number | null;
         width: number | null;
         height: number | null;
+      } | null;
+      palette: {
+        dominant: {
+          background: string | null;
+          foreground: string | null;
+          population: number | null;
+        } | null;
       } | null;
     } | null;
   } | null;
@@ -47,13 +52,8 @@ type ImgProps = ImageQuery & {
 };
 
 
-
-
-
-
 export const Img = (props: ImgProps) => {
-  const { asset, showCaption, className, width, height, crop, hotspot } = props;
-
+  const { asset, showCaption, className, width, height, crop, hotspot, cover, darkScore } = props;
   const { description } = asset ?? {};
 
   if (!asset?._id) return null;
@@ -63,6 +63,8 @@ export const Img = (props: ImgProps) => {
   return (
     <figure
       className={cn(className)}
+      data-palette={darkScore}
+      data-cover={cover ? "true" : "false"}
       style={
         {
           "--inherent-aspect-ratio": `${w} / ${h}`,

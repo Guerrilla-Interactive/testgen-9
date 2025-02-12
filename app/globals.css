@@ -88,3 +88,12 @@
     font-family: var(--font-supplement);
   }
 }
+
+
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

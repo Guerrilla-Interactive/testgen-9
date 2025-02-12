@@ -11,9 +11,10 @@ import { presentationTool } from "sanity/presentation";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
-import { schema } from "./sanity/desk-organized-sanity-utilities/all-schemas-combined";
+import { schema } from "./sanity/all-schemas-combined";
 import { resolve } from "@/sanity/desk-organized-sanity-utilities/presentation-resolve";
 import { structure } from "./sanity/desk-organized-sanity-utilities/structure";
+
 
 export default defineConfig({
   basePath: "/studio",
@@ -30,7 +31,9 @@ export default defineConfig({
         },
       },
       resolve,
-    }),
+    }
+  ),
+    
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),

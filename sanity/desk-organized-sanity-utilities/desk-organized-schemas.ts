@@ -3,11 +3,11 @@ import categorySchema from "@/sanity/desk-organized-sanity-utilities/category/ca
 import faqSchema from "@/sanity/desk-organized-sanity-utilities/faq/faq.document-schema";
 import testimonialSchema from "@/sanity/desk-organized-sanity-utilities/testimonial/testimonial.document-schema";
 
-const unorganizedDocumentSchemas = {
+const deskOrganizedDocumentSchemas = {
     authorSchema,
     categorySchema,
     faqSchema,
     testimonialSchema
 }
 
-export const allUnorganizedDocumentSchemas = Object.values(unorganizedDocumentSchemas);
+export const allDeskOrganizedDocumentSchemas = Object.values(deskOrganizedDocumentSchemas);
