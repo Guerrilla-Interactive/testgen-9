@@ -3,7 +3,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { stegaClean } from "next-sanity";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { Button } from "@/features/ui/button";
+import { Button } from "@/features/unorganized-components/ui/button";
 
 
 export default function Hero1BlockComponent({

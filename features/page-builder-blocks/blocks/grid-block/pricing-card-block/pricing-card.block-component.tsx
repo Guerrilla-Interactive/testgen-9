@@ -1,11 +1,11 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 
 import { stegaClean } from "next-sanity";
 import Link from "next/link";
 
 import { Check } from "lucide-react";
-import { Button } from "@/features/ui/button";
-import { Badge } from "@/features/ui/badge";
+import { Button } from "@/features/unorganized-components/ui/button";
+import { Badge } from "@/features/unorganized-components/ui/badge";
 
 interface PricingCardProps {
   color:

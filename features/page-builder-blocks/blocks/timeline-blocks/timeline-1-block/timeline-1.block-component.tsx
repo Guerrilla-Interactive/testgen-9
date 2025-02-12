@@ -1,6 +1,6 @@
 "use client";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";

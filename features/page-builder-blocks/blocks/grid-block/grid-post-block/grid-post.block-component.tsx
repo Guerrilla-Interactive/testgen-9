@@ -1,9 +1,9 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { ChevronRight } from "lucide-react";
-import { Badge } from "@/features/ui/badge";
+import { Badge } from "@/features/unorganized-components/ui/badge";
 
 
 

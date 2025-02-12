@@ -66,3 +66,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ----------------------------------
+   New Font Utility Classes & Heading Styles
+------------------------------------- */
+@layer base {
+  /* Make all headings (titles) use the Stick No Bills font */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-title);
+  }
+  /* Optional utility classes for general and supplement fonts */
+  .general {
+    font-family: var(--font-general);
+  }
+  .supplement {
+    font-family: var(--font-supplement);
+  }
+}

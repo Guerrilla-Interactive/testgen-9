@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { stegaClean } from "next-sanity";
-import PostCard from "@/features/ui/post-card";
-import SectionContainer from "@/features/ui/section-container";
-import { fetchSanityBlogSlugs } from "@/app/(main)/blog/[slug]/(blog-slug-core-utilities)/blog-slug.server-actions";
+import PostCard from "@/features/unorganized-components/ui/post-card";
+import SectionContainer from "@/features/unorganized-components/ui/section-container";
+import { fetchSanityBlogPosts } from "@/app/(main)/blog/[slug]/(blog-slug-core-utilities)/blog-slug.server-actions";
 
 
 
@@ -26,7 +26,7 @@ export default async function AllPostsBlockComponent({
   colorVariant,
 }: Partial<AllPostsProps>) {
   const color = stegaClean(colorVariant);
-  const posts = await fetchSanityBlogSlugs();
+  const posts = await fetchSanityBlogPosts();
 
   return (
     <SectionContainer color={color} padding={padding}>

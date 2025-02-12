@@ -7,10 +7,10 @@ import { toast } from "sonner";
 import { useCallback } from "react";
 import { Loader2 } from "lucide-react";
 import { stegaClean } from "next-sanity";
-import SectionContainer from "@/features/ui/section-container";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/features/ui/form";
-import { Input } from "@/features/ui/input";
-import { Button } from "@/features/ui/button";
+import SectionContainer from "@/features/unorganized-components/ui/section-container";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/features/unorganized-components/ui/form";
+import { Input } from "@/features/unorganized-components/ui/input";
+import { Button } from "@/features/unorganized-components/ui/button";
 
 interface FormNewsletterProps {
   padding: {

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 
 import { stegaClean } from "next-sanity";
 // Import feature components from their new locations
@@ -6,7 +6,7 @@ import { stegaClean } from "next-sanity";
 import PricingCard from "../pricing-card-block/pricing-card.block-component";
 import GridPost from "../grid-post-block/grid-post.block-component";
 import GridCard from "../grid-card-block/grid-card.block-component";
-import SectionContainer from "@/features/ui/section-container";
+import SectionContainer from "@/features/unorganized-components/ui/section-container";
 
 
 interface GridRowProps {

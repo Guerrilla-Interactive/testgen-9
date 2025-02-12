@@ -1,7 +1,7 @@
-import { Button } from "@/features/ui/button";
-import SectionContainer, { ISectionPadding, ISectionContainer } from "@/features/ui/section-container";
+import { Button } from "@/features/unorganized-components/ui/button";
+import SectionContainer, { ISectionPadding, ISectionContainer } from "@/features/unorganized-components/ui/section-container";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 
 
 

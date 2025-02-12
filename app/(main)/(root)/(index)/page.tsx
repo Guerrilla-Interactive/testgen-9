@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchFrontPage } from './blog-slug.server-actions';
+import { fetchFrontPage } from './page-index.server-actions';
 import Blocks from '@/features/page-builder-blocks/block-indexer';
 
 // generateStaticParams

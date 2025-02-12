@@ -5,37 +5,61 @@ import { ModeToggle } from "../menu-toggle";
 import MobileNav from "./mobile-nav";
 
 
+/*
+
+Tjenester
+Kurs
+Karriere
+Om Veitrygghet
+Kontakt
+
+*/
+
+
+
+
+
 const navItems = [
   {
-    label: "Home",
-    href: "/",
+    label: "Tjenester",
+    href: "/tjenester",
     target: false,
   },
   {
-    label: "Blog",
-    href: "/blog",
+    label: "Kurs",
+    href: "/kurs",
     target: false,
   },
   {
-    label: "About",
-    href: "/about",
+    label: "Karriere",
+    href: "/karriere",
+    target: false,
+  },
+  {
+    label: "Om Veitrygghet",
+    href: "/om-veitrygghet",
+    target: false,
+  },
+  {
+    label: "Kontakt",
+    href: "/kontakt",
     target: false,
   },
 ];
 
 export default function Header() {
   return (
-    <header className="sticky top-0 w-full border-border/40 bg-background/95 z-50">
+    <header className="absolute top-0 w-full border-border/40  z-50">
       <div className="container flex items-center justify-between h-14">
-        <Link href="/" aria-label="Home page">
-          <Logo />
+        <Link className="" href="/" aria-label="Home page">
+          <Logo nonOrangeColor="white" />
         </Link>
         <div className="hidden xl:flex gap-7 items-center justify-between">
           <DesktopNav navItems={navItems} />
-          <ModeToggle />
+          {/* <ModeToggle /> */}
         </div>
         <div className="flex items-center xl:hidden">
-          <ModeToggle />
+          {/* <ModeToggle /> */}
           <MobileNav navItems={navItems} />
         </div>
       </div>

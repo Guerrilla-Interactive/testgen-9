@@ -1,10 +1,10 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 
 import { stegaClean } from "next-sanity";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { Button } from "@/features/ui/button";
+import { Button } from "@/features/unorganized-components/ui/button";
 
 interface GridCardProps {
   color:

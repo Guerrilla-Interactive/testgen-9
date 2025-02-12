@@ -2,7 +2,7 @@
 
 
 import { useDraftModeEnvironment } from "next-sanity/hooks";
-import { Button } from "../ui/button";
+import { Button } from "./ui/button";
 
 
 

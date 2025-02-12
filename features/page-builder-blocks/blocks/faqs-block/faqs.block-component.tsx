@@ -1,6 +1,6 @@
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/features/ui/accordion";
-import SectionContainer from "@/features/ui/section-container";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/features/unorganized-components/ui/accordion";
+import SectionContainer from "@/features/unorganized-components/ui/section-container";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
 import { stegaClean } from "next-sanity";
 

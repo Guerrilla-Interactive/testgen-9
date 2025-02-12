@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Stick_No_Bills, Barlow_Condensed, Tomorrow } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 import { ThemeProvider } from "@/features/theme/theme-provider";
-import { Toaster } from "@/features/ui/sonner";
+import { Toaster } from "@/features/unorganized-components/ui/sonner";
 
 
 const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === "production";
@@ -28,10 +28,23 @@ export const metadata: Metadata = {
   robots: !isProduction ? "noindex, nofollow" : "index, follow",
 };
 
-const fontSans = FontSans({
+// Import 3 fonts with custom CSS variable names
+const titleFont = Stick_No_Bills({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sans",
+  weight: "800",
+  variable: "--font-title",
+});
+
+const generalFont = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-general",
+});
+
+const supplementFont = Tomorrow({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-supplement",
 });
 
 export default function RootLayout({
@@ -45,7 +58,9 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased overscroll-none",
-          fontSans.variable
+          titleFont.variable,
+          generalFont.variable,
+          supplementFont.variable
         )}
       >
         <ThemeProvider

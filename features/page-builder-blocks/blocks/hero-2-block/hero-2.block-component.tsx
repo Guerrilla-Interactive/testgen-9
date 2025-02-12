@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { stegaClean } from "next-sanity";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { Button } from "@/features/ui/button";
+import { Button } from "@/features/unorganized-components/ui/button";
 
 
 export default function Hero2BlockComponent({

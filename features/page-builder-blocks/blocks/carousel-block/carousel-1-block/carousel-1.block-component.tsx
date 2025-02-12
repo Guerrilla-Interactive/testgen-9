@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { cn } from "@/lib/utils";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots, CarouselCounter } from "@/features/ui/carousel";
-import SectionContainer from "@/features/ui/section-container";
+import { cn } from "@/features/unorganized-utils/utils";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots, CarouselCounter } from "@/features/unorganized-components/ui/carousel";
+import SectionContainer from "@/features/unorganized-components/ui/section-container";
 import { stegaClean } from "next-sanity";
 
 const CAROUSEL_SIZES = {

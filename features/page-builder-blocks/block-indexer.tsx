@@ -57,6 +57,7 @@ export const BlockDataMap: {
   "grid-row-block":{ component: GridRowBlockComponent, schema: gridRowBlockSchema, query: gridRowBlockQuery },
   "pricing-card-block": { component: PricingCardBlockComponent, schema: pricingCardBlockSchema, query: pricingCardBlockQuery },
   "timeline-1-block": { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
+  
 
   // ADD VALUE 2 ABOVE
 };

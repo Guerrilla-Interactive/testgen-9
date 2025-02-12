@@ -2,16 +2,16 @@ import { notFound } from "next/navigation";
 
 
 
-import { generatePageMetadata } from "@/lib/metadata";
+import { generatePageMetadata } from "@/features/unorganized-utils/metadata";
 import type { BreadcrumbLink } from "@/types";
-import Breadcrumbs from "@/features/ui/breadcrumbs";
+import Breadcrumbs from "@/features/unorganized-components/ui/breadcrumbs";
 import PostHero from "@/features/unorganized-components/post/hero";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { fetchSanityBlogSlugBySlug, fetchSanityBlogSlugsStaticParams } from "./(blog-slug-core-utilities)/blog-slug.server-actions";
+import { fetchSanityBlogPostBySlug, fetchSanityBlogPostsStaticParams } from "./(blog-slug-core-utilities)/blog-slug.server-actions";
 
 
 export async function generateStaticParams() {
-  const posts = await fetchSanityBlogSlugsStaticParams();
+  const posts = await fetchSanityBlogPostsStaticParams();
 
   return posts.map((post) => ({
     slug: post.slug.current,
@@ -22,7 +22,7 @@ export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const post = await fetchSanityBlogSlugBySlug({ slug: params.slug });
+  const post = await fetchSanityBlogPostBySlug({ slug: params.slug });
 
   if (!post) {
     notFound();
@@ -35,7 +35,7 @@ export default async function PostPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const post = await fetchSanityBlogSlugBySlug(params);
+  const post = await fetchSanityBlogPostBySlug(params);
 
   if (!post) {
     notFound();

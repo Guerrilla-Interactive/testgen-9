@@ -1,5 +1,5 @@
-import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/ui/section-container";
-import { cn } from "@/lib/utils";
+import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/unorganized-components/ui/section-container";
+import { cn } from "@/features/unorganized-utils/utils";
 
 import { stegaClean } from "next-sanity";
 

@@ -1,13 +1,13 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 
 import Link from "next/link";
 
 import { createElement } from "react";
 import { stegaClean } from "next-sanity";
-import { ISectionContainer } from "@/features/ui/section-container";
-import TagLine from "@/features/ui/tag-line";
+import { ISectionContainer } from "@/features/unorganized-components/ui/section-container";
+import TagLine from "@/features/unorganized-components/ui/tag-line";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { Button } from "@/features/ui/button";
+import { Button } from "@/features/unorganized-components/ui/button";
 
 interface SplitContentProps {
   sticky: boolean;

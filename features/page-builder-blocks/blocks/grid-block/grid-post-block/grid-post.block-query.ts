@@ -1,3 +1,4 @@
+import { getAllCategoriesQuery } from "@/sanity/desk-organized-sanity-utilities/category/category.document-queries";
 import { groq } from "next-sanity";
 
 const gridPostBlockQuery = groq`
@@ -22,9 +23,7 @@ const gridPostBlockQuery = groq`
         },
         alt
       },
-      categories[]->{
-        title,
-      },
+      ${getAllCategoriesQuery}
     },
   },
 `;

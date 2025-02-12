@@ -1,11 +1,15 @@
+import { imageQuery } from "@/features/unorganized-components/image-component/image.query";
 import { groq } from "next-sanity";
 
 const hero3BlockQuery = groq`
   _type == "hero-3-block" => {
     _type,
-    padding,
-    colorVariant,
-    title,
+    titleOrange,
+    titleWhite,
+    subtitle,
+    backgroundImage{
+      ${imageQuery}
+    },
   },
 `;
 

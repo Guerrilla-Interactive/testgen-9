@@ -5,7 +5,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { Fragment } from "react";
 import { motion } from "motion/react";
-import SectionContainer from "@/features/ui/section-container";
+import SectionContainer from "@/features/unorganized-components/ui/section-container";
 
 interface LogoCloud1Props {
   padding: {

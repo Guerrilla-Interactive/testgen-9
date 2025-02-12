@@ -4,9 +4,9 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { Badge } from "@/features/ui/badge";
+import { Badge } from "@/features/unorganized-components/ui/badge";
 
 interface SplitInfoItemProps {
   image: Sanity.Image;

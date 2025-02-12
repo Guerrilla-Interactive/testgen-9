@@ -5,8 +5,8 @@ import { NavItem } from "@/types";
 
 import { useState } from "react";
 import { TextAlignRightIcon } from "@radix-ui/react-icons";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/features/ui/sheet";
-import { Button } from "@/features/ui/button";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/features/unorganized-components/ui/sheet";
+import { Button } from "@/features/unorganized-components/ui/button";
 import Logo from "../logo";
 
 export default function MobileNav({ navItems }: { navItems: NavItem[] }) {

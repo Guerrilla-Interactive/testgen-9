@@ -31,8 +31,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-        heading: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ["var(--font-general)", ...fontFamily.sans],
+        heading: ["var(--font-title)", ...fontFamily.sans],
+        supplement: ["var(--font-supplement)", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -131,7 +132,7 @@ const config = {
             maxWidth: "1024px",
           },
           "@screen xl": {
-            maxWidth: "1280px",
+            maxWidth: "1420px",
             paddingLeft: "4rem",
             paddingRight: "4rem",
           },
@@ -139,7 +140,7 @@ const config = {
       });
       addBase({
         h1: {
-          fontFamily: "var(--font-sans)",
+          fontFamily: "var(--font-title)",
           fontSize: "2.5rem",
           lineHeight: "1.2",
           fontWeight: "bold",
@@ -148,7 +149,7 @@ const config = {
           },
         },
         h2: {
-          fontFamily: "var(--font-sans)",
+          fontFamily: "var(--font-title)",
           fontSize: "2rem",
           lineHeight: "1.2",
           fontWeight: "bold",
@@ -157,7 +158,7 @@ const config = {
           },
         },
         h3: {
-          fontFamily: "var(--font-sans)",
+          fontFamily: "var(--font-title)",
           fontSize: "1.5rem",
           lineHeight: "1.2",
           "@screen md": {
@@ -165,7 +166,7 @@ const config = {
           },
         },
         h4: {
-          fontFamily: "var(--font-sans)",
+          fontFamily: "var(--font-title)",
           fontSize: "1.25rem",
           lineHeight: "1.3",
           "@screen md": {
@@ -173,7 +174,7 @@ const config = {
           },
         },
         h5: {
-          fontFamily: "var(--font-sans)",
+          fontFamily: "var(--font-title)",
           fontSize: "1.125rem",
           lineHeight: "1.4",
           "@screen md": {
@@ -181,7 +182,7 @@ const config = {
           },
         },
         h6: {
-          fontFamily: "var(--font-sans)",
+          fontFamily: "var(--font-title)",
           fontSize: "1rem",
           lineHeight: "1.4",
           "@screen md": {

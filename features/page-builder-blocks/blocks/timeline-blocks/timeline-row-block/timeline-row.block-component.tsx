@@ -2,7 +2,7 @@ import { stegaClean } from "next-sanity";
 
 import type { Timeline1Props } from "../timeline-1-block/timeline-1.block-component";
 import Timeline1 from "../timeline-1-block/timeline-1.block-component";
-import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/ui/section-container";
+import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/unorganized-components/ui/section-container";
 
 
 

@@ -1,12 +1,12 @@
 import { stegaClean } from "next-sanity";
 
 import { urlFor } from "@/sanity/lib/image";
-import SectionContainer from "@/features/ui/section-container";
-import { Carousel, CarouselContent, CarouselDots, CarouselItem, CarouselNext, CarouselPrevious } from "@/features/ui/carousel";
-import { Card, CardContent } from "@/features/ui/card";
+import SectionContainer from "@/features/unorganized-components/ui/section-container";
+import { Carousel, CarouselContent, CarouselDots, CarouselItem, CarouselNext, CarouselPrevious } from "@/features/unorganized-components/ui/carousel";
+import { Card, CardContent } from "@/features/unorganized-components/ui/card";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { StarRating } from "@/features/ui/star-rating";
-import { Avatar, AvatarFallback, AvatarImage } from "@/features/ui/avatar";
+import { StarRating } from "@/features/unorganized-components/ui/star-rating";
+import { Avatar, AvatarFallback, AvatarImage } from "@/features/unorganized-components/ui/avatar";
 
 
 interface Carousel2Props {

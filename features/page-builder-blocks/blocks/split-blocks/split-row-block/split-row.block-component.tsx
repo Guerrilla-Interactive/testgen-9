@@ -1,11 +1,11 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/features/unorganized-utils/utils";
 import SplitContent from "../split-content-block/split-content.block-component";
 import SplitCardsList from "../split-cards-list-block/split-cards-list.block-component";
 import SplitImage from "../split-image-block/split-image.block-component";
 import SplitInfoList from "../split-info-list-block/split-info-list.block-component";
 
 import { stegaClean } from "next-sanity";
-import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/ui/section-container";
+import SectionContainer, { type ISectionContainer, type ISectionPadding } from "@/features/unorganized-components/ui/section-container";
 
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {
