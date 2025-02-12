@@ -26,7 +26,6 @@ const carousel2BlockQuery = groq`
       },
       rating,
     },
-  },
 `;
 
 export default carousel2BlockQuery; 
