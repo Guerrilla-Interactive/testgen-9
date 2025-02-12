@@ -1,7 +1,7 @@
 import React from "react"
 
 interface IInnerContainerProps {
-  children?: JSX.Element | JSX.Element[] | React.ReactNode | undefined
+  children?: React.ReactNode | undefined
   className?: string
   declarativeOnly?: boolean
   as?: "div" | "section"
