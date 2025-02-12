@@ -212,6 +212,7 @@ export const useSessionContext = (): [SessionContext, (status: SessionContext) =
     sessionStartDateTime,
     topImageBrightnessValueScore,
     setTopImageBrightnessValueScore,
+    setSessionLoaded,
   };
 
   const setSessionContext = (newStatus: SessionContext) => {
