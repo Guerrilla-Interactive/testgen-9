@@ -5,12 +5,7 @@ export const externalLinkSchema = defineField({
   title: "URL",
   type: "url",
   options: {
-    tip: {
-      title: "Tips",
-      description:
-        "For å lage en lenke til en e-postadresse, skriv 'mailto:' foran e-postadressen. For å lage en lenke til et telefonnummer, skriv 'tel:' foran telefonnummeret.",
-      examples: ["mailto:hei@kult.design", "tel:004799361166"],
-    },
+    // tip property removed
   },
   validation: (Rule) =>
     Rule.uri({

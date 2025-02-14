@@ -166,7 +166,7 @@ export const useSessionContext = (): [SessionContext, (status: SessionContext) =
   useEffect(() => {
     const timer = setTimeout(() => {
       setSessionLoaded(true);
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [sessionStartDateTime]);
 

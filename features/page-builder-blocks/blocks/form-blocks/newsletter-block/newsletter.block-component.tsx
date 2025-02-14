@@ -59,7 +59,7 @@ export default function FormNewsletterBlockComponent({
   const { isSubmitting } = form.formState;
 
   const handleSend = useCallback(
-    async ({ email }: { email: string }) => {
+    async ({ email }: { email?: string }) => {
       try {
         const response = await fetch("/api/newsletter", {
           method: "POST",

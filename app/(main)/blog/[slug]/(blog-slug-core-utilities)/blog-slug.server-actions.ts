@@ -2,7 +2,6 @@
 
 import { sanityFetch } from "@/sanity/lib/live";
 
-
 import { GET_ALL_BLOG_SLUGS_QUERY, GET_BLOG_POST_QUERY } from "./blog-slug.route-query";
 
 // Fetch a full blog post using its slug

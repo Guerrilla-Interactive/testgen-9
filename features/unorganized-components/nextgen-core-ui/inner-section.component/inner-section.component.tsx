@@ -3,7 +3,7 @@ import React from "react"
 import type { IBaseComponentProps } from "../types"
 
 interface IInnerSectionProps extends IBaseComponentProps {
-  children?: JSX.Element | JSX.Element[] | React.ReactNode | undefined
+  children?: React.ReactNode
   className?: string
   declarativeOnly?: boolean
   enableMaxWidth?: boolean

@@ -29,6 +29,13 @@ const config = {
     corePlugins: {
       container: "false",
     },
+    screens: {
+      xs: "480px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1420px",
+    },
     extend: {
       fontFamily: {
         sans: ["var(--font-general)", ...fontFamily.sans],
@@ -105,19 +112,44 @@ const config = {
         "fade-down": {
           "0%": {
             opacity: "0",
-            transform: "translateY(-20px)",
+            transform: "translateY(-80px)",
+            filter: "blur(4px)",
+          },
+          "80%": {
+            opacity: "0.8",
+            
           },
           "100%": {
             opacity: "1",
             transform: "translateY(0)",
+            filter: "blur(0px)",
           },
         },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "fade-in-left-blur": {
+          "0%": { opacity: "0", transform: "translateX(-20px)", filter: "blur(4px)" },
+          "100%": { opacity: "1", transform: "translateX(0)", filter: "blur(0)"},
+        },
+        "fade-in-right-blur": {
+          "0%": { opacity: "0", transform: "translateX(20px)", filter: "blur(4px)" },
+          "100%": { opacity: "1", transform: "translateX(0)", filter: "blur(0)" },
+        },
+        "scale-in-bg": {
+          "0%": { transform: "scale(1.1)" },
+          "100%": {  transform: "scale(1)" },
+        },
+
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.7s ease-out forwards",
-        "fade-down-slow": "fade-down 1s ease-out forwards",
+        "fade-down-slow": "fade-down 2s ease forwards",
+        "scale-in-bg": "scale-in-bg 2.2s ease forwards",
+
       },
     },
   },
@@ -131,6 +163,11 @@ const config = {
           marginRight: "auto",
           paddingLeft: "1rem",
           paddingRight: "1rem",
+          "@screen xs": {
+            maxWidth: "480px",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+          },
           "@screen sm": {
             maxWidth: "640px",
             paddingLeft: "2rem",

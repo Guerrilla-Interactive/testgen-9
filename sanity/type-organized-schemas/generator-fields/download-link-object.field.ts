@@ -14,7 +14,7 @@ export const downloadLinkObjectField = defineField({
       title: "Fil",
       type: "file",
       options: {
-        required: true,
+        // required: true,  // REMOVED: 'required' is not a valid key for FileOptions
       },
       validation: (Rule) => Rule.required(),
     }),

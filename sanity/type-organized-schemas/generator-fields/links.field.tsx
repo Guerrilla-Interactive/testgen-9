@@ -192,7 +192,6 @@ export const linksField = (props: LinksFieldProps) => {
     of: linkTypes,
     options: {
       ...options,
-      required: required,
     },
     validation: (Rule) => {
       const rules = [];

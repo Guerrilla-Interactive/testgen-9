@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 // Import 3 fonts with custom CSS variable names
 const titleFont = Stick_No_Bills({
   subsets: ["latin"],
-  weight: "800",
+  weight: ["600", "800"],
   variable: "--font-title",
 });
 

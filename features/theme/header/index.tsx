@@ -37,7 +37,7 @@ const navItems = [
   },
 ];
 
-export default function Header() {
+export default function Header(props: any) {
   const { sessionStatus } = useGlobalContext();
   const { sessionLoaded } = sessionStatus;
   const [isTopDark, setIsTopDark] = useState(false);
@@ -61,11 +61,13 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "absolute top-0 w-full border-border/40 z-50",
+        "absolute top-0 w-full border-border/40 z-50 ",
         isTopDark ? "text-white" : "text-black",
         !sessionLoaded && "animate-fade-down-slow"
       )}
     >
+
+      
       <div className="container flex items-center justify-between h-14">
         <Link href="/" aria-label="Home page">
           <Logo nonOrangeColor={!isTopDark ? "black" : "white"} />

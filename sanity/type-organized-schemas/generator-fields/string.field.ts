@@ -11,7 +11,6 @@ export const stringField = (props: FieldDef<StringDefinition>) => {
     type: "string",
     options: {
       ...options,
-      required: required,
     },
     validation: validation
       ? validation

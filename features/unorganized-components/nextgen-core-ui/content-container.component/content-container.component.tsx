@@ -1,4 +1,5 @@
-import React, { ReactElement, forwardRef } from "react"
+import type React from "react"
+import { ReactElement, forwardRef } from "react"
 
 import type { IBaseComponentProps } from "../types"
 

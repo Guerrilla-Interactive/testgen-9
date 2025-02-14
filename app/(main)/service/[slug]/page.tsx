@@ -2,11 +2,10 @@ import { notFound } from "next/navigation";
 
 import { generatePageMetadata } from "@/features/unorganized-utils/metadata";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { fetchSanityBlogPostBySlug, fetchSanityBlogPostsStaticParams } from "./(blog-slug-core-utilities)/blog-slug.server-actions";
-
+import { fetchSanityServiceBySlug, fetchSanityServiceStaticParams } from "./(service-slug-core-utilities)/service-slug.server-actions";
 
 export async function generateStaticParams() {
-  const posts = await fetchSanityBlogPostsStaticParams();
+  const posts = await fetchSanityServiceStaticParams();
 
   return posts.map((post) => ({
     slug: post.slug.current,
@@ -16,21 +15,21 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }) {
-  const params = await props.params;
-  const post = await fetchSanityBlogPostBySlug({ slug: params.slug });
+  const { slug } = await props.params;
+  const post = await fetchSanityServiceBySlug({ slug });
 
   if (!post) {
     notFound();
   }
 
-  return generatePageMetadata({ page: post, slug: `/blog/${params.slug}` });
+  return generatePageMetadata({ page: post, slug: `/$service/${slug}` });
 }
 
-export default async function BlogPost(props: {
+export default async function Service(props: {
   params: Promise<{ slug: string }>;
 }) {
-  const params = await props.params;
-  const post = await fetchSanityBlogPostBySlug(params);
+  const { slug } = await props.params;
+  const post = await fetchSanityServiceBySlug({ slug });
 
   if (!post) {
     notFound();
@@ -38,7 +37,7 @@ export default async function BlogPost(props: {
   return (
     <section>
       <div className="container py-16 xl:py-20">
-          {post.body && <PortableTextRenderer value={post.body} />}
+        
       </div>
     </section>
   );

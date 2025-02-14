@@ -7,6 +7,7 @@ import { DisableDraftMode } from "@/features/unorganized-components/disable-draf
 import Footer from "@/features/theme/footer";
 // get isTopDark from context
 import { useGlobalContext } from "@/features/context/global-context";
+import { fetchSettings } from "@/sanity/desk-organized-sanity-utilities/settings/settings.query";
 
 
 
@@ -16,11 +17,11 @@ export default async function MainLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const settings = await fetchSettings();
   
-
   return (
     <>
-      <Header />
+      <Header {...settings}/>
       <main>{children}</main>
       <SanityLive />
       {(await draftMode()).isEnabled && (

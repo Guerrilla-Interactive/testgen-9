@@ -13,7 +13,6 @@ export const externalLinkObjectField = defineField({
       title: "URL",
       type: "url",
       options: {
-        required: true,
         tip: {
           title: "Tips",
           description:
@@ -25,8 +24,6 @@ export const externalLinkObjectField = defineField({
         Rule.uri({
           scheme: ["https", "http", "mailto", "tel"],
         }).error('Ugyldig URL. URLen må start med "https://", "http://", "mailto:" eller "tel:".'),
-
-        Rule.required(),
       ],
     }),
   ],
