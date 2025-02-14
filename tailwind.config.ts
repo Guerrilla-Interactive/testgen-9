@@ -132,7 +132,7 @@ const config = {
             maxWidth: "1024px",
           },
           "@screen xl": {
-            maxWidth: "1420px",
+            maxWidth: "1220px",
             paddingLeft: "4rem",
             paddingRight: "4rem",
           },

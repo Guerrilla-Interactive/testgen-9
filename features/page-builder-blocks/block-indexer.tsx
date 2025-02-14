@@ -24,6 +24,12 @@ import { Timeline1BlockComponent, timeline1BlockSchema } from "./blocks/timeline
 import { TimelineRowBlockComponent, timelineRowBlockQuery, timelineRowBlockSchema } from "./blocks/timeline-blocks/timeline-row-block";
 import { Hero3BlockComponent, hero3BlockQuery, hero3BlockSchema } from "./blocks/hero-3-block";
 
+<<<<<<< Updated upstream
+=======
+import { HeadingAndParagraphCenteredBlockComponent, headingAndParagraphCenteredBlockQuery, headingAndParagraphCenteredBlockSchema } from "./blocks/heading-and-paragraph-centered-block";
+import { ServiceGridBlockComponent, serviceGridBlockQuery, serviceGridBlockSchema } from "./blocks/service-grid-block";
+import { CoverMapBlockComponent, coverMapBlockQuery, coverMapBlockSchema } from "./blocks/cover-map-block";
+>>>>>>> Stashed changes
 // ADD VALUE 1 ABOVE
 
 export const BlockDataMap: {
@@ -59,6 +65,12 @@ export const BlockDataMap: {
   "timeline-1-block": { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
   
 
+<<<<<<< Updated upstream
+=======
+"heading-and-paragraph-centered-block": { component: HeadingAndParagraphCenteredBlockComponent, schema: headingAndParagraphCenteredBlockSchema, query: headingAndParagraphCenteredBlockQuery },
+"service-grid-block": { component: ServiceGridBlockComponent, schema: serviceGridBlockSchema, query: serviceGridBlockQuery },
+"cover-map-block": { component: CoverMapBlockComponent, schema: coverMapBlockSchema, query: coverMapBlockQuery },
+>>>>>>> Stashed changes
   // ADD VALUE 2 ABOVE
 };
 

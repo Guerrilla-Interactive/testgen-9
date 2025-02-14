@@ -65,13 +65,17 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
           {children}
         </ThemeProvider>
         <Toaster position="top-center" richColors />
+<<<<<<< Updated upstream
+=======
+        {/* <NextgenContextStatusPanel /> */}
+>>>>>>> Stashed changes
       </body>
     </html>
   );

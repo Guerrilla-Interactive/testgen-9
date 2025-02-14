@@ -4,15 +4,24 @@ export type LogoProps = {
    * Set to "black" or "white".
    */
   nonOrangeColor?: "black" | "white";
+  /**
+   * The fill color for the orange parts of the logo.
+   * Set to a valid CSS color value.
+   */
+  orangeColor?: string;
+
+  className?: string;
+  
 };
 
-export default function Logo({ nonOrangeColor = "black" }: LogoProps) {
+export default function Logo({  orangeColor = "#D76B01", nonOrangeColor = "black", className = "max-w-48" }: LogoProps) {
   // Use the prop value to fill non-orange parts.
   const secondaryFill = nonOrangeColor;
 
   return (
-    <svg
-      className="max-w-48"
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
+      className={`${className}`}
       width="336"
       height="31"
       viewBox="0 0 336 31"
@@ -22,19 +31,19 @@ export default function Logo({ nonOrangeColor = "black" }: LogoProps) {
       <g>
         <path
           d="M0 0.779144L14.7307 30.9497L18.3169 24.1033L8.21244 0.779144H0Z"
-          fill="#D76B01"
+          fill={orangeColor}
         />
         <path
           d="M16.1016 13.0546L19.6878 20.8712L29.4677 0.779297H21.3669L16.1016 13.0546Z"
-          fill="#D76B01"
+          fill={orangeColor}
         />
         <path
           d="M45.0084 0.779297H36.6641V29.7234H45.0084V0.779297Z"
-          fill="#D76B01"
+          fill={orangeColor}
         />
         <path
           d="M72.774 0.779297H64.4297V29.7234H72.774V0.779297Z"
-          fill="#D76B01"
+          fill={orangeColor}
         />
         <path
           d="M96.6938 0.779297H88.9023V29.7234H96.6938V0.779297Z"
@@ -62,7 +71,7 @@ export default function Logo({ nonOrangeColor = "black" }: LogoProps) {
         />
         <path
           d="M57.2265 0.779297H47.2539V7.23868H57.2265V0.779297Z"
-          fill="#D76B01"
+          fill={orangeColor}
         />
         <path
           d="M86.0343 0.779297H79.9727V7.82178H86.0343V0.779297Z"
@@ -86,11 +95,11 @@ export default function Logo({ nonOrangeColor = "black" }: LogoProps) {
         />
         <path
           d="M57.2265 23.2637H47.2539V29.7231H57.2265V23.2637Z"
-          fill="#D76B01"
+          fill={orangeColor}
         />
         <path
           d="M55.5177 12.6377H42.9023V18.5793H55.5177V12.6377Z"
-          fill="#D76B01"
+          fill={orangeColor}
         />
         <path
           d="M291.028 0.779297H282.684V29.7234H291.028V0.779297Z"

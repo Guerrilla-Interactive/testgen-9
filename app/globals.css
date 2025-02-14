@@ -88,3 +88,31 @@
     font-family: var(--font-supplement);
   }
 }
+<<<<<<< Updated upstream
+=======
+
+p {
+  font-family: var(--font-general);
+}
+
+
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none !important;
+}
+
+.mapboxgl-popup-close-button {
+  display: none !important;
+}
+>>>>>>> Stashed changes

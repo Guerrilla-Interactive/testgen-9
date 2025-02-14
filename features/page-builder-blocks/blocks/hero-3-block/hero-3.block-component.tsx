@@ -11,7 +11,7 @@ export default async function Hero3BlockComponent(props: Partial<Hero3Props>) {
   const { backgroundImage, titleOrange, titleWhite, subtitle } = props;
 
   return (
-    <div className="relative w-full h-[50vh] md:h-[80vh] overflow-hidden">
+    <div className="relative w-full h-[60vh] md:h-[90vh] overflow-hidden">
       {backgroundImage && (
         <Img
           {...backgroundImage}
