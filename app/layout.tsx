@@ -72,10 +72,10 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Toaster position="top-center" richColors />
-<<<<<<< Updated upstream
+
 =======
         {/* <NextgenContextStatusPanel /> */}
->>>>>>> Stashed changes
+
       </body>
     </html>
   );
