@@ -5,6 +5,7 @@ export const GET_SERVICE_BY_SLUG_QUERY = groq`
     title,
     slug,
     excerpt,
+    featuredImage,
   }
 `;
 
@@ -20,5 +21,6 @@ export const GET_SERVICE_POST_QUERY = groq`
     slug,
     _createdAt,
     _updatedAt,
+    featuredImage,
   }
 `;

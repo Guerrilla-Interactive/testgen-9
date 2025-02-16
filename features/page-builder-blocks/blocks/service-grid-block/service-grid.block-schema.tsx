@@ -10,9 +10,40 @@ export default defineType({
   fields: [
     {
       name: "services",
-      type: "string"
-      
-    }
+      type: "array",
+      title: "Services",
+      of: [
+        { type: "reference", to: [{ type: "service-slug" }] },
+        {
+          type: "object",
+          name: "manualService",
+          title: "Manual Service",
+          fields: [
+            {
+              name: "title",
+              type: "string",
+              title: "Title",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "link",
+              type: "url",
+              title: "Link",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "featuredImage",
+              type: "image",
+              title: "Featured Image",
+              options: { hotspot: true },
+            },
+          ],
+          preview: {
+            select: { title: "title" },
+          },
+        },
+      ],
+    },
   ],
   preview: {
     prepare() {

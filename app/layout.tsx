@@ -68,7 +68,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
@@ -76,6 +76,9 @@ export default function RootLayout({
         </ThemeProvider>
         <Toaster position="top-center" richColors />
         <NextgenContextStatusPanel />
+
+        {/* <NextgenContextStatusPanel /> */}
+
       </body>
       </GlobalContextProvider>
       

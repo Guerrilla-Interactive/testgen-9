@@ -1,6 +1,6 @@
 
 import Custom404 from "@/features/theme/404";
-import Footer from "@/features/theme/footer";
+import Footer from "@/features/theme/footer/footer";
 import Header from "@/features/theme/header";
 import type { Metadata } from "next";
 

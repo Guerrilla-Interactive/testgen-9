@@ -40,10 +40,20 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "featuredImage",
+      title: "Featured Image",
+      type: "image",
+      group: "content",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: "excerpt",
       title: "Excerpt",
       type: "text",
       group: "content",
     }),
+
   ],
 });
