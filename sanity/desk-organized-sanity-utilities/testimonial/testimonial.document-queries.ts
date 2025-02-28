@@ -20,5 +20,5 @@ testimonial[]->{
     },
       alt
     },
-  },
+  }
 `;

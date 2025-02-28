@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const pricingCardBlockQuery = groq`
   _type == "pricing-card-block" => {
     _type,
@@ -9,7 +10,7 @@ const pricingCardBlockQuery = groq`
     list[],
     excerpt,
     link,
-  },
+  }
 `;
 
 export default pricingCardBlockQuery; 

@@ -17,5 +17,5 @@ export const getAuthorReferenceQuery = groq`
       },
       alt
     }
-  },
+  }
 `;

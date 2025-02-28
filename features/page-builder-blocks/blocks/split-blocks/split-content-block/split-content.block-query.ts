@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const splitContentBlockQuery = groq`
   _type == "split-content-block" => {
     _type,
@@ -27,7 +28,7 @@ const splitContentBlockQuery = groq`
       }
     },
     link,
-  },
+  }
 `;
 
 export default splitContentBlockQuery; 

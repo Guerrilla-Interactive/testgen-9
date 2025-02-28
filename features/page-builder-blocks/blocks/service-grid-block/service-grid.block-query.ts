@@ -1,6 +1,7 @@
 import { imageQuery } from "@/features/unorganized-components/image-component/image.query";
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const serviceGridBlockQuery = groq`
   _type == "service-grid-block" => {
     _type,
@@ -22,8 +23,7 @@ const serviceGridBlockQuery = groq`
          }
       }
     },
-   
-  },
+  }
 `;
 
 export default serviceGridBlockQuery;

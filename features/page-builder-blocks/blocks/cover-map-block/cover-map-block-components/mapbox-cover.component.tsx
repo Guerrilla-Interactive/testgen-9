@@ -40,15 +40,15 @@ const MapboxMapCover: React.FC<MapboxMapCoverProps> = ({
         style: computedMapStyle,
         center: center,
         zoom: zoom,
-        pitch: 70,
+        pitch: 80,
         bearing: -17.6,
       });
 
       // Disable interactive controls for a static cover view.
       map.scrollZoom.disable();
       map.boxZoom.disable();
-      map.dragRotate.disable();
-      map.dragPan.disable();
+      map.dragRotate.enable();
+      map.dragPan.enable();
       map.keyboard.disable();
       map.doubleClickZoom.disable();
       map.touchZoomRotate.disable();
@@ -121,7 +121,7 @@ const MapboxMapCover: React.FC<MapboxMapCoverProps> = ({
           .addTo(map);
 
         // By default, popups only open on click. We open it right away:
-        marker.togglePopup();
+        
 
         // Update road layers only when using the dark theme.
         if (theme === "dark") {
@@ -194,7 +194,7 @@ const MapboxMapCover: React.FC<MapboxMapCoverProps> = ({
 
         // Start continuous rotation around the marker
         function rotateMap() {
-          map.rotateTo(map.getBearing() + 0.01, { duration: 0 });
+          map.rotateTo(map.getBearing() + 0.005, { duration: 0 });
           animationFrameId = requestAnimationFrame(rotateMap);
         }
         rotateMap();

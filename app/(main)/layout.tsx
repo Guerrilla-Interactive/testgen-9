@@ -5,7 +5,8 @@ import { SanityLive } from "@/sanity/lib/live";
 import Header from "@/features/theme/header";
 import { DisableDraftMode } from "@/features/unorganized-components/disable-draft-mode";
 import Footer from "@/features/theme/footer/footer";
-// get isTopDark from context
+
+
 import { useGlobalContext } from "@/features/context/global-context";
 import { fetchSettings } from "@/sanity/desk-organized-sanity-utilities/settings/settings.query";
 

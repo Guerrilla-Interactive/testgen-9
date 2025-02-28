@@ -1,9 +1,10 @@
 import { groq } from "next-sanity";
-import splitCardsListQuery from "../split-cards-list-block/split-cards-list.block-query";
-import splitContentQuery from "../split-content-block/split-content.block-query";
-import splitImageQuery from "../split-image-block/split-image.block-query";
-import splitInfoListQuery from "../split-info-list-block/split-info-list.block-query";
+import splitCardsListBlockQuery from "../split-cards-list-block/split-cards-list.block-query";
+import splitContentBlockQuery from "../split-content-block/split-content.block-query";
+import splitImageBlockQuery from "../split-image-block/split-image.block-query";
+import splitInfoListBlockQuery from "../split-info-list-block/split-info-list.block-query";
 
+// @sanity-typegen-ignore
 const splitRowBlockQuery = groq`
   _type == "split-row-block" => {
     _type,
@@ -11,12 +12,12 @@ const splitRowBlockQuery = groq`
     colorVariant,
     noGap,
     splitColumns[]{
-      ${splitContentQuery}
-      ${splitCardsListQuery}
-      ${splitImageQuery}
-      ${splitInfoListQuery}
+      ${splitContentBlockQuery},
+      ${splitCardsListBlockQuery},
+      ${splitImageBlockQuery},
+      ${splitInfoListBlockQuery},
     },
-  },
+  }
 `;
 
 export default splitRowBlockQuery; 

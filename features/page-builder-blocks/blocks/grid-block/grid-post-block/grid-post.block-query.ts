@@ -1,6 +1,7 @@
 import { getAllCategoriesQuery } from "@/sanity/desk-organized-sanity-utilities/category/category.document-queries";
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const gridPostBlockQuery = groq`
   _type == "grid-post-block" => {
     _type,
@@ -23,9 +24,9 @@ const gridPostBlockQuery = groq`
         },
         alt
       },
-      ${getAllCategoriesQuery}
+      ${getAllCategoriesQuery},
     },
-  },
+  }
 `;
 
 export default gridPostBlockQuery; 

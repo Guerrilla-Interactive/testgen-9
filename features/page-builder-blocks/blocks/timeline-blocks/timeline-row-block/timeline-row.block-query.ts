@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const timelineRowBlockQuery = groq`
   _type == "timeline-row-block" => {
     _type,
@@ -27,7 +28,7 @@ const timelineRowBlockQuery = groq`
         }
       },
     },
-  },
+  }
 `;
 
 export default timelineRowBlockQuery;

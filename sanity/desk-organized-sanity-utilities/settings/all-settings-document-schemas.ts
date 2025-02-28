@@ -7,7 +7,7 @@ export { metadataSettingsSchema } from "./metadata-settings/metadata-settings.sc
 export { siteSettingsSchema } from "./site-settings/site-settings.schema";
 
 const settingsSchemas = {
-  menuSettingsSchema,
+  // menuSettingsSchema,
   metadataSettingsSchema,
   siteSettingsSchema,
 };

@@ -3,16 +3,22 @@
 import { useState } from "react";
 import { useGlobalContext } from "@/features/context/global-context";
 import { Img, type ImageQuery } from "@/features/unorganized-components/image-component/image.component";
+import { Hero3Block } from "@/sanity.types";
 
-interface Hero3Props {
-  backgroundImage?: ImageQuery;
-  titleOrange?: string;
-  titleWhite?: string;
-  subtitle?: string;
-}
 
-export default function Hero3BlockComponent(props: Partial<Hero3Props>) {
-  const { backgroundImage, titleOrange, titleWhite, subtitle } = props;
+
+export default function Hero3BlockComponent(props: Partial<Hero3Block>) {
+  const {
+    backgroundImage,
+    titleOrange,
+    titleWhite,
+    subtitle,
+    showOverlay = true,
+    topOverlayStrength = 0.2,
+    upperCenterOverlayStrength = 0.0,
+    lowerCenterOverlayStrength = 0.2,
+    bottomOverlayStrength = 0.3,
+  } = props;
   const { sessionStatus } = useGlobalContext();
   const { sessionLoaded } = sessionStatus;
   
@@ -32,7 +38,20 @@ export default function Hero3BlockComponent(props: Partial<Hero3Props>) {
         />
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+      {showOverlay && (
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(
+              to top,
+              rgba(0,0,0,${bottomOverlayStrength}) 0%,
+              rgba(0,0,0,${lowerCenterOverlayStrength}) 33%,
+              rgba(0,0,0,${upperCenterOverlayStrength}) 66%,
+              rgba(0,0,0,${topOverlayStrength}) 100%
+            )`,
+          }}
+        />
+      )}
       
       {/* Content Section: Title Bottom-Left, Subtitle Bottom-Right */}
       <div className="absolute container bottom-0 inset-x-0 flex flex-col md:flex-row justify-between md:items-end pb-4 md:pb-8">

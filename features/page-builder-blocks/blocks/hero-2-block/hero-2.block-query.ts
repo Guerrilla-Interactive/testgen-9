@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const hero2BlockQuery = groq`
   _type == "hero-2-block" => {
     _type,
@@ -24,7 +25,7 @@ const hero2BlockQuery = groq`
       }
     },
     links,
-  },
+  }
 `;
 
 export default hero2BlockQuery; 

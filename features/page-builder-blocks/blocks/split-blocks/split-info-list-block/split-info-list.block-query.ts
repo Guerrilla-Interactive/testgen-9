@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const splitInfoListBlockQuery = groq`
   _type == "split-info-list-block" => {
     _type,
@@ -40,7 +41,7 @@ const splitInfoListBlockQuery = groq`
       },
       tags[],
     },
-  },
+  }
 `;
 
 export default splitInfoListBlockQuery; 

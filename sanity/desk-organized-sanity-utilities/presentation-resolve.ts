@@ -19,6 +19,9 @@ export const resolve: PresentationPluginOptions["resolve"] = {
             href: `/blog/${doc?.slug}`,
           },
           { title: "Blog", href: `/blog` },
+
+          { title: "Service", href: `/service/${doc?.slug}` },
+          { title: "Services", href: `/service` },
         ],
       }),
     }),
@@ -31,6 +34,10 @@ export const resolve: PresentationPluginOptions["resolve"] = {
     {
       route: "/blog/:slug",
       filter: `_type == 'blog-slug' && slug.current == $slug`,
+    },
+    {
+      route: "/service/:slug",
+      filter: `_type == 'service-slug' && slug.current == $slug`,
     },
   ]),
 };

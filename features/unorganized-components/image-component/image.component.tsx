@@ -1,6 +1,6 @@
 "use client";
 
-import { env } from "@/env.mjs";
+
 import { cn } from "@/features/unorganized-utils/utils";
 
 import { stegaClean } from "@sanity/client/stega";
@@ -93,8 +93,8 @@ const ImgInner = (props: ImgProps) => {
   return (
     <SanityImage
       id={_id}
-      projectId={env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-      dataset={env.NEXT_PUBLIC_SANITY_DATASET}
+      projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+      dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
       width={width ?? undefined}
       height={height ?? undefined}
       mode="cover"

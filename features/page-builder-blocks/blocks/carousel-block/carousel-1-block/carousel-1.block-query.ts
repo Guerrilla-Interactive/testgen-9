@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const carousel1BlockQuery = groq`
   _type == "carousel-1-block" => {
     _type,
@@ -22,8 +23,8 @@ const carousel1BlockQuery = groq`
         }
       },
       alt
-    },
-  },
+    }
+  }
 `;
 
 export default carousel1BlockQuery; 

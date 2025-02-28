@@ -2,12 +2,16 @@ import blockContent from "./block-content.schema";
 import link from "./link.schema";
 import colorVariant from "./color-variant.schema";;
 import sectionPadding from "./section-padding.schema";
+import buttonVariantSchema from "../button/button-variant.schema";
+import hero4BlockSchema from "../../blocks/hero-4-block/hero-4.block-schema";
 
 const sharedSchemas = {
   blockContent,
   link,
   colorVariant,
   sectionPadding,
+  buttonVariantSchema,
+  // hero4BlockSchema,
 };
 
 const allSharedBlockRelatedSchemas = Object.values(sharedSchemas)

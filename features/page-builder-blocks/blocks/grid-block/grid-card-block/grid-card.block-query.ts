@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const gridCardBlockQuery = groq`
   _type == "grid-card-block" => {
     _type,
@@ -21,7 +22,7 @@ const gridCardBlockQuery = groq`
       alt
     },
     link,
-  },
+  }
 `;
 
 export default gridCardBlockQuery; 

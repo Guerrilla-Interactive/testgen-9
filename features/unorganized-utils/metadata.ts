@@ -1,3 +1,4 @@
+import { GET_PAGE_BY_DEFINED_SLUG_QUERYResult, GET_BLOG_PAGE_BY_ROUTE_QUERYResult, GET_COURSE_PAGE_BY_ROUTE_QUERYResult } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 
 const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === "production";
@@ -6,7 +7,7 @@ export function generatePageMetadata({
   page,
   slug,
 }: {
-  "page": Sanity.Page | Sanity.Post;
+  page: GET_PAGE_BY_DEFINED_SLUG_QUERYResult | GET_BLOG_PAGE_BY_ROUTE_QUERYResult | GET_COURSE_PAGE_BY_ROUTE_QUERYResult;
   slug: string;
 }) {
   return {

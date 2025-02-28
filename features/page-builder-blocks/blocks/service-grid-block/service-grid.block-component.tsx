@@ -1,5 +1,6 @@
+import { MultipleArrowSVGAnimated } from "@/features/unorganized-components/arrow-svg/multiple-arrow-svg-animated.component";
 import { Img } from "@/features/unorganized-components/image-component/image.component";
-import { Container, Section } from "@/features/unorganized-components/nextgen-core-ui";
+import { Container, FlexCol, FlexRow, Section } from "@/features/unorganized-components/nextgen-core-ui";
 import Link from "next/link";
 
 interface ReferenceService {
@@ -58,8 +59,15 @@ const ServiceCard = ({ service }: { service: Service }) => {
           No Image
         </div>
       )}
-      <div className="absolute bottom-0 left-0 text-2xl bg-opacity-50 text-white p-4 pb-2 ">
+      <div className="absolute w-full  bottom-0 left-0 text-2xl bg-opacity-50 text-white p-4 pb-2 ">
+        <FlexRow className="justify-between items-center">
+          <FlexCol>
         {service.title}
+        </FlexCol>
+        <FlexCol>
+          <MultipleArrowSVGAnimated color="white" className=" h-6" />
+        </FlexCol>
+        </FlexRow>
 
       </div>
     </div>

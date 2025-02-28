@@ -37,6 +37,7 @@ export default async function BlogPost(props: {
   }
   return (
     <section>
+      {JSON.stringify(post)}
       <div className="container py-16 xl:py-20">
           {post.body && <PortableTextRenderer value={post.body} />}
       </div>

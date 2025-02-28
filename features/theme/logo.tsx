@@ -14,7 +14,7 @@ export type LogoProps = {
   
 };
 
-export default function Logo({  orangeColor = "#D76B01", nonOrangeColor = "black", className = "max-w-48" }: LogoProps) {
+export default function Logo({  orangeColor = "#D76B01", nonOrangeColor = "black", className = "max-w-56" }: LogoProps) {
   // Use the prop value to fill non-orange parts.
   const secondaryFill = nonOrangeColor;
 

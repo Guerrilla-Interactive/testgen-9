@@ -1,5 +1,4 @@
 import { groq } from "next-sanity";
-import { AllPostsBlockComponent, allPostsBlockQuery, allPostsBlockSchema } from "./blocks/all-posts-block";
 import { Carousel1BlockComponent, carousel1BlockQuery, carousel1BlockSchema } from "./blocks/carousel-block/carousel-1-block";
 import { Carousel2BlockComponent, carousel2BlockQuery, carousel2BlockSchema } from "./blocks/carousel-block/carousel-2-block";
 import { Cta1BlockComponent, cta1BlockQuery, cta1BlockSchema } from "./blocks/cta-blocks/cta-1-block";
@@ -27,6 +26,10 @@ import { Hero3BlockComponent, hero3BlockQuery, hero3BlockSchema } from "./blocks
 import { HeadingAndParagraphCenteredBlockComponent, headingAndParagraphCenteredBlockQuery, headingAndParagraphCenteredBlockSchema } from "./blocks/heading-and-paragraph-centered-block";
 import { ServiceGridBlockComponent, serviceGridBlockQuery, serviceGridBlockSchema } from "./blocks/service-grid-block";
 import { CoverMapBlockComponent, coverMapBlockQuery, coverMapBlockSchema } from "./blocks/cover-map-block";
+import { ContactInfoAndFormBlockComponent, contactInfoAndFormBlockQuery, contactInfoAndFormBlockSchema } from "./blocks/contact-info-and-form-block";
+import { OurValuesBlockComponent, ourValuesBlockQuery, ourValuesBlockSchema } from "./blocks/our-values-block";
+import { CourseSliderBlockComponent, courseSliderBlockQuery, courseSliderBlockSchema } from "./blocks/course-slider-block";
+import { Hero4BlockComponent, hero4BlockQuery, hero4BlockSchema } from "./blocks/hero-4-block";
 // ADD VALUE 1 ABOVE
 
 export const BlockDataMap: {
@@ -48,7 +51,6 @@ export const BlockDataMap: {
   "logo-cloud-1-block": { component: LogoCloud1BlockComponent, schema: logoCloud1BlockSchema, query: logoCloud1BlockQuery },
   "faqs-block": { component: FAQsBlockComponent, schema: faqsBlockSchema, query: faqsBlockQuery },
   "form-newsletter-block": { component: FormNewsletterBlockComponent, schema: formNewsletterBlockSchema, query: formNewsletterBlockQuery },
-  "all-posts-block": { component: AllPostsBlockComponent, schema: allPostsBlockSchema, query: allPostsBlockQuery },
   "split-content-block": { component: SplitContentBlockComponent, schema: splitContentBlockSchema, query: splitContentBlockQuery },
   "split-cards-list-block": { component: SplitCardsListBlockComponent, schema: splitCardsListBlockSchema, query: splitCardsListBlockQuery },
   "split-image-block": { component: SplitImageBlockComponent, schema: splitImageBlockSchema, query: splitImageBlockQuery },
@@ -60,11 +62,13 @@ export const BlockDataMap: {
   "grid-row-block":{ component: GridRowBlockComponent, schema: gridRowBlockSchema, query: gridRowBlockQuery },
   "pricing-card-block": { component: PricingCardBlockComponent, schema: pricingCardBlockSchema, query: pricingCardBlockQuery },
   "timeline-1-block": { component: Timeline1BlockComponent, schema: timeline1BlockSchema },
-  
-
-"heading-and-paragraph-centered-block": { component: HeadingAndParagraphCenteredBlockComponent, schema: headingAndParagraphCenteredBlockSchema, query: headingAndParagraphCenteredBlockQuery },
-"service-grid-block": { component: ServiceGridBlockComponent, schema: serviceGridBlockSchema, query: serviceGridBlockQuery },
-"cover-map-block": { component: CoverMapBlockComponent, schema: coverMapBlockSchema, query: coverMapBlockQuery },
+  "heading-and-paragraph-centered-block": { component: HeadingAndParagraphCenteredBlockComponent, schema: headingAndParagraphCenteredBlockSchema, query: headingAndParagraphCenteredBlockQuery },
+  "service-grid-block": { component: ServiceGridBlockComponent, schema: serviceGridBlockSchema, query: serviceGridBlockQuery },
+  "cover-map-block": { component: CoverMapBlockComponent, schema: coverMapBlockSchema, query: coverMapBlockQuery },
+  "contact-info-and-form-block": { component: ContactInfoAndFormBlockComponent, schema: contactInfoAndFormBlockSchema, query: contactInfoAndFormBlockQuery },
+  "our-values-block": { component: OurValuesBlockComponent, schema: ourValuesBlockSchema, query: ourValuesBlockQuery },
+  "course-slider-block": { component: CourseSliderBlockComponent, schema: courseSliderBlockSchema, query: courseSliderBlockQuery },
+  "hero-4-block": { component: Hero4BlockComponent, schema: hero4BlockSchema, query: hero4BlockQuery },
   // ADD VALUE 2 ABOVE
 };
 
@@ -74,33 +78,93 @@ export const getSanityPageBuilderBlocks = () =>
     .filter(([_, block]) => typeof block.query !== "undefined")
     .map(([blockType]) => ({ type: blockType }));
 
-export const allBlockSchemas = Object.values(BlockDataMap)
+export const allBlockSchemasAutomatic = Object.values(BlockDataMap)
   .filter((block) => block.schema !== undefined)
   .map((block) => block.schema);
 
 export const allBlockQueries: string = Object.values(BlockDataMap)
   .filter((block) => block.query !== undefined)
   .map((block) => block.query as string)
-  .join("\n");
+  .join(",\n");
 
-  
-export const pageBuilderQuery = groq`
+
+export const pageBuilderQueryAutomatic = groq`
 blocks[]{
   ${allBlockQueries}
-},
+}
+`;
+
+export const allBlockSchemas = Object.values(BlockDataMap)
+.filter((block) => block.schema !== undefined)
+.map((block) => block.schema);
+
+
+
+
+
+
+
+export const pageBuilderQuery = groq`
+blocks[]{
+  // Hero Blocks
+  ${hero1BlockQuery},
+  ${hero2BlockQuery},
+  ${hero3BlockQuery},
+  ${hero4BlockQuery},
+
+  // Section/Header Blocks
+  ${sectionHeaderBlockQuery},
+  ${headingAndParagraphCenteredBlockQuery},
+
+  // Carousel Blocks
+  ${carousel1BlockQuery},
+  ${carousel2BlockQuery},
+
+  // Timeline
+  ${timelineRowBlockQuery},
+
+  // Call to Action
+  ${cta1BlockQuery},
+
+  // Logo Cloud
+  ${logoCloud1BlockQuery},
+
+  // FAQs
+  ${faqsBlockQuery},
+
+  // Newsletter
+  ${formNewsletterBlockQuery},
+
+  // Split Blocks
+  ${splitRowBlockQuery},
+  ${splitContentBlockQuery},
+  ${splitCardsListBlockQuery},
+  ${splitImageBlockQuery},
+  ${splitInfoListBlockQuery},
+
+  // Grid Blocks
+  ${gridCardBlockQuery},
+  ${gridPostBlockQuery},
+  ${gridRowBlockQuery},
+
+  // Pricing
+  ${pricingCardBlockQuery},
+
+  // Service
+  ${serviceGridBlockQuery},
+
+  // Cover Map
+  ${coverMapBlockQuery},
+
+  // Contact Info
+  ${contactInfoAndFormBlockQuery},
+
+  // Our Values
+  ${ourValuesBlockQuery},
+
+  // Course Slider
+  ${courseSliderBlockQuery},
+}
 `;
 
 
-export default function Blocks({ blocks }: { blocks?: Sanity.Block[] }) {
-  if (!blocks) return null;
-  return (
-    <>
-      {blocks.map((block, index) => {
-        const key = block._key || index;
-        const Component = BlockDataMap[block._type]?.component;
-        if (!Component) return <div data-type={block._type} key={key} />;
-        return <Component {...block} key={key} />;
-      })}
-    </>
-  );
-}

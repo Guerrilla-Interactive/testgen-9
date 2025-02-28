@@ -4,7 +4,7 @@ import { internalLinkSchema } from "@/sanity/type-organized-schemas/fields/inter
 
 const fieldSchemas = {
   externalLinkSchema,
-  internalLinkSchema,
+  internalLinkSchema
 };
 
 export const allFieldSchemas = Object.values(fieldSchemas);

@@ -88,7 +88,7 @@ migratePageDocs()
 
 updatePageSlugDocs()
   .then(() => {
-    console.log("Page-slug update completed successfully!");
+    console.log("page-slug update completed successfully!");
     process.exit(0);
   })
   .catch((error) => {

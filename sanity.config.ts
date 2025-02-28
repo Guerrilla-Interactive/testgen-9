@@ -1,4 +1,4 @@
-"use client";
+
 
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...tool]]/page.tsx` route
@@ -9,6 +9,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { presentationTool } from "sanity/presentation";
 import { media } from "sanity-plugin-media";
+import { iconify } from 'sanity-plugin-iconify';
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
@@ -35,5 +36,16 @@ export default defineConfig({
     }),
     visionTool({ defaultApiVersion: apiVersion }),
     media(),
+    iconify({
+      // Optional configuration
+  
+      // Filter icons by collection for all Icon fields (this field has typed autocomplete ✨)
+      // Defaults to empty array (all collections)
+      collections: [ "mi"],
+  
+      // Shows the selected icon name and collection underneath the icon picker
+      // Defaults to false
+      showName: false,
+    }),
   ],
 });

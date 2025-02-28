@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+// @sanity-typegen-ignore
 const splitCardsListBlockQuery = groq`
   _type == "split-cards-list-block" => {
     _type,
@@ -25,7 +26,7 @@ const splitCardsListBlockQuery = groq`
         }
       },
     },
-  },
+  }
 `;
 
 export default splitCardsListBlockQuery; 

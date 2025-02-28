@@ -27,7 +27,7 @@ export default async function CoverMapBlockComponent(props: Partial<CoverMapProp
 
   return (
     <>
-      <div className="h-[500px] w-full mt-16">
+      <div className="h-[500px] w-full">
         <MapboxMapCover center={mapCenter} zoom={zoom} />
       </div>
       </>

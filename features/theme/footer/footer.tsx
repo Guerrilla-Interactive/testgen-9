@@ -1,15 +1,11 @@
 import Link from "next/link";
 import Logo from "../logo";
-import {
-  Container,
-  FlexCol,
-  FlexRow,
-  InnerSection,
-  Section,
-} from "../../unorganized-components/nextgen-core-ui";
+
 import RepeatingSvgBanner from "../../unorganized-components/repeating-svg-banner";
 import { Facebook, LinkedIn, Instagram } from "@mui/icons-material";
-import { TripleArrowSVG } from "./footer-components/triple-arrow-svg.component";
+import { Container, FlexCol, FlexRow, InnerSection, Section } from "@/features/unorganized-components/nextgen-core-ui";
+import { MultipleArrowSVGAnimated } from "@/features/unorganized-components/arrow-svg/multiple-arrow-svg-animated.component";
+import { MultipleArrowSVG } from "@/features/unorganized-components/arrow-svg/multiple-arrow-svg.component";
 
 
 const navItems = [
@@ -49,7 +45,7 @@ export default function Footer() {
                 </h4>
               </FlexCol>
               <FlexCol className="justify-self-end">
-                <TripleArrowSVG className="h-[6rem]" />
+                <MultipleArrowSVG className="h-[6rem]" amount={3} />
               </FlexCol>
             </FlexRow>
           </Container>
