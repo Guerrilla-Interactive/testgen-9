@@ -274,3 +274,9 @@
 
 
 
+img[data-lqip] {
+  aspect-ratio: var(--inherent-aspect-ratio);
+}
+img.sanity-image {
+  object-position: var(--hotspot-position);
+}

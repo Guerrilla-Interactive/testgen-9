@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useGlobalContext } from "@/features/context/global-context";
 import { Img, type ImageQuery } from "@/features/unorganized-components/image-component/image.component";
-import { Container } from "@/features/unorganized-components/nextgen-core-ui";
+import { Absolute, Container, Relative, Section } from "@/features/unorganized-components/nextgen-core-ui";
 import { Hero4Block } from "@/sanity.types";
 
 
@@ -27,18 +27,22 @@ export default function Hero4BlockComponent(props: Partial<Hero4Block>) {
   const [shouldAnimate] = useState(!sessionLoaded);
 
   return (
-    <div className="relative w-full h-[30vh] md:h-[40vh] overflow-hidden">
+
+    <>
+    <Section className="h-[30rem] relative">
+    <Absolute className="absolute left-0 top-0 w-screen h-full overflow-hidden">
+      <Relative className="w-full h-full  bg-amber-600">
       {backgroundImage && (
          <Img
          {...backgroundImage}
          cover
+         className="w-full h-full object-fit"
          eager
-         className={`absolute inset-0 w-full h-full object-cover ${shouldAnimate ? 'animate-scale-in-bg' : ''}`}
          sizes={{ md: "full" }}
        />
+       
      )}
-
-  {showOverlay && (
+       {showOverlay && (
         <div
           className="absolute inset-0"
           style={{
@@ -52,9 +56,7 @@ export default function Hero4BlockComponent(props: Partial<Hero4Block>) {
           }}
         />
       )}
-      
-      {/* Content Section: Centered Content */}
-      <div className="absolute inset-0 flex items-center">
+          <div className="absolute inset-0 flex items-center">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             {pretitle && (
@@ -75,6 +77,15 @@ export default function Hero4BlockComponent(props: Partial<Hero4Block>) {
           </div>
         </Container>
       </div>
-    </div>
+     </Relative>
+     </Absolute>
+     </Section>
+
+
+      
+      {/* Content Section: Centered Content */}
+  
+    
+    </>
   );
 }
