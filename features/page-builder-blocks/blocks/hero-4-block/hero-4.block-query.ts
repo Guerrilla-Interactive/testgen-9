@@ -5,7 +5,6 @@ import { groq } from "next-sanity";
 const hero4BlockQuery = groq`
   _type == "hero-4-block" => {
     _type,
-    pretitle,
     title,
     description,
     showOverlay,

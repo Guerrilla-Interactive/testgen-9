@@ -49,11 +49,12 @@ type ImgProps = ImageQuery & {
   className?: string;
   showCaption?: boolean;
   cover?: boolean;
+  topImage?: boolean;
 };
 
 
 export const Img = (props: ImgProps) => {
-  const { asset, showCaption, className, width, height, crop, hotspot, cover, darkScore } = props;
+  const { asset, showCaption, className, width, height, crop, hotspot, cover, darkScore, topImage = undefined } = props;
   const { description } = asset ?? {};
 
   if (!asset?._id) return null;
@@ -64,6 +65,7 @@ export const Img = (props: ImgProps) => {
     <figure
       className={cn(className)}
       data-palette={darkScore}
+      data-top-image={topImage == undefined ? "potentially" : topImage ? "true" : "false"}
       data-cover={cover ? "true" : "false"}
       style={
         {

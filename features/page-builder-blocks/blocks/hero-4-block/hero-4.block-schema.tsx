@@ -9,12 +9,6 @@ export default defineType({
   icon: Newspaper,
   fields: [
     defineField({
-      title: "Pre-title",
-      name: "pretitle",
-      type: "string",
-      description: "Smaller text displayed above the main title",
-    }),
-    defineField({
       title: "Title",
       name: "title",
       type: "string",

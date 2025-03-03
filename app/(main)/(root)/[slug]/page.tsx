@@ -1,13 +1,16 @@
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/features/unorganized-utils/metadata";
-import { Blocks } from "@/features/page-builder-blocks/block-indexer";
 import { fetchSanityPageBySlug, fetchSanityPagesStaticParams } from "./page-slug.server-actions";
+
+import { Blocks } from "@/features/page-builder-blocks/block-component-exporter";
 
 
 
 
 export async function generateStaticParams() {
   const pages = await fetchSanityPagesStaticParams();
+
+  
 
   return pages.map((page: Sanity.Page) => ({
     slug: page.slug?.current,
@@ -37,5 +40,9 @@ export default async function Page(props: {
     notFound();
   }
 
-  return <Blocks blocks={page?.blocks ?? []} />;
+  return (<>
+  
+  <Blocks blocks={page?.blocks} />
+  </>
+  );
 }

@@ -28,6 +28,14 @@ export default defineType({
       group: "content",
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: "customTitle",
+      title: "Custom Title",
+      type: "string",
+      group: "settings",
+    }),
+
     defineField({
       name: "slug",
       title: "Slug",
@@ -39,6 +47,7 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: "featuredImage",
       title: "Featured Image",
@@ -47,6 +56,19 @@ export default defineType({
       options: {
         hotspot: true,
       },
+    }),
+
+    defineField({
+      name: "body",
+      title: "Text Content",
+      type: "block-content",
+      
+    }),
+    defineField({
+      name: "customContactForm",
+      title: "Custom Contact Form",
+      type: "custom-contact-form-block",
+      group: "content",
     }),
     defineField({
       name: "excerpt",

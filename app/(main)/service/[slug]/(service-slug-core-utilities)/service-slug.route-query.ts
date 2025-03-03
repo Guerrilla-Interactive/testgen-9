@@ -1,4 +1,5 @@
-import { ImageQuery } from "@/features/unorganized-components/image-component/image.component";
+import { customContactFormBlockQueryDetails } from "@/features/page-builder-blocks/blocks/custom-contact-form-block/custom-contact-form.block-query";
+import blockContentQuery from "@/features/page-builder-blocks/shared/shared-schemas/block-content/block-content.query";
 import { imageQuery } from "@/features/unorganized-components/image-component/image.query";
 import { groq } from "next-sanity";
 
@@ -21,8 +22,17 @@ export const GET_ALL_SERVICE_PAGES_QUERY = groq`
 export const GET_SERVICE_PAGE_BY_ROUTE_QUERY = groq`
   *[_type == "service-slug" && slug.current == $slug][0]{
     title,
+    customTitle,
     slug,
+    "headerColor": "dark",
+    excerpt,
     _createdAt,
+    customContactForm{
+      ${customContactFormBlockQueryDetails}
+    },
+    body[]{
+      ${blockContentQuery}
+    },
     _updatedAt,
     featuredImage{
       ${imageQuery}

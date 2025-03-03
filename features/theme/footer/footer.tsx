@@ -6,6 +6,7 @@ import { Facebook, LinkedIn, Instagram } from "@mui/icons-material";
 import { Container, FlexCol, FlexRow, InnerSection, Section } from "@/features/unorganized-components/nextgen-core-ui";
 import { MultipleArrowSVGAnimated } from "@/features/unorganized-components/arrow-svg/multiple-arrow-svg-animated.component";
 import { MultipleArrowSVG } from "@/features/unorganized-components/arrow-svg/multiple-arrow-svg.component";
+import { CoverMapBlockComponent } from "@/features/page-builder-blocks/blocks/cover-map-block";
 
 
 const navItems = [
@@ -32,6 +33,16 @@ export default function Footer() {
   };
 
   return (
+
+    <>
+        <CoverMapBlockComponent 
+    center={{
+      lat: 60.0093439,
+      lng: 10.9797227,
+      _type: "geopoint",
+    }}
+    
+    />
     <footer>
       <RepeatingSvgBanner />
       <Section className="py-12 bg-[#D76B01]">
@@ -50,7 +61,7 @@ export default function Footer() {
             </FlexRow>
           </Container>
         </InnerSection>
-
+  
         <InnerSection id="Kontakt">
           <Container>
             <FlexRow className="justify-between py-32">
@@ -173,6 +184,7 @@ export default function Footer() {
         </InnerSection>
       </Section>
     </footer>
+    </>
   );
 }
 

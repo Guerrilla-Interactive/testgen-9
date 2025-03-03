@@ -6,8 +6,8 @@ export const DEFAULT_PADDING = {
 };
 
 export interface ISectionPadding {
-  top: boolean;
-  bottom: boolean;
+  top: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  bottom: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 }
 
 export interface ISectionContainer {
@@ -34,10 +34,13 @@ export default function SectionContainer({
     <div
       className={cn(
         `bg-${color} relative`,
-        padding?.top ? "pt-16 xl:pt-20" : undefined,
-        padding?.bottom ? "pb-16 xl:pb-20" : undefined,
         className
       )}
+
+      style={{
+        paddingTop: padding?.top ? `${padding.top * 4}px` : undefined,
+        paddingBottom: padding?.bottom ? `${padding.bottom * 4}px` : undefined,
+      }}
     >
       <div className="container">{children}</div>
     </div>
