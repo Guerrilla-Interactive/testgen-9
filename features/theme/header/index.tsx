@@ -70,7 +70,7 @@ export default function Header(props: any) {
   return (
     <header
       className={cn(
-        "absolute top-0 w-full border-border/40 z-50  ",
+        "absolute top-0 w-full border-border/40 z-50 transition-all duration-100  ",
         !isTopDark ? "text-black" : "text-white",
         !sessionLoaded && "animate-fade-down-slow"
       )}

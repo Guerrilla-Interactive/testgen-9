@@ -104,6 +104,81 @@ export type MetadataSettings = {
   };
 };
 
+export type FooterSettings = {
+  _id: string;
+  _type: "footerSettings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  blocks?: Array<{
+    _key: string;
+  } & Hero1Block | {
+    _key: string;
+  } & Hero2Block | {
+    _key: string;
+  } & Hero3Block | {
+    _key: string;
+  } & SectionHeaderBlock | {
+    _key: string;
+  } & SplitRowBlock | {
+    _key: string;
+  } & Carousel1Block | {
+    _key: string;
+  } & Carousel2Block | {
+    _key: string;
+  } & TimelineRowBlock | {
+    _key: string;
+  } & Cta1Block | {
+    _key: string;
+  } & LogoCloud1Block | {
+    _key: string;
+  } & FaqsBlock | {
+    _key: string;
+  } & FormNewsletterBlock | {
+    _key: string;
+  } & SplitContentBlock | {
+    _key: string;
+  } & SplitCardsListBlock | {
+    _key: string;
+  } & SplitImageBlock | {
+    _key: string;
+  } & SplitInfoListBlock | {
+    _key: string;
+  } & GridCardBlock | {
+    _key: string;
+  } & GridPostBlock | {
+    _key: string;
+  } & GridRowBlock | {
+    _key: string;
+  } & PricingCardBlock | {
+    _key: string;
+  } & HeadingAndParagraphCenteredBlock | {
+    _key: string;
+  } & ServiceGridBlock | {
+    _key: string;
+  } & CoverMapBlock | {
+    _key: string;
+  } & ContactInfoAndFormBlock | {
+    _key: string;
+  } & OurValuesBlock | {
+    _key: string;
+  } & CourseSliderBlock | {
+    _key: string;
+  } & Hero4Block | {
+    _key: string;
+  } & Hero5Block | {
+    _key: string;
+  } & CustomContactFormBlock>;
+  ctaText?: string;
+  infoText?: string;
+  contactInfo?: string;
+  socialMediaLinks?: Array<{
+    platform?: string;
+    url?: string;
+    _key: string;
+  }>;
+};
+
 export type Hero5Block = {
   _type: "hero-5-block";
   image?: {
@@ -1193,7 +1268,7 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | SiteSettings | MetadataSettings | Hero5Block | Hero4Block | CourseSliderBlock | OurValuesBlock | ContactInfoAndFormBlock | CoverMapBlock | Geopoint | ServiceGridBlock | HeadingAndParagraphCenteredBlock | Timeline1Block | PricingCardBlock | GridRowBlock | GridPostBlock | GridCardBlock | SplitInfoItemBlock | SplitCardsItemBlock | SplitInfoListBlock | SplitImageBlock | SplitCardsListBlock | SplitContentBlock | FormNewsletterBlock | FaqsBlock | LogoCloud1Block | Cta1Block | TimelineRowBlock | Carousel2Block | Carousel1Block | SplitRowBlock | SectionHeaderBlock | Hero3Block | Hero2Block | Hero1Block | InternalLink | ExternalLink | ButtonVariant | SectionPadding | ColorVariant | Link | BlockContent | CourseSlug | ServiceSlug | CustomContactFormBlock | BlogSlug | PageSlug | Testimonial | Faq | Category | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Dummy | Icon | MediaTag | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | SiteSettings | MetadataSettings | FooterSettings | Hero5Block | Hero4Block | CourseSliderBlock | OurValuesBlock | ContactInfoAndFormBlock | CoverMapBlock | Geopoint | ServiceGridBlock | HeadingAndParagraphCenteredBlock | Timeline1Block | PricingCardBlock | GridRowBlock | GridPostBlock | GridCardBlock | SplitInfoItemBlock | SplitCardsItemBlock | SplitInfoListBlock | SplitImageBlock | SplitCardsListBlock | SplitContentBlock | FormNewsletterBlock | FaqsBlock | LogoCloud1Block | Cta1Block | TimelineRowBlock | Carousel2Block | Carousel1Block | SplitRowBlock | SectionHeaderBlock | Hero3Block | Hero2Block | Hero1Block | InternalLink | ExternalLink | ButtonVariant | SectionPadding | ColorVariant | Link | BlockContent | CourseSlug | ServiceSlug | CustomContactFormBlock | BlogSlug | PageSlug | Testimonial | Faq | Category | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Dummy | Icon | MediaTag | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./app/(main)/(root)/(index)/page-index.route-query.ts
 // Variable: GET_FRONT_PAGE_QUERY
@@ -3516,6 +3591,1029 @@ export type GetAllCategoriesQueryResult = never;
 // Query: faqs[]->{    _id,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },  }
 export type GetAllReferencedFaqsQueryResult = never;
 
+// Source: ./sanity/desk-organized-sanity-utilities/settings/footer-settings/footer-settings.query.ts
+// Variable: footerSettingsQuery
+// Query: *[_type == "footerSettings"][0] {    blocks[]{  // Hero Blocks    _type == "hero-1-block" => {    _type,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },    links,  },    _type == "hero-2-block" => {    _type,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    links,  },    _type == "hero-3-block" => {    _type,    titleOrange,    titleWhite,    subtitle,    backgroundImage{          crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }    },    showOverlay,    topOverlayStrength,    upperCenterOverlayStrength,    lowerCenterOverlayStrength,    bottomOverlayStrength,  },    _type == "hero-4-block" => {    _type,    title,    description,    showOverlay,    backgroundImage{          crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }    },    topOverlayStrength,    upperCenterOverlayStrength,    lowerCenterOverlayStrength,    bottomOverlayStrength,  },  // Section/Header Blocks    _type == "section-header-block" => {    _type,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    description,    link,  },    _type == "heading-and-paragraph-centered-block" => {    _type,    heading,    paragraph,  },  // Carousel Blocks    _type == "carousel-1-block" => {    _type,    padding,    colorVariant,    size,    orientation,    indicators,    images[]{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    }  },    _type == "carousel-2-block" => {    _type,    padding,    colorVariant,    testimonial[]->{    _id,    name,    title,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }    },      alt    },  },      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },      rating,    },  // Timeline    _type == "timeline-row-block" => {    _type,    padding,    colorVariant,    timelines[]{      title,      tagLine,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },    },  },  // Call to Action    _type == "cta-1-block" => {    _type,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    links,  },  // Logo Cloud    _type == "logo-cloud-1-block" => {    _type,    padding,    colorVariant,    title,    images[]{      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      },      alt    },  },  // FAQs    _type == "faqs-block" => {    _type,    padding,    colorVariant,    faqs[]->{    _id,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },  },  },  // Newsletter    _type == "form-newsletter-block" => {    _type,    padding,    colorVariant,    stackAlign,    consentText,    buttonText,    successMessage,  },  // Split Blocks    _type == "split-row-block" => {    _type,    padding,    colorVariant,    noGap,    splitColumns[]{        _type == "split-content-block" => {    _type,    sticky,    padding,    colorVariant,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    link,  },        _type == "split-cards-list-block" => {    _type,    list[]{      tagLine,      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },    },  },        _type == "split-image-block" => {    _type,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },  },        _type == "split-info-list-block" => {    _type,    list[]{      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },      tags[],    },  },    },  },    _type == "split-content-block" => {    _type,    sticky,    padding,    colorVariant,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    link,  },    _type == "split-cards-list-block" => {    _type,    list[]{      tagLine,      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },    },  },    _type == "split-image-block" => {    _type,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },  },    _type == "split-info-list-block" => {    _type,    list[]{      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },      tags[],    },  },  // Grid Blocks    _type == "grid-card-block" => {    _type,    title,    excerpt,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },    link,  },    _type == "grid-post-block" => {    _type,    ...post->{      title,      slug,      excerpt,      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      categories[]->{        title,      },    },  },    _type == "grid-row-block" => {    _type,    padding,    colorVariant,    gridColumns,    columns[]{        _type == "grid-card-block" => {    _type,    title,    excerpt,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },    link,  },        _type == "pricing-card-block" => {    _type,    title,    tagLine,    price,    list[],    excerpt,    link,  },        _type == "grid-post-block" => {    _type,    ...post->{      title,      slug,      excerpt,      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      categories[]->{        title,      },    },  },    },  },  // Pricing    _type == "pricing-card-block" => {    _type,    title,    tagLine,    price,    list[],    excerpt,    link,  },  // Service    _type == "service-grid-block" => {    _type,    services[]{      _type == "manualService" => {         title,         link,         featuredImage{               crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }         }      },      _type != "manualService" => @->{         _id,         title,         slug,         excerpt,         featuredImage{               crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }         }      }    },  },  // Cover Map    _type == "cover-map-block" => {    _type,    center,    zoom,  },  // Contact Info    _type == "contact-info-and-form-block" => {    _type,    padding,    colorVariant,    contactHeading,    contactDescription,    contactEmail,    contactPhone,    contactAddress,    formHeading,    buttonText,    successMessage,    },  // Our Values    _type == "our-values-block" => {    _type,    values  },  // Course Slider    _type == "course-slider-block" => {    _type,    title,    courses[]->{      _id,      title,      "slug": slug.current,      image,      excerpt,    }  },  _type == "hero-5-block" => {    _type,    image{          crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }    },  },  // ADD VALUE 3 ABOVE},    ctaText,    infoText,    contactInfo,    socialMediaLinks[] {      platform,      url    }  }
+export type FooterSettingsQueryResult = {
+  blocks: Array<{
+    _type: "carousel-1-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    size: "one" | "three" | "two" | null;
+    orientation: null;
+    indicators: "count" | "dots" | "none" | null;
+    images: Array<{
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      alt: string | null;
+    }> | null;
+  } | {
+    _type: "carousel-2-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    testimonial: Array<{
+      _id: string;
+      name: string | null;
+      title: string | null;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: null;
+      } | null;
+    }> | null;
+    body: null;
+    rating: null;
+  } | {
+    _type: "contact-info-and-form-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    contactHeading: string | null;
+    contactDescription: string | null;
+    contactEmail: string | null;
+    contactPhone: string | null;
+    contactAddress: string | null;
+    formHeading: string | null;
+    buttonText: string | null;
+    successMessage: string | null;
+  } | {
+    _type: "course-slider-block";
+    title: string | null;
+    courses: Array<{
+      _id: string;
+      title: string | null;
+      slug: string | null;
+      image: null;
+      excerpt: string | null;
+    }> | null;
+  } | {
+    _type: "cover-map-block";
+    center: Geopoint | null;
+    zoom: number | null;
+  } | {
+    _type: "cta-1-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    sectionWidth: "default" | "narrow" | null;
+    stackAlign: "center" | "left" | null;
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+    }> | null;
+    links: Array<{
+      _key: string;
+    } & Link> | null;
+  } | {
+    _type: "faqs-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    faqs: Array<{
+      _id: string;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+    }> | null;
+  } | {
+    _type: "form-newsletter-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    stackAlign: "center" | "left" | null;
+    consentText: string | null;
+    buttonText: string | null;
+    successMessage: string | null;
+  } | {
+    _type: "grid-card-block";
+    title: string | null;
+    excerpt: string | null;
+    image: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      alt: string | null;
+    } | null;
+    link: Link | null;
+  } | {
+    _type: "grid-post-block";
+    title: string | null;
+    slug: Slug | null;
+    excerpt: string | null;
+    image: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      alt: string | null;
+    } | null;
+    categories: Array<{
+      title: string | null;
+    }> | null;
+  } | {
+    _type: "grid-post-block";
+  } | {
+    _type: "grid-row-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    gridColumns: "grid-cols-2" | "grid-cols-3" | "grid-cols-4" | null;
+    columns: Array<{
+      _type: "grid-card-block";
+      title: string | null;
+      excerpt: string | null;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+      link: Link | null;
+    } | {
+      _type: "grid-post-block";
+      title: string | null;
+      slug: Slug | null;
+      excerpt: string | null;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+      categories: Array<{
+        title: string | null;
+      }> | null;
+    } | {
+      _type: "grid-post-block";
+    } | {
+      _type: "pricing-card-block";
+      title: string | null;
+      tagLine: string | null;
+      price: {
+        value?: number;
+        period?: string;
+      } | null;
+      list: Array<string> | null;
+      excerpt: string | null;
+      link: Link | null;
+    }> | null;
+  } | {
+    _type: "heading-and-paragraph-centered-block";
+    heading: string | null;
+    paragraph: string | null;
+  } | {
+    _type: "hero-1-block";
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+    }> | null;
+    image: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      alt: string | null;
+    } | null;
+    links: Array<{
+      _key: string;
+    } & Link> | null;
+  } | {
+    _type: "hero-2-block";
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+    }> | null;
+    links: Array<{
+      _key: string;
+    } & Link> | null;
+  } | {
+    _type: "hero-3-block";
+    titleOrange: string | null;
+    titleWhite: string | null;
+    subtitle: string | null;
+    backgroundImage: {
+      crop: SanityImageCrop | null;
+      hotspot: SanityImageHotspot | null;
+      darkScore: number | NaN;
+      asset: {
+        _id: string;
+        title: string | null;
+        altText: string | null;
+        description: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            aspectRatio: number | null;
+            width: number | null;
+            height: number | null;
+          } | null;
+          palette: {
+            dominant: {
+              background: string | null;
+              foreground: string | null;
+              population: number | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    } | null;
+    showOverlay: boolean | null;
+    topOverlayStrength: number | null;
+    upperCenterOverlayStrength: number | null;
+    lowerCenterOverlayStrength: number | null;
+    bottomOverlayStrength: number | null;
+  } | {
+    _type: "hero-4-block";
+    title: string | null;
+    description: string | null;
+    showOverlay: boolean | null;
+    backgroundImage: {
+      crop: SanityImageCrop | null;
+      hotspot: SanityImageHotspot | null;
+      darkScore: number | NaN;
+      asset: {
+        _id: string;
+        title: string | null;
+        altText: string | null;
+        description: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            aspectRatio: number | null;
+            width: number | null;
+            height: number | null;
+          } | null;
+          palette: {
+            dominant: {
+              background: string | null;
+              foreground: string | null;
+              population: number | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    } | null;
+    topOverlayStrength: number | null;
+    upperCenterOverlayStrength: number | null;
+    lowerCenterOverlayStrength: number | null;
+    bottomOverlayStrength: number | null;
+  } | {
+    _type: "hero-5-block";
+    image: {
+      crop: SanityImageCrop | null;
+      hotspot: SanityImageHotspot | null;
+      darkScore: number | NaN;
+      asset: {
+        _id: string;
+        title: string | null;
+        altText: string | null;
+        description: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            aspectRatio: number | null;
+            width: number | null;
+            height: number | null;
+          } | null;
+          palette: {
+            dominant: {
+              background: string | null;
+              foreground: string | null;
+              population: number | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    } | null;
+  } | {
+    _type: "logo-cloud-1-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    title: string | null;
+    images: Array<{
+      asset: {
+        _id: string;
+        url: string | null;
+        metadata: {
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      alt: string | null;
+    }> | null;
+  } | {
+    _type: "our-values-block";
+    values: Array<{
+      icon?: Icon;
+      title?: string;
+      description?: string;
+      _type: "value";
+      _key: string;
+    }> | null;
+  } | {
+    _type: "pricing-card-block";
+    title: string | null;
+    tagLine: string | null;
+    price: {
+      value?: number;
+      period?: string;
+    } | null;
+    list: Array<string> | null;
+    excerpt: string | null;
+    link: Link | null;
+  } | {
+    _type: "section-header-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    sectionWidth: "default" | "narrow" | null;
+    stackAlign: "center" | "left" | null;
+    tagLine: string | null;
+    title: string | null;
+    description: string | null;
+    link: null;
+  } | {
+    _type: "service-grid-block";
+    services: Array<{
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+      excerpt: string | null;
+      featuredImage: {
+        crop: SanityImageCrop | null;
+        hotspot: SanityImageHotspot | null;
+        darkScore: number | NaN;
+        asset: {
+          _id: string;
+          title: string | null;
+          altText: string | null;
+          description: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              aspectRatio: number | null;
+              width: number | null;
+              height: number | null;
+            } | null;
+            palette: {
+              dominant: {
+                background: string | null;
+                foreground: string | null;
+                population: number | null;
+              } | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    } | {
+      title: string | null;
+      link: string | null;
+      featuredImage: {
+        crop: SanityImageCrop | null;
+        hotspot: SanityImageHotspot | null;
+        darkScore: number | NaN;
+        asset: {
+          _id: string;
+          title: string | null;
+          altText: string | null;
+          description: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              aspectRatio: number | null;
+              width: number | null;
+              height: number | null;
+            } | null;
+            palette: {
+              dominant: {
+                background: string | null;
+                foreground: string | null;
+                population: number | null;
+              } | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    }> | null;
+  } | {
+    _type: "split-cards-list-block";
+    list: Array<{
+      tagLine: string | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+    }> | null;
+  } | {
+    _type: "split-content-block";
+    sticky: boolean | null;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+    }> | null;
+    link: Link | null;
+  } | {
+    _type: "split-image-block";
+    image: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      alt: string | null;
+    } | null;
+  } | {
+    _type: "split-info-list-block";
+    list: Array<{
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+      tags: Array<string> | null;
+    }> | null;
+  } | {
+    _type: "split-row-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    noGap: boolean | null;
+    splitColumns: Array<{
+      _type: "split-cards-list-block";
+      list: Array<{
+        tagLine: string | null;
+        title: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+        }> | null;
+      }> | null;
+    } | {
+      _type: "split-content-block";
+      sticky: boolean | null;
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      tagLine: string | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+      link: Link | null;
+    } | {
+      _type: "split-image-block";
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+    } | {
+      _type: "split-info-list-block";
+      list: Array<{
+        image: {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          alt: string | null;
+        } | null;
+        title: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+        }> | null;
+        tags: Array<string> | null;
+      }> | null;
+    }> | null;
+  } | {
+    _type: "timeline-row-block";
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+    timelines: Array<{
+      title: string | null;
+      tagLine: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+    }> | null;
+  } | {}> | null;
+  ctaText: string | null;
+  infoText: string | null;
+  contactInfo: string | null;
+  socialMediaLinks: Array<{
+    platform: string | null;
+    url: string | null;
+  }> | null;
+} | null;
+
 // Source: ./sanity/desk-organized-sanity-utilities/settings/menu-settings/menu-settings.query.ts
 // Variable: menuSettingsQuery
 // Query: *[_type == "menuSettings"][0] {    mainMenu[] {        "_ts": "LinksQuery",  _key,  _type == "internalLinkObject" => {  "_ts": "InternalLinkQuery",  "linkType": "internal",  ...(internalLink-> {    "title": coalesce(      ^.customTitle,      title,      name    ),    "slug": slug.current,    _type  }),  description},  _type == "link" => {  "_ts": "ExternalLinkQuery",  "linkType": "external",  "title": coalesce(    customTitle,    href  ),  "url": href,  description},  _type == "downloadLinkObject" => {  "_ts": "DownloadLinkQuery",  "linkType": "download",  "title": coalesce(      customTitle,      file.asset->originalFilename    ),  "url": file.asset->url,  description},  _type == "linkGroup" => {  "_ts": "LinkGroupQuery",  "linkType": "linkGroup",  title,  links[] {    _key,    _type == "internalLinkObject" => {  "_ts": "InternalLinkQuery",  "linkType": "internal",  ...(internalLink-> {    "title": coalesce(      ^.customTitle,      title,      name    ),    "slug": slug.current,    _type  }),  description},    _type == "link" => {  "_ts": "ExternalLinkQuery",  "linkType": "external",  "title": coalesce(    customTitle,    href  ),  "url": href,  description}  }}      }  }
@@ -3540,13 +4638,1032 @@ export type MetadataSettingsQueryResult = {
 
 // Source: ./sanity/desk-organized-sanity-utilities/settings/settings.query.ts
 // Variable: settingsQuery
-// Query: {  "siteSettings":   *[_type == "siteSettings"][0] {    privacyPolicyPage-> {      "slug": slug.current,      title    },  },  "menuSettings":   *[_type == "menuSettings"][0] {    mainMenu[] {        "_ts": "LinksQuery",  _key,  _type == "internalLinkObject" => {  "_ts": "InternalLinkQuery",  "linkType": "internal",  ...(internalLink-> {    "title": coalesce(      ^.customTitle,      title,      name    ),    "slug": slug.current,    _type  }),  description},  _type == "link" => {  "_ts": "ExternalLinkQuery",  "linkType": "external",  "title": coalesce(    customTitle,    href  ),  "url": href,  description},  _type == "downloadLinkObject" => {  "_ts": "DownloadLinkQuery",  "linkType": "download",  "title": coalesce(      customTitle,      file.asset->originalFilename    ),  "url": file.asset->url,  description},  _type == "linkGroup" => {  "_ts": "LinkGroupQuery",  "linkType": "linkGroup",  title,  links[] {    _key,    _type == "internalLinkObject" => {  "_ts": "InternalLinkQuery",  "linkType": "internal",  ...(internalLink-> {    "title": coalesce(      ^.customTitle,      title,      name    ),    "slug": slug.current,    _type  }),  description},    _type == "link" => {  "_ts": "ExternalLinkQuery",  "linkType": "external",  "title": coalesce(    customTitle,    href  ),  "url": href,  description}  }}      }  },  "metadataSettings":   *[_type == "metadataSettings"][0] {      "metadata": {    "_ts": "MetadataQuery",    "title": coalesce(metadata.title, title, name),    "desc": coalesce(metadata.desc, excerpt),    "image": select(      defined(metadata.image.asset._ref) => metadata.image {          "id": asset._ref,  altText      },      defined(image.asset._ref) => image {          "id": asset._ref,  altText      },      defined(coverImage.asset._ref) => coverImage {          "id": asset._ref,  altText      },      defined(hero.image.asset._ref) => hero.image {          "id": asset._ref,  altText      }    ),    "tags": metadata.tags,    "noIndex": metadata.noIndex  }  },}
+// Query: {  "siteSettings":   *[_type == "siteSettings"][0] {    privacyPolicyPage-> {      "slug": slug.current,      title    },  },  "footerSettings":   *[_type == "footerSettings"][0] {    blocks[]{  // Hero Blocks    _type == "hero-1-block" => {    _type,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },    links,  },    _type == "hero-2-block" => {    _type,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    links,  },    _type == "hero-3-block" => {    _type,    titleOrange,    titleWhite,    subtitle,    backgroundImage{          crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }    },    showOverlay,    topOverlayStrength,    upperCenterOverlayStrength,    lowerCenterOverlayStrength,    bottomOverlayStrength,  },    _type == "hero-4-block" => {    _type,    title,    description,    showOverlay,    backgroundImage{          crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }    },    topOverlayStrength,    upperCenterOverlayStrength,    lowerCenterOverlayStrength,    bottomOverlayStrength,  },  // Section/Header Blocks    _type == "section-header-block" => {    _type,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    description,    link,  },    _type == "heading-and-paragraph-centered-block" => {    _type,    heading,    paragraph,  },  // Carousel Blocks    _type == "carousel-1-block" => {    _type,    padding,    colorVariant,    size,    orientation,    indicators,    images[]{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    }  },    _type == "carousel-2-block" => {    _type,    padding,    colorVariant,    testimonial[]->{    _id,    name,    title,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }    },      alt    },  },      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },      rating,    },  // Timeline    _type == "timeline-row-block" => {    _type,    padding,    colorVariant,    timelines[]{      title,      tagLine,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },    },  },  // Call to Action    _type == "cta-1-block" => {    _type,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    links,  },  // Logo Cloud    _type == "logo-cloud-1-block" => {    _type,    padding,    colorVariant,    title,    images[]{      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      },      alt    },  },  // FAQs    _type == "faqs-block" => {    _type,    padding,    colorVariant,    faqs[]->{    _id,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },  },  },  // Newsletter    _type == "form-newsletter-block" => {    _type,    padding,    colorVariant,    stackAlign,    consentText,    buttonText,    successMessage,  },  // Split Blocks    _type == "split-row-block" => {    _type,    padding,    colorVariant,    noGap,    splitColumns[]{        _type == "split-content-block" => {    _type,    sticky,    padding,    colorVariant,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    link,  },        _type == "split-cards-list-block" => {    _type,    list[]{      tagLine,      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },    },  },        _type == "split-image-block" => {    _type,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },  },        _type == "split-info-list-block" => {    _type,    list[]{      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },      tags[],    },  },    },  },    _type == "split-content-block" => {    _type,    sticky,    padding,    colorVariant,    tagLine,    title,    body[]{      ...,      _type == "image" => {        ...,        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        }      }    },    link,  },    _type == "split-cards-list-block" => {    _type,    list[]{      tagLine,      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },    },  },    _type == "split-image-block" => {    _type,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },  },    _type == "split-info-list-block" => {    _type,    list[]{      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      title,      body[]{        ...,        _type == "image" => {          ...,          asset->{            _id,            url,            mimeType,            metadata {              lqip,              dimensions {                width,                height              }            }          }        }      },      tags[],    },  },  // Grid Blocks    _type == "grid-card-block" => {    _type,    title,    excerpt,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },    link,  },    _type == "grid-post-block" => {    _type,    ...post->{      title,      slug,      excerpt,      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      categories[]->{        title,      },    },  },    _type == "grid-row-block" => {    _type,    padding,    colorVariant,    gridColumns,    columns[]{        _type == "grid-card-block" => {    _type,    title,    excerpt,    image{      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      },      alt    },    link,  },        _type == "pricing-card-block" => {    _type,    title,    tagLine,    price,    list[],    excerpt,    link,  },        _type == "grid-post-block" => {    _type,    ...post->{      title,      slug,      excerpt,      image{        asset->{          _id,          url,          mimeType,          metadata {            lqip,            dimensions {              width,              height            }          }        },        alt      },      categories[]->{        title,      },    },  },    },  },  // Pricing    _type == "pricing-card-block" => {    _type,    title,    tagLine,    price,    list[],    excerpt,    link,  },  // Service    _type == "service-grid-block" => {    _type,    services[]{      _type == "manualService" => {         title,         link,         featuredImage{               crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }         }      },      _type != "manualService" => @->{         _id,         title,         slug,         excerpt,         featuredImage{               crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }         }      }    },  },  // Cover Map    _type == "cover-map-block" => {    _type,    center,    zoom,  },  // Contact Info    _type == "contact-info-and-form-block" => {    _type,    padding,    colorVariant,    contactHeading,    contactDescription,    contactEmail,    contactPhone,    contactAddress,    formHeading,    buttonText,    successMessage,    },  // Our Values    _type == "our-values-block" => {    _type,    values  },  // Course Slider    _type == "course-slider-block" => {    _type,    title,    courses[]->{      _id,      title,      "slug": slug.current,      image,      excerpt,    }  },  _type == "hero-5-block" => {    _type,    image{          crop,  hotspot,  "darkScore": (    (coalesce(asset->metadata.palette.darkVibrant.population, 0)     + coalesce(asset->metadata.palette.darkMuted.population, 0))    /    (      coalesce(asset->metadata.palette.darkVibrant.population, 0)      + coalesce(asset->metadata.palette.darkMuted.population, 0)      + coalesce(asset->metadata.palette.dominant.population, 0)      + coalesce(asset->metadata.palette.lightVibrant.population, 0)      + coalesce(asset->metadata.palette.lightMuted.population, 0)      + coalesce(asset->metadata.palette.muted.population, 0)    )  ),  asset->{    _id,    title,    altText,    description,    metadata {      lqip,      dimensions {        aspectRatio,        width,        height      },      palette {        dominant {          background,          foreground,          population        }      }    }  }    },  },  // ADD VALUE 3 ABOVE},    ctaText,    infoText,    contactInfo,    socialMediaLinks[] {      platform,      url    }  },  "menuSettings":   *[_type == "menuSettings"][0] {    mainMenu[] {        "_ts": "LinksQuery",  _key,  _type == "internalLinkObject" => {  "_ts": "InternalLinkQuery",  "linkType": "internal",  ...(internalLink-> {    "title": coalesce(      ^.customTitle,      title,      name    ),    "slug": slug.current,    _type  }),  description},  _type == "link" => {  "_ts": "ExternalLinkQuery",  "linkType": "external",  "title": coalesce(    customTitle,    href  ),  "url": href,  description},  _type == "downloadLinkObject" => {  "_ts": "DownloadLinkQuery",  "linkType": "download",  "title": coalesce(      customTitle,      file.asset->originalFilename    ),  "url": file.asset->url,  description},  _type == "linkGroup" => {  "_ts": "LinkGroupQuery",  "linkType": "linkGroup",  title,  links[] {    _key,    _type == "internalLinkObject" => {  "_ts": "InternalLinkQuery",  "linkType": "internal",  ...(internalLink-> {    "title": coalesce(      ^.customTitle,      title,      name    ),    "slug": slug.current,    _type  }),  description},    _type == "link" => {  "_ts": "ExternalLinkQuery",  "linkType": "external",  "title": coalesce(    customTitle,    href  ),  "url": href,  description}  }}      }  },  "metadataSettings":   *[_type == "metadataSettings"][0] {      "metadata": {    "_ts": "MetadataQuery",    "title": coalesce(metadata.title, title, name),    "desc": coalesce(metadata.desc, excerpt),    "image": select(      defined(metadata.image.asset._ref) => metadata.image {          "id": asset._ref,  altText      },      defined(image.asset._ref) => image {          "id": asset._ref,  altText      },      defined(coverImage.asset._ref) => coverImage {          "id": asset._ref,  altText      },      defined(hero.image.asset._ref) => hero.image {          "id": asset._ref,  altText      }    ),    "tags": metadata.tags,    "noIndex": metadata.noIndex  }  },}
 export type SettingsQueryResult = {
   siteSettings: {
     privacyPolicyPage: {
       slug: string | null;
       title: string | null;
     } | null;
+  } | null;
+  footerSettings: {
+    blocks: Array<{
+      _type: "carousel-1-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      size: "one" | "three" | "two" | null;
+      orientation: null;
+      indicators: "count" | "dots" | "none" | null;
+      images: Array<{
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      }> | null;
+    } | {
+      _type: "carousel-2-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      testimonial: Array<{
+        _id: string;
+        name: string | null;
+        title: string | null;
+        image: {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          alt: null;
+        } | null;
+      }> | null;
+      body: null;
+      rating: null;
+    } | {
+      _type: "contact-info-and-form-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      contactHeading: string | null;
+      contactDescription: string | null;
+      contactEmail: string | null;
+      contactPhone: string | null;
+      contactAddress: string | null;
+      formHeading: string | null;
+      buttonText: string | null;
+      successMessage: string | null;
+    } | {
+      _type: "course-slider-block";
+      title: string | null;
+      courses: Array<{
+        _id: string;
+        title: string | null;
+        slug: string | null;
+        image: null;
+        excerpt: string | null;
+      }> | null;
+    } | {
+      _type: "cover-map-block";
+      center: Geopoint | null;
+      zoom: number | null;
+    } | {
+      _type: "cta-1-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      sectionWidth: "default" | "narrow" | null;
+      stackAlign: "center" | "left" | null;
+      tagLine: string | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+      links: Array<{
+        _key: string;
+      } & Link> | null;
+    } | {
+      _type: "faqs-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      faqs: Array<{
+        _id: string;
+        title: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+        }> | null;
+      }> | null;
+    } | {
+      _type: "form-newsletter-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      stackAlign: "center" | "left" | null;
+      consentText: string | null;
+      buttonText: string | null;
+      successMessage: string | null;
+    } | {
+      _type: "grid-card-block";
+      title: string | null;
+      excerpt: string | null;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+      link: Link | null;
+    } | {
+      _type: "grid-post-block";
+      title: string | null;
+      slug: Slug | null;
+      excerpt: string | null;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+      categories: Array<{
+        title: string | null;
+      }> | null;
+    } | {
+      _type: "grid-post-block";
+    } | {
+      _type: "grid-row-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      gridColumns: "grid-cols-2" | "grid-cols-3" | "grid-cols-4" | null;
+      columns: Array<{
+        _type: "grid-card-block";
+        title: string | null;
+        excerpt: string | null;
+        image: {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          alt: string | null;
+        } | null;
+        link: Link | null;
+      } | {
+        _type: "grid-post-block";
+        title: string | null;
+        slug: Slug | null;
+        excerpt: string | null;
+        image: {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          alt: string | null;
+        } | null;
+        categories: Array<{
+          title: string | null;
+        }> | null;
+      } | {
+        _type: "grid-post-block";
+      } | {
+        _type: "pricing-card-block";
+        title: string | null;
+        tagLine: string | null;
+        price: {
+          value?: number;
+          period?: string;
+        } | null;
+        list: Array<string> | null;
+        excerpt: string | null;
+        link: Link | null;
+      }> | null;
+    } | {
+      _type: "heading-and-paragraph-centered-block";
+      heading: string | null;
+      paragraph: string | null;
+    } | {
+      _type: "hero-1-block";
+      tagLine: string | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+      links: Array<{
+        _key: string;
+      } & Link> | null;
+    } | {
+      _type: "hero-2-block";
+      tagLine: string | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+      links: Array<{
+        _key: string;
+      } & Link> | null;
+    } | {
+      _type: "hero-3-block";
+      titleOrange: string | null;
+      titleWhite: string | null;
+      subtitle: string | null;
+      backgroundImage: {
+        crop: SanityImageCrop | null;
+        hotspot: SanityImageHotspot | null;
+        darkScore: number | NaN;
+        asset: {
+          _id: string;
+          title: string | null;
+          altText: string | null;
+          description: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              aspectRatio: number | null;
+              width: number | null;
+              height: number | null;
+            } | null;
+            palette: {
+              dominant: {
+                background: string | null;
+                foreground: string | null;
+                population: number | null;
+              } | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+      showOverlay: boolean | null;
+      topOverlayStrength: number | null;
+      upperCenterOverlayStrength: number | null;
+      lowerCenterOverlayStrength: number | null;
+      bottomOverlayStrength: number | null;
+    } | {
+      _type: "hero-4-block";
+      title: string | null;
+      description: string | null;
+      showOverlay: boolean | null;
+      backgroundImage: {
+        crop: SanityImageCrop | null;
+        hotspot: SanityImageHotspot | null;
+        darkScore: number | NaN;
+        asset: {
+          _id: string;
+          title: string | null;
+          altText: string | null;
+          description: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              aspectRatio: number | null;
+              width: number | null;
+              height: number | null;
+            } | null;
+            palette: {
+              dominant: {
+                background: string | null;
+                foreground: string | null;
+                population: number | null;
+              } | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+      topOverlayStrength: number | null;
+      upperCenterOverlayStrength: number | null;
+      lowerCenterOverlayStrength: number | null;
+      bottomOverlayStrength: number | null;
+    } | {
+      _type: "hero-5-block";
+      image: {
+        crop: SanityImageCrop | null;
+        hotspot: SanityImageHotspot | null;
+        darkScore: number | NaN;
+        asset: {
+          _id: string;
+          title: string | null;
+          altText: string | null;
+          description: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              aspectRatio: number | null;
+              width: number | null;
+              height: number | null;
+            } | null;
+            palette: {
+              dominant: {
+                background: string | null;
+                foreground: string | null;
+                population: number | null;
+              } | null;
+            } | null;
+          } | null;
+        } | null;
+      } | null;
+    } | {
+      _type: "logo-cloud-1-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      title: string | null;
+      images: Array<{
+        asset: {
+          _id: string;
+          url: string | null;
+          metadata: {
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      }> | null;
+    } | {
+      _type: "our-values-block";
+      values: Array<{
+        icon?: Icon;
+        title?: string;
+        description?: string;
+        _type: "value";
+        _key: string;
+      }> | null;
+    } | {
+      _type: "pricing-card-block";
+      title: string | null;
+      tagLine: string | null;
+      price: {
+        value?: number;
+        period?: string;
+      } | null;
+      list: Array<string> | null;
+      excerpt: string | null;
+      link: Link | null;
+    } | {
+      _type: "section-header-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      sectionWidth: "default" | "narrow" | null;
+      stackAlign: "center" | "left" | null;
+      tagLine: string | null;
+      title: string | null;
+      description: string | null;
+      link: null;
+    } | {
+      _type: "service-grid-block";
+      services: Array<{
+        _id: string;
+        title: string | null;
+        slug: Slug | null;
+        excerpt: string | null;
+        featuredImage: {
+          crop: SanityImageCrop | null;
+          hotspot: SanityImageHotspot | null;
+          darkScore: number | NaN;
+          asset: {
+            _id: string;
+            title: string | null;
+            altText: string | null;
+            description: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                aspectRatio: number | null;
+                width: number | null;
+                height: number | null;
+              } | null;
+              palette: {
+                dominant: {
+                  background: string | null;
+                  foreground: string | null;
+                  population: number | null;
+                } | null;
+              } | null;
+            } | null;
+          } | null;
+        } | null;
+      } | {
+        title: string | null;
+        link: string | null;
+        featuredImage: {
+          crop: SanityImageCrop | null;
+          hotspot: SanityImageHotspot | null;
+          darkScore: number | NaN;
+          asset: {
+            _id: string;
+            title: string | null;
+            altText: string | null;
+            description: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                aspectRatio: number | null;
+                width: number | null;
+                height: number | null;
+              } | null;
+              palette: {
+                dominant: {
+                  background: string | null;
+                  foreground: string | null;
+                  population: number | null;
+                } | null;
+              } | null;
+            } | null;
+          } | null;
+        } | null;
+      }> | null;
+    } | {
+      _type: "split-cards-list-block";
+      list: Array<{
+        tagLine: string | null;
+        title: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+        }> | null;
+      }> | null;
+    } | {
+      _type: "split-content-block";
+      sticky: boolean | null;
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      tagLine: string | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+      }> | null;
+      link: Link | null;
+    } | {
+      _type: "split-image-block";
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        alt: string | null;
+      } | null;
+    } | {
+      _type: "split-info-list-block";
+      list: Array<{
+        image: {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          alt: string | null;
+        } | null;
+        title: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+        }> | null;
+        tags: Array<string> | null;
+      }> | null;
+    } | {
+      _type: "split-row-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      noGap: boolean | null;
+      splitColumns: Array<{
+        _type: "split-cards-list-block";
+        list: Array<{
+          tagLine: string | null;
+          title: string | null;
+          body: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          } | {
+            asset: {
+              _id: string;
+              url: string | null;
+              mimeType: string | null;
+              metadata: {
+                lqip: string | null;
+                dimensions: {
+                  width: number | null;
+                  height: number | null;
+                } | null;
+              } | null;
+            } | null;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+            _key: string;
+          } | {
+            videoId?: string;
+            _type: "youtube";
+            _key: string;
+          }> | null;
+        }> | null;
+      } | {
+        _type: "split-content-block";
+        sticky: boolean | null;
+        padding: SectionPadding | null;
+        colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+        tagLine: string | null;
+        title: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+        }> | null;
+        link: Link | null;
+      } | {
+        _type: "split-image-block";
+        image: {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          alt: string | null;
+        } | null;
+      } | {
+        _type: "split-info-list-block";
+        list: Array<{
+          image: {
+            asset: {
+              _id: string;
+              url: string | null;
+              mimeType: string | null;
+              metadata: {
+                lqip: string | null;
+                dimensions: {
+                  width: number | null;
+                  height: number | null;
+                } | null;
+              } | null;
+            } | null;
+            alt: string | null;
+          } | null;
+          title: string | null;
+          body: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          } | {
+            asset: {
+              _id: string;
+              url: string | null;
+              mimeType: string | null;
+              metadata: {
+                lqip: string | null;
+                dimensions: {
+                  width: number | null;
+                  height: number | null;
+                } | null;
+              } | null;
+            } | null;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+            _key: string;
+          } | {
+            videoId?: string;
+            _type: "youtube";
+            _key: string;
+          }> | null;
+          tags: Array<string> | null;
+        }> | null;
+      }> | null;
+    } | {
+      _type: "timeline-row-block";
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "destructive" | "muted" | "primary" | "secondary" | null;
+      timelines: Array<{
+        title: string | null;
+        tagLine: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+        }> | null;
+      }> | null;
+    } | {}> | null;
+    ctaText: string | null;
+    infoText: string | null;
+    contactInfo: string | null;
+    socialMediaLinks: Array<{
+      platform: string | null;
+      url: string | null;
+    }> | null;
   } | null;
   menuSettings: null;
   metadataSettings: {
@@ -3600,9 +5717,10 @@ declare module "@sanity/client" {
     "\n  author->{\n    name,\n    image {\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    }\n  }\n": GetAuthorReferenceQueryResult;
     "\ncategories[]->{\n        title,\n      }\n": GetAllCategoriesQueryResult;
     "\nfaqs[]->{\n    _id,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n  }\n": GetAllReferencedFaqsQueryResult;
+    "\n  *[_type == \"footerSettings\"][0] {\n    \nblocks[]{\n  // Hero Blocks\n  \n  _type == \"hero-1-block\" => {\n    _type,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n    links,\n  }\n,\n  \n  _type == \"hero-2-block\" => {\n    _type,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    links,\n  }\n,\n  \n  _type == \"hero-3-block\" => {\n    _type,\n    titleOrange,\n    titleWhite,\n    subtitle,\n    backgroundImage{\n      \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n    },\n    showOverlay,\n    topOverlayStrength,\n    upperCenterOverlayStrength,\n    lowerCenterOverlayStrength,\n    bottomOverlayStrength,\n  }\n,\n  \n  _type == \"hero-4-block\" => {\n    _type,\n    title,\n    description,\n    showOverlay,\n    backgroundImage{\n      \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n    },\n    topOverlayStrength,\n    upperCenterOverlayStrength,\n    lowerCenterOverlayStrength,\n    bottomOverlayStrength,\n  }\n,\n\n  // Section/Header Blocks\n  \n  _type == \"section-header-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    description,\n    link,\n  }\n,\n  \n  _type == \"heading-and-paragraph-centered-block\" => {\n    _type,\n    heading,\n    paragraph,\n  }\n,\n\n  // Carousel Blocks\n  \n  _type == \"carousel-1-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    size,\n    orientation,\n    indicators,\n    images[]{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    }\n  }\n,\n  \n  _type == \"carousel-2-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    \ntestimonial[]->{\n    _id,\n    name,\n    title,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n    },\n      alt\n    },\n  }\n,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n      rating,\n    }\n,\n\n  // Timeline\n  \n  _type == \"timeline-row-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    timelines[]{\n      title,\n      tagLine,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n    },\n  }\n,\n\n  // Call to Action\n  \n  _type == \"cta-1-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    links,\n  }\n,\n\n  // Logo Cloud\n  \n  _type == \"logo-cloud-1-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    title,\n    images[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n  }\n,\n\n  // FAQs\n  \n  _type == \"faqs-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    \nfaqs[]->{\n    _id,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n  }\n,\n  }\n,\n\n  // Newsletter\n  \n  _type == \"form-newsletter-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    stackAlign,\n    consentText,\n    buttonText,\n    successMessage,\n  }\n,\n\n  // Split Blocks\n  \n  _type == \"split-row-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    noGap,\n    splitColumns[]{\n      \n  _type == \"split-content-block\" => {\n    _type,\n    sticky,\n    padding,\n    colorVariant,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    link,\n  }\n,\n      \n  _type == \"split-cards-list-block\" => {\n    _type,\n    list[]{\n      tagLine,\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n    },\n  }\n,\n      \n  _type == \"split-image-block\" => {\n    _type,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n  }\n,\n      \n  _type == \"split-info-list-block\" => {\n    _type,\n    list[]{\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n      tags[],\n    },\n  }\n,\n    },\n  }\n,\n  \n  _type == \"split-content-block\" => {\n    _type,\n    sticky,\n    padding,\n    colorVariant,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    link,\n  }\n,\n  \n  _type == \"split-cards-list-block\" => {\n    _type,\n    list[]{\n      tagLine,\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n    },\n  }\n,\n  \n  _type == \"split-image-block\" => {\n    _type,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n  }\n,\n  \n  _type == \"split-info-list-block\" => {\n    _type,\n    list[]{\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n      tags[],\n    },\n  }\n,\n\n  // Grid Blocks\n  \n  _type == \"grid-card-block\" => {\n    _type,\n    title,\n    excerpt,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n    link,\n  }\n,\n  \n  _type == \"grid-post-block\" => {\n    _type,\n    ...post->{\n      title,\n      slug,\n      excerpt,\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      \ncategories[]->{\n        title,\n      }\n,\n    },\n  }\n,\n  \n  _type == \"grid-row-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    gridColumns,\n    columns[]{\n      \n  _type == \"grid-card-block\" => {\n    _type,\n    title,\n    excerpt,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n    link,\n  }\n,\n      \n  _type == \"pricing-card-block\" => {\n    _type,\n    title,\n    tagLine,\n    price,\n    list[],\n    excerpt,\n    link,\n  }\n,\n      \n  _type == \"grid-post-block\" => {\n    _type,\n    ...post->{\n      title,\n      slug,\n      excerpt,\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      \ncategories[]->{\n        title,\n      }\n,\n    },\n  }\n,\n    },\n  }\n,\n\n  // Pricing\n  \n  _type == \"pricing-card-block\" => {\n    _type,\n    title,\n    tagLine,\n    price,\n    list[],\n    excerpt,\n    link,\n  }\n,\n\n  // Service\n  \n  _type == \"service-grid-block\" => {\n    _type,\n    services[]{\n      _type == \"manualService\" => {\n         title,\n         link,\n         featuredImage{\n           \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n         }\n      },\n      _type != \"manualService\" => @->{\n         _id,\n         title,\n         slug,\n         excerpt,\n         featuredImage{\n           \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n         }\n      }\n    },\n  }\n,\n\n  // Cover Map\n  \n  _type == \"cover-map-block\" => {\n    _type,\n    center,\n    zoom,\n  }\n,\n\n  // Contact Info\n  \n  _type == \"contact-info-and-form-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    contactHeading,\n    contactDescription,\n    contactEmail,\n    contactPhone,\n    contactAddress,\n    formHeading,\n    buttonText,\n    successMessage,\n    }\n,\n\n  // Our Values\n  \n  _type == \"our-values-block\" => {\n    _type,\n    values\n  }\n,\n\n  // Course Slider\n  \n  _type == \"course-slider-block\" => {\n    _type,\n    title,\n    courses[]->{\n      _id,\n      title,\n      \"slug\": slug.current,\n      image,\n      excerpt,\n    }\n  }\n,\n\n\n\n  _type == \"hero-5-block\" => {\n    _type,\n    image{\n      \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n    },\n  }\n,\n  // ADD VALUE 3 ABOVE\n}\n,\n    ctaText,\n    infoText,\n    contactInfo,\n    socialMediaLinks[] {\n      platform,\n      url\n    }\n  }\n": FooterSettingsQueryResult;
     "\n  *[_type == \"menuSettings\"][0] {\n    mainMenu[] {\n      \n  \"_ts\": \"LinksQuery\",\n  _key,\n  _type == \"internalLinkObject\" => {\n  \"_ts\": \"InternalLinkQuery\",\n  \"linkType\": \"internal\",\n  ...(internalLink-> {\n    \"title\": coalesce(\n      ^.customTitle,\n      title,\n      name\n    ),\n    \"slug\": slug.current,\n    _type\n  }),\n  description\n},\n  _type == \"link\" => {\n  \"_ts\": \"ExternalLinkQuery\",\n  \"linkType\": \"external\",\n  \"title\": coalesce(\n    customTitle,\n    href\n  ),\n  \"url\": href,\n  description\n},\n  _type == \"downloadLinkObject\" => {\n  \"_ts\": \"DownloadLinkQuery\",\n  \"linkType\": \"download\",\n  \"title\": coalesce(\n      customTitle,\n      file.asset->originalFilename\n    ),\n  \"url\": file.asset->url,\n  description\n},\n  _type == \"linkGroup\" => {\n  \"_ts\": \"LinkGroupQuery\",\n  \"linkType\": \"linkGroup\",\n  title,\n  links[] {\n    _key,\n    _type == \"internalLinkObject\" => {\n  \"_ts\": \"InternalLinkQuery\",\n  \"linkType\": \"internal\",\n  ...(internalLink-> {\n    \"title\": coalesce(\n      ^.customTitle,\n      title,\n      name\n    ),\n    \"slug\": slug.current,\n    _type\n  }),\n  description\n},\n    _type == \"link\" => {\n  \"_ts\": \"ExternalLinkQuery\",\n  \"linkType\": \"external\",\n  \"title\": coalesce(\n    customTitle,\n    href\n  ),\n  \"url\": href,\n  description\n}\n  }\n}\n  \n\n    }\n  }\n": MenuSettingsQueryResult;
     "\n  *[_type == \"metadataSettings\"][0] {\n    \n  \"metadata\": {\n    \"_ts\": \"MetadataQuery\",\n    \"title\": coalesce(metadata.title, title, name),\n    \"desc\": coalesce(metadata.desc, excerpt),\n    \"image\": select(\n      defined(metadata.image.asset._ref) => metadata.image {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(image.asset._ref) => image {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(coverImage.asset._ref) => coverImage {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(hero.image.asset._ref) => hero.image {\n        \n  \"id\": asset._ref,\n  altText\n\n      }\n    ),\n    \"tags\": metadata.tags,\n    \"noIndex\": metadata.noIndex\n  }\n\n  }\n": MetadataSettingsQueryResult;
-    "{\n  \"siteSettings\": \n  *[_type == \"siteSettings\"][0] {\n    privacyPolicyPage-> {\n      \"slug\": slug.current,\n      title\n    },\n  }\n,\n  \"menuSettings\": \n  *[_type == \"menuSettings\"][0] {\n    mainMenu[] {\n      \n  \"_ts\": \"LinksQuery\",\n  _key,\n  _type == \"internalLinkObject\" => {\n  \"_ts\": \"InternalLinkQuery\",\n  \"linkType\": \"internal\",\n  ...(internalLink-> {\n    \"title\": coalesce(\n      ^.customTitle,\n      title,\n      name\n    ),\n    \"slug\": slug.current,\n    _type\n  }),\n  description\n},\n  _type == \"link\" => {\n  \"_ts\": \"ExternalLinkQuery\",\n  \"linkType\": \"external\",\n  \"title\": coalesce(\n    customTitle,\n    href\n  ),\n  \"url\": href,\n  description\n},\n  _type == \"downloadLinkObject\" => {\n  \"_ts\": \"DownloadLinkQuery\",\n  \"linkType\": \"download\",\n  \"title\": coalesce(\n      customTitle,\n      file.asset->originalFilename\n    ),\n  \"url\": file.asset->url,\n  description\n},\n  _type == \"linkGroup\" => {\n  \"_ts\": \"LinkGroupQuery\",\n  \"linkType\": \"linkGroup\",\n  title,\n  links[] {\n    _key,\n    _type == \"internalLinkObject\" => {\n  \"_ts\": \"InternalLinkQuery\",\n  \"linkType\": \"internal\",\n  ...(internalLink-> {\n    \"title\": coalesce(\n      ^.customTitle,\n      title,\n      name\n    ),\n    \"slug\": slug.current,\n    _type\n  }),\n  description\n},\n    _type == \"link\" => {\n  \"_ts\": \"ExternalLinkQuery\",\n  \"linkType\": \"external\",\n  \"title\": coalesce(\n    customTitle,\n    href\n  ),\n  \"url\": href,\n  description\n}\n  }\n}\n  \n\n    }\n  }\n,\n  \"metadataSettings\": \n  *[_type == \"metadataSettings\"][0] {\n    \n  \"metadata\": {\n    \"_ts\": \"MetadataQuery\",\n    \"title\": coalesce(metadata.title, title, name),\n    \"desc\": coalesce(metadata.desc, excerpt),\n    \"image\": select(\n      defined(metadata.image.asset._ref) => metadata.image {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(image.asset._ref) => image {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(coverImage.asset._ref) => coverImage {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(hero.image.asset._ref) => hero.image {\n        \n  \"id\": asset._ref,\n  altText\n\n      }\n    ),\n    \"tags\": metadata.tags,\n    \"noIndex\": metadata.noIndex\n  }\n\n  }\n,\n}": SettingsQueryResult;
+    "{\n  \"siteSettings\": \n  *[_type == \"siteSettings\"][0] {\n    privacyPolicyPage-> {\n      \"slug\": slug.current,\n      title\n    },\n  }\n,\n  \"footerSettings\": \n  *[_type == \"footerSettings\"][0] {\n    \nblocks[]{\n  // Hero Blocks\n  \n  _type == \"hero-1-block\" => {\n    _type,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n    links,\n  }\n,\n  \n  _type == \"hero-2-block\" => {\n    _type,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    links,\n  }\n,\n  \n  _type == \"hero-3-block\" => {\n    _type,\n    titleOrange,\n    titleWhite,\n    subtitle,\n    backgroundImage{\n      \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n    },\n    showOverlay,\n    topOverlayStrength,\n    upperCenterOverlayStrength,\n    lowerCenterOverlayStrength,\n    bottomOverlayStrength,\n  }\n,\n  \n  _type == \"hero-4-block\" => {\n    _type,\n    title,\n    description,\n    showOverlay,\n    backgroundImage{\n      \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n    },\n    topOverlayStrength,\n    upperCenterOverlayStrength,\n    lowerCenterOverlayStrength,\n    bottomOverlayStrength,\n  }\n,\n\n  // Section/Header Blocks\n  \n  _type == \"section-header-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    description,\n    link,\n  }\n,\n  \n  _type == \"heading-and-paragraph-centered-block\" => {\n    _type,\n    heading,\n    paragraph,\n  }\n,\n\n  // Carousel Blocks\n  \n  _type == \"carousel-1-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    size,\n    orientation,\n    indicators,\n    images[]{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    }\n  }\n,\n  \n  _type == \"carousel-2-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    \ntestimonial[]->{\n    _id,\n    name,\n    title,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n    },\n      alt\n    },\n  }\n,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n      rating,\n    }\n,\n\n  // Timeline\n  \n  _type == \"timeline-row-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    timelines[]{\n      title,\n      tagLine,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n    },\n  }\n,\n\n  // Call to Action\n  \n  _type == \"cta-1-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    links,\n  }\n,\n\n  // Logo Cloud\n  \n  _type == \"logo-cloud-1-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    title,\n    images[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n  }\n,\n\n  // FAQs\n  \n  _type == \"faqs-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    \nfaqs[]->{\n    _id,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n  }\n,\n  }\n,\n\n  // Newsletter\n  \n  _type == \"form-newsletter-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    stackAlign,\n    consentText,\n    buttonText,\n    successMessage,\n  }\n,\n\n  // Split Blocks\n  \n  _type == \"split-row-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    noGap,\n    splitColumns[]{\n      \n  _type == \"split-content-block\" => {\n    _type,\n    sticky,\n    padding,\n    colorVariant,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    link,\n  }\n,\n      \n  _type == \"split-cards-list-block\" => {\n    _type,\n    list[]{\n      tagLine,\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n    },\n  }\n,\n      \n  _type == \"split-image-block\" => {\n    _type,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n  }\n,\n      \n  _type == \"split-info-list-block\" => {\n    _type,\n    list[]{\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n      tags[],\n    },\n  }\n,\n    },\n  }\n,\n  \n  _type == \"split-content-block\" => {\n    _type,\n    sticky,\n    padding,\n    colorVariant,\n    tagLine,\n    title,\n    body[]{\n      ...,\n      _type == \"image\" => {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      }\n    },\n    link,\n  }\n,\n  \n  _type == \"split-cards-list-block\" => {\n    _type,\n    list[]{\n      tagLine,\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n    },\n  }\n,\n  \n  _type == \"split-image-block\" => {\n    _type,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n  }\n,\n  \n  _type == \"split-info-list-block\" => {\n    _type,\n    list[]{\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      title,\n      body[]{\n        ...,\n        _type == \"image\" => {\n          ...,\n          asset->{\n            _id,\n            url,\n            mimeType,\n            metadata {\n              lqip,\n              dimensions {\n                width,\n                height\n              }\n            }\n          }\n        }\n      },\n      tags[],\n    },\n  }\n,\n\n  // Grid Blocks\n  \n  _type == \"grid-card-block\" => {\n    _type,\n    title,\n    excerpt,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n    link,\n  }\n,\n  \n  _type == \"grid-post-block\" => {\n    _type,\n    ...post->{\n      title,\n      slug,\n      excerpt,\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      \ncategories[]->{\n        title,\n      }\n,\n    },\n  }\n,\n  \n  _type == \"grid-row-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    gridColumns,\n    columns[]{\n      \n  _type == \"grid-card-block\" => {\n    _type,\n    title,\n    excerpt,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n      alt\n    },\n    link,\n  }\n,\n      \n  _type == \"pricing-card-block\" => {\n    _type,\n    title,\n    tagLine,\n    price,\n    list[],\n    excerpt,\n    link,\n  }\n,\n      \n  _type == \"grid-post-block\" => {\n    _type,\n    ...post->{\n      title,\n      slug,\n      excerpt,\n      image{\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      },\n      \ncategories[]->{\n        title,\n      }\n,\n    },\n  }\n,\n    },\n  }\n,\n\n  // Pricing\n  \n  _type == \"pricing-card-block\" => {\n    _type,\n    title,\n    tagLine,\n    price,\n    list[],\n    excerpt,\n    link,\n  }\n,\n\n  // Service\n  \n  _type == \"service-grid-block\" => {\n    _type,\n    services[]{\n      _type == \"manualService\" => {\n         title,\n         link,\n         featuredImage{\n           \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n         }\n      },\n      _type != \"manualService\" => @->{\n         _id,\n         title,\n         slug,\n         excerpt,\n         featuredImage{\n           \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n         }\n      }\n    },\n  }\n,\n\n  // Cover Map\n  \n  _type == \"cover-map-block\" => {\n    _type,\n    center,\n    zoom,\n  }\n,\n\n  // Contact Info\n  \n  _type == \"contact-info-and-form-block\" => {\n    _type,\n    padding,\n    colorVariant,\n    contactHeading,\n    contactDescription,\n    contactEmail,\n    contactPhone,\n    contactAddress,\n    formHeading,\n    buttonText,\n    successMessage,\n    }\n,\n\n  // Our Values\n  \n  _type == \"our-values-block\" => {\n    _type,\n    values\n  }\n,\n\n  // Course Slider\n  \n  _type == \"course-slider-block\" => {\n    _type,\n    title,\n    courses[]->{\n      _id,\n      title,\n      \"slug\": slug.current,\n      image,\n      excerpt,\n    }\n  }\n,\n\n\n\n  _type == \"hero-5-block\" => {\n    _type,\n    image{\n      \n  \n  crop,\n  hotspot,\n  \"darkScore\": (\n    (coalesce(asset->metadata.palette.darkVibrant.population, 0)\n     + coalesce(asset->metadata.palette.darkMuted.population, 0))\n    /\n    (\n      coalesce(asset->metadata.palette.darkVibrant.population, 0)\n      + coalesce(asset->metadata.palette.darkMuted.population, 0)\n      + coalesce(asset->metadata.palette.dominant.population, 0)\n      + coalesce(asset->metadata.palette.lightVibrant.population, 0)\n      + coalesce(asset->metadata.palette.lightMuted.population, 0)\n      + coalesce(asset->metadata.palette.muted.population, 0)\n    )\n  ),\n  asset->{\n    _id,\n    title,\n    altText,\n    description,\n    metadata {\n      lqip,\n      dimensions {\n        aspectRatio,\n        width,\n        height\n      },\n      palette {\n        dominant {\n          background,\n          foreground,\n          population\n        }\n      }\n    }\n  }\n\n\n    },\n  }\n,\n  // ADD VALUE 3 ABOVE\n}\n,\n    ctaText,\n    infoText,\n    contactInfo,\n    socialMediaLinks[] {\n      platform,\n      url\n    }\n  }\n,\n  \"menuSettings\": \n  *[_type == \"menuSettings\"][0] {\n    mainMenu[] {\n      \n  \"_ts\": \"LinksQuery\",\n  _key,\n  _type == \"internalLinkObject\" => {\n  \"_ts\": \"InternalLinkQuery\",\n  \"linkType\": \"internal\",\n  ...(internalLink-> {\n    \"title\": coalesce(\n      ^.customTitle,\n      title,\n      name\n    ),\n    \"slug\": slug.current,\n    _type\n  }),\n  description\n},\n  _type == \"link\" => {\n  \"_ts\": \"ExternalLinkQuery\",\n  \"linkType\": \"external\",\n  \"title\": coalesce(\n    customTitle,\n    href\n  ),\n  \"url\": href,\n  description\n},\n  _type == \"downloadLinkObject\" => {\n  \"_ts\": \"DownloadLinkQuery\",\n  \"linkType\": \"download\",\n  \"title\": coalesce(\n      customTitle,\n      file.asset->originalFilename\n    ),\n  \"url\": file.asset->url,\n  description\n},\n  _type == \"linkGroup\" => {\n  \"_ts\": \"LinkGroupQuery\",\n  \"linkType\": \"linkGroup\",\n  title,\n  links[] {\n    _key,\n    _type == \"internalLinkObject\" => {\n  \"_ts\": \"InternalLinkQuery\",\n  \"linkType\": \"internal\",\n  ...(internalLink-> {\n    \"title\": coalesce(\n      ^.customTitle,\n      title,\n      name\n    ),\n    \"slug\": slug.current,\n    _type\n  }),\n  description\n},\n    _type == \"link\" => {\n  \"_ts\": \"ExternalLinkQuery\",\n  \"linkType\": \"external\",\n  \"title\": coalesce(\n    customTitle,\n    href\n  ),\n  \"url\": href,\n  description\n}\n  }\n}\n  \n\n    }\n  }\n,\n  \"metadataSettings\": \n  *[_type == \"metadataSettings\"][0] {\n    \n  \"metadata\": {\n    \"_ts\": \"MetadataQuery\",\n    \"title\": coalesce(metadata.title, title, name),\n    \"desc\": coalesce(metadata.desc, excerpt),\n    \"image\": select(\n      defined(metadata.image.asset._ref) => metadata.image {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(image.asset._ref) => image {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(coverImage.asset._ref) => coverImage {\n        \n  \"id\": asset._ref,\n  altText\n\n      },\n      defined(hero.image.asset._ref) => hero.image {\n        \n  \"id\": asset._ref,\n  altText\n\n      }\n    ),\n    \"tags\": metadata.tags,\n    \"noIndex\": metadata.noIndex\n  }\n\n  }\n,\n}": SettingsQueryResult;
     "\n  *[_type == \"siteSettings\"][0] {\n    privacyPolicyPage-> {\n      \"slug\": slug.current,\n      title\n    },\n  }\n": SiteSettingsQueryResult;
     "\ntestimonial[]->{\n    _id,\n    name,\n    title,\n    image{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n    },\n      alt\n    },\n  }\n": GetAllReferencedTestimonialsQueryResult;
   }

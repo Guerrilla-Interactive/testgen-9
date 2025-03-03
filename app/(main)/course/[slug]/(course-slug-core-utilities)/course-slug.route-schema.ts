@@ -1,11 +1,11 @@
 import { defineField, defineType } from "sanity";
-import { FileText } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export default defineType({
   name: "course-slug",
   title: "Course",
   type: "document",
-  icon: FileText,
+  icon: BookOpen,
   groups: [
     {
       name: "content",

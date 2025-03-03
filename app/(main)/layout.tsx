@@ -8,7 +8,7 @@ import Footer from "@/features/theme/footer/footer";
 
 
 import { useGlobalContext } from "@/features/context/global-context";
-import { fetchSettings } from "@/sanity/desk-organized-sanity-utilities/settings/settings.query";
+import { fetchSettings, fetchFooter } from "@/sanity/desk-organized-sanity-utilities/settings/settings.query";
 
 
 
@@ -20,6 +20,8 @@ export default async function MainLayout({
   children: React.ReactNode;
 }) {
   const settings = await fetchSettings();
+  const footer = await fetchFooter();
+
   
   return (
     <>
@@ -32,7 +34,7 @@ export default async function MainLayout({
           <VisualEditing />
         </>
       )}
-      <Footer />
+      <Footer {...footer.data} />
     </>
   );
 }

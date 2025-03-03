@@ -4,7 +4,8 @@ import type { StructureBuilder } from "sanity/structure";
 
 
 import { singletonListItem } from "@/features/unorganized-utils/singleton-list-item.desk";
-import { menuSettingsSchema, metadataSettingsSchema, siteSettingsSchema } from "./all-settings-document-schemas";
+import { menuSettingsSchema, metadataSettingsSchema, siteSettingsSchema, footerSettingsSchema } from "./all-settings-document-schemas";
+
 
 
 export const settingsStructure = (S: StructureBuilder) => {
@@ -19,6 +20,7 @@ export const settingsStructure = (S: StructureBuilder) => {
           singletonListItem(S, menuSettingsSchema),
           S.divider(),
           singletonListItem(S, metadataSettingsSchema),
+          singletonListItem(S, footerSettingsSchema),
         ]),
     );
 };

@@ -7,6 +7,8 @@ import { Container, FlexCol, FlexRow, InnerSection, Section } from "@/features/u
 import { MultipleArrowSVGAnimated } from "@/features/unorganized-components/arrow-svg/multiple-arrow-svg-animated.component";
 import { MultipleArrowSVG } from "@/features/unorganized-components/arrow-svg/multiple-arrow-svg.component";
 import { CoverMapBlockComponent } from "@/features/page-builder-blocks/blocks/cover-map-block";
+import { FooterSettingsQueryResult } from "@/sanity.types";
+import { Blocks } from "@/features/page-builder-blocks/block-component-exporter";
 
 
 const navItems = [
@@ -27,7 +29,7 @@ const navItems = [
   },
 ];
 
-export default function Footer() {
+export default function Footer(props: FooterSettingsQueryResult) {
   const getCurrentYear = () => {
     return new Date().getFullYear();
   };
@@ -35,6 +37,7 @@ export default function Footer() {
   return (
 
     <>
+    <Blocks blocks={props.blocks} />
         <CoverMapBlockComponent 
     center={{
       lat: 60.0093439,
