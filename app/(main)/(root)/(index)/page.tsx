@@ -9,6 +9,7 @@ export default async function Page() {
   const frontPageData = await fetchFrontPage();
   return (
     <>
+    {/* @ts-ignore */}
     <Blocks blocks={frontPageData?.blocks} />
     </>
   )

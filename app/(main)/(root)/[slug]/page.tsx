@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 
   
 
-  return pages.map((page: Sanity.Page) => ({
+  return pages.map((page) => ({
     slug: page.slug?.current,
   }));
 }
@@ -39,10 +39,6 @@ export default async function Page(props: {
   if (!page) {
     notFound();
   }
-
-  return (<>
-  
-  <Blocks blocks={page?.blocks} />
-  </>
-  );
+  //@ts-ignore
+  return <Blocks blocks={page?.blocks ?? []} />;
 }

@@ -10,7 +10,7 @@ export const fetchSanityPageBySlug = async ({
     slug,
   }: {
     slug: string;
-  }): Promise<GET_PAGE_BY_DEFINED_SLUG_QUERYResult> => {
+  }): Promise<Partial<GET_PAGE_BY_DEFINED_SLUG_QUERYResult>> => {
     const { data } = await sanityFetch({
       query: GET_PAGE_BY_DEFINED_SLUG_QUERY,
       params: { slug },

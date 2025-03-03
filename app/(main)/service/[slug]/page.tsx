@@ -8,7 +8,7 @@ export async function generateStaticParams() {
   const pages = await fetchSanityServiceStaticParams();
 
   return pages.map((page) => ({
-    slug: page.slug?.current,
+    slug: page
   }));
 }
 
