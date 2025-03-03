@@ -38,13 +38,14 @@ export default function Hero4BlockComponent(props: Partial<Hero4Block>) {
     <>
     <Section className="h-[27.5rem]  relative overflow-x-hidden">
     <Absolute className="left-0 top-0 w-screen z-0 h-full overflow-hidden">
-      <Relative className="w-full h-full  bg-amber-600">
+      <Relative className="w-full h-full ">
       {backgroundImage && (
          <Img
          {...backgroundImage}
          cover
          className="w-full z-0 h-full object-fit"
          eager
+
          sizes={{ md: "full" }}
        />
        
