@@ -25,11 +25,10 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
       image={page.featuredImage}
       
     />
-    <Section className="mb-12">
+    <Section className="mb-12 mt-12">
       <Container>
-        <FlexRow>
-
-          <FlexCol className="md:w-2/3 ">
+        <FlexRow className="justify-between">
+          <FlexCol className="w-full max-w-lg ">
           <div className="max-w-xl">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
               {page.customTitle || page.title}
@@ -37,7 +36,7 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
             <PortableTextRenderer value={page.body} />
           </div>
           </FlexCol>
-          <FlexCol className="md:w-1/3  ">
+          <FlexCol className="max-w-sm w-full border border-gray-200 rounded-lg p-6  ">
             <CustomContactFormBlockComponent  {...page.customContactForm} />
           </FlexCol>
         </FlexRow>

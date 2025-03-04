@@ -50,7 +50,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, isRecalcDone }) 
       
         <div
           ref={cardRef}
-          className={`w-96 flex-shrink-0 border rounded-lg overflow-hidden border-gray-200 opacity-0 cursor-pointer ${shouldAnimate && "animate-fade-up"}`}
+          className={`w-96 flex-shrink-0 border rounded-lg overflow-hidden hover:border-primary active:scale-[0.99] transition-all duration-100  border-gray-200 opacity-0 cursor-pointer ${shouldAnimate && "animate-fade-up"}`}
           style={shouldAnimate ? { animationDelay: `${index * 150}ms` } : {}}
         >
           <div className="relative h-72 w-full overflow-hidden">
