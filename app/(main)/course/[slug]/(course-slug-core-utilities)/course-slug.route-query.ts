@@ -1,3 +1,4 @@
+import { imageQuery } from "@/features/unorganized-components/image-component/image.query";
 import { groq } from "next-sanity";
 
 export const GET_COURSE_PAGE_BY_DEFINED_SLUG_QUERY = groq`
@@ -18,6 +19,14 @@ export const GET_COURSE_PAGE_BY_ROUTE_QUERY = groq`
   *[_type == "course-slug" && slug.current == $slug][0]{
     title,
     slug,
+    featuredImage{
+      ${imageQuery}
+    },
+    body,
+    aboutCourse,
+    keyConcepts,
+    customContactForm,
+    excerpt,
     _createdAt,
     _updatedAt,
   }

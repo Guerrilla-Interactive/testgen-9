@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { Image } from "lucide-react";
 
 export default defineType({
   name: "hero-5-block",
   type: "object",
-  title: "Hero5",
+  title: "Full-Width Image Hero",
   description: "Hero with full-width image and title below",
-  icon: Newspaper,
+  icon: Image,
   fields: [
 
     defineField({
@@ -20,9 +20,14 @@ export default defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      image: 'image',
+    },
+    prepare({ image }) {
       return {
-        title: "Hero5",
+        title: "Full-Width Image Hero",
+        subtitle: image ? "Has background image" : "No image selected",
+        media: image ? image : Image,
       };
     },
   },

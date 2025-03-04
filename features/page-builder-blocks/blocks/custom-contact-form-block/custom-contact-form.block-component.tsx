@@ -323,7 +323,7 @@ export default function CustomContactFormBlockComponent({
   };
 
   return (
-    <div className="max-w-4xl mx-auto border border-gray-200 rounded-lg p-6">
+    <div className="mx-auto border border-gray-200 rounded-lg p-6">
       {formTitle && (
         <h2 className="text-2xl font-bold mb-4">{formTitle}</h2>
       )}

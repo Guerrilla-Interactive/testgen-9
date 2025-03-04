@@ -15,11 +15,4 @@ export const menuSettingsSchema = defineType({
       type: "string",
     }),
   ],
-  preview: {
-    prepare() {
-      return {
-        title: "Menyer",
-      };
-    },
-  },
 });

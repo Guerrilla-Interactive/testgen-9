@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { Map } from "lucide-react";
 
 export default defineType({
   name: "cover-map-block",
   type: "object",
-  title: "CoverMap",
+  title: "Map Cover",
   description: "A cover section with Mapbox integration",
-  icon: Newspaper,
+  icon: Map,
   fields: [
     defineField({
       name: "center",
@@ -23,9 +23,15 @@ export default defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      center: 'center',
+      zoom: 'zoom',
+    },
+    prepare({ center, zoom }) {
       return {
-        title: "CoverMap",
+        title: "Map Cover",
+        subtitle: center ? `Zoom level: ${zoom || 9}` : "No location selected",
+        media: Map,
       };
     },
   },

@@ -33,7 +33,7 @@ export default function Hero3BlockComponent(props: Partial<Hero3Block>) {
           {...backgroundImage}
           cover
           eager
-          className={`absolute inset-0 w-full h-full object-cover ${shouldAnimate ? 'animate-scale-in-bg' : ''}`}
+          className={`animate-scale-in-bg`}
           sizes={{ md: "full" }}
         />
       )}

@@ -16,7 +16,7 @@ import { iconify } from 'sanity-plugin-iconify';
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/all-schemas-combined";
-import { resolve } from "@/sanity/desk-organized-sanity-utilities/presentation-resolve";
+import { resolve } from "@/sanity/desk-organized-sanity-utilities/structure-utilities/presentation-resolve";
 import { structure } from "./sanity/desk-organized-sanity-utilities/structure";
 
 

@@ -1,17 +1,22 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export default defineType({
   name: "course-slider-block",
   type: "object",
-  title: "CourseSlider",
-  description: "A list of course-slider",
-  icon: Newspaper,
+  title: "Course Slider",
+  description: "A list of courses displayed in a slider format",
+  icon: BookOpen,
   fields: [
     defineField({
       name: "title",
       type: "string",
       title: "Title",
+    }),
+    defineField({
+      name: "sectionId",
+      type: "string",
+      title: "Section ID",
     }),
     defineField({
       name: "courses",
@@ -21,9 +26,16 @@ export default defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      title: 'title',
+      courses: 'courses',
+    },
+    prepare({ title, courses }) {
+      const count = courses?.length || 0;
       return {
-        title: "CourseSlider",
+        title: "Course Slider",
+        subtitle: title ? `${title} (${count} course${count !== 1 ? 's' : ''})` : `${count} course${count !== 1 ? 's' : ''}`,
+        media: BookOpen,
       };
     },
   },

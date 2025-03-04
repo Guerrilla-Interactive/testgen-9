@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { Grid } from "lucide-react";
 
 export default defineType({
   name: "service-grid-block",
   type: "object",
-  title: "ServiceGrid",
+  title: "Service Grid",
   description: "A list of service-grid",
-  icon: Newspaper,
+  icon: Grid,
   fields: [
     {
       name: "services",
@@ -46,9 +46,15 @@ export default defineType({
     },
   ],
   preview: {
-    prepare() {
+    select: {
+      services: 'services',
+    },
+    prepare({ services }) {
+      const count = services?.length || 0;
       return {
-        title: "ServiceGrid",
+        title: "Service Grid",
+        subtitle: `${count} service${count !== 1 ? 's' : ''}`,
+        media: Grid,
       };
     },
   },

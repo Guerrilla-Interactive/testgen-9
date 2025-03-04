@@ -9,11 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function NotFoundPage() {
+  
   return (
     <>
-      <Header />
       <Custom404 />
-      <Footer />
     </>
   );
 }

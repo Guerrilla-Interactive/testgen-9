@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { Layout } from "lucide-react";
 
 export default defineType({
   name: "hero-4-block",
   type: "object",
-  title: "Hero4",
+  title: "Page Header Hero",
   description: "A smaller hero block that works as a page header with title and description.",
-  icon: Newspaper,
+  icon: Layout,
   fields: [
     defineField({
       title: "Title",
@@ -74,9 +74,15 @@ export default defineType({
     
   ],
   preview: {
-    prepare() {
+    select: {
+      title: 'title',
+      backgroundImage: 'backgroundImage',
+    },
+    prepare({ title, backgroundImage }) {
       return {
-        title: "Hero4",
+        title: "Page Header Hero",
+        subtitle: title || "No title set",
+        media: backgroundImage ? backgroundImage : Layout,
       };
     },
   },

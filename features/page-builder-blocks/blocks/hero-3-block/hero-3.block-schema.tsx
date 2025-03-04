@@ -1,13 +1,13 @@
 import { defineField, defineType } from "sanity";
-import { LayoutTemplate } from "lucide-react";
+import { LayoutTemplate, Monitor } from "lucide-react";
 
 export default defineType({
   name: "hero-3-block",
   type: "object",
-  title: "Hero3",
+  title: "Fullscreen Hero",
   description:
     "A hero block with full viewport background image, a dark overlay, and text positioned at the bottom.",
-  icon: LayoutTemplate,
+  icon: Monitor,
   fields: [
 
     defineField({
@@ -85,9 +85,17 @@ export default defineType({
   
   ],
   preview: {
-    prepare() {
+    select: {
+      titleOrange: 'titleOrange',
+      titleWhite: 'titleWhite',
+      backgroundImage: 'backgroundImage',
+    },
+    prepare({ titleOrange, titleWhite, backgroundImage }) {
+      const hasTitle = titleOrange || titleWhite;
       return {
-        title: "Hero3",
+        title: "Fullscreen Hero",
+        subtitle: hasTitle ? `${titleOrange || ''} ${titleWhite || ''}`.trim() : "No title set",
+        media: backgroundImage ? backgroundImage : Monitor,
       };
     },
   },

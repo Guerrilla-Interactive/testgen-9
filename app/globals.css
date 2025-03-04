@@ -373,3 +373,12 @@ img[data-lqip] {
 img.sanity-image {
   object-position: var(--hotspot-position);
 }
+
+/* smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-behavior: smooth;
+}

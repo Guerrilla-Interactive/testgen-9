@@ -1,3 +1,4 @@
+import { imageQuery } from "@/features/unorganized-components/image-component/image.query";
 import { groq } from "next-sanity";
 
 // @sanity-typegen-ignore
@@ -5,11 +6,14 @@ const courseSliderBlockQuery = groq`
   _type == "course-slider-block" => {
     _type,
     title,
+    sectionId,
     courses[]->{
       _id,
       title,
       "slug": slug.current,
-      image,
+      featuredImage{
+        ${imageQuery}
+      },
       excerpt,
     }
   }

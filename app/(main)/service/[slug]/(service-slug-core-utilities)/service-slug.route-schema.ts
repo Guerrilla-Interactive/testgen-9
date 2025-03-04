@@ -1,11 +1,11 @@
 import { defineField, defineType } from "sanity";
-import { Cone } from "lucide-react";
+import {  Star } from "lucide-react";
 
 export default defineType({
   name: "service-slug",
   title: "Service",
   type: "document",
-  icon: Cone,
+  icon: Star,
   groups: [
     {
       name: "content",

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/features/unorganized-utils/metadata";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
 import { fetchSanityCourseBySlug, fetchSanityCourseStaticParams } from "./(course-slug-core-utilities)/course-slug.server-actions";
+import CourseSlugPageComponent from "./course-slug.page-component";
 
 export async function generateStaticParams() {
   const pages = await fetchSanityCourseStaticParams();
@@ -35,11 +36,6 @@ export default async function Course(props: {
     notFound();
   }
   return (
-    <section>
-      <div className="container py-16 xl:py-20">
-        
-        
-      </div>
-    </section>
+    <CourseSlugPageComponent {...page} />
   );
 }

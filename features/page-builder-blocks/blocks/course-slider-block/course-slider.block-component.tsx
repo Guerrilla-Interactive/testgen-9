@@ -5,11 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { Container, Section, InnerSection } from "@/features/unorganized-components/nextgen-core-ui";
 import { getContainerOffsetPlusPadding } from "@/features/unorganized-utils/get-container-offset-plus-padding.t";
 import CourseCard from "./course-slider-block-components/course-card.component";
-import type { CourseSliderProps } from "./course-slider.block-query";
+import { CourseSliderBlock } from "@/sanity.types";
 
 
 
-const CourseSliderBlockComponent: React.FC<Partial<CourseSliderProps>> = (props) => {
+
+const CourseSliderBlockComponent: React.FC<Partial<CourseSliderBlock>> = (props) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [sliderLeft, setSliderLeft] = useState(0);
   const [isRecalcDone, setIsRecalcDone] = useState(false);
@@ -48,7 +49,7 @@ const CourseSliderBlockComponent: React.FC<Partial<CourseSliderProps>> = (props)
   }, []);
 
   return (
-    <Section className="scrollbar-hide">
+    <Section id={props.sectionId} className="scrollbar-hide pt-12">
       <Container>
         <h2 className="font-sans text-3xl">{props.title}</h2>
       </Container>

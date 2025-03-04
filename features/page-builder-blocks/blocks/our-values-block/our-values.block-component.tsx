@@ -27,7 +27,7 @@ export default async function OurValuesBlockComponent(
   const { values = [] } = props;
 
   return (
-    <Section className="bg-[#efefef82] my-24">
+    <Section className="bg-[#efefef82] my-12 mt-24">
       <Container className="container mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {values.map((value) => (

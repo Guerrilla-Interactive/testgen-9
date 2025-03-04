@@ -1,4 +1,5 @@
 import { cn } from "@/features/unorganized-utils/utils";
+import { Container, Section } from "../nextgen-core-ui";
 
 export const DEFAULT_PADDING = {
   top: true,
@@ -11,38 +12,27 @@ export interface ISectionPadding {
 }
 
 export interface ISectionContainer {
-  color?:
-    | "primary"
-    | "secondary"
-    | "card"
-    | "accent"
-    | "destructive"
-    | "background"
-    | "transparent";
   children: React.ReactNode;
-  className?: string;
+  sectionClassName?: string;
+  containerClassName?: string;
   padding?: ISectionPadding | null | undefined;
 }
 
 export default function SectionContainer({
-  color = "background",
   padding,
   children,
-  className,
+  sectionClassName,
+  containerClassName,
 }: ISectionContainer) {
   return (
-    <div
-      className={cn(
-        `bg-${color} relative`,
-        className
-      )}
-
+    <Section
+      className={cn(sectionClassName)}
       style={{
         paddingTop: padding?.top ? `${padding.top * 4}px` : undefined,
         paddingBottom: padding?.bottom ? `${padding.bottom * 4}px` : undefined,
       }}
     >
-      <div className="container">{children}</div>
-    </div>
+      <Container className={containerClassName}>{children}</Container>
+    </Section>
   );
 }

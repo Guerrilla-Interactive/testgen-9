@@ -63,7 +63,7 @@ export const Img = (props: ImgProps) => {
 
   return (
     <figure
-      className={cn(className)}
+      className={cn(className, cover && "h-full w-full")}
       data-palette={darkScore}
       data-top-image={topImage == undefined ? "potentially" : topImage ? "true" : "false"}
       data-cover={cover ? "true" : "false"}

@@ -1,3 +1,5 @@
+
+
 import Link from "next/link";
 import Logo from "../logo";
 
@@ -117,7 +119,7 @@ export default function Footer(props: FooterSettingsQueryResult) {
                         <Link href="/tjenester">Tjenester</Link>
                       </li>
                       <li>
-                        <Link href="/kurs">Kurs</Link>
+                        <Link href="#kurs">Kurs</Link>
                       </li>
                       <li>
                         <Link href="/karriere">Karriere</Link>

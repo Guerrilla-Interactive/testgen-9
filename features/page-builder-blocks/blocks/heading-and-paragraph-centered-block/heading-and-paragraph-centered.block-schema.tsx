@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { LayoutList } from "lucide-react";
+import { AlignCenter } from "lucide-react";
 
 export default defineType({
   name: "heading-and-paragraph-centered-block",
   type: "object",
-  title: "HeadingAndParagraphCentered",
-  description: "A list of heading-and-paragraph-centered",
-  icon: LayoutList,
+  title: "Centered Text Block",
+  description: "A heading and paragraph with centered alignment",
+  icon: AlignCenter,
   fields: [
     defineField({
       name: "heading",
@@ -20,9 +20,15 @@ export default defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      heading: 'heading',
+      paragraph: 'paragraph',
+    },
+    prepare({ heading, paragraph }) {
       return {
-        title: "HeadingAndParagraphCentered",
+        title: "Centered Text Block",
+        subtitle: heading || "No heading set",
+        media: AlignCenter,
       };
     },
   },

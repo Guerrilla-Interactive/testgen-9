@@ -69,4 +69,42 @@ export default defineType({
     }),
     orderRankField({ type: "page-slug" }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      slug: 'slug',
+      blocks: 'blocks',
+      ogImage: 'ogImage',
+    },
+    prepare({ title, slug, blocks, ogImage }) {
+      // Find the first hero block
+      const firstBlock = blocks && blocks.length > 0 ? blocks[0] : null;
+      
+      // Check if the first block is a hero block and has an image
+      let heroImage = null;
+      if (firstBlock) {
+        const isHero3or4 = ['hero-3-block', 'hero-4-block'].includes(firstBlock._type) && firstBlock.backgroundImage;
+        const isHero5 = firstBlock._type === 'hero-5-block' && firstBlock.image;
+        
+        if (isHero3or4) {
+          heroImage = firstBlock.backgroundImage;
+        } else if (isHero5) {
+          heroImage = firstBlock.image;
+        }
+      }
+      
+      // Use OG image as fallback if no hero image
+      const media = heroImage || ogImage || Files;
+      
+      // Create subtitle with slug and block count
+      const slugText = slug?.current ? `/${slug.current}` : '(no slug)';
+      const blocksText = blocks?.length ? `${blocks.length} block${blocks.length !== 1 ? 's' : ''}` : 'No blocks';
+      
+      return {
+        title: title || 'Untitled Page',
+        subtitle: `${slugText} • ${blocksText}`,
+        media,
+      };
+    },
+  },
 });

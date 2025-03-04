@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export default defineType({
   name: "our-values-block",
   type: "object",
   title: "Our Values Block",
   description: "A list of our values",
-  icon: Newspaper,
+  icon: Heart,
   fields: [
     defineField({
       name: "values",
@@ -43,11 +43,15 @@ export default defineType({
     }),
   ],
   preview: {
-    prepare({ value }) {
-      const count = value?.values?.length ?? 0;
+    select: {
+      values: 'values',
+    },
+    prepare({ values }) {
+      const count = values?.length ?? 0;
       return {
         title: "Our Values Block",
         subtitle: `${count} value${count !== 1 ? "s" : ""}`,
+        media: Heart,
       };
     },
   },

@@ -4,12 +4,14 @@ import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import type { Course } from "../course-slider.block-query";
 import Link from "next/link";
+import { ImageQuery, Img } from "@/features/unorganized-components/image-component/image.component";
 
 
 interface CourseCardProps {
   course: Course;
   index: number;
   isRecalcDone: boolean;
+  image: ImageQuery;
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ course, index, isRecalcDone }) => {
@@ -43,23 +45,25 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, isRecalcDone }) 
   const shouldAnimate = isRecalcDone && isVisible;
 
   return (
-    <Link className="group" href={`/courses/${course.slug}`}>
+    <Link className="group" href={`/course/${course.slug}`}>
+
+      
         <div
           ref={cardRef}
-          className={`w-96 flex-shrink-0 border opacity-0 cursor-pointer ${shouldAnimate && "animate-fade-up"}`}
+          className={`w-96 flex-shrink-0 border rounded-lg overflow-hidden border-gray-200 opacity-0 cursor-pointer ${shouldAnimate && "animate-fade-up"}`}
           style={shouldAnimate ? { animationDelay: `${index * 150}ms` } : {}}
         >
           <div className="relative h-72 w-full overflow-hidden">
-            {course.image ? (
-              <img
-                src={course.image}
-                alt={course.title}
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                  // Fallback if image fails
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = "";
-                }}
+            {course.featuredImage ? (
+              <Img
+                {...course.featuredImage}
+                sizes={{ md: "full" }}
+                
+                className="h-full w-full"
+                cover
+             
+
+                
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-gray-300">

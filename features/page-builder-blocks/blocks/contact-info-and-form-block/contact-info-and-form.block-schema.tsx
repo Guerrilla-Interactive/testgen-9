@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { Newspaper } from "lucide-react";
+import { ContactRound } from "lucide-react";
 
 export default defineType({
   name: "contact-info-and-form-block",
@@ -7,7 +7,7 @@ export default defineType({
   title: "Contact Info and Form",
   description:
     "A block that displays contact information on the left and a contact form on the right.",
-  icon: Newspaper,
+  icon: ContactRound,
   fields: [
     // Section layout settings
     defineField({

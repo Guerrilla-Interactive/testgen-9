@@ -2,11 +2,11 @@ import type { StructureBuilder } from "sanity/structure";
 
 export const serviceSlugDeskStructure = (S: StructureBuilder) => {
   return S.listItem()
-    .title("Service")
+    .title("Tjenester")
     .schemaType("service-slug")
     .child(
       S.documentTypeList("service-slug")
-        .title("Service")
+        .title("Tjenester")
         .defaultOrdering([{ field: "_createdAt", direction: "desc" }])
     );
 };

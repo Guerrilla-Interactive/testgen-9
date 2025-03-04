@@ -19,7 +19,7 @@ const navItems = [
   },
   {
     label: "Kurs",
-    href: "/kurs",
+    href: "#kurs",
     target: false,
   },
   {
