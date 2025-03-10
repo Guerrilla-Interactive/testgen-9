@@ -2,7 +2,7 @@ import React, { forwardRef } from "react"
 
 import Flex from "../flex.component/flex.component"
 import type { IBaseComponentProps } from "../types"
-
+import { DirectionClasses } from "../flex.component/flex.component"
 /**
  * FlexRow component - A flex row layout component.
  *
@@ -16,13 +16,17 @@ import type { IBaseComponentProps } from "../types"
  * @returns {ReactElement} A flex row layout component
  */
 
-const FlexRow = forwardRef<HTMLDivElement, IBaseComponentProps>(
-  ({ children, className, style = {}, id, ...rest }, ref) => {
+interface FlexRowProps extends IBaseComponentProps {
+  notAuto?: boolean;
+}
+
+const FlexRow = forwardRef<HTMLDivElement, FlexRowProps>(
+  ({ children, className, style = {}, id, notAuto = false, direction = "auto", ...rest }, ref) => {
     return (
       <Flex
         ref={ref}
         id={id}
-        auto
+        direction={notAuto ? "row" : "auto"}
         style={style}
         className={className}
         {...rest}

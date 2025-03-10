@@ -11,7 +11,7 @@ export default function Hero5BlockComponent(props: Partial<Hero5Block>) {
 
 
   return (
-    <Section className="mt-20 ">
+    <Section className="mt-24 ">
               {image && (
           <div className="w-full aspect-video mx-auto max-w-[1320px] max-h-[480px] mb-8 rounded-lg overflow-hidden">
             <Img

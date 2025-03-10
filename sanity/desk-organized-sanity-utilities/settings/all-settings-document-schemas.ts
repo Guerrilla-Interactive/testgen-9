@@ -1,4 +1,5 @@
 import { footerSettingsSchema } from "./footer-settings/footer-settings.schema";
+import { headerSettingsSchema } from "./header-settings/header-settings.schema";
 import { menuSettingsSchema } from "./menu-settings/menu-settings.schema";
 import { metadataSettingsSchema } from "./metadata-settings/metadata-settings.schema";
 import { siteSettingsSchema } from "./site-settings/site-settings.schema";
@@ -15,6 +16,7 @@ export { footerSettingsSchema } from "./footer-settings/footer-settings.schema";
 const settingsSchemas = {
   // menuSettingsSchema,
   footerSettingsSchema,
+  headerSettingsSchema,
   metadataSettingsSchema,
   siteSettingsSchema,
 };

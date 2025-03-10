@@ -6,13 +6,9 @@ import { menuSettingsQuery } from "./menu-settings/menu-settings.query";
 import { metadataSettingsQuery } from "./metadata-settings/metadata-settings.query";
 import { sanityFetch } from "@/sanity/lib/live";
 import { footerSettingsQuery } from "./footer-settings/footer-settings.query";
+import { headerSettingsQuery } from "./header-settings/header-settings.query";
 
-const settingsQuery = groq`{
-  "siteSettings": ${siteSettingsQuery},
-  "footerSettings": ${footerSettingsQuery},
-  "menuSettings": ${menuSettingsQuery},
-  "metadataSettings": ${metadataSettingsQuery},
-}`;
+
 
 
 const footerQuery = groq`
@@ -20,6 +16,25 @@ const footerQuery = groq`
   ${footerSettingsQuery}
   }
 `;
+
+const headerQuery = groq`
+  *[_type == "headerSettings"][0] {
+  ${headerSettingsQuery}
+  }
+`;
+
+
+const settingsQuery = groq`{
+  "siteSettings": ${siteSettingsQuery},
+  "headerSettings": ${headerQuery},
+  "footerSettings": ${footerSettingsQuery},
+  "menuSettings": ${menuSettingsQuery},
+  "metadataSettings": ${metadataSettingsQuery},
+}`;
+
+
+
+
 
 export const fetchSettings = async () => {
   const data = await sanityFetch({

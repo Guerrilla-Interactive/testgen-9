@@ -25,7 +25,7 @@ export default async function MainLayout({
   
   return (
     <>
-      <Header {...settings}/>
+      <Header {...settings.data}/>
       <main>{children}</main>
       <SanityLive />
       {(await draftMode()).isEnabled && (

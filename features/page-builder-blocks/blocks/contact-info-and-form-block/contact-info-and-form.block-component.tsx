@@ -125,7 +125,7 @@ export default function ContactInfoAndFormBlockComponent({
       <div className="flex flex-col md:flex-row gap-12">
         {/* Left: Contact Info */}
         <div className="md:w-1/2 space-y-4">
-          <h2 className="text-3xl font-sans">{contactHeading}</h2>
+          <h2 className="text-3xl font-sans text-balance">{contactHeading}</h2>
           <p className="text-lg text-gray-600">{contactDescription}</p>
           <div className="space-y-2">
             <p>

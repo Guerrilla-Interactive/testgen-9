@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Logo from "../logo";
 import DesktopNav from "./desktop-nav";
@@ -12,7 +12,8 @@ import { cn } from "@/features/unorganized-utils/utils";
 import { useRouter } from "next/router";
 import { FlexCol, FlexRow } from "@/features/unorganized-components/nextgen-core-ui";
 import { Icon } from "@iconify/react";
-
+import { SettingsQueryResult } from "@/sanity.types";
+import VeitrygghetLogo from "@/features/unorganized-components/VeitrygghetLogo";
 
 const navItems = [
   {
@@ -42,10 +43,17 @@ const navItems = [
   },
 ];
 
-export default function Header(props: any) {
+export default function Header(props: Partial<SettingsQueryResult>) {
   const { sessionStatus } = useGlobalContext();
   const { sessionLoaded, setIsTopDark, isTopDark } = sessionStatus;
   const [iconLoaded, setIconLoaded] = useState(false);
+
+  const logoRef = useRef<HTMLDivElement>(null);
+
+  // isLogoHovered
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const { headerSettings } = props;
+
 
   const pathname = usePathname();
 
@@ -72,58 +80,65 @@ export default function Header(props: any) {
   }, [pathname]);
 
   return (
-    <header
-      className={cn(
-        "absolute top-0 w-full border-border/40 z-50 transition-all   ",
-        !isTopDark ? "text-black" : "text-white",
-        iconLoaded && !sessionLoaded && "animate-fade-down-slow",
-        iconLoaded ? "opacity-100" : "opacity-0"
-         
-      )}
-    >
+    <>
+      <header
+        className={cn(
+          "absolute top-0 w-full border-border/40 z-50 transition-all   ",
+          !isTopDark ? "text-black" : "text-white",
+          iconLoaded && !sessionLoaded && "animate-fade-down-slow",
+          iconLoaded ? "opacity-100" : "opacity-0"
 
-
-      <FlexRow  className={cn(`container w-full  items center justify-between`)}>
-        {/* Mail, availability, phone number */}
-        <FlexCol className="">
-          <FlexRow className=" items-center gap-2">
-            <Icon icon="mdi:mail"  onLoad={() => setIconLoaded(true)} />
-            <p>info@veitrygghet.no</p>
-          </FlexRow>
-        </FlexCol>
-        <FlexCol className="">
-          <FlexRow className="items-center gap-2">
-
-  
-            <FlexCol className="gap-2">
-              <FlexRow className="items-center gap-2">
-                <Icon icon="mdi:phone"  onLoad={() => setIconLoaded(true)} />
-                <p>+47 99 99 99 99</p>
-                <FlexCol className="gap-2">
-              <p>(24/7 Vakttelefon)</p>
+        )}
+      >
+        <div className="container duration-700">
+          <FlexRow notAuto  className={cn(`justify-between pt-1 border-b pb-1 font-light`, isTopDark ? "border-white/20" : "border-black/20")}>
+            {/* Mail, availability, phone number */}
+            
+            <FlexCol className=" items-center hidden md:flex hover:underline">
+            <Link href={`mailto:${headerSettings?.email?.email}`}>
+              <FlexRow notAuto className=" items-center gap-2 ">
+                <Icon icon={headerSettings?.email?.icon.name} onLoad={() => setIconLoaded(true)} />
+                <p>{headerSettings?.email?.email}</p>
+              </FlexRow>
+            </Link>
             </FlexCol>
+            
+            <FlexCol className="">
+              <FlexRow className="items-center gap-2">
+                <FlexCol className="gap-2 hover:underline">
+                  <Link href={`tel:${headerSettings?.phoneNumber?.phoneNumber}`}>
+                    <FlexRow notAuto className="items-center gap-2">
+                      <Icon icon={headerSettings?.phoneNumber?.icon.name} onLoad={() => setIconLoaded(true)} />
+                      <p>{headerSettings?.phoneNumber?.phoneNumber}</p>
+                      <FlexCol className="gap-2">
+                        <p>{headerSettings?.phoneNumber?.additionalText}</p>
+                      </FlexCol>
+                    </FlexRow>
+                  </Link>
+                </FlexCol>
               </FlexRow>
             </FlexCol>
-
           </FlexRow>
-        </FlexCol>
-      </FlexRow>
 
 
 
-      <div className="container flex items-center justify-between h-14">
-        <Link href="/" aria-label="Home page">
-          <Logo nonOrangeColor={!isTopDark ? "black" : "white"} />
-        </Link>
-        <div className="hidden xl:flex gap-7 items-center justify-between">
-          <DesktopNav navItems={navItems} />
-          {/* <ModeToggle /> */}
+          <div className="flex items-center justify-between h-14">
+            <Link href="/" aria-label="Home page">
+            <div ref={logoRef} onMouseEnter={() => setIsLogoHovered(true)} onMouseLeave={() => setIsLogoHovered(false)}  className="w-52 h-full">
+              <VeitrygghetLogo duration={1000}  hoverFrame={isTopDark ? "first" : "last"}  activeKeyframe={isTopDark ? "last" : "first"} />
+              </div>
+            </Link>
+            <div className="hidden xl:flex gap-7 items-center justify-between">
+              <DesktopNav navItems={navItems} />
+              {/* <ModeToggle /> */}
+            </div>
+            <div className="flex items-center xl:hidden">
+              {/* <ModeToggle /> */}
+              <MobileNav navItems={navItems} />
+            </div>
+          </div>
         </div>
-        <div className="flex items-center xl:hidden">
-          {/* <ModeToggle /> */}
-          <MobileNav navItems={navItems} />
-        </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
