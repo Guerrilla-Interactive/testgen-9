@@ -10,6 +10,9 @@ import MobileNav from "./mobile-nav";
 import { useGlobalContext } from "@/features/context/global-context";
 import { cn } from "@/features/unorganized-utils/utils";
 import { useRouter } from "next/router";
+import { FlexCol, FlexRow } from "@/features/unorganized-components/nextgen-core-ui";
+import { Icon } from "@iconify/react";
+
 
 const navItems = [
   {
@@ -42,6 +45,7 @@ const navItems = [
 export default function Header(props: any) {
   const { sessionStatus } = useGlobalContext();
   const { sessionLoaded, setIsTopDark, isTopDark } = sessionStatus;
+  const [iconLoaded, setIconLoaded] = useState(false);
 
   const pathname = usePathname();
 
@@ -51,7 +55,7 @@ export default function Header(props: any) {
     // Check if "data-top-image" is true.
     const mainDiv = document.querySelector("main > div");
     const figureEl = mainDiv ? mainDiv.querySelector("figure[data-cover]") : null;
-      
+
     if (
       figureEl &&
       figureEl.getAttribute("data-cover") === "true" &&
@@ -70,14 +74,43 @@ export default function Header(props: any) {
   return (
     <header
       className={cn(
-        "absolute top-0 w-full border-border/40 z-50 transition-all duration-100  ",
+        "absolute top-0 w-full border-border/40 z-50 transition-all   ",
         !isTopDark ? "text-black" : "text-white",
-        !sessionLoaded && "animate-fade-down-slow"
+        iconLoaded && !sessionLoaded && "animate-fade-down-slow",
+        iconLoaded ? "opacity-100" : "opacity-0"
+         
       )}
     >
-      
 
-      
+
+      <FlexRow  className={cn(`container w-full  items center justify-between`)}>
+        {/* Mail, availability, phone number */}
+        <FlexCol className="">
+          <FlexRow className=" items-center gap-2">
+            <Icon icon="mdi:mail"  onLoad={() => setIconLoaded(true)} />
+            <p>info@veitrygghet.no</p>
+          </FlexRow>
+        </FlexCol>
+        <FlexCol className="">
+          <FlexRow className="items-center gap-2">
+
+  
+            <FlexCol className="gap-2">
+              <FlexRow className="items-center gap-2">
+                <Icon icon="mdi:phone"  onLoad={() => setIconLoaded(true)} />
+                <p>+47 99 99 99 99</p>
+                <FlexCol className="gap-2">
+              <p>(24/7 Vakttelefon)</p>
+            </FlexCol>
+              </FlexRow>
+            </FlexCol>
+
+          </FlexRow>
+        </FlexCol>
+      </FlexRow>
+
+
+
       <div className="container flex items-center justify-between h-14">
         <Link href="/" aria-label="Home page">
           <Logo nonOrangeColor={!isTopDark ? "black" : "white"} />
