@@ -42,7 +42,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
       : "";
 
   const cardContent = (
-    <div className="relative h-[20rem] group overflow-hidden  bg-gray-200">
+    <div className="relative h-[20rem] group overflow-hidden rounded-lg  bg-gray-200">
       {service.featuredImage ? (
         <>
         <Img
