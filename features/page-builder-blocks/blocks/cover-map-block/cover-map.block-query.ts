@@ -6,6 +6,12 @@ const coverMapBlockQuery = groq`
     _type,
     center,
     zoom,
+    height,
+    animateIntro,
+    bearingRotation,
+    radiusAnimation,
+    color,
+
   }
 `;
 

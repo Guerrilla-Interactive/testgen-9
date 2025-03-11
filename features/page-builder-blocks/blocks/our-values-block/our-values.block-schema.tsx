@@ -23,7 +23,7 @@ export default defineType({
               type: "icon",
               title: "Icon",
               options: {
-                collections: ["fa-brands", "mdi", "f7", "sa", "hi", "fi", "si"],
+                collections: ["mdi"],
                 showName: true,
               },
             }),

@@ -24,6 +24,8 @@ type FormFieldType = {
   width?: "full" | "half";
   helpText?: string;
   options?: { label: string; value: string }[];
+  labelOnly?: boolean;
+  preChecked?: boolean;
 };
 
 interface CustomContactFormProps {
@@ -112,7 +114,11 @@ export default function CustomContactFormBlockComponent({
   // Create default values for the form
   const defaultValues = formFields?.reduce((acc, field) => {
     if (field.fieldType === "heading") return acc;
-    acc[field.fieldName] = field.fieldType === "checkbox" ? false : "";
+    if (field.fieldType === "checkbox") {
+      acc[field.fieldName] = field.preChecked ? true : false;
+    } else {
+      acc[field.fieldName] = "";
+    }
     return acc;
   }, {} as Record<string, any>);
 
@@ -248,76 +254,86 @@ export default function CustomContactFormBlockComponent({
         key={field.fieldName}
         control={form.control}
         name={field.fieldName}
-        render={({ field: formField }) => (
-          <FormItem className={cn("mb-6", field.width === "half" ? "md:w-1/2 md:pr-2" : "w-full")}>
-            <FormLabel>{field.fieldLabel}{field.isRequired && " *"}</FormLabel>
-            <FormControl>
-              {field.fieldType === "textarea" ? (
-                <textarea
-                  {...formField}
-                  placeholder={field.placeholder}
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  rows={4}
-                />
-              ) : field.fieldType === "checkbox" ? (
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    checked={formField.value}
-                    onCheckedChange={formField.onChange}
-                    id={field.fieldName}
-                  />
-                  <label htmlFor={field.fieldName} className="text-sm">{field.placeholder || field.fieldLabel}</label>
-                </div>
-              ) : field.fieldType === "select" ? (
-                <Select onValueChange={formField.onChange} defaultValue={formField.value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={field.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {field.options?.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              ) : field.fieldType === "radio" ? (
-                <RadioGroup
-                  onValueChange={formField.onChange}
-                  defaultValue={formField.value}
-                  className="flex flex-col space-y-1"
-                >
-                  {field.options?.map((option) => (
-                    <div key={option.value} className="flex items-center space-x-2">
-                      <RadioGroupItem value={option.value} id={`${field.fieldName}-${option.value}`} />
-                      <label htmlFor={`${field.fieldName}-${option.value}`} className="text-sm">
-                        {option.label}
-                      </label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              ) : field.fieldType === "date" ? (
-                <div className="relative">
-                  <Input
-                    {...formField}
-                    type="date"
-                    placeholder={field.placeholder}
-                    className="pr-10"
-                  />
-                  <Calendar className="absolute top-3 right-3 h-4 w-4 text-gray-400" />
-                </div>
-              ) : (
-                <Input
-                  {...formField}
-                  type={field.fieldType}
-                  placeholder={field.placeholder}
-                />
+        render={({ field: formField }) => {
+          // Compute the placeholder: if labelOnly is true, use field.fieldLabel (or custom placeholder if provided)
+          const computedPlaceholder = field.labelOnly
+            ? (field.placeholder || field.fieldLabel)
+            : field.placeholder;
+
+          return (
+            <FormItem className={cn("mb-6", field.width === "half" ? "md:w-1/2 md:pr-2" : "w-full")}>
+              {/* For non-checkbox fields, display the label above the input only if labelOnly is not enabled */}
+              {field.fieldType !== "checkbox" && !field.labelOnly && (
+                <FormLabel>
+                  {field.fieldLabel}{field.isRequired && " *"}
+                </FormLabel>
               )}
-            </FormControl>
-            {field.helpText && <FormDescription>{field.helpText}</FormDescription>}
-            <FormMessage />
-          </FormItem>
-        )}
+              <FormControl>
+                {field.fieldType === "textarea" ? (
+                  <textarea
+                    {...formField}
+                    placeholder={computedPlaceholder}
+                    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    rows={4}
+                  />
+                ) : field.fieldType === "checkbox" ? (
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      checked={formField.value}
+                      onCheckedChange={formField.onChange}
+                      id={field.fieldName}
+                    />
+                    <label htmlFor={field.fieldName} className="text-sm">
+                      {field.fieldLabel}
+                    </label>
+                  </div>
+                ) : field.fieldType === "select" ? (
+                  <Select onValueChange={formField.onChange} defaultValue={formField.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder={computedPlaceholder} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {field.options?.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                ) : field.fieldType === "radio" ? (
+                  <RadioGroup
+                    onValueChange={formField.onChange}
+                    defaultValue={formField.value}
+                    className="flex flex-col space-y-1"
+                  >
+                    {field.options?.map((option) => (
+                      <div key={option.value} className="flex items-center space-x-2">
+                        <RadioGroupItem value={option.value} id={`${field.fieldName}-${option.value}`} />
+                        <label htmlFor={`${field.fieldName}-${option.value}`} className="text-sm">
+                          {option.label}
+                        </label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                ) : field.fieldType === "date" ? (
+                  <div className="relative">
+                    <Input
+                      {...formField}
+                      type="date"
+                      placeholder={computedPlaceholder}
+                      className="pr-10"
+                    />
+                    <Calendar className="absolute top-3 right-3 h-4 w-4 text-gray-400" />
+                  </div>
+                ) : (
+                  <Input {...formField} type={field.fieldType} placeholder={computedPlaceholder} />
+                )}
+              </FormControl>
+              {field.helpText && <FormDescription>{field.helpText}</FormDescription>}
+              <FormMessage />
+            </FormItem>
+          );
+        }}
       />
     );
   };

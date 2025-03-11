@@ -173,6 +173,21 @@ export default defineType({
               title: "Help Text",
               description: "Additional information displayed below the field",
             }),
+            defineField({
+              name: "labelOnly",
+              type: "boolean",
+              title: "Label Only",
+              description: "If enabled, display only the label (as placeholder) without a separate title above the field.",
+              initialValue: false,
+            }),
+            defineField({
+              name: "preChecked",
+              type: "boolean",
+              title: "Prechecked",
+              description: "If enabled, the checkbox will be prechecked",
+              initialValue: false,
+              hidden: ({ parent }) => parent?.fieldType !== "checkbox",
+            }),
           ],
           preview: {
             select: {
@@ -234,7 +249,8 @@ function createFormField(
   placeholder: string, 
   isRequired: boolean, 
   width: "full" | "half",
-  helpText?: string
+  helpText?: string,
+  preChecked?: boolean
 ) {
   return {
     _type: "formField",
@@ -244,6 +260,7 @@ function createFormField(
     placeholder,
     isRequired,
     width,
-    ...(helpText && { helpText })
+    ...(helpText && { helpText }),
+    preChecked: preChecked ?? false,
   };
 }

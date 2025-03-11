@@ -14,6 +14,8 @@ export const customContactFormBlockQueryDetails = groq`
       isRequired,
       width,
       helpText,
+      labelOnly,
+      preChecked,
       options[] {
         label,
         value

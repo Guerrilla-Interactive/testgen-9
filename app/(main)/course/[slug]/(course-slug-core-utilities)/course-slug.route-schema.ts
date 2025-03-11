@@ -125,6 +125,58 @@ export default defineType({
       type: "text",
       group: "content",
     }),
+    defineField({
+      name: "digitalCourse",
+      title: "Digitalt Kurs",
+      type: "object",
+      group: "details",
+      fields: [
+        defineField({
+          name: "enabled",
+          title: "Enabled",
+          type: "boolean",
+          
+          initialValue: false,
+        }),
+        defineField({
+          name: "icon",
+          type: "icon",
+          title: "Icon",
+          description: "Dette er ikonet for kolumen vedsiden av påmeldingskjemaet",
+          hidden: ({ document }) => document?.digitalCourse?.enabled == false,
+          initialValue: {
+            icon: "mdi:laptop-account",
+          },
+          options: {
+            collections: ["mdi"],
+            showName: true,
+          },
+        }),
+
+        defineField({
+          name: "title",
+          title: "Title",
+          type: "string",
+          description: "Dette er tittelen for kolumen vedsiden av påmeldingskjemaet",
+          initialValue: "Dette er påmelding til digitalt kurs",
+          hidden: ({ document }) => document?.digitalCourse?.enabled == false,
+        }),
+        defineField({
+          name: "description",
+          title: "Description",
+          type: "text",
+          description: "Dette er beskrivelse for kolumen vedsiden av påmeldingskjemaet",
+          initialValue: "Nettkurset passer for alle som ikke har tid eller mulighet til å delta på de vanlige klasseromskursene våre – et godt og rimelig alternativ til fysiske kurs.",
+          hidden: ({ document }) => document?.digitalCourse?.enabled == false,
+        }),
+      ],
+    }),
+    defineField({
+      name: "map",
+      title: "Map",
+      type: "cover-map-block",
+      hidden: ({ document }) => document?.digitalCourse?.enabled == true,
+    }),
   ],
   preview: {
     select: {

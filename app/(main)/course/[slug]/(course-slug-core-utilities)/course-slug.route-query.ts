@@ -22,11 +22,13 @@ export const GET_COURSE_PAGE_BY_ROUTE_QUERY = groq`
     featuredImage{
       ${imageQuery}
     },
+    map,
     body,
     aboutCourse,
     keyConcepts,
     customContactForm,
     excerpt,
+    digitalCourse,
     _createdAt,
     _updatedAt,
   }
