@@ -66,14 +66,9 @@ export default function RootLayout({
           supplementFont.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
+
           {children}
-        </ThemeProvider>
+        
         <Toaster position="top-center" richColors />
         <NextgenContextStatusPanel />
 

@@ -1,19 +1,18 @@
 import { groq } from "next-sanity";
+import { customContactFormBlockQueryDetails } from "../custom-contact-form-block/custom-contact-form.block-query";
 
 // @sanity-typegen-ignore
 const contactInfoAndFormBlockQuery = groq`
   _type == "contact-info-and-form-block" => {
     _type,
-    padding,
-    colorVariant,
-    contactHeading,
-    contactDescription,
-    contactEmail,
-    contactPhone,
-    contactAddress,
-    formHeading,
-    buttonText,
-    successMessage,
+      contactHeading,
+      contactDescription,
+      contactEmail,
+      contactPhone,
+      contactAddress,
+      customContactForm{
+      ${customContactFormBlockQueryDetails}
+    },
     }
 `;
 

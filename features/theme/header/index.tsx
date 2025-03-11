@@ -125,7 +125,7 @@ export default function Header(props: Partial<SettingsQueryResult>) {
           <div className="flex items-center justify-between h-14">
             <Link href="/" aria-label="Home page">
             <div ref={logoRef} onMouseEnter={() => setIsLogoHovered(true)} onMouseLeave={() => setIsLogoHovered(false)}  className="w-52 h-full">
-              <VeitrygghetLogo duration={1000}  hoverFrame={isTopDark ? "first" : "last"}  activeKeyframe={isTopDark ? "last" : "first"} />
+              <VeitrygghetLogo duration={1000}  activeKeyframe={isTopDark ? "last" : "first"} />
               </div>
             </Link>
             <div className="hidden xl:flex gap-7 items-center justify-between">

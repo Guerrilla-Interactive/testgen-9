@@ -9,17 +9,6 @@ export default defineType({
     "A block that displays contact information on the left and a contact form on the right.",
   icon: ContactRound,
   fields: [
-    // Section layout settings
-    defineField({
-      name: "padding",
-      type: "section-padding",
-    }),
-    defineField({
-      name: "colorVariant",
-      type: "color-variant",
-      title: "Color Variant",
-      description: "Select a background color variant",
-    }),
     // Contact Info fields
     defineField({
       name: "contactHeading",
@@ -52,24 +41,11 @@ export default defineType({
       title: "Contact Address",
       initialValue: "123 Main Street, City, Country",
     }),
-    // Form fields
     defineField({
-      name: "formHeading",
-      type: "string",
-      title: "Form Heading",
-      initialValue: "Send us a message",
-    }),
-    defineField({
-      name: "buttonText",
-      type: "string",
-      title: "Button Text",
-      initialValue: "Submit",
-    }),
-    defineField({
-      name: "successMessage",
-      type: "text",
-      title: "Success Message",
-      initialValue: "Thank you for contacting us!",
+      name: "customContactForm",
+      title: "Custom Contact Form",
+      type: "custom-contact-form-block",
+      
     }),
   ],
   preview: {
