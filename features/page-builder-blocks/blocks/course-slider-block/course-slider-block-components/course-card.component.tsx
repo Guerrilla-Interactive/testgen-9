@@ -50,10 +50,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, isRecalcDone }) 
       
         <div
           ref={cardRef}
-          className={`w-96 flex-shrink-0 border rounded-lg overflow-hidden hover:border-primary active:scale-[0.99] transition-all duration-100  border-gray-200 opacity-0 cursor-pointer ${shouldAnimate && "animate-fade-up"}`}
+          className={`w-96 flex-shrink-0 border rounded-lg overflow-hidden hover:border-primary active:scale-[0.99] transition-all  border-gray-200 opacity-0 cursor-pointer ${shouldAnimate && "animate-[fade-in-up-blur_1s_ease-out_0.2s_forwards]"}`}
           style={shouldAnimate ? { animationDelay: `${index * 150}ms` } : {}}
         >
-          <div className="relative h-72 w-full overflow-hidden">
+          <div className="relative h-72 w-full overflow-hidden duration-100">
             {course.featuredImage ? (
               <Img
                 {...course.featuredImage}
