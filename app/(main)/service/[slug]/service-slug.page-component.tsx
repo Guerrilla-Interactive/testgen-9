@@ -33,9 +33,9 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
                 {/* Title with 150ms delay */}
                 <h1
                   className="
-                  opacity-0
+                    opacity-0
                     text-3xl md:text-4xl font-bold mb-4
-                    animate-[fade-in-left-blur_1.5s_ease-out_0.2s_forwards]
+                    animate-[fade-in-left-blur_1s_ease-out_0.2s_forwards]
                   "
                 >
                   {page.customTitle || page.title}
@@ -43,7 +43,7 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
 
                 {/* Body text with 300ms delay */}
                 <div
-                  className=" opacity-0 animate-[fade-in-left-blur_1.5s_ease-out_0.7s_forwards]"
+                  className=" opacity-0 animate-[fade-in-left-blur_1s_ease-out_0.5s_forwards]"
                 >
                   <PortableTextRenderer value={page.body} />
                 </div>
@@ -55,7 +55,7 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
               className="
               opacity-0
                 max-w-sm w-full border border-gray-200 rounded-lg p-6 
-                animate-[fade-in-right-blur_1.5s_ease-out_2s_forwards]
+                animate-[fade-in-right-blur_1s_ease-out_0.8s_forwards]
               "
             >
               <CustomContactFormBlockComponent {...page.customContactForm} />
