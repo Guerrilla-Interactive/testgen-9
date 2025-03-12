@@ -6,6 +6,7 @@ import { serviceSlugDeskStructure } from "@/app/(main)/service/[slug]/(service-s
 import { courseSlugDeskStructure } from "@/app/(main)/course/[slug]/(course-slug-core-utilities)/course-slug.desk-structure";
 import { Files, List } from "lucide-react";
 import { StructureBuilder } from "sanity/structure";
+import { faqCategoryDeskStructure } from "./faq-category/faq-category.document-structure";
 
 // ADD VALUE 1 ABOVE
 export const structure = (S: StructureBuilder, context: any) => {
@@ -55,7 +56,17 @@ export const structure = (S: StructureBuilder, context: any) => {
         S.list()
         .title("Misc")
         .items([
-          faqDeskStructure(S, context),
+          S.listItem()
+          .title("FAQ")
+          .icon(List)
+          .child(
+            S.list()
+            .title("FAQ")
+            .items([
+              faqDeskStructure(S, context),
+              faqCategoryDeskStructure(S, context),
+            ])
+          ),
           testimonialDeskStructure(S, context),
         ])
       ),

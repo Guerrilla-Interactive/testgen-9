@@ -23,7 +23,6 @@ const headerQuery = groq`
   }
 `;
 
-
 const settingsQuery = groq`{
   "siteSettings": ${siteSettingsQuery},
   "headerSettings": ${headerQuery},
@@ -51,3 +50,4 @@ export const fetchFooter = async () => {
   });
   return data;
 };
+

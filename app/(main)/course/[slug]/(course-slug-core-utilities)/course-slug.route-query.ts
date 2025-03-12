@@ -1,4 +1,6 @@
 import { imageQuery } from "@/features/unorganized-components/image-component/image.query";
+import { getAllFaqCategoriesQuery } from "@/sanity/desk-organized-sanity-utilities/faq-category/faq-category.document-queries";
+import { getAllReferencedFaqsQuery } from "@/sanity/desk-organized-sanity-utilities/faq/faq.document-queries";
 import { groq } from "next-sanity";
 
 export const GET_COURSE_PAGE_BY_DEFINED_SLUG_QUERY = groq`
@@ -28,6 +30,10 @@ export const GET_COURSE_PAGE_BY_ROUTE_QUERY = groq`
     keyConcepts,
     customContactForm,
     excerpt,
+    faqs{
+      ${getAllReferencedFaqsQuery},
+      ${getAllFaqCategoriesQuery}
+    },
     digitalCourse,
     _createdAt,
     _updatedAt,

@@ -6,16 +6,7 @@ export default defineType({
   type: "object",
   icon: ListCollapse,
   fields: [
-    defineField({
-      name: "padding",
-      type: "section-padding",
-    }),
-    defineField({
-      name: "colorVariant",
-      type: "color-variant",
-      title: "Color Variant",
-      description: "Select a background color variant",
-    }),
+
     defineField({
       name: "faqs",
       type: "array",
@@ -27,7 +18,24 @@ export default defineType({
           to: [{ type: "faq" }],
         },
       ],
+
+
     }),
+
+    defineField({
+      name: "faqsByCategory",
+      type: "array",
+      title: "FAQs by Category",
+      of: [
+        {
+          name: "faqCategory",
+          type: "reference",
+          to: [{ type: "faqCategory" }],
+        },
+      ],
+      description: "Title of the FAQs block",
+    }),
+    
   ],
   preview: {
     select: {

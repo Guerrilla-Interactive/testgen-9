@@ -177,6 +177,13 @@ export default defineType({
       type: "cover-map-block",
       hidden: ({ document }) => document?.digitalCourse?.enabled == true,
     }),
+
+    defineField({
+      name: "faqs",
+      title: "FAQs",
+      type: "faqs-block",
+      group: "details",
+    }),
   ],
   preview: {
     select: {

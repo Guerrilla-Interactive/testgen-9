@@ -5,10 +5,7 @@ import testimonialSchema from "@/sanity/desk-organized-sanity-utilities/testimon
 
 
 const unorganizedDocumentSchemas = {
-  authorSchema,
-  categorySchema,
-  faqSchema,
-  testimonialSchema,
+ 
 }
 
 export const allUnorganizedDocumentSchemas = Object.values(unorganizedDocumentSchemas);

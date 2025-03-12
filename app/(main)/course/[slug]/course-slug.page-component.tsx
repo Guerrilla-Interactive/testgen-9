@@ -14,6 +14,7 @@ import dynamic from "next/dynamic";
 import { Hero5BlockComponent } from "@/features/page-builder-blocks/blocks/hero-5-block";
 import { cn } from "@/features/unorganized-utils/utils";
 import { CoverMapBlockComponent } from "@/features/page-builder-blocks/blocks/cover-map-block";
+import FaqsBlockComponent from "@/features/page-builder-blocks/blocks/faqs-block/faqs.block-component";
 
 // Dynamically import Material icons
 const MaterialIcon = dynamic(() => import("@mui/material/Icon"), { ssr: false });
@@ -108,6 +109,14 @@ export default function CourseSlugPageComponent(page: Partial<GET_COURSE_PAGE_BY
         </Container>
       </Section>
 
+      {/* FAQ section */}
+
+      <Section>
+        <Container>
+          <FaqsBlockComponent {...page.faqs} />
+        </Container>
+      </Section>
+      </>
 
 
 
@@ -118,8 +127,7 @@ export default function CourseSlugPageComponent(page: Partial<GET_COURSE_PAGE_BY
 
 
 
-
-    </>
+    
   )
 }
 

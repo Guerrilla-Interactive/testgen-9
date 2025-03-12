@@ -6,7 +6,7 @@ import { allRouteDocumentSchemas } from "../app/(main)/all-route-document-schema
 import { allUnorganizedDocumentSchemas } from "./type-organized-schemas/all-unorganized-document-schemas";
 import { allFieldSchemas } from "./type-organized-schemas/fields/all-field-schemas";
 import { allBlockSchemas } from "@/features/page-builder-blocks/block-indexer";
-
+import { allDeskOrganizedDocumentSchemas } from "./desk-organized-sanity-utilities/desk-organized-schemas";
 
 
 
@@ -14,7 +14,8 @@ import { allBlockSchemas } from "@/features/page-builder-blocks/block-indexer";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
    
-    ...allUnorganizedDocumentSchemas, // dependent on allSharedBlockRelatedSchemas
+    // ...allUnorganizedDocumentSchemas, // dependent on allSharedBlockRelatedSchemas
+    ...allDeskOrganizedDocumentSchemas,
     ...allRouteDocumentSchemas,
     ...allSharedBlockRelatedSchemas,
     ...allFieldSchemas,

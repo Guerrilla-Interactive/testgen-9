@@ -14,6 +14,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "faqCategory" }] }],
+    }),
+    defineField({
       name: "body",
       type: "block-content",
     }),

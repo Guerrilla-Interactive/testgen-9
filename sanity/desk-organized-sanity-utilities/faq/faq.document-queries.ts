@@ -1,9 +1,7 @@
 import { groq } from "next-sanity";
 
 
-
-export const getAllReferencedFaqsQuery = groq`
-faqs[]->{
+export const faqQuery = groq`
     _id,
     title,
     body[]{
@@ -23,6 +21,15 @@ faqs[]->{
           }
         }
       }
-    },
-  }
+    }
 `;
+
+
+export const getAllReferencedFaqsQuery = groq`
+faqs[]->{
+  ${faqQuery}
+}
+`;
+
+
+
