@@ -1,6 +1,7 @@
 import { groq } from "next-sanity";
 
 
+// @sanity-typegen-ignore
 export const faqQuery = groq`
     _id,
     title,
