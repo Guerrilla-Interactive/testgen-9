@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { toast } from "sonner";
 import { Loader2, Calendar, Upload, X } from "lucide-react";
-import { Container, Section } from "@/features/unorganized-components/nextgen-core-ui";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/features/unorganized-components/ui/form";
 import { Input } from "@/features/unorganized-components/ui/input";
 import { Button } from "@/features/unorganized-components/ui/button";
@@ -14,6 +13,7 @@ import { Checkbox } from "@/features/unorganized-components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/features/unorganized-components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/features/unorganized-components/ui/radio-group";
 import { cn } from "@/features/unorganized-utils/utils";
+import { customContactFormBlockTranslations as t } from "./custom-contact-form.block-translation";
 
 type FormFieldType = {
   fieldType: "text" | "email" | "tel" | "textarea" | "checkbox" | "select" | "date" | "radio" | "file" | "heading";
@@ -37,10 +37,10 @@ interface CustomContactFormProps {
 }
 
 export default function CustomContactFormBlockComponent({
-  formTitle = "Kontakt oss",
-  formDescription,
-  submitButtonText = "Send melding",
-  successMessage = "Takk for meldingen. Vi vil kontakte deg så fort som mulig!",
+  formTitle = t("formTitle", "Contact Us"),
+  formDescription = t("formDescription", "Contact us for inquiries and a non-binding offer regarding your project."),
+  submitButtonText = t("submitButtonText", "Send Message"),
+  successMessage = t("successMessage", "Thank you for your message. We will contact you as soon as possible!"),
   formFields = [],
 }: Partial<CustomContactFormProps>) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,17 +59,17 @@ export default function CustomContactFormBlockComponent({
       
       switch (field.fieldType) {
         case "email":
-          validator = z.string().email({ message: "Vennligst skriv inn en gyldig e-postadresse" });
+          validator = z.string().email({ message: t("invalidEmail", "Please enter a valid email address") });
           break;
         case "tel":
-          validator = z.string().min(5, { message: "Vennligst skriv inn et gyldig telefonnummer" });
+          validator = z.string().min(5, { message: t("invalidPhone", "Please enter a valid phone number") });
           break;
         case "date":
           validator = z.string().refine((val) => {
             if (!val) return !field.isRequired;
             const date = new Date(val);
             return !isNaN(date.getTime());
-          }, { message: "Vennligst velg en gyldig dato" });
+          }, { message: t("invalidDate", "Please select a valid date") });
           break;
         case "file":
           // Files are handled separately, we just need a placeholder in the schema
@@ -83,7 +83,7 @@ export default function CustomContactFormBlockComponent({
           validator = z.boolean();
           if (field.isRequired) {
             validator = validator.refine((val) => val === true, {
-              message: `${field.fieldLabel} må bekreftes`,
+              message: `${field.fieldLabel} ${t("mustBeConfirmed", "must be confirmed")}`,
             });
           }
           break;
@@ -97,9 +97,9 @@ export default function CustomContactFormBlockComponent({
       
       if (field.isRequired && field.fieldType !== "checkbox" && field.fieldType !== "file") {
         if (field.fieldType === "radio" || field.fieldType === "select") {
-          validator = validator.min(1, { message: `Vennligst velg en ${field.fieldLabel}` });
+          validator = validator.min(1, { message: `${t("pleasePick", "Please select a")} ${field.fieldLabel}` });
         } else {
-          validator = validator.min(1, { message: `${field.fieldLabel} er påkrevd` });
+          validator = validator.min(1, { message: `${field.fieldLabel} ${t("required", "is required")}` });
         }
       }
       
@@ -167,7 +167,7 @@ export default function CustomContactFormBlockComponent({
       const result = await response.json();
 
       if (response.ok) {
-        toast.success(successMessage);
+        toast.success(t("successMessage", "Thank you for your message. We will contact you as soon as possible!"));
         form.reset();
         // Clear all files
         setFiles({});
@@ -178,10 +178,10 @@ export default function CustomContactFormBlockComponent({
           }
         });
       } else {
-        toast.error(result.error || "En feil oppstod.");
+        toast.error(result.error || t("errorMessage", "An error occurred."));
       }
     } catch (error: any) {
-      toast.error(error.message || "En feil oppstod under innsendingen av skjemaet.");
+      toast.error(error.message || t("submissionError", "An error occurred while submitting the form."));
     } finally {
       setIsSubmitting(false);
     }
@@ -238,7 +238,7 @@ export default function CustomContactFormBlockComponent({
                     className="w-full text-center"
                   >
                     <Upload className="h-4 w-4 mr-2" />
-                    {field.placeholder || "Velg fil"}
+                    {field.placeholder || t("selectFile", "Select file")}
                   </Button>
                 </div>
               )}

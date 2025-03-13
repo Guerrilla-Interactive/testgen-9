@@ -13,7 +13,7 @@ export default defineType({
       type: "array",
       title: "Values",
       of: [
-        defineType({
+        {
           name: "value",
           type: "object",
           title: "Value",
@@ -36,9 +36,9 @@ export default defineType({
               name: "description",
               type: "text",
               title: "Description",
-            }),
+            })
           ],
-        }),
+        }
       ],
     }),
   ],

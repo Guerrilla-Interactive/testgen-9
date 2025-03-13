@@ -32,6 +32,19 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "imagePosition",
+      title: "Image Position",
+      type: "string",
+      options: {
+        list: [
+          { title: "Right (Default)", value: "right" },
+          { title: "Left", value: "left" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "right",
+    }),
+    defineField({
       name: "links",
       type: "array",
       of: [{ type: "link" }],

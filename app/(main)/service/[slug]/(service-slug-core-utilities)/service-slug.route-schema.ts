@@ -77,5 +77,12 @@ export default defineType({
       group: "content",
     }),
 
+    defineField({
+      name: "faqs",
+      title: "FAQs",
+      type: "faqs-block",
+
+    })
+
   ],
 });

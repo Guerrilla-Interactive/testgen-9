@@ -7,6 +7,7 @@ import { GET_SERVICE_PAGE_BY_ROUTE_QUERYResult } from "@/sanity.types";
 import { useGlobalContext } from "@/features/context/global-context";
 import { useEffect } from "react";
 import { CustomContactFormBlockComponent } from "@/features/page-builder-blocks/blocks/custom-contact-form-block";
+import FaqsBlockComponent from "@/features/page-builder-blocks/blocks/faqs-block/faqs.block-component";
 
 export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_BY_ROUTE_QUERYResult>) {
   const { sessionStatus } = useGlobalContext();
@@ -63,6 +64,12 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
           </FlexRow>
         </Container>
       </Section>
+
+      {page.faqs && (
+
+            <FaqsBlockComponent {...page.faqs} />
+
+      )}
     </>
   );
 }

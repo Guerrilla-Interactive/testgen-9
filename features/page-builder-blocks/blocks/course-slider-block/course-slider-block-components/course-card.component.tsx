@@ -45,7 +45,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, isRecalcDone }) 
   const shouldAnimate = isRecalcDone && isVisible;
 
   return (
-    <Link className="group" href={`/course/${course.slug}`}>
+    <Link className="group" href={`/kurs/${course.slug}`}>
 
       
         <div

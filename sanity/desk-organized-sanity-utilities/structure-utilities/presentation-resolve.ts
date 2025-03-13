@@ -14,14 +14,22 @@ export const resolve: PresentationPluginOptions["resolve"] = {
       },
       resolve: (doc) => ({
         locations: [
+          // top level
+          {
+            title: doc?.title || "Untitled",
+            href: `/${doc?.slug}`,
+          },
           {
             title: doc?.title || "Untitled",
             href: `/blog/${doc?.slug}`,
           },
+
+        
+        
           { title: "Blog", href: `/blog` },
 
-          { title: "Service", href: `/service/${doc?.slug}` },
-          { title: "Services", href: `/service` },
+          { title: "Service", href: `/tjenester/${doc?.slug}` },
+          { title: "Services", href: `/tjenester` },
         ],
       }),
     }),
@@ -30,13 +38,13 @@ export const resolve: PresentationPluginOptions["resolve"] = {
     {
       route: "/:slug",
       filter: `_type == 'page-slug' && slug.current == $slug`,
-    },
+    },  
     {
       route: "/blog/:slug",
       filter: `_type == 'blog-slug' && slug.current == $slug`,
     },
     {
-      route: "/service/:slug",
+      route: "/tjenester/:slug",
       filter: `_type == 'service-slug' && slug.current == $slug`,
     },
   ]),

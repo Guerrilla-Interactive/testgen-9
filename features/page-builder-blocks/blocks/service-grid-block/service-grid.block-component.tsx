@@ -36,7 +36,7 @@ interface ServiceGridProps {
 const ServiceCard = ({ service }: { service: Service }) => {
   const url =
     "slug" in service
-      ? `/service/${service.slug.current}`
+      ? `/tjenester/${service.slug.current}`
       : "link" in service
       ? service.link
       : "";

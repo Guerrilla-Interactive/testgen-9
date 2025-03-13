@@ -12,6 +12,7 @@ import {
   Upload, 
   Heading 
 } from "lucide-react";
+import { customContactFormBlockTranslations as t } from "./custom-contact-form.block-translation";
 
 // Field type icon mapping
 const fieldTypeIcons = {
@@ -43,27 +44,27 @@ export default defineType({
       type: "string",
       title: "Form Title",
       description: "Title displayed above the form",
-      initialValue: "Få hjelp",
+      initialValue: t("getHelp", "Get Help"),
     }),
     defineField({
       name: "formDescription",
       type: "text",
       title: "Form Description",
       description: "Description displayed above the form fields",
-      initialValue: "Ta kontakt med oss for forspørsmål og et uforpliktet tilbud angående deres prosjekt.",
+      initialValue: t("formDescription", "Contact us for inquiries and a non-binding offer regarding your project."),
     }),
     defineField({
       name: "submitButtonText",
       type: "string",
       title: "Submit Button Text",
-      initialValue: "Send melding",
+      initialValue: t("submitButtonText", "Send Message"),
     }),
     defineField({
       name: "successMessage",
       type: "text",
       title: "Success Message",
       description: "Message displayed after successful form submission",
-      initialValue: "Takk for meldingen. Vi vil kontakte deg så fort som mulig!",
+      initialValue: t("successMessage", "Thank you for your message. We will contact you as soon as possible!"),
     }),
     // Dynamic form fields
     defineField({
@@ -218,12 +219,11 @@ export default defineType({
         },
       ],
       initialValue: () => [
-        createFormField("formField", "text", "fornavn", "Fornavn", "Ditt fornavn...", true, "half"),
-        createFormField("formField", "text", "etternavn", "Etternavn", "Ditt etternavn...", true, "half"),
-        createFormField("formField", "tel", "telefonnummer", "Telefon", "Ditt telefonnummer...", true, "full"),
-        createFormField("formField", "email", "epost", "Epost", "Din epostadresse", true, "full"),
-        createFormField("formField", "textarea", "melding", "Melding", "Din melding...", false, "full", 
-          "Det er fint med litt beskrivelse om hva du trenger hjelp med, så vil vi kunne være mer behjelpelig når vi tar kontakt!")
+        createFormField("formField", "text", "navn", t("name", "Name"), t("namePlaceholder", "Your name..."), true, "full"),
+        createFormField("formField", "tel", "telefonnummer", t("phone", "Phone"), t("phonePlaceholder", "Your phone number..."), true, "full"),
+        createFormField("formField", "email", "epost", t("email", "Email"), t("emailPlaceholder", "Your email address"), true, "full"),
+        createFormField("formField", "textarea", "melding", t("message", "Message"), t("messagePlaceholder", "Your message..."), false, "full", 
+          t("messageHelpText", "It's helpful with a brief description of what you need help with, so we can be more helpful when we contact you!"))
       ]
     }),
   ],

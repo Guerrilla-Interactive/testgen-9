@@ -94,7 +94,6 @@ export default function CourseSlugPageComponent(page: Partial<GET_COURSE_PAGE_BY
           </FlexCol>
           <FlexCol className="opacity-0 w-full border border-gray-200 rounded-lg h- animate-[fade-in-right-blur_1s_ease-out_1s_forwards]"> 
             {page.digitalCourse.enabled ? (
-
               // vertycal and horizontal center the content
               <div className="flex flex-col items-center h-full gap-y-4  text-center justify-center">
                 <Icon className="opacity-20" icon={page.digitalCourse.icon.name} width="80" height="80" />
@@ -110,12 +109,13 @@ export default function CourseSlugPageComponent(page: Partial<GET_COURSE_PAGE_BY
       </Section>
 
       {/* FAQ section */}
+      {page.faqs && (
 
-      <Section>
-        <Container>
-          <FaqsBlockComponent {...page.faqs} />
-        </Container>
-      </Section>
+          
+            
+            <FaqsBlockComponent {...page.faqs} />
+     
+      )}  
       </>
 
 

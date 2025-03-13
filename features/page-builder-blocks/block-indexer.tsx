@@ -33,6 +33,7 @@ import { Hero4BlockComponent, hero4BlockQuery, hero4BlockSchema } from "./blocks
 
 import { Hero5BlockComponent, hero5BlockQuery, hero5BlockSchema } from "./blocks/hero-5-block";
 import { CustomContactFormBlockComponent, customContactFormBlockQuery, customContactFormBlockSchema } from "./blocks/custom-contact-form-block";
+import { TwoColumnBlockComponent, twoColumnBlockQuery, twoColumnBlockSchema } from "./blocks/two-column-block";
 // ADD VALUE 1 ABOVE
 
 export const BlockDataMap: {
@@ -73,7 +74,8 @@ export const BlockDataMap: {
   "course-slider-block": { component: CourseSliderBlockComponent, schema: courseSliderBlockSchema, query: courseSliderBlockQuery },
   "hero-4-block": { component: Hero4BlockComponent, schema: hero4BlockSchema, query: hero4BlockQuery },
   "hero-5-block": { component: Hero5BlockComponent, schema: hero5BlockSchema, query: hero5BlockQuery },
-"custom-contact-form-block": { component: CustomContactFormBlockComponent, schema: customContactFormBlockSchema, query: customContactFormBlockQuery },
+  "custom-contact-form-block": { component: CustomContactFormBlockComponent, schema: customContactFormBlockSchema, query: customContactFormBlockQuery },
+  "two-column-block": { component: TwoColumnBlockComponent, schema: twoColumnBlockSchema, query: twoColumnBlockQuery },
   // ADD VALUE 2 ABOVE
 };
 
@@ -166,9 +168,10 @@ blocks[]{
 
   // Course Slider
   ${courseSliderBlockQuery},
+  ${ hero5BlockQuery  },
 
-
-${ hero5BlockQuery  },
+  // Two Column
+  ${twoColumnBlockQuery}
   // ADD VALUE 3 ABOVE
 }
 `;

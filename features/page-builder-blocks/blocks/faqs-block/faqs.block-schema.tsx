@@ -1,5 +1,7 @@
 import { defineField, defineType } from "sanity";
 import { ListCollapse } from "lucide-react";
+import { faqsBlockSchemaTranslations as t } from "./faq.block-translation";
+
 
 export default defineType({
   name: "faqs-block",
@@ -10,7 +12,7 @@ export default defineType({
     defineField({
       name: "faqs",
       type: "array",
-      title: "FAQs",
+      title: t("faqs.title", "FAQs"),
       of: [
         {
           name: "faq",
@@ -25,7 +27,7 @@ export default defineType({
     defineField({
       name: "faqsByCategory",
       type: "array",
-      title: "FAQs by Category",
+      title: t("faqsByCategory.title", "FAQs by Category"),
       of: [
         {
           name: "faqCategory",
@@ -33,7 +35,7 @@ export default defineType({
           to: [{ type: "faqCategory" }],
         },
       ],
-      description: "Title of the FAQs block",
+      description: t("faqsByCategory.description", "Title of the FAQs block"),
     }),
     
   ],
@@ -43,8 +45,8 @@ export default defineType({
     },
     prepare({ title }) {
       return {
-        title: "FAQs",
-        subtitle: title || "No Title",
+        title: t("faqs.title", "FAQs"),
+        subtitle: title || t("noTitle", "No Title"),
       };
     },
   },

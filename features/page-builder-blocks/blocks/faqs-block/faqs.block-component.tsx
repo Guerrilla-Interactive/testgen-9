@@ -1,18 +1,16 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/features/unorganized-components/ui/accordion";
-import SectionContainer from "@/features/unorganized-components/ui/section-container";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
-import { stegaClean } from "next-sanity";
 import { FaqsBlock } from "@/sanity.types";
 import { Container, Section } from "@/features/unorganized-components/nextgen-core-ui";
+import { faqsBlockComponentTranslations as t } from "./faq.block-translation";
 
 export default function FAQsBlockComponent(props: Partial<FaqsBlock>) {
   const { faqs, faqsByCategory } = props;
   
   return (
-    <Section>
-
-
+    <Section className="mt-12">
       <Container>
+      <h3 className="text-2xl font-bold mb-4">{t("faqs.title", "Frequently Asked Questions")}</h3>
         {(faqs || faqsByCategory) && (
           <Accordion className="space-y-4" type="multiple">
             {faqs && faqs.map((faq) => (
@@ -37,14 +35,6 @@ export default function FAQsBlockComponent(props: Partial<FaqsBlock>) {
             )}
           </Accordion>
         )}
-
-
-          
- 
-
-      
-     
-    
       </Container>
     </Section>
   );

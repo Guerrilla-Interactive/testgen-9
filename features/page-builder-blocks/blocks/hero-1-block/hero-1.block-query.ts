@@ -39,6 +39,7 @@ const hero1BlockQuery = groq`
       },
       alt
     },
+    imagePosition,
     links,
   }
 `;
