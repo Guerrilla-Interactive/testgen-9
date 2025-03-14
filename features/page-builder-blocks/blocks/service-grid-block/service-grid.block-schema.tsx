@@ -27,8 +27,9 @@ export default defineType({
             },
             {
               name: "link",
-              type: "url",
+              type: "string",
               title: "Link",
+             
               validation: (Rule) => Rule.required(),
             },
             {

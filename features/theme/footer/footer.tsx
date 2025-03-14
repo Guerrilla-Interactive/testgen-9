@@ -54,14 +54,14 @@ export default function Footer(props: FooterSettingsQueryResult) {
         {/* Kom i kontakt */}
         <InnerSection id="Kom i kontakt">
           <Container>
-            <FlexRow className="gap-x-12 justify-between border-b py-4 border-black border-opacity-30 ">
+            <FlexRow  notAuto className="gap-x-12 justify-between border-b py-4 border-black border-opacity-30 ">
               <FlexCol>
-                <h4 className="text-black text-[6rem] uppercase font-bold">
+                <h4 className="text-black text-[4rem] md:text-[6rem] uppercase font-bold">
                   Kom i kontakt
                 </h4>
               </FlexCol>
               <FlexCol className="justify-self-end">
-                <MultipleArrowSVG className="h-[6rem]" amount={3} />
+                <MultipleArrowSVG className="h-[4rem] md:h-[6rem]" amount={3} />
               </FlexCol>
             </FlexRow>
           </Container>
@@ -79,7 +79,7 @@ export default function Footer(props: FooterSettingsQueryResult) {
                   verdsetter sikkerhet, pålitelighet og profesjonalisme i alt vi
                   gjør.
                 </p>
-                <FlexRow className="mt-4 space-x-4">
+                <FlexRow notAuto className="mt-4 space-x-4 pb-12">
                   <a
                     href="https://facebook.com"
                     target="_blank"
@@ -108,7 +108,7 @@ export default function Footer(props: FooterSettingsQueryResult) {
               </FlexCol>
 
               <FlexCol>
-                <FlexRow className="justify-between gap-x-24">
+                <FlexRow notAuto className="justify-between gap-x-24">
                   {/* Lenker */}
                   <FlexCol>
                     <h4 className="font-sans uppercase font-bold text-black tracking-tight text-base mb-3">
