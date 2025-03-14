@@ -55,7 +55,7 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
             <FlexCol
               className="
               opacity-0
-                max-w-sm w-full border border-gray-200 rounded-lg p-6 
+                max-w-sm w-full border border-gray-200 rounded-lg p-6 mt-6 md:mt-0
                 animate-[fade-in-right-blur_1s_ease-out_0.8s_forwards]
               "
             >
