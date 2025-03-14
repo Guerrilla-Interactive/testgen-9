@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  robots: !isProduction ? "noindex, nofollow" : "index, follow",
+  robots: "index, follow",
 };
 
 // Import 3 fonts with custom CSS variable names
