@@ -11,7 +11,12 @@ import { MultipleArrowSVG } from "@/features/unorganized-components/arrow-svg/mu
 import { CoverMapBlockComponent } from "@/features/page-builder-blocks/blocks/cover-map-block";
 import { FooterSettingsQueryResult } from "@/sanity.types";
 import { Blocks } from "@/features/page-builder-blocks/block-component-exporter";
+import Image from "next/image";
 
+// startbank image png, arbeidstilsynet svg, dr.dropin logo from public images folder
+import startbankLogo from "@/public/images/startbank-logo.svg";
+import arbeidstilsynetLogo from "@/public/images/arbeidstilsynet-logo.svg";
+import drDropinLogo from "@/public/images/dr-dropin-logo.svg";
 
 const navItems = [
   {
@@ -69,7 +74,7 @@ export default function Footer(props: FooterSettingsQueryResult) {
   
         <InnerSection id="Kontakt">
           <Container>
-            <FlexRow className="justify-between py-32">
+            <FlexRow className="justify-between pt-32">
               <FlexCol className="max-w-screen-xs gap-y-4">
                 <Logo className="max-w-64" orangeColor="#fff" />
                 <p>
@@ -105,6 +110,10 @@ export default function Footer(props: FooterSettingsQueryResult) {
                 <Instagram className="text-black hover:text-white w-7 h-7" />
                   </a>
                 </FlexRow>
+
+                {/* startbank image png, arbeidstilsynet svg,  from public images folder */}
+                
+      
               </FlexCol>
 
               <FlexCol>
@@ -172,6 +181,12 @@ export default function Footer(props: FooterSettingsQueryResult) {
                 </FlexRow>
               </FlexCol>
             </FlexRow>
+            <FlexRow className="gap-8 gap-x-16 mb-12 pb-32 pt-12 md:pt-0 justify-items-center items-center">
+                  
+                  <Image src={startbankLogo}  alt="Startbank" width={(startbankLogo.width * 0.2)} height={(startbankLogo.height * 0.2)} />
+                  <Image src={arbeidstilsynetLogo}  alt="Arbeidstilsynet" width={(arbeidstilsynetLogo.width * 0.3)} height={(arbeidstilsynetLogo.height * 0.3)} />
+                  <Image src={drDropinLogo}  alt="Dr. Dropin" width={(drDropinLogo.width * 0.2)} height={(drDropinLogo.height * 0.2)} />  
+                  </FlexRow>
           </Container>
         </InnerSection>
 
