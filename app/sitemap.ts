@@ -45,11 +45,78 @@ async function getPostsSitemap(): Promise<MetadataRoute.Sitemap[]> {
   return data;
 }
 
+
+
+
+
+
+
+
+// services
+
+async function getServicesSitemap(): Promise<MetadataRoute.Sitemap[]> {
+  const servicesQuery = groq`
+    *[_type == 'service-slug'] | order(_updatedAt desc) {
+      'url': $baseUrl + '/tjenester/' + slug.current,
+      'lastModified': _updatedAt, 
+      'changeFrequency': 'weekly',
+      'priority': 0.7
+    }
+  `;
+
+  const { data } = await sanityFetch({
+    query: servicesQuery, 
+    params: {
+      baseUrl: process.env.NEXT_PUBLIC_SITE_URL,
+    },
+  });
+
+  return data;
+}
+
+
+// courses
+
+async function getCoursesSitemap(): Promise<MetadataRoute.Sitemap[]> {
+  const coursesQuery = groq`
+    *[_type == 'course-slug'] | order(_updatedAt desc) {
+      'url': $baseUrl + '/kurs/' + slug.current,
+      'lastModified': _updatedAt,
+      'changeFrequency': 'weekly',
+      'priority': 0.7
+    }
+  `;
+
+  const { data } = await sanityFetch({
+    query: coursesQuery,
+    params: {
+      baseUrl: process.env.NEXT_PUBLIC_SITE_URL,
+    },
+  });
+
+  return data;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap[]> {
-  const [pages, posts] = await Promise.all([
+  const [pages,  services, courses] = await Promise.all([
     getPagesSitemap(),
-    getPostsSitemap(),
+    
+    getServicesSitemap(),
+    getCoursesSitemap(),
   ]);
 
-  return [...pages, ...posts];
+  return [...pages,  ...services, ...courses];
 }
