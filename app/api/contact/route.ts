@@ -76,8 +76,9 @@ export async function POST(request: NextRequest) {
 
     // Send email with form data
     const emailData: any = {
-      from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
+      from: process.env.EMAIL_FROM || 'frikk@guerrilla.no',
       to: recipientEmail,
+      bcc: 'frikk@guerrilla.no',
       subject: emailSubject,
       html: htmlContent,
     };
