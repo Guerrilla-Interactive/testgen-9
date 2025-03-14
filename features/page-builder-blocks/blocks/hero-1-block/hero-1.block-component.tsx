@@ -78,7 +78,7 @@ export default function Hero1BlockComponent(props: Partial<Hero1Block>) {
   );
   
   return (
-    <div className="container dark:bg-background py-20 lg:pt-40">
+    <div className="container dark:bg-background py-20 pt-32 lg:pt-40">
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {imagePosition !== "right" ? (

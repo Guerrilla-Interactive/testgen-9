@@ -202,7 +202,7 @@ export default function CustomContactFormBlockComponent({
     // For file uploads, we need to manage them outside react-hook-form
     if (field.fieldType === "file") {
       return (
-        <div key={field.fieldName} className={cn("mb-6", field.width === "half" ? "md:w-1/2 pr-2" : "w-full")}>
+        <div key={field.fieldName} className={cn("mb-6", field.width === "half" ? "w-1/2 pr-2" : "w-full")}>
           <FormLabel>{field.fieldLabel}{field.isRequired && " *"}</FormLabel>
           <div className="mt-1">
             <div className="border border-gray-300 rounded-md p-3">
@@ -261,7 +261,7 @@ export default function CustomContactFormBlockComponent({
             : field.placeholder;
 
           return (
-            <FormItem className={cn("mb-6", field.width === "half" ? "md:w-1/2 md:pr-2" : "w-full")}>
+            <FormItem className={cn("mb-6", field.width === "half" ? "w-1/2 pr-2" : "w-full")}>
               {/* For non-checkbox fields, display the label above the input only if labelOnly is not enabled */}
               {field.fieldType !== "checkbox" && !field.labelOnly && (
                 <FormLabel>

@@ -40,7 +40,7 @@ export default function ContactInfoAndFormBlockComponent(props: ContactInfoAndFo
                 <strong>Telefon:</strong>{" "}
                 <a
                   href={`tel:${contactPhone}`}
-                  className="text-primary  hover:underline"
+                  className="text-primary hover:underline"
                 >
                   {contactPhone}
                 </a>
@@ -52,8 +52,7 @@ export default function ContactInfoAndFormBlockComponent(props: ContactInfoAndFo
           </div>
           {/* Right: Contact Form */}
           <div className="md:w-1/2">
-
-            <CustomContactFormBlockComponent  {...props.customContactForm} />
+            <CustomContactFormBlockComponent {...props.customContactForm} mobileFullWidth={true} />
           </div>
         </div>
       </Container>

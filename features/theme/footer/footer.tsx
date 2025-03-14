@@ -60,7 +60,7 @@ export default function Footer(props: FooterSettingsQueryResult) {
                   Kom i kontakt
                 </h4>
               </FlexCol>
-              <FlexCol className="justify-self-end">
+              <FlexCol className="justify-self-end self-center">
                 <MultipleArrowSVG className="h-[4rem] md:h-[6rem]" amount={3} />
               </FlexCol>
             </FlexRow>
