@@ -4,8 +4,8 @@ import { fetchSanityPageBySlug, fetchSanityPagesStaticParams } from "./page-slug
 
 import { Blocks } from "@/features/page-builder-blocks/block-component-exporter";
 
-
-
+// Add ISR with revalidation every 30 seconds
+export const revalidate = 30;
 
 export async function generateStaticParams() {
   const pages = await fetchSanityPagesStaticParams();
