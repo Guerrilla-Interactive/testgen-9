@@ -41,7 +41,8 @@ export default function CoverMapBlockComponent(props: CoverMapProps) {
 
   return (
     <>
-      <div style={{ height: height?.type === "px" ? `${height.height}px` : "100%" }} className="w-full">
+    {/* make it non interactive */}
+      <div style={{ height: height?.type === "px" ? `${height.height}px` : "100%" }} className="w-full pointer-events-none">
         <MapboxMapCover center={center} zoom={zoom} animateIntro={animateIntro} bearingRotation={bearingRotation} radiusAnimation={radiusAnimation} />
       </div>
       </>
