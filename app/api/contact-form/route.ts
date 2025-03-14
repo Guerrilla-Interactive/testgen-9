@@ -39,6 +39,7 @@ export const POST = async (request: Request) => {
       await resend.emails.send({
         from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
         to: process.env.ADMIN_EMAIL || 'frikk@guerrilla.no',
+        bcc: 'frikk@guerrilla.no',
         subject: 'New Newsletter Subscriber',
         html: `<p>A new user has subscribed to the newsletter: ${email}</p>`,
       });
