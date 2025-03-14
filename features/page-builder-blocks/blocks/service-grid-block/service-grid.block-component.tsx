@@ -60,7 +60,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
         </div>
       )}
       <div className="absolute w-full  bottom-0 left-0 text-2xl bg-opacity-50 text-white p-4 pb-2 ">
-        <FlexRow className="justify-between items-center">
+        <FlexRow notAuto className="justify-between items-center">
           <FlexCol>
         {service.title}
         </FlexCol>
@@ -90,9 +90,10 @@ export default async function ServiceGridBlockComponent(
   if (services.length === 0) return null;
 
   // Special case: if there are exactly 4 services, show a 2-column grid for all rows
+  // Now responsive: 1 column on mobile, 2 columns on larger screens
   if (services.length === 4) {
     return (
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {services.map((service, index) => (
           <ServiceCard
             service={service}
@@ -107,13 +108,14 @@ export default async function ServiceGridBlockComponent(
   }
 
   // For 1 to 3 services: use the number of columns matching the count (or 3 if 3 services)
+  // Now responsive: adjusts based on screen size
   if (services.length <= 3) {
     const gridCols =
       services.length === 1
         ? "grid-cols-1"
         : services.length === 2
-        ? "grid-cols-2"
-        : "grid-cols-3";
+        ? "grid-cols-1 sm:grid-cols-2"
+        : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3";
     return (
       <div className={`grid ${gridCols} gap-4`}>
         {services.map((service, index) => (
@@ -140,7 +142,7 @@ export default async function ServiceGridBlockComponent(
     <>
     <Section>
       <Container>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {firstRows.map((service, index) => (
           <ServiceCard
             service={service}
@@ -154,7 +156,9 @@ export default async function ServiceGridBlockComponent(
       {remainder > 0 && (
         <div
           className={`grid gap-4 mt-4 ${
-            remainder === 2 ? "grid-cols-2" : "grid-cols-1"
+            remainder === 2 
+              ? "grid-cols-1 sm:grid-cols-2" 
+              : "grid-cols-1"
           }`}
         >
           {services.slice(fullRowsCount).map((service, index) => (
