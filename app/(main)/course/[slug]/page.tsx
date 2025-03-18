@@ -5,8 +5,8 @@ import PortableTextRenderer from "@/features/unorganized-components/portable-tex
 import { fetchSanityCourseBySlug, fetchSanityCourseStaticParams } from "./(course-slug-core-utilities)/course-slug.server-actions";
 import CourseSlugPageComponent from "./course-slug.page-component";
 
-// Add ISR with revalidation every hour (3600 seconds)
-export const revalidate = 3600;
+// Add ISR with revalidation every 30 seconds
+export const revalidate = 30;
 
 export async function generateStaticParams() {
   const pages = await fetchSanityCourseStaticParams();
