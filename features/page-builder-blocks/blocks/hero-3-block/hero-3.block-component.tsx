@@ -67,7 +67,7 @@ export default function Hero3BlockComponent(props: Partial<Hero3Block>) {
         {/* Right: Subtitle */}
         <div>
           {subtitle && (
-            <p className={`mt-2 md:mt-0  md:text-xl max-w-96 lg:text-2xl text-white drop-shadow-lg ${shouldAnimate ? 'animate-fade-in-subtitle' : ''}`}>
+            <p className={`mt-2 md:mt-0 text-balance md:text-xl max-w-96 lg:text-2xl text-white drop-shadow-lg ${shouldAnimate ? 'animate-fade-in-subtitle' : ''}`}>
               {subtitle}
             </p>
           )}
