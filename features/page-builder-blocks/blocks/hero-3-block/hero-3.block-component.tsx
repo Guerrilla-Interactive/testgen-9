@@ -27,7 +27,7 @@ export default function Hero3BlockComponent(props: Partial<Hero3Block>) {
   const [shouldAnimate] = useState(!sessionLoaded);
 
   return (
-    <div className="relative w-full h-[60vh] md:h-[90vh] overflow-hidden">
+    <div className="relative w-full h-[90vh] md:h-[90vh] overflow-hidden">
       {backgroundImage && (
         <Img
           {...backgroundImage}
