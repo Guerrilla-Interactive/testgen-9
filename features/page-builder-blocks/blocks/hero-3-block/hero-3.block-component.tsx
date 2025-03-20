@@ -58,7 +58,7 @@ export default function Hero3BlockComponent(props: Partial<Hero3Block>) {
         {/* Left: Title */}
         <div className="text-left">
           {(titleOrange || titleWhite) && (
-            <h1 className={`text-white text-3xl uppercase font-title font-extrabold sm:text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-lg ${shouldAnimate ? 'animate-fade-in-title' : ''}`}>
+            <h1 className={`text-white uppercase font-title font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-lg ${shouldAnimate ? 'animate-fade-in-title' : ''}`}>
               {titleOrange && <span className="block text-orange-500">{titleOrange}</span>}
               {titleWhite && <span className="block">{titleWhite}</span>}
             </h1>
@@ -67,7 +67,7 @@ export default function Hero3BlockComponent(props: Partial<Hero3Block>) {
         {/* Right: Subtitle */}
         <div>
           {subtitle && (
-            <p className={`mt-2 md:mt-0 text-sm sm:text-base md:text-xl max-w-96 lg:text-2xl text-white drop-shadow-lg ${shouldAnimate ? 'animate-fade-in-subtitle' : ''}`}>
+            <p className={`mt-2 md:mt-0  md:text-xl max-w-96 lg:text-2xl text-white drop-shadow-lg ${shouldAnimate ? 'animate-fade-in-subtitle' : ''}`}>
               {subtitle}
             </p>
           )}

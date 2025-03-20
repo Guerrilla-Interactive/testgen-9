@@ -14,7 +14,7 @@ Partial<HeadingAndParagraphCenteredProps>) {
       <RepeatingSvgBanner />
       <Section className="py-20">
         <Container className="text-center items-center gap-y-6 max-w-screen-md ">
-          <h2 className=" font-semibold max-w-[550px] text-5xl tracking-wider font-titl text-center">{props.heading}</h2>
+          <h2 className=" font-semibold max-w-[550px] md:text-5xl text-balance text-4xl tracking-wider font-title text-center">{props.heading}</h2>
           <p className="text-lg text-center">{props.paragraph}</p>
         </Container>
 
