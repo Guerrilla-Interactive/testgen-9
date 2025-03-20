@@ -49,8 +49,9 @@ const ServiceCard = ({ service }: { service: Service }) => {
           {...service.featuredImage}
           cover
           
+          
           className="absolute group-hover:scale-105 transition-transform  duration-700  inset-0 w-full h-full object-cover"
-          sizes={{ md: "half" }}
+          sizes={{ md: "third", xl: "third" }}
         />
         {/* overlay gradient from bottom shade of black subtle to increase text contrast only 50% up */}
         <div className="absolute group-hover:opacity-35 transition-opacity duration-700   inset-0 w-full h-1/2 mt-auto bg-gradient-to-b from-transparent to-black opacity-50" />
