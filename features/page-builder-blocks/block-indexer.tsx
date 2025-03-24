@@ -34,6 +34,7 @@ import { Hero4BlockComponent, hero4BlockQuery, hero4BlockSchema } from "./blocks
 import { Hero5BlockComponent, hero5BlockQuery, hero5BlockSchema } from "./blocks/hero-5-block";
 import { CustomContactFormBlockComponent, customContactFormBlockQuery, customContactFormBlockSchema } from "./blocks/custom-contact-form-block";
 import { TwoColumnBlockComponent, twoColumnBlockQuery, twoColumnBlockSchema } from "./blocks/two-column-block";
+import { SeperatorBlockComponent, seperatorBlockQuery, seperatorBlockSchema } from "./blocks/seperator-block";
 // ADD VALUE 1 ABOVE
 
 export const BlockDataMap: {
@@ -76,6 +77,7 @@ export const BlockDataMap: {
   "hero-5-block": { component: Hero5BlockComponent, schema: hero5BlockSchema, query: hero5BlockQuery },
   "custom-contact-form-block": { component: CustomContactFormBlockComponent, schema: customContactFormBlockSchema, query: customContactFormBlockQuery },
   "two-column-block": { component: TwoColumnBlockComponent, schema: twoColumnBlockSchema, query: twoColumnBlockQuery },
+"seperator-block": { component: SeperatorBlockComponent, schema: seperatorBlockSchema, query: seperatorBlockQuery },
   // ADD VALUE 2 ABOVE
 };
 
@@ -171,7 +173,10 @@ blocks[]{
   ${ hero5BlockQuery  },
 
   // Two Column
-  ${twoColumnBlockQuery}
+  ${twoColumnBlockQuery},
+
+  // Seperator
+  ${seperatorBlockQuery}
   // ADD VALUE 3 ABOVE
 }
 `;

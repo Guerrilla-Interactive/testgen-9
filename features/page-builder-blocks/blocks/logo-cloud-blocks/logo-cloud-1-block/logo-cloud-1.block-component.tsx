@@ -66,14 +66,19 @@ export default function LogoCloud1BlockComponent({
               {images?.map((image, index) => (
                 <div
                   key={`${image.asset._id}-${arrayIndex}-${index}`}
-                  className="flex-shrink-0 w-24 h-24 flex items-center justify-center"
+                  className="flex-shrink-0 w-16 h-16 flex items-center justify-center"
                 >
+                  
                   <Image
                     src={urlFor(image.asset).url()}
                     alt={image.alt || ""}
+
+
                     placeholder={
                       image?.asset?.metadata?.lqip ? "blur" : undefined
                     }
+                    
+
                     blurDataURL={image?.asset?.metadata?.lqip || ""}
                     width={image.asset?.metadata?.dimensions?.width || 220}
                     height={image.asset?.metadata?.dimensions?.height || 90}
