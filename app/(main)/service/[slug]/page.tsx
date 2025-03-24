@@ -25,7 +25,7 @@ export async function generateMetadata(props: {
     notFound();
   }
 
-  return generatePageMetadata({ page, slug: `/$service/${slug}` });
+  return generatePageMetadata({ page, slug: `/tjenester/${slug}` });
 }
 
 export default async function Service(props: {

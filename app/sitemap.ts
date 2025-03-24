@@ -3,17 +3,21 @@ import { groq } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 
 async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
+
+
+
+  
   const pageQuery = groq`
     *[_type == 'page-slug'] | order(slug.current) {
-      'url': $baseUrl + select(slug.current == 'index' => '', '/' + slug.current),
+      'url': $baseUrl + select('/' + slug.current),
       'lastModified': _updatedAt,
       'changeFrequency': 'daily',
       'priority': select(
-        slug.current == 'index' => 1,
         0.5
       )
     }
   `;
+  
 
   const { data } = await sanityFetch({
     query: pageQuery,
@@ -24,6 +28,32 @@ async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
 
   return data;
 }
+
+
+
+async function getFrontPage(): Promise<MetadataRoute.Sitemap> {
+  const frontPage = groq`*[_type == "siteSettings"][0].frontPage->{
+    'url': $baseUrl + '',
+    'lastModified': _updatedAt,
+    'changeFrequency': 'daily',
+    'priority': 1
+  }`;
+
+  const { data } = await sanityFetch({
+    query: frontPage,
+    params: {
+      baseUrl: process.env.NEXT_PUBLIC_SITE_URL,
+    },
+  });
+
+  return data;
+}
+
+
+
+
+
+
 
 async function getPostsSitemap(): Promise<MetadataRoute.Sitemap[]> {
   const blogQuery = groq`
@@ -111,12 +141,13 @@ async function getCoursesSitemap(): Promise<MetadataRoute.Sitemap[]> {
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap[]> {
-  const [pages,  services, courses] = await Promise.all([
+  const [ frontPage, pages,  services, courses,] = await Promise.all([
+    getFrontPage(),
     getPagesSitemap(),
-    
     getServicesSitemap(),
     getCoursesSitemap(),
+    
   ]);
 
-  return [...pages,  ...services, ...courses];
+  return [ frontPage,  ...pages,   ...services, ...courses,];
 }

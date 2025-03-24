@@ -26,7 +26,7 @@ export async function generateMetadata(props: {
     notFound();
   }
 
-  return generatePageMetadata({ page, slug: `/$course/${slug}` });
+  return generatePageMetadata({ page, slug: `/kurs/${slug}` });
 }
 
 export default async function Course(props: {
