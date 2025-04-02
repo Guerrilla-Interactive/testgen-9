@@ -4,7 +4,7 @@ import { generatePageMetadata } from "@/features/unorganized-utils/metadata";
 import PortableTextRenderer from "@/features/unorganized-components/portable-text-renderer";
 import { fetchSanityCourseBySlug, fetchSanityCourseStaticParams } from "./(course-slug-core-utilities)/course-slug.server-actions";
 import CourseSlugPageComponent from "./course-slug.page-component";
-
+import { courseSlugVariables } from "./(course-slug-core-utilities)/course-slug.translations-and-variables";    
 // Add ISR with revalidation every 30 seconds
 export const revalidate = 30;
 
@@ -26,7 +26,7 @@ export async function generateMetadata(props: {
     notFound();
   }
 
-  return generatePageMetadata({ page, slug: `/kurs/${slug}` });
+  return generatePageMetadata({ page, slug: `${courseSlugVariables("ROUTE_PATH")}/${slug}` });
 }
 
 export default async function Course(props: {

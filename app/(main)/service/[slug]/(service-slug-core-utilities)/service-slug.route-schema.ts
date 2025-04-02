@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
 import {  Star } from "lucide-react";
+import { serviceSlugVariables } from "./service-slug.translations-and-variables";
 
 export default defineType({
-  name: "service-slug",
+  name: serviceSlugVariables("DOCUMENT_TYPE"),
   title: "Service",
   type: "document",
   icon: Star,

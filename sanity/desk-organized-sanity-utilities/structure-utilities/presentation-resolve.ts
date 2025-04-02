@@ -3,7 +3,8 @@ import {
   defineDocuments,
   PresentationPluginOptions,
 } from "sanity/presentation";
-
+import { serviceSlugVariables } from "@/app/(main)/service/[slug]/(service-slug-core-utilities)/service-slug.translations-and-variables";
+import { courseSlugVariables } from "@/app/(main)/course/[slug]/(course-slug-core-utilities)/course-slug.translations-and-variables";
 export const resolve: PresentationPluginOptions["resolve"] = {
   locations: {
     // Add more locations for other post types
@@ -24,12 +25,13 @@ export const resolve: PresentationPluginOptions["resolve"] = {
             href: `/blog/${doc?.slug}`,
           },
 
-        
-        
           { title: "Blog", href: `/blog` },
 
-          { title: "Service", href: `/tjenester/${doc?.slug}` },
-          { title: "Services", href: `/tjenester` },
+          { title: "Service", href: `/${serviceSlugVariables("ROUTE_PATH")} /${doc?.slug}` },
+          { title: "Services", href: `/${serviceSlugVariables("ROUTE_PATH")}` },
+
+          { title: "Course", href: `/${courseSlugVariables("ROUTE_PATH")} /${doc?.slug}` },
+          { title: "Courses", href: `/${courseSlugVariables("ROUTE_PATH")}` },
         ],
       }),
     }),
@@ -44,8 +46,13 @@ export const resolve: PresentationPluginOptions["resolve"] = {
       filter: `_type == 'blog-slug' && slug.current == $slug`,
     },
     {
-      route: "/tjenester/:slug",
-      filter: `_type == 'service-slug' && slug.current == $slug`,
+      route: `/${serviceSlugVariables("ROUTE_PATH")}/:slug`,
+      filter: `_type == '${serviceSlugVariables("DOCUMENT_TYPE")}' && slug.current == $slug`,
     },
+    {
+      route: `/${courseSlugVariables("ROUTE_PATH")}/:slug`,
+      filter: `_type == '${courseSlugVariables("DOCUMENT_TYPE")}' && slug.current == $slug`,
+    },
+
   ]),
 };

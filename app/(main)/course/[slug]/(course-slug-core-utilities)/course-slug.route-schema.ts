@@ -1,40 +1,45 @@
 import { defineField, defineType } from "sanity";
 import { BookOpen } from "lucide-react";
+import { courseSlugTranslations } from "./course-slug.translations-and-variables";
+import { courseSlugVariables, courseSlugTranslations as t, courseSlugVariables as v } from "./course-slug.translations-and-variables";
 
 export default defineType({
-  name: "course-slug",
-  title: "Course",
+  name: courseSlugVariables("DOCUMENT_TYPE"),
+  title: t("schemaTitle", "Course"),
+  description: t("schemaDescription", "A course page with details, registration form and FAQ."),
   type: "document",
   icon: BookOpen,
   groups: [
     {
       name: "content",
-      title: "Content",
+      title: courseSlugTranslations("group.content", "Content"),
     },
     {
       name: "details",
-      title: "Course Details",
+      title: courseSlugTranslations("group.details", "Course Details"),
     },
     {
       name: "seo",
-      title: "SEO",
+      title: courseSlugTranslations("group.seo", "SEO"),
     },
     {
       name: "settings",
-      title: "Settings",
+      title: courseSlugTranslations("group.settings", "Settings"),
     },
   ],
   fields: [
     defineField({
       name: "title",
-      title: "Title",
+      title: courseSlugTranslations("title.title", "Title"),
+      description: courseSlugTranslations("title.description", "The course title"),
       type: "string",
       group: "content",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "slug",
-      title: "Slug",
+      title: courseSlugTranslations("slug.title", "Slug"),
+      description: courseSlugTranslations("slug.description", "URL-friendly name for the course"),
       type: "slug",
       group: "settings",
       options: {
@@ -192,7 +197,7 @@ export default defineType({
     },
     prepare({ title, media }) {
       return {
-        title,
+        title: title || t("noTitle", "No title set"),
         media,
       };
     },

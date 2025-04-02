@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { BookOpen } from "lucide-react";
+import { courseSlugVariables } from "@/app/(main)/course/[slug]/(course-slug-core-utilities)/course-slug.translations-and-variables";
 
 export default defineType({
   name: "course-slider-block",
@@ -22,7 +23,7 @@ export default defineType({
       name: "courses",
       type: "array",
       title: "Courses",
-      of: [{ type: "reference", to: [{ type: "course-slug" }] }],
+      of: [{ type: "reference", to: [{ type: courseSlugVariables("DOCUMENT_TYPE") }] }],
     }),
   ],
   preview: {

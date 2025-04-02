@@ -1,9 +1,9 @@
 "use client"
 
-import { Container, FlexCol, Section } from "@/features/unorganized-components/nextgen-core-ui";
+import {  Section } from "@/features/unorganized-components/nextgen-core-ui";
 import { Img } from "@/features/unorganized-components/image-component/image.component";
 import { Hero5Block } from "@/sanity.types"; // You'll need to add this to your Sanity types
-import { useEffect, useState } from "react";
+
 
 export default function Hero5BlockComponent(props: Partial<Hero5Block>) {
   const { image } = props;
