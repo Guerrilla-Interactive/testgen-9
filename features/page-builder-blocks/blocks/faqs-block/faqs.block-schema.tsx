@@ -25,6 +25,13 @@ export default defineType({
     }),
 
     defineField({
+      name: "noPadding",
+      type: "boolean",
+      title: t("noPadding.title", "No Padding"),
+      description: t("noPadding.description", "If true, the FAQs will not have padding"),
+    }),
+
+    defineField({
       name: "faqsByCategory",
       type: "array",
       title: t("faqsByCategory.title", "FAQs by Category"),
@@ -37,7 +44,7 @@ export default defineType({
       ],
       description: t("faqsByCategory.description", "Title of the FAQs block"),
     }),
-    
+
   ],
   preview: {
     select: {

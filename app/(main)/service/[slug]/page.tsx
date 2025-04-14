@@ -21,6 +21,9 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const page = await fetchSanityServiceBySlug({ slug });
 
+  // Log the fetched page data on the server
+  console.log("Fetched page data (server):", JSON.stringify(page, null, 2));
+
   if (!page) {
     notFound();
   }
@@ -34,13 +37,15 @@ export default async function Service(props: {
   const { slug } = await props.params;
   const page = await fetchSanityServiceBySlug({ slug });
 
+  // Log the fetched page data on the server
+  console.log("Fetched page data (server):", JSON.stringify(page, null, 2));
 
   if (!page) {
     notFound();
   }
   return (
     <>
-    <ServiceSlugPageComponent {...page} />
+      <ServiceSlugPageComponent {...page} />
     </>
   );
 }

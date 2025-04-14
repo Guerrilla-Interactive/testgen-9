@@ -50,6 +50,21 @@ export default defineType({
     }),
 
     defineField({
+      name: 'layout',
+      title: 'Layout',
+      description: 'Choose how the main content and the contact form are arranged on the page.',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Side by Side (Content Left, Form Right)', value: 'side-by-side' },
+          { title: 'Form Below Content', value: 'form-below' }
+        ],
+        layout: 'radio'
+      },
+      initialValue: 'side-by-side'
+    }),
+
+    defineField({
       name: "featuredImage",
       title: "Featured Image",
       type: "image",
@@ -63,7 +78,7 @@ export default defineType({
       name: "body",
       title: "Text Content",
       type: "block-content",
-      
+      group: "content",
     }),
     defineField({
       name: "customContactForm",
@@ -82,7 +97,7 @@ export default defineType({
       name: "faqs",
       title: "FAQs",
       type: "faqs-block",
-
+      group: "content",
     })
 
   ],

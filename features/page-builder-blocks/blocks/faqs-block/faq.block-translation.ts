@@ -25,7 +25,9 @@ export const faqsBlockSchemaTranslations = translate({
   "faqsByCategory.description": "En blokk som viser ofte stilte spørsmål og svar etter kategori.",
 
   // Preview text
-  "noTitle": "Ingen tittel satt"
+  "noTitle": "Ingen tittel satt",
+  "noPadding.title": "Ingen padding",
+  "noPadding.description": "Hvis true, vil blokken ikke ha padding",
 });
 
 

@@ -5,6 +5,7 @@ import { getAllFaqCategoriesQuery } from "@/sanity/desk-organized-sanity-utiliti
 const faqsBlockQuery = groq`
   _type == "faqs-block" => {
     _type,
+    noPadding,
     ${getAllReferencedFaqsQuery},
     ${getAllFaqCategoriesQuery}
   }

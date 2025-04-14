@@ -5,12 +5,13 @@ import { Container, Section } from "@/features/unorganized-components/nextgen-co
 import { faqsBlockComponentTranslations as t } from "./faq.block-translation";
 
 export default function FAQsBlockComponent(props: Partial<FaqsBlock>) {
-  const { faqs, faqsByCategory } = props;
-  
+  const { faqs, faqsByCategory, noPadding } = props;
+
+
   return (
-    <Section className="mt-12">
-      <Container>
-      <h3 className="text-2xl font-bold mb-4">{t("faqs.title", "Frequently Asked Questions")}</h3>
+    <Section className="mt-12 w-full">
+      <Container className={noPadding ? "!p-0" : ""}>
+        <h3 className="text-2xl font-bold mb-4">{t("faqs.title", "Frequently Asked Questions")}</h3>
         {(faqs || faqsByCategory) && (
           <Accordion className="space-y-4" type="multiple">
             {faqs && faqs.map((faq) => (
@@ -22,16 +23,16 @@ export default function FAQsBlockComponent(props: Partial<FaqsBlock>) {
               </AccordionItem>
             ))}
             {/* Find the faqsByCategory and map over the faqs - only show the faq items that are in the faqsByCategory */}
-            {faqsByCategory && faqsByCategory.map((faqCategory) => 
-               faqCategory.faqs.map((faq) => (
-          
-                  <AccordionItem key={faq._id + 2} value={`item-${faq._id + 2}`}>
-                    <AccordionTrigger>{faq.title}</AccordionTrigger>
-                    <AccordionContent>
-                      <PortableTextRenderer value={faq.body} />
-                    </AccordionContent>
-                  </AccordionItem>
-                ))
+            {faqsByCategory && faqsByCategory.map((faqCategory) =>
+              faqCategory.faqs.map((faq) => (
+
+                <AccordionItem key={faq._id + 2} value={`item-${faq._id + 2}`}>
+                  <AccordionTrigger>{faq.title}</AccordionTrigger>
+                  <AccordionContent>
+                    <PortableTextRenderer value={faq.body} />
+                  </AccordionContent>
+                </AccordionItem>
+              ))
             )}
           </Accordion>
         )}

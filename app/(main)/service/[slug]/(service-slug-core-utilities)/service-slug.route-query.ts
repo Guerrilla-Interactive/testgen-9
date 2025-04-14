@@ -26,6 +26,7 @@ export const GET_SERVICE_PAGE_BY_ROUTE_QUERY = groq`
     title,
     customTitle,
     slug,
+    layout,
     "headerColor": "dark",
     excerpt,
     _createdAt,
@@ -36,11 +37,12 @@ export const GET_SERVICE_PAGE_BY_ROUTE_QUERY = groq`
       ${blockContentQuery}
     },
     _updatedAt,
-    faqs{
+    faqs{ 
       ${getAllReferencedFaqsQuery},
       ${getAllFaqCategoriesQuery}
     },
     featuredImage{
+      _type, 
       ${imageQuery}
     },
 
