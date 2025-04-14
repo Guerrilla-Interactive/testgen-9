@@ -14,7 +14,6 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
   const { sessionStatus } = useGlobalContext();
   const { setIsTopDark } = sessionStatus;
   const layout = (page.layout as string | undefined) || 'side-by-side';
-  console.log("Layout value (client):", layout);
 
   useEffect(() => {
     setIsTopDark(false);
