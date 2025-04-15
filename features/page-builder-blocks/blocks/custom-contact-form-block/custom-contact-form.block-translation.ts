@@ -92,6 +92,9 @@ export const customContactFormBlockTranslations = translate({
     fieldWidthDescription: "Bredden på feltet i skjemaoppsettet",
     fieldWidthFull: "Full bredde",
     fieldWidthHalf: "Halv bredde",
+    fieldWidthThird: "Tredjedels bredde",
+    fieldWidthQuarter: "Fjerdedels bredde",
+    fieldWidthRemaining: "Resterende bredde",
     optionsTitle: "Alternativer",
     optionsDescription: "Alternativer for nedtrekksliste-, radio- eller avkrysningsgruppe-felt",
     optionItemTitle: "Alternativ", // Title for the option object
@@ -105,6 +108,20 @@ export const customContactFormBlockTranslations = translate({
     labelOnlyDescription: "Hvis aktivert, vis kun etiketten (som plassholder) uten en separat tittel over feltet.",
     preCheckedTitle: "Forhåndsvalgt",
     preCheckedDescription: "Hvis aktivert, vil avkrysningsboksen være forhåndsvalgt",
+
+    // Conditional Logic Translations
+    conditionalLogicTitle: "Betinget logikk",
+    conditionalLogicDescription: "Vis/skjul dette feltet basert på verdien til et annet felt.",
+    conditionalLogicEnableTitle: "Aktiver betinget logikk?",
+    conditionalLogicControllerFieldNameTitle: "Kontrollerende feltnavn",
+    conditionalLogicControllerFieldNameDescription: "Skriv inn 'Feltnavn' på feltet som skal kontrollere dette feltet (f.eks. en avkrysningsboks).",
+    conditionalLogicActionTitle: "Handling",
+    conditionalLogicActionShow: "Vis feltet når betingelsen er oppfylt",
+    conditionalLogicActionHide: "Skjul feltet når betingelsen er oppfylt",
+    conditionalLogicControllerValueCheckedTitle: "Betingelse (for avkrysningsboks)",
+    conditionalLogicControllerValueCheckedDescription: "Skal betingelsen være oppfylt når den kontrollerende avkrysningsboksen er...",
+    conditionalLogicControllerValueCheckedChecked: "Avkrysset",
+    conditionalLogicControllerValueCheckedUnchecked: "Ikke avkrysset",
 });
 
 

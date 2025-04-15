@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import * as z from "zod";
 import { toast } from "sonner";
 import { Loader2, Calendar, Upload, X } from "lucide-react";
@@ -21,11 +21,17 @@ type FormFieldType = {
   fieldLabel: string;
   placeholder?: string;
   isRequired: boolean;
-  width?: "full" | "half";
+  width?: "full" | "half" | "third" | "quarter" | "remaining";
   helpText?: string;
   options?: { label: string; value: string }[];
   labelOnly?: boolean;
   preChecked?: boolean;
+  conditionalLogic?: {
+    enabled?: boolean;
+    controllerFieldName?: string;
+    action?: "show" | "hide";
+    controllerValueChecked?: "true" | "false"; // Matches schema string value
+  };
 };
 
 interface CustomContactFormProps {
@@ -155,6 +161,9 @@ export default function CustomContactFormBlockComponent({
     defaultValues,
   });
 
+  // Watch all form values for conditional logic
+  const watchedValues = useWatch({ control: form.control });
+
   const handleFileChange = (fieldName: string, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setFiles(prev => ({ ...prev, [fieldName]: file }));
@@ -217,6 +226,32 @@ export default function CustomContactFormBlockComponent({
 
   // Render different field types based on configuration
   const renderFormField = (field: FormFieldType) => {
+    // --- Start Conditional Logic Check ---
+    if (field.conditionalLogic?.enabled && field.conditionalLogic.controllerFieldName) {
+      const { controllerFieldName, action, controllerValueChecked } = field.conditionalLogic;
+      const controllerValue = watchedValues[controllerFieldName]; // Get current value of controller field
+
+      // Determine the expected state (boolean) based on the schema string ("true"/"false")
+      const expectedCondition = controllerValueChecked === "true";
+
+      // Check if the actual controller value matches the expected state
+      // Assuming controller is a checkbox (boolean value)
+      const conditionIsMet = !!controllerValue === expectedCondition;
+
+      let shouldRender = true;
+      if (action === 'show') {
+        shouldRender = conditionIsMet;
+      } else if (action === 'hide') {
+        shouldRender = !conditionIsMet;
+      }
+
+      // If the field should not be rendered based on the condition, return null
+      if (!shouldRender) {
+        return null;
+      }
+    }
+    // --- End Conditional Logic Check ---
+
     // Handle section headings separately
     if (field.fieldType === "heading") {
       return (
@@ -283,15 +318,26 @@ export default function CustomContactFormBlockComponent({
         control={form.control}
         name={field.fieldName}
         render={({ field: formField }) => {
-          // Compute the placeholder: if labelOnly is true, use field.fieldLabel (or custom placeholder if provided)
-          const computedPlaceholder = field.labelOnly
-            ? (field.placeholder || field.fieldLabel)
-            : field.placeholder;
+          // Compute placeholder based on labelOnly and explicit placeholder presence
+          let computedPlaceholder: string | undefined;
+          if (field.labelOnly) {
+            // If labelOnly, use placeholder if set, otherwise use label directly
+            computedPlaceholder = field.placeholder || field.fieldLabel;
+          } else {
+            // If not labelOnly, use placeholder if set, otherwise use label + "..."
+            computedPlaceholder = field.placeholder ? field.placeholder : `${field.fieldLabel}...`;
+          }
 
           return (
             <FormItem className={cn(
-              "mb-6 w-full", // Always full width on mobile
-              field.width === "half" && "md:w-1/2 md:pr-2" // Apply half width only on medium+ screens
+              "mb-6", // Base margin
+              // Mobile width: Full or Half
+              (field.width === 'full' || !field.width) ? 'w-full' : 'w-1/2 pr-2',
+              // Desktop width overrides
+              field.width === 'half' && 'md:w-1/2 md:pr-2',
+              field.width === 'third' && 'md:w-1/3 md:pr-2',
+              field.width === 'quarter' && 'md:w-1/4 md:pr-2',
+              field.width === 'remaining' && 'md:flex-1 md:pr-2',
             )}>
               {/* For non-checkbox fields, display the label above the input only if labelOnly is not enabled */}
               {field.fieldType !== "checkbox" && !field.labelOnly && (

@@ -160,6 +160,9 @@ export default defineType({
                 list: [
                   { title: t('fieldWidthFull', "Full Width"), value: "full" },
                   { title: t('fieldWidthHalf', "Half Width"), value: "half" },
+                  { title: t('fieldWidthThird', "Third Width"), value: "third" },
+                  { title: t('fieldWidthQuarter', "Quarter Width"), value: "quarter" },
+                  { title: t('fieldWidthRemaining', "Remaining Width"), value: "remaining" },
                 ],
               },
               initialValue: "full",
@@ -242,6 +245,78 @@ export default defineType({
               initialValue: false,
               hidden: ({ parent }) => parent?.fieldType !== "checkbox",
             }),
+            // Add Conditional Logic field group
+            defineField({
+              name: "conditionalLogic",
+              type: "object",
+              title: t('conditionalLogicTitle', "Conditional Logic"),
+              description: t('conditionalLogicDescription', "Show/hide this field based on another field's value."),
+              // Fieldset to group these options together
+              fieldset: 'conditional',
+              // Hide this whole group if the field type is 'heading'
+              hidden: ({ parent }) => parent?.fieldType === "heading",
+              fields: [
+                defineField({
+                  name: "enabled",
+                  type: "boolean",
+                  title: t('conditionalLogicEnableTitle', "Enable conditional logic?"),
+                  initialValue: false,
+                }),
+                defineField({
+                  name: "controllerFieldName",
+                  type: "string",
+                  title: t('conditionalLogicControllerFieldNameTitle', "Controlling Field Name"),
+                  description: t('conditionalLogicControllerFieldNameDescription', "Enter the 'Field Name' of the field that controls this one (e.g., a checkbox)."),
+                  // Only show if conditional logic is enabled
+                  hidden: ({ parent }) => !(parent as { enabled?: boolean })?.enabled,
+                  validation: Rule => Rule.custom((value, context) => {
+                    const parentLogic = context.parent as { enabled?: boolean };
+                    if (parentLogic?.enabled && !value) {
+                      return "Controller Field Name is required when conditional logic is enabled.";
+                    }
+                    return true;
+                  })
+                }),
+                defineField({
+                  name: "action",
+                  type: "string",
+                  title: t('conditionalLogicActionTitle', "Action"),
+                  options: {
+                    list: [
+                      { title: t('conditionalLogicActionShow', "Show field when condition is met"), value: "show" },
+                      { title: t('conditionalLogicActionHide', "Hide field when condition is met"), value: "hide" },
+                    ],
+                    layout: "radio"
+                  },
+                  initialValue: "show",
+                  hidden: ({ parent }) => !(parent as { enabled?: boolean })?.enabled,
+                }),
+                defineField({
+                  name: "controllerValueChecked", // Assuming checkbox controller for now
+                  type: "string", // Changed to string
+                  title: t('conditionalLogicControllerValueCheckedTitle', "Condition (for Checkbox)"),
+                  description: t('conditionalLogicControllerValueCheckedDescription', "Condition is met when controlling checkbox is..."),
+                  options: {
+                    list: [
+                      // Use string values
+                      { title: t('conditionalLogicControllerValueCheckedChecked', "Checked"), value: "true" },
+                      { title: t('conditionalLogicControllerValueCheckedUnchecked', "Unchecked"), value: "false" },
+                    ],
+                    layout: "radio"
+                  },
+                  initialValue: "true", // Initial value as string
+                  hidden: ({ parent }) => !(parent as { enabled?: boolean })?.enabled,
+                }),
+              ],
+            }),
+          ],
+          // Define the fieldset used above
+          fieldsets: [
+            {
+              name: 'conditional',
+              title: t('conditionalLogicTitle', 'Conditional Logic'),
+              options: { collapsible: true, collapsed: true }
+            }
           ],
           preview: {
             select: {

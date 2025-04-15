@@ -19,6 +19,12 @@ export const customContactFormBlockQueryDetails = groq`
       options[] {
         label,
         "value": select(value != null && value != "" => value, label)
+      },
+      conditionalLogic {
+        enabled,
+        controllerFieldName,
+        action,
+        controllerValueChecked
       }
   }
 `;
