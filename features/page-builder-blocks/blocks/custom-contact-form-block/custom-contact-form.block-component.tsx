@@ -16,7 +16,7 @@ import { cn } from "@/features/unorganized-utils/utils";
 import { customContactFormBlockTranslations as t } from "./custom-contact-form.block-translation";
 
 type FormFieldType = {
-  fieldType: "text" | "email" | "tel" | "textarea" | "checkbox" | "select" | "date" | "radio" | "file" | "heading";
+  fieldType: "text" | "email" | "tel" | "textarea" | "checkbox" | "checkboxGroup" | "select" | "date" | "datetime" | "radio" | "file" | "heading";
   fieldName: string;
   fieldLabel: string;
   placeholder?: string;
@@ -50,13 +50,13 @@ export default function CustomContactFormBlockComponent({
   // Dynamically build the validation schema based on form fields
   const buildFormSchema = () => {
     const schemaMap: Record<string, any> = {};
-    
+
     formFields?.forEach((field) => {
       // Skip heading fields as they don't need validation
       if (field.fieldType === "heading") return;
-      
+
       let validator;
-      
+
       switch (field.fieldType) {
         case "email":
           validator = z.string().email({ message: t("invalidEmail", "Please enter a valid email address") });
@@ -70,6 +70,16 @@ export default function CustomContactFormBlockComponent({
             const date = new Date(val);
             return !isNaN(date.getTime());
           }, { message: t("invalidDate", "Please select a valid date") });
+          break;
+        case "datetime":
+          validator = z.string().refine((val) => {
+            if (!val) return !field.isRequired;
+            // datetime-local input format is YYYY-MM-DDTHH:mm
+            const dateTimeRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
+            if (!dateTimeRegex.test(val)) return false;
+            const date = new Date(val);
+            return !isNaN(date.getTime());
+          }, { message: t("invalidDateTime", "Please select a valid date and time") });
           break;
         case "file":
           // Files are handled separately, we just need a placeholder in the schema
@@ -87,6 +97,14 @@ export default function CustomContactFormBlockComponent({
             });
           }
           break;
+        case "checkboxGroup":
+          validator = z.array(z.string());
+          if (field.isRequired) {
+            validator = validator.min(1, {
+              message: t("mustSelectOneOption", "You must select at least one option")
+            });
+          }
+          break;
         case "radio":
         case "select":
           validator = z.string();
@@ -94,7 +112,7 @@ export default function CustomContactFormBlockComponent({
         default:
           validator = z.string();
       }
-      
+
       if (field.isRequired && field.fieldType !== "checkbox" && field.fieldType !== "file") {
         if (field.fieldType === "radio" || field.fieldType === "select") {
           validator = validator.min(1, { message: `${t("pleasePick", "Please select a")} ${field.fieldLabel}` });
@@ -102,10 +120,18 @@ export default function CustomContactFormBlockComponent({
           validator = validator.min(1, { message: `${field.fieldLabel} ${t("required", "is required")}` });
         }
       }
-      
+
+      // Add optional refinement for file type required field
+      if (field.isRequired && field.fieldType === "file") {
+        // Since files are handled outside RHF, we validate based on the state
+        validator = validator.refine(() => !!files[field.fieldName], {
+          message: `${field.fieldLabel} ${t("required", "is required")}`,
+        });
+      }
+
       schemaMap[field.fieldName] = validator;
     });
-    
+
     return z.object(schemaMap);
   };
 
@@ -116,6 +142,8 @@ export default function CustomContactFormBlockComponent({
     if (field.fieldType === "heading") return acc;
     if (field.fieldType === "checkbox") {
       acc[field.fieldName] = field.preChecked ? true : false;
+    } else if (field.fieldType === "checkboxGroup") {
+      acc[field.fieldName] = [];
     } else {
       acc[field.fieldName] = "";
     }
@@ -141,23 +169,23 @@ export default function CustomContactFormBlockComponent({
 
   async function onSubmit(data: any) {
     setIsSubmitting(true);
-    
+
     try {
       // Create a FormData object to handle both text fields and files
       const formData = new FormData();
-      
+
       // Add all the form fields
       Object.entries(data).forEach(([key, value]) => {
         formData.append(key, value as string);
       });
-      
+
       // Add any files
       Object.entries(files).forEach(([key, file]) => {
         if (file) {
           formData.append(key, file);
         }
       });
-      
+
       // Submit to the API
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -192,7 +220,7 @@ export default function CustomContactFormBlockComponent({
     // Handle section headings separately
     if (field.fieldType === "heading") {
       return (
-        <div key={field.fieldLabel} className="mt-8 mb-4">
+        <div key={field.fieldLabel} className="mt-8 mb-4 w-full">
           <h3 className="text-xl font-semibold">{field.fieldLabel}</h3>
           {field.helpText && <p className="text-sm text-gray-600 mt-1">{field.helpText}</p>}
         </div>
@@ -209,9 +237,9 @@ export default function CustomContactFormBlockComponent({
               {files[field.fieldName] ? (
                 <div className="flex items-center justify-between">
                   <span className="text-sm truncate">{files[field.fieldName]?.name}</span>
-                  <Button 
-                    type="button" 
-                    variant="ghost" 
+                  <Button
+                    type="button"
+                    variant="ghost"
                     size="sm"
                     onClick={() => removeFile(field.fieldName)}
                   >
@@ -231,7 +259,7 @@ export default function CustomContactFormBlockComponent({
                     }}
                     accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
                   />
-                  <Button 
+                  <Button
                     type="button"
                     variant="outline"
                     onClick={() => fileInputRefs.current[field.fieldName]?.click()}
@@ -261,7 +289,10 @@ export default function CustomContactFormBlockComponent({
             : field.placeholder;
 
           return (
-            <FormItem className={cn("mb-6", field.width === "half" ? "w-1/2 pr-2" : "w-full")}>
+            <FormItem className={cn(
+              "mb-6 w-full", // Always full width on mobile
+              field.width === "half" && "md:w-1/2 md:pr-2" // Apply half width only on medium+ screens
+            )}>
               {/* For non-checkbox fields, display the label above the input only if labelOnly is not enabled */}
               {field.fieldType !== "checkbox" && !field.labelOnly && (
                 <FormLabel>
@@ -286,6 +317,37 @@ export default function CustomContactFormBlockComponent({
                     <label htmlFor={field.fieldName} className="text-sm">
                       {field.fieldLabel}
                     </label>
+                  </div>
+                ) : field.fieldType === "checkboxGroup" ? (
+                  <div className="flex flex-col space-y-2">
+                    {field.options?.map((option) => (
+                      <FormField
+                        key={option.value}
+                        control={form.control}
+                        name={field.fieldName}
+                        render={({ field: groupField }) => (
+                          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={groupField.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? groupField.onChange([...(groupField.value || []), option.value])
+                                    : groupField.onChange(
+                                      (groupField.value || []).filter(
+                                        (value: string) => value !== option.value
+                                      )
+                                    );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )}
+                      />
+                    ))}
                   </div>
                 ) : field.fieldType === "select" ? (
                   <Select onValueChange={formField.onChange} defaultValue={formField.value}>
@@ -321,9 +383,15 @@ export default function CustomContactFormBlockComponent({
                       {...formField}
                       type="date"
                       placeholder={computedPlaceholder}
-                      className="pr-10"
                     />
-                    <Calendar className="absolute top-3 right-3 h-4 w-4 text-gray-400" />
+                  </div>
+                ) : field.fieldType === "datetime" ? (
+                  <div className="relative">
+                    <Input
+                      {...formField}
+                      type="datetime-local"
+                      placeholder={computedPlaceholder}
+                    />
                   </div>
                 ) : (
                   <Input {...formField} type={field.fieldType} placeholder={computedPlaceholder} />
@@ -346,15 +414,15 @@ export default function CustomContactFormBlockComponent({
       {formDescription && (
         <p className="text-base mb-8 text-gray-600">{formDescription}</p>
       )}
-      
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="flex flex-wrap">
             {formFields?.map(renderFormField)}
           </div>
-          <Button 
-            type="submit" 
-            disabled={isSubmitting} 
+          <Button
+            type="submit"
+            disabled={isSubmitting}
             className="w-full"
           >
             {isSubmitting && (

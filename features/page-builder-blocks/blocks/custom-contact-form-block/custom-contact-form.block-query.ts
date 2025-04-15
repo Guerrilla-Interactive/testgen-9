@@ -18,7 +18,7 @@ export const customContactFormBlockQueryDetails = groq`
       preChecked,
       options[] {
         label,
-        value
+        "value": select(value != null && value != "" => value, label)
       }
   }
 `;

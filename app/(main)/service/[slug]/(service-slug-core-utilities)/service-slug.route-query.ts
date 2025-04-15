@@ -38,6 +38,7 @@ export const GET_SERVICE_PAGE_BY_ROUTE_QUERY = groq`
     },
     _updatedAt,
     faqs{ 
+      noPadding,
       ${getAllReferencedFaqsQuery},
       ${getAllFaqCategoriesQuery}
     },

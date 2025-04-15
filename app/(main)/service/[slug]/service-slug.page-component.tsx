@@ -7,7 +7,7 @@ import { GET_SERVICE_PAGE_BY_ROUTE_QUERYResult, Hero5Block, FaqsBlock } from "@/
 import { useGlobalContext } from "@/features/context/global-context";
 import { useEffect } from "react";
 import { CustomContactFormBlockComponent } from "@/features/page-builder-blocks/blocks/custom-contact-form-block";
-import type { CustomContactFormProps } from "@/features/page-builder-blocks/blocks/custom-contact-form-block/custom-contact-form.block-component";
+
 import FaqsBlockComponent from "@/features/page-builder-blocks/blocks/faqs-block/faqs.block-component";
 
 export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_BY_ROUTE_QUERYResult>) {
@@ -25,7 +25,7 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
 
   return (
     <>
-      {featuredImageProps && <Hero5BlockComponent image={featuredImageProps} />}
+      <Hero5BlockComponent image={featuredImageProps} />
 
       {layout === 'side-by-side' && (
         <Section className="mb-12 mt-12">
@@ -81,6 +81,14 @@ export default function ServiceSlugPageComponent(page: Partial<GET_SERVICE_PAGE_
             </Container>
           </Section>
         </>
+      )}
+
+      {page.faqs && (
+        <Section className="mb-12 mt-12">
+          <Container>
+            <FaqsBlockComponent {...page.faqs} />
+          </Container>
+        </Section>
       )}
     </>
   );
