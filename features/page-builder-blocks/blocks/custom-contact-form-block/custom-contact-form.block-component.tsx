@@ -55,90 +55,133 @@ export default function CustomContactFormBlockComponent({
 
   // Dynamically build the validation schema based on form fields
   const buildFormSchema = () => {
-    const schemaMap: Record<string, any> = {};
+    const schemaMap: Record<string, z.ZodTypeAny> = {};
 
     formFields?.forEach((field) => {
-      // Skip heading fields as they don't need validation
       if (field.fieldType === "heading") return;
 
-      let validator;
+      let validator: z.ZodTypeAny;
 
+      // Base validators for each type
       switch (field.fieldType) {
-        case "email":
-          validator = z.string().email({ message: t("invalidEmail", "Please enter a valid email address") });
-          break;
-        case "tel":
-          validator = z.string().min(5, { message: t("invalidPhone", "Please enter a valid phone number") });
-          break;
-        case "date":
-          validator = z.string().refine((val) => {
-            if (!val) return !field.isRequired;
-            const date = new Date(val);
-            return !isNaN(date.getTime());
-          }, { message: t("invalidDate", "Please select a valid date") });
-          break;
-        case "datetime":
-          validator = z.string().refine((val) => {
-            if (!val) return !field.isRequired;
-            // datetime-local input format is YYYY-MM-DDTHH:mm
-            const dateTimeRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
-            if (!dateTimeRegex.test(val)) return false;
-            const date = new Date(val);
-            return !isNaN(date.getTime());
-          }, { message: t("invalidDateTime", "Please select a valid date and time") });
-          break;
-        case "file":
-          // Files are handled separately, we just need a placeholder in the schema
-          validator = z.any().optional();
-          break;
+        case "email": validator = z.string().email({ message: t("invalidEmail", "...") }).or(z.literal('')); break;
+        case "tel": validator = z.string(); break;
+        case "date": validator = z.string().refine(val => !val || !isNaN(new Date(val).getTime()), { message: t("invalidDate", "...") }); break;
+        case "datetime": validator = z.string().refine(val => {
+          if (!val) return true;
+          const dateTimeRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
+          return dateTimeRegex.test(val) && !isNaN(new Date(val).getTime());
+        }, { message: t("invalidDateTime", "...") }); break;
+        case "file": validator = z.any(); break;
         case "textarea":
-        case "text":
-          validator = z.string();
-          break;
-        case "checkbox":
-          validator = z.boolean();
-          if (field.isRequired) {
-            validator = validator.refine((val) => val === true, {
-              message: `${field.fieldLabel} ${t("mustBeConfirmed", "must be confirmed")}`,
-            });
-          }
-          break;
-        case "checkboxGroup":
-          validator = z.array(z.string());
-          if (field.isRequired) {
-            validator = validator.min(1, {
-              message: t("mustSelectOneOption", "You must select at least one option")
-            });
-          }
-          break;
+        case "text": validator = z.string(); break;
+        case "checkbox": validator = z.boolean(); break;
+        case "checkboxGroup": validator = z.array(z.string()); break;
         case "radio":
-        case "select":
-          validator = z.string();
-          break;
-        default:
-          validator = z.string();
+        case "select": validator = z.string(); break;
+        default: validator = z.any();
       }
 
-      if (field.isRequired && field.fieldType !== "checkbox" && field.fieldType !== "file") {
-        if (field.fieldType === "radio" || field.fieldType === "select") {
-          validator = validator.min(1, { message: `${t("pleasePick", "Please select a")} ${field.fieldLabel}` });
-        } else {
-          validator = validator.min(1, { message: `${field.fieldLabel} ${t("required", "is required")}` });
+      // --- Start Refined Validation Logic ---
+
+      // Apply base required/specific rules FIRST (if not conditional)
+      if (field.isRequired && !field.conditionalLogic?.enabled) {
+        if (field.fieldType === "checkbox") {
+          validator = (validator as z.ZodBoolean).refine((val) => val === true, { message: `${field.fieldLabel} ${t("mustBeConfirmed", "...")}` });
+        } else if (field.fieldType === "checkboxGroup") {
+          validator = (validator as z.ZodArray<z.ZodString>).min(1, { message: t("mustSelectOneOption", "...") });
+        } else if (field.fieldType === "file") {
+          validator = (validator as z.ZodAny).refine(() => !!files[field.fieldName], { message: `${field.fieldLabel} ${t("required", "...")}` });
+        } else if (field.fieldType === "radio" || field.fieldType === "select") {
+          validator = (validator as z.ZodString).min(1, { message: `${t("pleasePick", "...")} ${field.fieldLabel}` });
+        } else if (field.fieldType === "tel") {
+          // Apply min length 5 for required phone
+          validator = (validator as z.ZodString).min(5, { message: t("invalidPhone", "...") });
+        } else if (field.fieldType === 'text' || field.fieldType === 'textarea' || field.fieldType === 'date' || field.fieldType === 'datetime') {
+          // Apply min length 1 (non-empty) only to these specific string types when statically required
+          validator = (validator as z.ZodString).min(1, { message: `${field.fieldLabel} ${t("required", "...")}` });
         }
+        // Email type is intentionally excluded here - z.string().email() handles format, requirement is conditional
+      }
+      // Apply non-required specific validations (like optional phone length)
+      else if (field.fieldType === "tel") {
+        validator = (validator as z.ZodString).refine(val => !val || val.length >= 5, { message: t("invalidPhone", "...") });
       }
 
-      // Add optional refinement for file type required field
-      if (field.isRequired && field.fieldType === "file") {
-        // Since files are handled outside RHF, we validate based on the state
-        validator = validator.refine(() => !!files[field.fieldName], {
-          message: `${field.fieldLabel} ${t("required", "is required")}`,
-        });
+      // Make validator optional AFTER potentially adding required rules if it might be hidden conditionally
+      if (field.conditionalLogic?.enabled) {
+        validator = validator.optional();
       }
+      // --- End Refined Validation Logic ---
 
       schemaMap[field.fieldName] = validator;
     });
 
-    return z.object(schemaMap);
+    const baseSchema = z.object(schemaMap);
+
+    // Apply superRefine for conditional requirements
+    return baseSchema.superRefine((data, ctx) => {
+      formFields?.forEach((field) => {
+        // --- MODIFIED Check: Only apply conditional checks to fields that ARE required AND ARE conditional ---
+        if (!field.isRequired || !field.conditionalLogic?.enabled) {
+          return; // Skip if field is not required OR not conditional
+        }
+        // --- End MODIFIED Check ---
+
+        // Existing logic from here down only applies to required, conditional fields
+        const { controllerFieldName, action, controllerValueChecked } = field.conditionalLogic;
+        if (!controllerFieldName) return;
+
+        const controllerValue = data[controllerFieldName];
+        const expectedCondition = controllerValueChecked === "true";
+        const conditionIsMet = !!controllerValue === expectedCondition;
+
+        let isVisible = false;
+        if (action === 'show') {
+          isVisible = conditionIsMet;
+        } else if (action === 'hide') {
+          isVisible = !conditionIsMet;
+        }
+
+        // If the field is required AND should be visible, check its value
+        if (isVisible) {
+          const fieldValue = data[field.fieldName];
+          let isEmpty = false;
+
+          switch (field.fieldType) {
+            case "checkbox":
+              isEmpty = fieldValue === false;
+              break;
+            case "checkboxGroup":
+              isEmpty = !fieldValue || fieldValue.length === 0;
+              break;
+            case "file":
+              // Cannot reliably check file state here, skip conditional requirement for files
+              break;
+            default: // Handles text, textarea, select, radio, date, datetime, tel, email
+              isEmpty = !fieldValue || fieldValue === '';
+              break;
+          }
+
+          if (isEmpty && field.fieldType !== 'file') {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: `${field.fieldLabel} ${t("required", "is required")}`,
+              path: [field.fieldName],
+            });
+          }
+
+          // Add specific validation for visible fields if needed (e.g., phone length)
+          if (field.fieldType === "tel" && fieldValue && fieldValue.length < 5) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: t("invalidPhone", "Please enter a valid phone number"),
+              path: [field.fieldName],
+            });
+          }
+        }
+      });
+    });
   };
 
   const formSchema = buildFormSchema();
@@ -180,22 +223,38 @@ export default function CustomContactFormBlockComponent({
     setIsSubmitting(true);
 
     try {
-      // Create a FormData object to handle both text fields and files
       const formData = new FormData();
-
-      // Add all the form fields
-      Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value as string);
+      const fieldMetadata: Record<string, { label: string; type: string }> = {};
+      formFields?.forEach(field => {
+        if (field.fieldType !== 'heading') { // Exclude headings
+          fieldMetadata[field.fieldName] = {
+            label: field.fieldLabel,
+            type: field.fieldType,
+          };
+        }
       });
 
-      // Add any files
+      formData.append('__fieldMetadata__', JSON.stringify(fieldMetadata));
+
+      Object.entries(data).forEach(([key, value]) => {
+        // Special handling for checkboxGroup arrays
+        if (Array.isArray(value)) {
+          formData.append(key, value.join(', ')); // Join array into comma-separated string
+        } else {
+          formData.append(key, value as string);
+        }
+      });
+
       Object.entries(files).forEach(([key, file]) => {
         if (file) {
           formData.append(key, file);
         }
       });
 
-      // Submit to the API
+      if (formTitle) {
+        formData.append('__formTitle__', formTitle);
+      }
+
       const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
