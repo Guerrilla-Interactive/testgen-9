@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useMemo, useTransition } from "react";
 import { stegaClean } from "next-sanity";
-import { Search, Trophy, Medal, Award, Star, ChevronUp, ChevronDown, Loader2, Info, Edit, Check, X, Save } from "lucide-react";
+import { Search, Trophy, Medal, Award, Star, ChevronUp, ChevronDown, Loader2, Info, Edit, Check, X, Save, UserPlus } from "lucide-react";
 import { editParticipantAction } from "./actions";
+import { Modal } from "./modal";
+import { AddParticipantForm } from "./add-participant-form";
 
 // Define types inline since there's an import issue
 interface Participant {
@@ -68,6 +70,7 @@ export default function ScoreboardClient({
     const [isLoading, setIsLoading] = useState(true);
     const [animateItems, setAnimateItems] = useState(false);
     const [showColorLegend, setShowColorLegend] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
     // Edit state
     const [editingParticipant, setEditingParticipant] = useState<string | null>(null);
@@ -204,6 +207,16 @@ export default function ScoreboardClient({
         });
     };
 
+    // Handle opening the add participant modal
+    const handleOpenAddModal = () => {
+        setIsAddModalOpen(true);
+    };
+
+    // Handle closing the add participant modal
+    const handleCloseAddModal = () => {
+        setIsAddModalOpen(false);
+    };
+
     return (
         <section className="container mx-auto px-4 py-8">
             {title && (
@@ -211,6 +224,18 @@ export default function ScoreboardClient({
                     {stegaClean(title)}
                 </h2>
             )}
+
+            {/* Button to add a new participant */}
+            <div className="mb-6 flex justify-end">
+                <button
+                    onClick={handleOpenAddModal}
+                    className="flex items-center rounded-md bg-blue-600 px-4 py-2 font-medium text-white shadow-sm transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    aria-label="Add new participant"
+                >
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    Add New Participant
+                </button>
+            </div>
 
             {/* Display existing participants */}
             <div className="mt-8">
@@ -504,6 +529,11 @@ export default function ScoreboardClient({
                     </div>
                 )}
             </div>
+
+            {/* Modal for adding new participants */}
+            <Modal isOpen={isAddModalOpen} onClose={handleCloseAddModal}>
+                <AddParticipantForm onClose={handleCloseAddModal} />
+            </Modal>
         </section>
     );
 } 

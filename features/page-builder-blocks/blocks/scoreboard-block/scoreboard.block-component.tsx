@@ -1,7 +1,6 @@
 import { stegaClean } from "next-sanity";
 
 import { PARTICIPANTS_QUERY } from "@/sanity/desk-organized-sanity-utilities/participant/participant.document-queries";
-import { AddParticipantForm } from "./add-participant-form";
 import { client } from "@/sanity/lib/client";
 import ScoreboardClient from "./scoreboard-client";
 import { type Participant, type SortOption } from "./types";
@@ -23,11 +22,8 @@ export default async function ScoreboardBlockComponent(
     await client.fetch<Participant[]>(PARTICIPANTS_QUERY);
 
   return (
-    <div>
-      {/* Form to add new participants */}
-      <AddParticipantForm />
-
-      {/* Client component for participant list with sorting */}
+    <div className="w-full">
+      {/* Client component for participant list with sorting and add functionality */}
       <ScoreboardClient
         participants={participants}
         initialSort={defaultSort}
