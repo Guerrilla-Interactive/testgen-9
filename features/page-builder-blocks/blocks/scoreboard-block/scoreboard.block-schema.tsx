@@ -13,6 +13,22 @@ export default defineType({
       title: "Title",
       type: "string",
     }),
+    defineField({
+      name: "defaultSort",
+      title: "Default Sort Order",
+      type: "string",
+      options: {
+        list: [
+          { title: "Latest First", value: "latest" },
+          { title: "Highest Score", value: "highest" },
+          { title: "Lowest Score", value: "lowest" },
+          { title: "Alphabetical (A-Z)", value: "alphabetical" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "latest",
+      description: "Choose how participants are sorted by default",
+    }),
   ],
   preview: {
     prepare() {

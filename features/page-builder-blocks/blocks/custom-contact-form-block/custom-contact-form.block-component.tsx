@@ -50,13 +50,13 @@ export default function CustomContactFormBlockComponent({
   // Dynamically build the validation schema based on form fields
   const buildFormSchema = () => {
     const schemaMap: Record<string, any> = {};
-    
+
     formFields?.forEach((field) => {
       // Skip heading fields as they don't need validation
       if (field.fieldType === "heading") return;
-      
+
       let validator;
-      
+
       switch (field.fieldType) {
         case "email":
           validator = z.string().email({ message: t("invalidEmail", "Please enter a valid email address") });
@@ -94,7 +94,7 @@ export default function CustomContactFormBlockComponent({
         default:
           validator = z.string();
       }
-      
+
       if (field.isRequired && field.fieldType !== "checkbox" && field.fieldType !== "file") {
         if (field.fieldType === "radio" || field.fieldType === "select") {
           validator = validator.min(1, { message: `${t("pleasePick", "Please select a")} ${field.fieldLabel}` });
@@ -102,10 +102,10 @@ export default function CustomContactFormBlockComponent({
           validator = validator.min(1, { message: `${field.fieldLabel} ${t("required", "is required")}` });
         }
       }
-      
+
       schemaMap[field.fieldName] = validator;
     });
-    
+
     return z.object(schemaMap);
   };
 
@@ -141,23 +141,23 @@ export default function CustomContactFormBlockComponent({
 
   async function onSubmit(data: any) {
     setIsSubmitting(true);
-    
+
     try {
       // Create a FormData object to handle both text fields and files
       const formData = new FormData();
-      
+
       // Add all the form fields
       Object.entries(data).forEach(([key, value]) => {
         formData.append(key, value as string);
       });
-      
+
       // Add any files
       Object.entries(files).forEach(([key, file]) => {
         if (file) {
           formData.append(key, file);
         }
       });
-      
+
       // Submit to the API
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -209,9 +209,9 @@ export default function CustomContactFormBlockComponent({
               {files[field.fieldName] ? (
                 <div className="flex items-center justify-between">
                   <span className="text-sm truncate">{files[field.fieldName]?.name}</span>
-                  <Button 
-                    type="button" 
-                    variant="ghost" 
+                  <Button
+                    type="button"
+                    variant="ghost"
                     size="sm"
                     onClick={() => removeFile(field.fieldName)}
                   >
@@ -231,7 +231,7 @@ export default function CustomContactFormBlockComponent({
                     }}
                     accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
                   />
-                  <Button 
+                  <Button
                     type="button"
                     variant="outline"
                     onClick={() => fileInputRefs.current[field.fieldName]?.click()}
@@ -346,15 +346,15 @@ export default function CustomContactFormBlockComponent({
       {formDescription && (
         <p className="text-base mb-8 text-gray-600">{formDescription}</p>
       )}
-      
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="flex flex-wrap">
             {formFields?.map(renderFormField)}
           </div>
-          <Button 
-            type="submit" 
-            disabled={isSubmitting} 
+          <Button
+            type="submit"
+            disabled={isSubmitting}
             className="w-full"
           >
             {isSubmitting && (
