@@ -1,6 +1,7 @@
 import { settingsStructure } from "@/sanity/desk-organized-sanity-utilities/settings/settings.structure";
 import { faqDeskStructure } from "./faq/faq.document-structure";
 import { testimonialDeskStructure } from "./testimonial/testimonial.document-structure";
+import { participantDeskStructure } from "./participant/participant.document-structure";
 
 import { serviceSlugDeskStructure } from "@/app/(main)/service/[slug]/(service-slug-core-utilities)/service-slug.desk-structure";
 import { courseSlugDeskStructure } from "@/app/(main)/course/[slug]/(course-slug-core-utilities)/course-slug.desk-structure";
@@ -48,7 +49,6 @@ export const structure = (S: StructureBuilder, context: any) => {
     ),
       // blogSlugDeskStructure(S),
       // categoryDeskStructure(S, context),
-      // authorDeskStructure(S, context),
       S.listItem()
       .title("Misc")
       .icon(List)
@@ -68,6 +68,7 @@ export const structure = (S: StructureBuilder, context: any) => {
             ])
           ),
           testimonialDeskStructure(S, context),
+          participantDeskStructure(S, context),
         ])
       ),
       // ADD VALUE 2 ABOVE

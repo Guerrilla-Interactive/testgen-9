@@ -25,7 +25,7 @@ export default async function MainLayout({
   
   return (
     <>
-      <Header {...settings.data}/>
+      {/* <Header {...settings.data}/> */}
       <main>{children}</main>
       <SanityLive />
       {(await draftMode()).isEnabled && (
@@ -34,7 +34,7 @@ export default async function MainLayout({
           <VisualEditing />
         </>
       )}
-      <Footer {...footer.data} />
+      {/* <Footer {...footer.data} /> */}
     </>
   );
 }

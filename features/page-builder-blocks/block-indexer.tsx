@@ -35,6 +35,7 @@ import { Hero5BlockComponent, hero5BlockQuery, hero5BlockSchema } from "./blocks
 import { CustomContactFormBlockComponent, customContactFormBlockQuery, customContactFormBlockSchema } from "./blocks/custom-contact-form-block";
 import { TwoColumnBlockComponent, twoColumnBlockQuery, twoColumnBlockSchema } from "./blocks/two-column-block";
 import { SeperatorBlockComponent, seperatorBlockQuery, seperatorBlockSchema } from "./blocks/seperator-block";
+import { ScoreboardBlockComponent, scoreboardBlockQuery, scoreboardBlockSchema } from "./blocks/scoreboard-block";
 // ADD VALUE 1 ABOVE
 
 export const BlockDataMap: {
@@ -78,6 +79,7 @@ export const BlockDataMap: {
   "custom-contact-form-block": { component: CustomContactFormBlockComponent, schema: customContactFormBlockSchema, query: customContactFormBlockQuery },
   "two-column-block": { component: TwoColumnBlockComponent, schema: twoColumnBlockSchema, query: twoColumnBlockQuery },
 "seperator-block": { component: SeperatorBlockComponent, schema: seperatorBlockSchema, query: seperatorBlockQuery },
+"scoreboard-block": { component: ScoreboardBlockComponent, schema: scoreboardBlockSchema, query: scoreboardBlockQuery },
   // ADD VALUE 2 ABOVE
 };
 

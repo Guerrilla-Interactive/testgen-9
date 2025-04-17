@@ -45,13 +45,13 @@ export default defineType({
       type: "text",
       group: "content",
     }),
-    defineField({
-      name: "author",
-      title: "Author",
-      type: "reference",
-      group: "settings",
-      to: { type: "author" },
-    }),
+    // defineField({
+    //   name: "author",
+    //   title: "Author",
+    //   type: "reference",
+    //   group: "settings",
+    //   to: { type: "author" },
+    // }),
     defineField({
       name: "image",
       title: "Image",
