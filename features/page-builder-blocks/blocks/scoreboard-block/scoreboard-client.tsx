@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useMemo, useTransition } from "react";
 import { stegaClean } from "next-sanity";
-import { Search, Trophy, Medal, Award, Star, ChevronUp, ChevronDown, Loader2, Info, Edit, Check, X, Save, UserPlus } from "lucide-react";
-import { editParticipantAction } from "./actions";
+import { Search, Trophy, Medal, Award, Star, ChevronUp, ChevronDown, Loader2, Info, Edit, Check, X, Save, UserPlus, Trash2, AlertTriangle } from "lucide-react";
+import { editParticipantAction, deleteParticipantAction } from "./actions";
 import { Modal } from "./modal";
 import { AddParticipantForm } from "./add-participant-form";
 
@@ -35,7 +35,7 @@ const formatDate = (dateString: string) => {
 const getRankIcon = (rank: number) => {
     switch (rank) {
         case 1:
-            return <Trophy className="h-5 w-5 text-yellow-500" aria-hidden="true" />;
+            return <Trophy className="h-5 w-5  text-yellow-500" aria-hidden="true" />;
         case 2:
             return <Medal className="h-5 w-5 text-gray-400" aria-hidden="true" />;
         case 3:
@@ -79,6 +79,12 @@ export default function ScoreboardClient({
     const [editError, setEditError] = useState<string | null>(null);
     const [isPending, startTransition] = useTransition();
     const [editSuccess, setEditSuccess] = useState(false);
+
+    // Add delete confirmation state
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const [participantToDelete, setParticipantToDelete] = useState<string | null>(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [deleteError, setDeleteError] = useState<string | null>(null);
 
     // Find the highest score for relative bar scaling
     const maxScore = useMemo(() => {
@@ -207,6 +213,47 @@ export default function ScoreboardClient({
         });
     };
 
+    // Handle delete button click
+    const handleDeleteClick = (id: string) => {
+        setParticipantToDelete(id);
+        setShowDeleteConfirm(true);
+        setDeleteError(null);
+    };
+
+    // Handle cancel delete
+    const handleCancelDelete = () => {
+        setShowDeleteConfirm(false);
+        setParticipantToDelete(null);
+        setDeleteError(null);
+    };
+
+    // Handle confirm delete
+    const handleConfirmDelete = () => {
+        if (!participantToDelete) return;
+
+        setIsDeleting(true);
+        setDeleteError(null);
+
+        startTransition(async () => {
+            const result = await deleteParticipantAction({
+                id: participantToDelete
+            });
+
+            setIsDeleting(false);
+
+            if (result.error) {
+                setDeleteError(result.error);
+            } else {
+                setShowDeleteConfirm(false);
+                setParticipantToDelete(null);
+                // Any editing state should also be cleared if we were deleting while editing
+                if (editingParticipant === participantToDelete) {
+                    setEditingParticipant(null);
+                }
+            }
+        });
+    };
+
     // Handle opening the add participant modal
     const handleOpenAddModal = () => {
         setIsAddModalOpen(true);
@@ -299,47 +346,10 @@ export default function ScoreboardClient({
 
                 {/* Content area */}
                 <div className="px-6 py-5">
-                    {/* Title and legend info */}
-                    <div className="flex items-center justify-between mb-6">
-                        <div className="flex items-center">
-                            <h3 className="text-lg font-semibold text-gray-800">Current Scores</h3>
 
-                            {/* Color legend toggle button */}
-                            <button
-                                onClick={() => setShowColorLegend(!showColorLegend)}
-                                className="ml-2 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-600"
-                                aria-label="Show rank color explanation"
-                            >
-                                <Info className="h-5 w-5" />
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Color legend explanation - conditionally shown */}
-                    {showColorLegend && (
-                        <div className="mb-6 rounded-md bg-blue-50 p-4 text-sm text-blue-800 border border-blue-100">
-                            <h4 className="mb-2 font-medium">Color Legend</h4>
-                            <p className="mb-3">The background colors indicate a participant's rank based on their score:</p>
-                            <div className="flex flex-wrap gap-3">
-                                <div className="flex items-center rounded-md bg-gradient-to-r from-yellow-50 to-yellow-100 border border-yellow-300 px-3 py-1">
-                                    <Trophy className="mr-2 h-4 w-4 text-yellow-500" />
-                                    <span>1st Place (Gold)</span>
-                                </div>
-                                <div className="flex items-center rounded-md bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 px-3 py-1">
-                                    <Medal className="mr-2 h-4 w-4 text-gray-400" />
-                                    <span>2nd Place (Silver)</span>
-                                </div>
-                                <div className="flex items-center rounded-md bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-600 px-3 py-1">
-                                    <Award className="mr-2 h-4 w-4 text-amber-700" />
-                                    <span>3rd Place (Bronze)</span>
-                                </div>
-                            </div>
-                            <p className="mt-2 text-xs">Note: Rankings are always based on score, regardless of current sort order.</p>
-                        </div>
-                    )}
 
                     {/* Participant content area */}
-                    <div className="">
+                    <div className="bg-gray-50 rounded-lg p-6 border border-gray-100">
                         {/* Loading state */}
                         {isLoading ? (
                             <div className="flex h-40 items-center justify-center">
@@ -397,6 +407,14 @@ export default function ScoreboardClient({
                                                                 <Check className="h-5 w-5 text-green-500" />
                                                             ) : (
                                                                 <>
+                                                                    <button
+                                                                        onClick={() => handleDeleteClick(participant._id)}
+                                                                        className="rounded-md bg-red-100 p-1 text-red-600 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-1"
+                                                                        disabled={isPending}
+                                                                        aria-label="Delete participant"
+                                                                    >
+                                                                        <Trash2 className="h-4 w-4" />
+                                                                    </button>
                                                                     <button
                                                                         onClick={() => handleSaveEdit(participant._id)}
                                                                         className="rounded-md bg-blue-500 p-1 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
@@ -464,13 +482,15 @@ export default function ScoreboardClient({
                                                                 ></div>
                                                             </div>
 
-                                                            <button
-                                                                onClick={() => handleEditClick(participant)}
-                                                                className="ml-2 rounded-md bg-gray-100 p-1 text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
-                                                                aria-label="Edit participant"
-                                                            >
-                                                                <Edit className="h-4 w-4" />
-                                                            </button>
+                                                            <div className="flex space-x-2">
+                                                                <button
+                                                                    onClick={() => handleEditClick(participant)}
+                                                                    className="rounded-md bg-gray-100 p-1 text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
+                                                                    aria-label="Edit participant"
+                                                                >
+                                                                    <Edit className="h-4 w-4" />
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </>
@@ -535,6 +555,51 @@ export default function ScoreboardClient({
                     )}
                 </div>
             </div>
+
+            {/* Delete confirmation modal */}
+            <Modal isOpen={showDeleteConfirm} onClose={handleCancelDelete}>
+                <div className="text-center">
+                    <div className="flex justify-center mb-4">
+                        <div className="rounded-full bg-red-100 p-3">
+                            <AlertTriangle className="h-8 w-8 text-red-600" />
+                        </div>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Confirm Deletion</h3>
+                    <p className="text-sm text-gray-600 mb-6">
+                        Are you sure you want to delete this participant? This action cannot be undone.
+                    </p>
+
+                    {deleteError && (
+                        <div className="mb-4 text-center text-sm text-red-600 p-2 bg-red-50 rounded-md border border-red-100">
+                            {deleteError}
+                        </div>
+                    )}
+
+                    <div className="flex justify-center gap-3">
+                        <button
+                            onClick={handleCancelDelete}
+                            className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                            disabled={isDeleting}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            onClick={handleConfirmDelete}
+                            className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                            disabled={isDeleting}
+                        >
+                            {isDeleting ? (
+                                <span className="flex items-center">
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Deleting...
+                                </span>
+                            ) : (
+                                "Delete"
+                            )}
+                        </button>
+                    </div>
+                </div>
+            </Modal>
 
             {/* Modal for adding new participants */}
             <Modal isOpen={isAddModalOpen} onClose={handleCloseAddModal}>

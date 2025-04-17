@@ -94,4 +94,43 @@ export async function editParticipantAction(
     // Return a generic error message for security
     return { error: "Failed to update participant. Please try again." };
   }
+}
+
+// Interface for delete participant arguments
+interface DeleteParticipantArgs {
+  id: string;
+}
+
+export async function deleteParticipantAction(
+  args: DeleteParticipantArgs
+): Promise<{ success?: boolean; error?: string }> {
+  const { id } = args;
+
+  if (!id) {
+    return { error: "Invalid participant ID." };
+  }
+
+  try {
+    // Create a new client with token for write operations
+    const writeClient = createClient({
+      projectId,
+      dataset,
+      apiVersion,
+      token, // Use the imported token for authentication
+      useCdn: false, // We need the most up-to-date data, so don't use the CDN
+    });
+
+    // Use the writeClient to delete the document
+    await writeClient.delete(id);
+
+    // Revalidate the path where the scoreboard is displayed
+    revalidatePath("/"); // Adjust this path as needed
+
+    return { success: true };
+
+  } catch (error) {
+    console.error("Failed to delete participant:", error);
+    // Return a generic error message for security
+    return { error: "Failed to delete participant. Please try again." };
+  }
 } 
