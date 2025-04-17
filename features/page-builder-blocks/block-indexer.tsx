@@ -178,7 +178,10 @@ blocks[]{
   ${twoColumnBlockQuery},
 
   // Seperator
-  ${seperatorBlockQuery}
+  ${seperatorBlockQuery},
+
+  // Scoreboard
+  ${scoreboardBlockQuery}
   // ADD VALUE 3 ABOVE
 }
 `;
