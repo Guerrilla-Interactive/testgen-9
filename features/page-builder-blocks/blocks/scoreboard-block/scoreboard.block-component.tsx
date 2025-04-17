@@ -22,13 +22,14 @@ export default async function ScoreboardBlockComponent(
     await client.fetch<Participant[]>(PARTICIPANTS_QUERY);
 
   return (
-    <div className="w-full">
-      {/* Client component for participant list with sorting and add functionality */}
-      <ScoreboardClient
-        participants={participants}
-        initialSort={defaultSort}
-        title={title}
-      />
-    </div>
+    <section className="py-12 px-4 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-screen-2xl mx-auto">
+        <ScoreboardClient
+          participants={participants}
+          initialSort={defaultSort}
+          title={title}
+        />
+      </div>
+    </section>
   );
 }

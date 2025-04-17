@@ -61,18 +61,20 @@ export function AddParticipantForm({ onClose }: AddParticipantFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white  rounded-lg transition-all duration-300"
+      className="bg-white transition-all duration-300"
     >
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="flex items-center text-lg font-semibold text-gray-800">
-          <PlusCircle className="mr-2 h-5 w-5 text-blue-500" />
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="flex items-center text-xl font-semibold text-gray-800">
+          <div className="flex items-center justify-center bg-blue-100 rounded-full p-1.5 mr-3">
+            <PlusCircle className="h-5 w-5 text-blue-600" />
+          </div>
           Add New Participant
         </h3>
         {onClose && (
           <button
             type="button"
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1 rounded-full p-1"
+            className="text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1 rounded-full p-1.5 hover:bg-gray-100"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />
@@ -80,9 +82,9 @@ export function AddParticipantForm({ onClose }: AddParticipantFormProps) {
         )}
       </div>
 
-      <div className="mb-4 grid gap-4 md:grid-cols-12">
-        <div className="md:col-span-7">
-          <label htmlFor="participant-name" className="mb-1.5 block text-sm font-medium text-gray-700">
+      <div className="mb-5 space-y-4">
+        <div>
+          <label htmlFor="participant-name" className="block text-sm font-medium text-gray-700 mb-1">
             Name
           </label>
           <input
@@ -97,8 +99,8 @@ export function AddParticipantForm({ onClose }: AddParticipantFormProps) {
           />
         </div>
 
-        <div className="md:col-span-5">
-          <label htmlFor="participant-score" className="mb-1.5 block text-sm font-medium text-gray-700">
+        <div>
+          <label htmlFor="participant-score" className="block text-sm font-medium text-gray-700 mb-1">
             Score
           </label>
           <input
@@ -115,10 +117,10 @@ export function AddParticipantForm({ onClose }: AddParticipantFormProps) {
         </div>
       </div>
 
-      <div className="flex justify-end mt-5">
+      <div className="flex justify-end">
         <button
           type="submit"
-          className={`relative rounded-md bg-blue-600 px-4 py-2 font-medium text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${showSuccessAnimation ? 'bg-green-600 hover:bg-green-700' : ''}`}
+          className={`relative rounded-md bg-blue-600 px-5 py-2 font-medium text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${showSuccessAnimation ? 'bg-green-600 hover:bg-green-700' : ''}`}
           disabled={isPending}
         >
           {isPending ? (
@@ -138,13 +140,13 @@ export function AddParticipantForm({ onClose }: AddParticipantFormProps) {
       </div>
 
       {error && (
-        <div className="mt-4 rounded-md bg-red-50 p-3 text-sm text-red-800">
+        <div className="mt-4 rounded-md bg-red-50 p-3 text-sm text-red-800 border border-red-100">
           {error}
         </div>
       )}
 
       {success && !error && (
-        <div className="mt-4 rounded-md bg-green-50 p-3 text-sm text-green-800">
+        <div className="mt-4 rounded-md bg-green-50 p-3 text-sm text-green-800 border border-green-100">
           {success}
         </div>
       )}
