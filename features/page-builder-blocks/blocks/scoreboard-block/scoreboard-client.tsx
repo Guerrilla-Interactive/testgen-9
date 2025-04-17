@@ -24,11 +24,50 @@ interface ScoreboardClientProps {
     title?: string;
 }
 
-// Fixed date formatter function that doesn't depend on locale
-const formatDate = (dateString: string) => {
+// Format relative time like "2 minutes ago", "5 seconds ago", "3 hours ago", etc.
+const formatRelativeTime = (dateString: string) => {
     const date = new Date(dateString);
-    // Use ISO-style formatting (YYYY-MM-DD HH:MM:SS)
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
+    const now = new Date();
+    const secondsDiff = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+    // Less than a minute
+    if (secondsDiff < 60) {
+        return secondsDiff === 1 ? '1 second ago' : `${secondsDiff} seconds ago`;
+    }
+
+    // Less than an hour
+    const minutesDiff = Math.floor(secondsDiff / 60);
+    if (minutesDiff < 60) {
+        return minutesDiff === 1 ? '1 minute ago' : `${minutesDiff} minutes ago`;
+    }
+
+    // Less than a day
+    const hoursDiff = Math.floor(minutesDiff / 60);
+    if (hoursDiff < 24) {
+        return hoursDiff === 1 ? '1 hour ago' : `${hoursDiff} hours ago`;
+    }
+
+    // Less than a week
+    const daysDiff = Math.floor(hoursDiff / 24);
+    if (daysDiff < 7) {
+        return daysDiff === 1 ? '1 day ago' : `${daysDiff} days ago`;
+    }
+
+    // Less than a month (4 weeks)
+    const weeksDiff = Math.floor(daysDiff / 7);
+    if (weeksDiff < 4) {
+        return weeksDiff === 1 ? '1 week ago' : `${weeksDiff} weeks ago`;
+    }
+
+    // Less than a year
+    const monthsDiff = Math.floor(daysDiff / 30);
+    if (monthsDiff < 12) {
+        return monthsDiff === 1 ? '1 month ago' : `${monthsDiff} months ago`;
+    }
+
+    // A year or more
+    const yearsDiff = Math.floor(daysDiff / 365);
+    return yearsDiff === 1 ? '1 year ago' : `${yearsDiff} years ago`;
 };
 
 // Get rank icon based on score-based rank
@@ -108,6 +147,35 @@ export default function ScoreboardClient({
         return scoreRankMap;
     }, [participants]);
 
+    // State to trigger time updates
+    const [timeRefresh, setTimeRefresh] = useState(0);
+
+    // Set up interval to update relative times in real-time
+    useEffect(() => {
+        // Function to check if any timestamps are recent enough to need second-level updates
+        const hasRecentTimestamps = () => {
+            if (!participants || participants.length === 0) return false;
+
+            // Check if any participant was created less than 60 seconds ago
+            const now = new Date().getTime();
+            return participants.some(participant => {
+                const createdTime = new Date(participant._createdAt).getTime();
+                return (now - createdTime) < 60000; // Less than a minute
+            });
+        };
+
+        // Determine update interval based on how recent the newest entries are
+        const updateInterval = hasRecentTimestamps() ? 1000 : 60000; // 1 second or 1 minute
+
+        // Set up the interval
+        const timeInterval = setInterval(() => {
+            setTimeRefresh(prev => prev + 1);
+        }, updateInterval);
+
+        // Clean up interval on unmount or when participants change
+        return () => clearInterval(timeInterval);
+    }, [participants, timeRefresh]); // Re-evaluate when participants change or after each refresh
+
     // Simulate loading effect for better UX
     useEffect(() => {
         setIsLoading(true);
@@ -155,6 +223,13 @@ export default function ScoreboardClient({
         setAnimateItems(false);
         setCurrentSort(newSort);
     };
+
+    // Create a memoized time formatter function that will update when timeRefresh changes
+    const getRelativeTime = useMemo(() => {
+        // Return a function that formats time strings, considering the current timeRefresh state
+        return (dateString: string) => formatRelativeTime(dateString);
+        // Re-create this function when timeRefresh changes
+    }, [timeRefresh]);
 
     // Function to calculate score bar width as a percentage relative to max score
     const calculateScoreBarWidth = (score: number): string => {
@@ -449,7 +524,7 @@ export default function ScoreboardClient({
                                                         <div className="flex flex-col">
                                                             <span className="font-medium">{stegaClean(participant.name)}</span>
                                                             <span className="text-xs text-gray-500">
-                                                                {formatDate(participant._createdAt)}
+                                                                {getRelativeTime(participant._createdAt)}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -545,9 +620,9 @@ export default function ScoreboardClient({
                                 <div className="rounded-md bg-amber-50 p-3">
                                     <p className="text-xs text-gray-500">Latest Entry</p>
                                     <p className="text-sm font-semibold text-amber-800">
-                                        {formatDate(sortedParticipants.sort((a, b) =>
+                                        {getRelativeTime(sortedParticipants.sort((a, b) =>
                                             new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime()
-                                        )[0]._createdAt).split(' ')[0]}
+                                        )[0]._createdAt)}
                                     </p>
                                 </div>
                             </div>
