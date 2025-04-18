@@ -5,6 +5,7 @@ import { cn } from "@/features/unorganized-utils/utils";
 import { ThemeProvider } from "@/features/theme/theme-provider";
 import { Toaster } from "@/features/unorganized-components/ui/sonner";
 import { GlobalContextProvider } from "@/features/context/global-context";
+import { PageOverlay } from "@/features/context/page-overlay";
 import { NextgenContextStatusPanel } from "@/features/context/nextgen-context-panel";
 
 
@@ -58,25 +59,26 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <link rel="icon" href="/favicon.ico" />
       <GlobalContextProvider>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased overscroll-none",
-          titleFont.variable,
-          generalFont.variable,
-          supplementFont.variable
-        )}
-      >
-
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased overscroll-none",
+            titleFont.variable,
+            generalFont.variable,
+            supplementFont.variable
+          )}
+        >
+          {/* Render the main page content */}
           {children}
-        
-        <Toaster position="top-center" richColors />
-        <NextgenContextStatusPanel />
 
-        {/* <NextgenContextStatusPanel /> */}
+          {/* Render the global overlay component here */}
+          <PageOverlay />
 
-      </body>
+          {/* Other global elements */}
+          <Toaster position="top-center" richColors />
+          <NextgenContextStatusPanel />
+
+        </body>
       </GlobalContextProvider>
-      
     </html>
   );
 }
