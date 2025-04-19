@@ -28,6 +28,7 @@ export default async function ScoreboardBlockComponent(
           participants={participants}
           initialSort={defaultSort}
           title={title}
+          participantsQuery={PARTICIPANTS_QUERY}
         />
       </div>
     </section>
