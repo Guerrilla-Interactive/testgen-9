@@ -8,6 +8,7 @@ import { Modal } from "./modal";
 import { AddParticipantForm } from "./add-participant-form";
 import { useGlobalContext } from "@/features/context/global-context";
 import { useRealTimeParticipants } from "./use-real-time-participants";
+import { ConnectionStatusIndicator } from "./connection-status-indicator";
 
 // Define types inline since there's an import issue
 interface Participant {
@@ -513,15 +514,11 @@ export default function ScoreboardClient({
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <h2 className="text-2xl font-bold text-gray-800 flex items-center">
                             {title ? stegaClean(title) : "Scoreboard"}
-                            {isConnected && (
-                                <span className="ml-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    <span className="relative flex h-2 w-2 mr-1.5">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                                    </span>
-                                    Real-time
-                                </span>
-                            )}
+                            <ConnectionStatusIndicator 
+                                isConnected={isConnected}
+                                lastUpdateTime={lastUpdateTime}
+                                position="header"
+                            />
                             <div className="ml-2">
                                 <HelpText />
                             </div>
@@ -865,19 +862,15 @@ export default function ScoreboardClient({
                                         )[0]._createdAt)}
                                     </p>
                                 </div>
-                                <div className="rounded-md bg-indigo-50 p-3 border border-indigo-100 transition-transform hover:scale-102">
+                                <div className={`rounded-md p-3 border transition-colors duration-300 ${
+                                    isConnected ? 'bg-indigo-50 border-indigo-100' : 'bg-gray-100 border-gray-200'
+                                }`}>
                                     <p className="text-xs text-gray-500 mb-1">Connection Status</p>
-                                    <div className="flex items-center gap-2">
-                                        <div className={`h-2 w-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
-                                        <p className="text-sm font-semibold text-indigo-800">
-                                            {isConnected ? 'Real-time connected' : 'Connecting...'}
-                                        </p>
-                                    </div>
-                                    {lastUpdateTime && (
-                                        <p className="text-xs text-gray-500 mt-1">
-                                            Last update: {lastUpdateTime.toLocaleTimeString()}
-                                        </p>
-                                    )}
+                                    <ConnectionStatusIndicator 
+                                        isConnected={isConnected}
+                                        lastUpdateTime={lastUpdateTime}
+                                        position="stats"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -936,7 +929,7 @@ export default function ScoreboardClient({
             </Modal>
 
             {/* Real-time update notification */}
-            <UpdateNotification />
+            {/* <UpdateNotification /> */}
         </div>
     );
 } 
