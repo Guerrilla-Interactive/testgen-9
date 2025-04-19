@@ -505,7 +505,7 @@ export default function ScoreboardClient({
                                             className={`relative flex flex-col transform rounded-lg p-3 sm:p-4 shadow-sm transition-all duration-50 sm:flex-row sm:items-center sm:justify-between
                                                 ${getPositionClass(scoreRank)} 
                                                 ${isEditing 
-                                                    ? 'scale-100 sm:scale-102 z-50 ring-2 ring-blue-500' // Added ring for focus indication
+                                                    ? 'scale-100 sm:scale-102 z-50 ' // Added ring for focus indication
                                                     : (animateItems ? "translate-y-0 opacity-100 cursor-pointer" : "translate-y-2 opacity-0 cursor-pointer")
                                                 }
                                             `}
@@ -539,12 +539,12 @@ export default function ScoreboardClient({
                                                             onChange={(e) => setEditName(e.target.value)}
                                                             className={`rounded-md px-3 py-2.5 text-sm shadow-sm w-full bg-white
                                                                 ${scoreRank === 1 
-                                                                    ? 'border border-yellow-400 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500' 
+                                                                    ? 'border border-yellow-400 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 focus:outline-none' 
                                                                     : scoreRank === 2 
-                                                                        ? 'border border-gray-400 focus:border-gray-500 focus:ring-1 focus:ring-gray-500' 
+                                                                        ? 'border border-gray-400 focus:border-gray-500 focus:ring-1 focus:ring-gray-500 focus:outline-none' 
                                                                         : scoreRank === 3 
-                                                                            ? 'border border-amber-500 focus:border-amber-600 focus:ring-1 focus:ring-amber-600' 
-                                                                            : 'border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
+                                                                            ? 'border border-amber-500 focus:border-amber-600 focus:ring-1 focus:ring-amber-600 focus:outline-none' 
+                                                                            : 'border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none'
                                                                 }`}
                                                             placeholder="Enter name"
                                                             disabled={isPending}
@@ -562,14 +562,14 @@ export default function ScoreboardClient({
                                                                 onChange={(e) => setEditScore(e.target.value)}
                                                                 onKeyDown={(e) => handleScoreInputKeyDown(e, participant._id)}
                                                                 ref={(el) => scoreInputRefs.current.set(participant._id, el)}
-                                                                className={`w-24 sm:w-20 rounded-md px-3 py-2.5 text-sm bg-white shadow-sm
+                                                                className={`w-24 sm:w-20 rounded-md px-3 mr-2.5  py-2.5 text-sm bg-white shadow-sm
                                                                     ${scoreRank === 1 
-                                                                        ? 'border border-yellow-400 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500' 
+                                                                        ? 'border border-yellow-400 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 focus:outline-none' 
                                                                         : scoreRank === 2 
-                                                                            ? 'border border-gray-400 focus:border-gray-500 focus:ring-1 focus:ring-gray-500' 
+                                                                            ? 'border border-gray-400 focus:border-gray-500 focus:ring-1 focus:ring-gray-500 focus:outline-none' 
                                                                             : scoreRank === 3 
-                                                                                ? 'border border-amber-500 focus:border-amber-600 focus:ring-1 focus:ring-amber-600' 
-                                                                                : 'border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
+                                                                                ? 'border border-amber-500 focus:border-amber-600 focus:ring-1 focus:ring-amber-600 focus:outline-none' 
+                                                                                : 'border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none'
                                                                     }`}
                                                                 placeholder="Score"
                                                                 min="0"

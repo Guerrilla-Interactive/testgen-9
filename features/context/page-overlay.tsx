@@ -11,7 +11,7 @@ export function PageOverlay() {
     <div
       className={cn(
         // Styles for the full-screen overlay
-        "fixed inset-0 z-40 bg-black/40 backdrop-blur-md transition-opacity duration-200",
+        "fixed inset-0 z-40 bg-black/10 backdrop-blur-sm transition-opacity duration-200",
         // Conditionally control visibility and interaction
         isScoreboardEditing ? 'opacity-100' : 'opacity-0 pointer-events-none'
       )}
