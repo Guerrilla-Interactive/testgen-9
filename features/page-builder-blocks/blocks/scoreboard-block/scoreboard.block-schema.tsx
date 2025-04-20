@@ -29,6 +29,13 @@ export default defineType({
       initialValue: "latest",
       description: "Choose how participants are sorted by default",
     }),
+    defineField({
+      name: "useEnhancedMode",
+      title: "Use Enhanced Real-Time Mode",
+      type: "boolean",
+      description: "Enable optimized real-time updates with adaptive network handling and optimistic UI updates",
+      initialValue: true,
+    }),
   ],
   preview: {
     prepare() {
