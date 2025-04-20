@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { stegaClean } from "next-sanity";
-import { Loader2, Search, Trophy, ArrowUpDown } from "lucide-react";
+import { Loader2, Search, Trophy, ArrowUpDown, Edit, Trash2 } from "lucide-react";
 import { Modal } from "./modal";
 import { AddParticipantForm } from "./add-participant-form";
 import { useGlobalContext } from "@/features/context/global-context";
 import { useEnhancedRealTimeParticipants } from "./enhanced-real-time-participants";
 import { AdvancedConnectionIndicator } from "./advanced-connection-indicator";
-import { optimisticEditParticipant, optimisticDeleteParticipant } from "./optimistic-actions";
+import { optimisticEditParticipant, optimisticDeleteParticipant, isOptimisticParticipant } from "./optimistic-actions";
 import { type Participant, type SortOption } from "./types";
 
 // Main component interface
@@ -39,6 +39,9 @@ export default function EnhancedScoreboard({
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editScore, setEditScore] = useState("");
   
   const { setIsScoreboardEditing } = useGlobalContext();
   
@@ -104,31 +107,50 @@ export default function EnhancedScoreboard({
     setIsAddModalOpen(false);
   };
   
-  // Handle optimistic edit with proper UI feedback
-  const handleEdit = async (id: string, name: string, score: number) => {
+  // Handle starting edit mode for a participant
+  const handleStartEdit = (participant: Participant) => {
+    setEditingId(participant._id);
+    setEditName(participant.name);
+    setEditScore(participant.score.toString());
+  };
+  
+  // Handle canceling edit mode
+  const handleCancelEdit = () => {
+    setEditingId(null);
+    setEditName("");
+    setEditScore("");
+  };
+  
+  // Handle saving edits
+  const handleSaveEdit = async () => {
+    if (!editingId) return;
+    
+    const scoreNumber = parseInt(editScore, 10);
+    if (isNaN(scoreNumber) || scoreNumber < 0) return;
+    
     setIsScoreboardEditing(true);
-    const result = await optimisticEditParticipant(id, name, score, applyOptimisticUpdate);
+    const result = await optimisticEditParticipant(
+      editingId, 
+      editName, 
+      scoreNumber, 
+      applyOptimisticUpdate
+    );
     
     if (result.error) {
       console.error("Failed to update participant:", result.error);
-      // Keep edit mode if there's an error
     } else {
-      // Close edit mode on success
+      handleCancelEdit();
       setIsScoreboardEditing(false);
     }
-    
-    return result;
   };
   
-  // Handle optimistic delete with proper UI feedback
+  // Handle deleting a participant
   const handleDelete = async (id: string) => {
     const result = await optimisticDeleteParticipant(id, applyOptimisticDelete);
     
     if (result.error) {
       console.error("Failed to delete participant:", result.error);
     }
-    
-    return result;
   };
   
   return (
@@ -236,15 +258,89 @@ export default function EnhancedScoreboard({
               </div>
             ) : sortedParticipants.length > 0 ? (
               <div className="space-y-3">
-                {/* Participant list would go here - simplified for this example */}
-                <div className="bg-white p-4 rounded-lg border border-gray-200">
-                  <p className="text-gray-600">
-                    {sortedParticipants.length} participants loaded with enhanced real-time performance.
-                  </p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    All participants are updated in real-time with optimistic UI updates for a faster perceived experience.
-                  </p>
-                </div>
+                {/* Participant list with real implementation */}
+                {sortedParticipants.map((participant) => (
+                  <div 
+                    key={participant._id}
+                    className={`bg-white rounded-lg border ${
+                      isOptimisticParticipant(participant) 
+                        ? 'border-blue-200 shadow-md animate-pulse' 
+                        : 'border-gray-200'
+                    } p-4 transition-all duration-200`}
+                  >
+                    {editingId === participant._id ? (
+                      // Edit mode
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                        <div className="flex-grow">
+                          <input
+                            type="text"
+                            value={editName}
+                            onChange={(e) => setEditName(e.target.value)}
+                            className="w-full rounded-md border border-gray-300 px-3 py-2 mb-2 sm:mb-0 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            placeholder="Participant name"
+                          />
+                        </div>
+                        <div className="w-full sm:w-24">
+                          <input
+                            type="number"
+                            value={editScore}
+                            onChange={(e) => setEditScore(e.target.value)}
+                            className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            placeholder="Score"
+                            min="0"
+                          />
+                        </div>
+                        <div className="flex gap-2 mt-2 sm:mt-0">
+                          <button
+                            onClick={handleSaveEdit}
+                            className="rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none"
+                          >
+                            Save
+                          </button>
+                          <button
+                            onClick={handleCancelEdit}
+                            className="rounded-md bg-gray-100 px-3 py-2 text-sm font-medium text-gray-600 shadow-sm hover:bg-gray-200 focus:outline-none"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      // View mode
+                      <div className="flex items-center justify-between">
+                        <div className="flex-grow">
+                          <h3 className="text-lg font-medium text-gray-900">
+                            {participant.name}
+                          </h3>
+                          <p className="text-sm text-gray-500">
+                            Added {new Date(participant._createdAt).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <div className="flex items-center">
+                          <div className="bg-blue-50 text-blue-700 text-xl font-semibold px-4 py-2 rounded-md mr-4">
+                            {participant.score}
+                          </div>
+                          <div className="flex gap-1">
+                            <button
+                              onClick={() => handleStartEdit(participant)}
+                              className="rounded p-2 text-gray-400 hover:bg-gray-100 hover:text-blue-600"
+                              aria-label={`Edit ${participant.name}`}
+                            >
+                              <Edit className="h-4 w-4" />
+                            </button>
+                            <button
+                              onClick={() => handleDelete(participant._id)}
+                              className="rounded p-2 text-gray-400 hover:bg-gray-100 hover:text-red-600"
+                              aria-label={`Delete ${participant.name}`}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             ) : (
               <div className="flex h-40 flex-col items-center justify-center rounded-lg border border-dashed border-gray-300 bg-white p-6">
@@ -279,7 +375,12 @@ export default function EnhancedScoreboard({
           onClose={handleCloseAddModal} 
           applyOptimisticUpdate={(participant) => {
             // Add the participant to the local state optimistically
-            applyOptimisticUpdate(participant)
+            if (participant._id) {
+              applyOptimisticUpdate(participant._id, participant);
+            } else {
+              // If no _id exists, we probably need to handle this case differently
+              console.warn("Participant is missing _id property");
+            }
           }}
         />
       </Modal>

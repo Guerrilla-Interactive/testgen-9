@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { addParticipantAction } from "./actions"; // We'll create this server action
 import { optimisticAddParticipant } from "./optimistic-actions";
 import { Loader2, PlusCircle, Check, X } from "lucide-react";
+import { type Participant } from "./types";
 
 interface AddParticipantFormProps {
   onClose?: () => void;

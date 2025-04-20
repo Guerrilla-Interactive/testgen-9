@@ -21,7 +21,7 @@ export function useEnhancedRealTimeParticipants(
   const participantsRef = useRef<Map<string, Participant>>(new Map());
   
   // State for connection status
-  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [isConnected, setIsConnected] = useState<boolean>(true);
   const [isConnecting, setIsConnecting] = useState<boolean>(false);
   const [connectionQuality, setConnectionQuality] = useState<string>('good');
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null);
@@ -73,7 +73,6 @@ export function useEnhancedRealTimeParticipants(
     
     // Start with the initial participants
     setParticipants(initialParticipants);
-    setIsConnecting(true);
     
     // The query to use for real-time updates
     const participantQuery = query || '*[_type == "participant"]';
@@ -122,7 +121,10 @@ export function useEnhancedRealTimeParticipants(
     // Update connection status and quality periodically
     const statusInterval = setInterval(() => {
       const status = connectionManager.getConnectionStatus();
-      setIsConnected(status.isConnected);
+      // Only update to false if we're explicitly disconnected
+      if (!status.isConnected) {
+        setIsConnected(false);
+      }
       setConnectionQuality(status.quality);
       
       // Update metrics
