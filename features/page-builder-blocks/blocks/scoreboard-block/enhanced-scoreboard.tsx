@@ -313,7 +313,11 @@ export default function EnhancedScoreboard({
                             {participant.name}
                           </h3>
                           <p className="text-sm text-gray-500">
-                            Added {new Date(participant._createdAt).toLocaleDateString()}
+                            Added {new Date(participant._createdAt).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'numeric',
+                              day: 'numeric'
+                            })}
                           </p>
                         </div>
                         <div className="flex items-center">
