@@ -2,13 +2,15 @@
 
 import { useState, useTransition } from "react";
 import { addParticipantAction } from "./actions"; // We'll create this server action
+import { optimisticAddParticipant } from "./optimistic-actions";
 import { Loader2, PlusCircle, Check, X } from "lucide-react";
 
 interface AddParticipantFormProps {
   onClose?: () => void;
+  applyOptimisticUpdate?: (participant: any) => void;
 }
 
-export function AddParticipantForm({ onClose }: AddParticipantFormProps) {
+export function AddParticipantForm({ onClose, applyOptimisticUpdate }: AddParticipantFormProps) {
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -34,26 +36,34 @@ export function AddParticipantForm({ onClose }: AddParticipantFormProps) {
     }
 
     startTransition(async () => {
-      const result = await addParticipantAction({ name, score: scoreNumber });
-      if (result.error) {
-        setError(result.error);
-      } else {
-        // Show success animation
-        setShowSuccessAnimation(true);
-        setSuccess("Participant added successfully!");
+      try {
+        // Use optimistic update if the function is provided, otherwise fallback to the standard action
+        const result = applyOptimisticUpdate 
+          ? await optimisticAddParticipant(name, scoreNumber, applyOptimisticUpdate)
+          : await addParticipantAction({ name, score: scoreNumber });
+        
+        if (result.error) {
+          setError(result.error);
+        } else {
+          // Show success animation
+          setShowSuccessAnimation(true);
+          setSuccess("Participant added successfully!");
 
-        // Reset form fields
-        setName("");
-        setScore("");
+          // Reset form fields
+          setName("");
+          setScore("");
 
-        // Hide success message and animation after a delay, then close modal
-        setTimeout(() => {
-          setSuccess(null);
-          setShowSuccessAnimation(false);
-          if (onClose) {
-            onClose();
-          }
-        }, 1500);
+          // Hide success message and animation after a delay, then close modal
+          setTimeout(() => {
+            setSuccess(null);
+            setShowSuccessAnimation(false);
+            if (onClose) {
+              onClose();
+            }
+          }, 1500);
+        }
+      } catch (error) {
+        setError(error instanceof Error ? error.message : "An unexpected error occurred");
       }
     });
   };

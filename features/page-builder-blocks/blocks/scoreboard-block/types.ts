@@ -4,6 +4,8 @@ export interface Participant {
   name: string;
   score: number;
   createdAt?: string;
+  _updatedAt?: string;
+  _isOptimistic?: boolean;
 }
 
 export type SortOption = "latest" | "highest" | "lowest" | "alphabetical"; 
