@@ -8,6 +8,8 @@ import { courseSlugDeskStructure } from "@/app/(main)/course/[slug]/(course-slug
 import { Files, List } from "lucide-react";
 import { StructureBuilder } from "sanity/structure";
 import { faqCategoryDeskStructure } from "./faq-category/faq-category.document-structure";
+import { brandGuidelineDeskStructure } from "./brand-guideline/brand-guideline-stuff/structure/brandGuideline.structure";
+import { brandGuideDeskStructure } from "@/app/(main)/brand-guide/[slug]/(brand-guide-slug-core-utilities)/brand-guide-slug.desk-structure";
 
 // ADD VALUE 1 ABOVE
 export const structure = (S: StructureBuilder, context: any) => {
@@ -41,6 +43,7 @@ export const structure = (S: StructureBuilder, context: any) => {
           S.divider(),
           serviceSlugDeskStructure(S),
           courseSlugDeskStructure(S),
+          brandGuideDeskStructure(S),
           
 
           // show list of pages directly below
@@ -69,6 +72,7 @@ export const structure = (S: StructureBuilder, context: any) => {
           ),
           testimonialDeskStructure(S, context),
           participantDeskStructure(S, context),
+          brandGuidelineDeskStructure(S, context),
         ])
       ),
       // ADD VALUE 2 ABOVE
