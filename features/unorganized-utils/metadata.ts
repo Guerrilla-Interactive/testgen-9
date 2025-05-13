@@ -25,7 +25,8 @@ export function generatePageMetadata({
           height: page.ogImage?.asset?.metadata?.dimensions?.height || 630,
         },
       ],
-      locale: "en_US",
+      // norwegian
+      locale: "nb_NO",
       type:   "website",
     },
     robots: !isProduction
